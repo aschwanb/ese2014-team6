@@ -12,8 +12,10 @@
 \maketitle
 %\tableofcontents
 \section*{Project Name: StudiHome}
-\textbf{Team:} 6\\
-\textbf{Costumer:} Bledar Aga\\ \\
+
+\textbf{Team:} 6 \\
+\textbf{Costumer:} Bledar Aga \\
+
 \subsection*{Revision History}
 \begin{tabular}{|c|c|c|} \hline
   Version & Date & Revision Description \\ \hline
@@ -137,50 +139,74 @@
       \item Student
       \item Advertiser
     \end{itemize}
-Description
-Advertiser wants to arrange visits with students who are interested in his advertisement
-Trigger
-Advertiser receives notification (See other use case)
-Pre-Condition
-Advertisement is open
-Notification email was received
-Post-Condition
-Student receives invitation email
-message is marked as “invited” (Advertiser)
-“doodle” is generated
-Doodle has expiration date
-Main Scenario
-Advertiser receives notification email
-logs on and sees, who's interested in his advertisement
-select message
-select time slots for visite
-click “send”
-email is send to student 
-message is marked as “invided”
+  \item Description
+    \begin{itemize}
+      \item Advertiser wants to arrange visits with students who are interested in his advertisement
+    \end{itemize}
+  \item Trigger
+    \begin{itemize}
+      \item Advertiser receives notification (See other use case)
+    \end{itemize}
+  \item Pre-Condition
+    \begin{itemize}
+      \item Advertisement is open
+      \item Notification email was received 
+    \end{itemize}
+  \item Post-Condition
+    \begin{itemize}
+      \item Student receives invitation email
+      \item message is marked as “invited” (Advertiser)
+      \item "Doodle" is generaded
+      \item "Doodle" has expiration date  
+    \end{itemize}
+  \item Main Scenario
+    \begin{itemize}
+      \item Advertiser receives notification email
+      \item Advertiser logs on and sees, who's interested in his advertisement
+      \item Advertiser select message ...
+      \item ... and select time slots for visite
+      \item Click “send”
+      \item Notification email is send to student 
+      \item Message is marked as “invided”
+    \end{itemize}
 
 \subsection*{Advertiser writes message to student}
-Actors
-Advertiser
-Student
-Description
-Advertiser wants to send a message to an interested student
-Trigger
-Advertiser receives notification (See other use case)
-Pre-Condition
-Advertisement is open
-Notification email was received
-Post-conditions
-Student receives notification mail
-Student receives message (in web app)
-message is marked as “responded to” (Advertiser)
-Main Scenario
-Advertiser receives notification email
-logs on and sees, who's interested in his advertisement
-select message
-writes new message
-click “send”
-email is send to student 
-message is marked as “responded to”
+\begin{itemize}
+  \item Actors
+    \begin{itemize}
+      \item Advertiser
+      \item Student
+    \end{itemize}
+  \item Description
+    \begin{itemize}
+      \item Advertiser wants to send a message to an interested student
+    \end{itemize}
+  \item Trigger
+    \begin{itemize}
+      \item Advertiser receives notification (See other use case)
+    \end{itemize}
+  \item Pre-Condition
+    \begin{itemize}
+      \item Advertisement is open
+      \item Notification email was received
+    \end{itemize}
+  \item Post-conditions
+    \begin{itemize}
+      \item Student receives notification mail
+      \item Student receives message (in web app)
+      \item message is marked as “responded to” (Advertiser)
+    \end{itemize}
+  \item Main Scenario
+    \begin{itemize}
+      \item Advertiser receives notification email
+      \item Advertiser logs on to web app and sees, who's interested in his advertisment
+      \item Select message
+      \item Writes new message
+      \item Click “send”
+      \item Email is send to student 
+      \item Message is marked as “responded to”
+    \end{itemize}
+\end{itemize}
 
 \subsection*{Other possible use cases}
 \begin{itemize}
@@ -192,6 +218,7 @@ message is marked as “responded to”
   \item Ranking for interesting advertisements ? (Student) -> “Private Ranking and listing”
   \item Searching advertisments (Student) Has to be logged in
   \item Set alarm according to certain search criterias (student) -> notification by mail
+\end{itemize}
 \end{itemize}
 
 \end{document}
