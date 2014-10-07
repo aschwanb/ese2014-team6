@@ -1,0 +1,197 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+
+\title{Project Requirements}
+\author{Balz Aschwanden, Raoul Grossenbacher, Florian Jörg}
+
+\begin{document}
+
+\maketitle
+%\tableofcontents
+\section*{Project Name: StudiHome}
+\textbf{Team:} 6\\
+\textbf{Costumer:} Bledar Aga\\ \\
+\subsection*{Revision History}
+\begin{tabular}{|c|c|c|} \hline
+  Version & Date & Revision Description \\ \hline
+  0.01 & & \\ \hline
+  0.02 & & \\ \hline
+  0.03 & & \\ \hline
+  0.04 & & \\ \hline
+\end{tabular}
+
+\section{Introduction}
+
+\subsection*{Purpose}
+\begin{itemize}
+  \item The aim of this project is to create a platform where rooms in shared flats and whole apartments can be rented and advertises.
+\end{itemize}
+
+\subsection*{Stakeholders}
+\begin{itemize}
+  \item StudiHome Inc. (CEO Bledar Aga)
+\end{itemize}
+
+\subsection*{References}
+\begin{itemize}
+  \item \href{www.wgzimmer.ch}{wgzimmer.ch}
+  \begin{itemize}
+    \item Communication between advertiser and student.
+  \end{itemize}
+  \item \href{http://www.students.ch/wohnen}{students.ch}
+  \item \href{http://www.tutti.ch/ganze-schweiz/immobilien/wg-zimmer}{tutti.ch}
+  \item \href{http://www.immoscout24.ch/}{immoscout24.ch}
+  \begin{itemize}
+    \item Search
+    \item List of favorites
+    \item Property alerts
+  \end{itemize}
+  \item \href{http://www.homegate.ch/}{homegate.ch}
+\end{itemize}
+
+\section{Overall description}
+\subsection*{Actor characteristics}
+\begin{itemize}
+  \item Advertiser
+    \begin{itemize}
+      \item Shared flat looking for room mate(s)
+      \item Landlord renting flat
+    \end{itemize}
+  \item Student
+  \begin{itemize}
+    \item Searching for room in shared flat
+    \item Searching for flat
+  \end{itemize}
+\end{itemize}
+
+\section{Requirements}
+\subsection*{Functional requirements}
+\begin{itemize}
+  \item Login
+  \begin{itemize}
+    \item Name
+    \item Valide mail address
+  \end{itemize}
+  \item Advertisement
+  \begin{itemize}
+    \item Rent
+    \item Room/Apratement size
+    \item Number of current inhabitants
+    \item Address
+    \item Expiration date (can be prolonged)
+    \item Pictures
+    \item Descritpion (free text)
+    \item Area map
+    \item Target group (Age, gender ...)
+  \end{itemize}
+\end{itemize}
+\subsection*{Non-functional requirements}
+\begin{itemize}
+  \item Only one account per user
+  \item No difference between student and advertiser account
+  \item Usable on mobile devices and computers (autoscaling)
+\end{itemize}
+
+\section{Use cases}
+\subsection*{Contacting Advertiser}
+\begin{itemize}
+  \item Actors
+    \begin{itemize}
+      \item Advertiser
+      \item Student
+    \end{itemize}
+  \item Description
+    \begin{itemize}
+      \item Student is interested in advertisment and wants to contact advertiser to arrange visite.
+    \end{itemize}
+ \item Trigger
+    \begin{itemize}
+      \item Student clicks “interested button” an advertisement
+    \end{itemize}
+  \item Pre-conditions
+    \begin{itemize}
+    \item Student is logged in.
+    \item Advertisement is open (not closed or expired)
+    \item Student and Advertiser have valid email addresses
+    \end{itemize}
+  \item Post-conditions
+    \begin{itemize}
+      \item Interest is displayed in web app for advertiser
+      \item Advertiser receives notification email
+      \item Advertisement is marked as “i'm interested”
+    \end{itemize}
+  \item Main Scenario
+    \begin{itemize}
+      \item Students clicks “interested” button
+      \item Advertiser receives notification
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Advertiser invites student for visit}
+\begin{itemize}
+  \item Actors
+    \begin{itemize}
+      \item Student
+      \item Advertiser
+    \end{itemize}
+Description
+Advertiser wants to arrange visits with students who are interested in his advertisement
+Trigger
+Advertiser receives notification (See other use case)
+Pre-Condition
+Advertisement is open
+Notification email was received
+Post-Condition
+Student receives invitation email
+message is marked as “invited” (Advertiser)
+“doodle” is generated
+Doodle has expiration date
+Main Scenario
+Advertiser receives notification email
+logs on and sees, who's interested in his advertisement
+select message
+select time slots for visite
+click “send”
+email is send to student 
+message is marked as “invided”
+
+\subsection*{Advertiser writes message to student}
+Actors
+Advertiser
+Student
+Description
+Advertiser wants to send a message to an interested student
+Trigger
+Advertiser receives notification (See other use case)
+Pre-Condition
+Advertisement is open
+Notification email was received
+Post-conditions
+Student receives notification mail
+Student receives message (in web app)
+message is marked as “responded to” (Advertiser)
+Main Scenario
+Advertiser receives notification email
+logs on and sees, who's interested in his advertisement
+select message
+writes new message
+click “send”
+email is send to student 
+message is marked as “responded to”
+
+\subsection*{Other possible use cases}
+\begin{itemize}
+  \item Generate Advertisment
+  \item Close/take offline/Prolong Advertisment
+  \item Change Advertisment
+  \item Register account
+  \item Ranking for interested students (Advertiser) Promising students
+  \item Ranking for interesting advertisements ? (Student) -> “Private Ranking and listing”
+  \item Searching advertisments (Student) Has to be logged in
+  \item Set alarm according to certain search criterias (student) -> notification by mail
+\end{itemize}
+
+\end{document}
