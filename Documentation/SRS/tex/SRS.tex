@@ -17,9 +17,14 @@
 \textbf{Costumer:} Bledar Aga \\
 
 \subsection*{Revision History}
-\begin{tabular}{|c|c|c|} \hline
+\begin{tabular}{|p{1.2cm}|p{3cm}|p{8cm}|} \hline
   Version & Date & Revision Description \\ \hline
-  0.01 & & \\ \hline
+  0.01 & October 8. 2014 &
+  \begin{itemize}
+  	\item Added use cases and diagram
+  	\item Changed user called \textit{student} to \textit{tenant}
+  	\item Changed functional requirements for advertisements
+  \end{itemize} \\ \hline
   0.02 & & \\ \hline
   0.03 & & \\ \hline
   0.04 & & \\ \hline
@@ -41,7 +46,7 @@
 \begin{itemize}
   \item \href{www.wgzimmer.ch}{wgzimmer.ch}
   \begin{itemize}
-    \item Communication between advertiser and student.
+    \item Communication between advertiser and tenant.
   \end{itemize}
   \item \href{http://www.students.ch/wohnen}{students.ch}
   \item \href{http://www.tutti.ch/ganze-schweiz/immobilien/wg-zimmer}{tutti.ch}
@@ -62,7 +67,7 @@
       \item Shared flat looking for room mate(s)
       \item Landlord renting flat
     \end{itemize}
-  \item Student
+  \item Tenant
   \begin{itemize}
     \item Searching for room in shared flat
     \item Searching for flat
@@ -87,37 +92,213 @@
     \item Pictures
     \item Descritpion (free text)
     \item Area map
-    \item Target group (Age, gender ...)
   \end{itemize}
 \end{itemize}
 \subsection*{Non-functional requirements}
 \begin{itemize}
   \item Only one account per user
-  \item No difference between student and advertiser account
+  \item No difference between tenant and advertiser account
   \item Usable on mobile devices and computers (autoscaling)
 \end{itemize}
 
 \section{Use cases}
+\subsection*{Register account}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item User
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item Every user has to have account and has to be logged in if he wants to use the more advanced features of our service.
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item Click the "create new account" button
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item A (formally) valid email address has been entered in the form
+			\item A password has been entered 
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item A new user has been generated
+			\item The user is brought to his home screen
+			\item Optional: The user receives a confirmation email
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item A new user comes to our web page. He does not jet have an account.
+			\item He enters his email and a password of his choice
+			\item A new account is created.
+		\end{itemize}
+\end{itemize}
+\subsection*{Generate Advertisement}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item Advertiser
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item An advertiser wants to create an ad for his property and publish it, so interested tenants can access it.
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item The event is initialized by pressing the button "new advertisement"
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item User is logged in
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item An advertisement object is created
+				\begin{itemize}
+					\item There are no minimal information requirements
+					\item The advertiser is free to give as little information as desired
+				\end{itemize}
+			\item The ad is visible in "my ads" on the advertisers page
+			\item The ad is visible for other users and can be searched for
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item The advertiser clicks the appropriate button
+			\item A UI is opened where he can enter all the information he wants
+			\item He submits his ad by clicking the appropriate button
+			\item He is redirected to his home
+		\end{itemize}
+\end{itemize}
+\subsection*{Change Advertisement}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item Adertiser
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item Advertisements have a definite lifespan and they might change. The advertiser can therefor edit his own advertisements, close them or keep them open for longer then normal.
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item Clicking the appropriate button in the web gui
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item Advertisement is open
+			\item User is logged in
+			\item User owns the advertisement (Has created it himself)
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item Changes are uploaded and the ad is saved
+			\item Optional: Tenants having bookmarked this ad are informed about the change
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item A advertiser realizes, he has forgotten an important information in his advertisement or that it is about to be expired
+			\item He logges on to his account, finds the ad in question and clicks "edit"
+			\item The edit view is opened and he can make his modifications and prolong the ad
+			\item He submits the changed form and is brought back to his home screen
+		\end{itemize}
+\end{itemize}
+\subsection*{Search advertisements}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item Tenant
+			\item New User (no account)
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item The basic search function in which users can search for advertisements.
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item The user clicks search in the main window
+			\item The user hits the enter button while the search window is active
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item None
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item A list with all the ads matching the search criteria is shown
+			\item (The list is just the list off all open ads if no keywords have been entered.
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item A user finds StudiHome (our web service) and uses the search field.
+		\end{itemize}
+\end{itemize}
+
+\subsection*{Set Alert (Tenant)}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item Tenant
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item The tenant wants to be informed if a new ad matching certain user defined criteria is published.
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item An alarm is set in the search window
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item One or more search keyword have been entered
+			\item The user is logged in
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item An alarm is set
+			\item The user will receive a message every time an ad matching his criteria is published
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item A logged in user is searching for an item but he is not happy with the result
+			\item He can set his current search queue as alarm
+			\item Every time a new item with these criteria is published, the user receives a message
+		\end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection*{Contacting Advertiser}
 \begin{itemize}
   \item Actors
     \begin{itemize}
       \item Advertiser
-      \item Student
+      \item Tenant
     \end{itemize}
   \item Description
     \begin{itemize}
-      \item Student is interested in advertisment and wants to contact advertiser to arrange visite.
+      \item Tenant is interested in advertisment and wants to contact advertiser to arrange visite.
     \end{itemize}
  \item Trigger
     \begin{itemize}
-      \item Student clicks “interested button” an advertisement
+      \item Tenant clicks “interested button” an advertisement
     \end{itemize}
   \item Pre-conditions
     \begin{itemize}
-    \item Student is logged in.
+    \item Tenant is logged in.
     \item Advertisement is open (not closed or expired)
-    \item Student and Advertiser have valid email addresses
+    \item Tenant and Advertiser have valid email addresses
     \end{itemize}
   \item Post-conditions
     \begin{itemize}
@@ -127,21 +308,21 @@
     \end{itemize}
   \item Main Scenario
     \begin{itemize}
-      \item Students clicks “interested” button
+      \item Tenants clicks “interested” button
       \item Advertiser receives notification
     \end{itemize}
 \end{itemize}
 
-\subsection*{Advertiser invites student for visit}
+\subsection*{Advertiser invites tenant for visit}
 \begin{itemize}
   \item Actors
     \begin{itemize}
-      \item Student
+      \item Tenant
       \item Advertiser
     \end{itemize}
   \item Description
     \begin{itemize}
-      \item Advertiser wants to arrange visits with students who are interested in his advertisement
+      \item Advertiser wants to arrange visits with tenants who are interested in his advertisement
     \end{itemize}
   \item Trigger
     \begin{itemize}
@@ -154,7 +335,7 @@
     \end{itemize}
   \item Post-Condition
     \begin{itemize}
-      \item Student receives invitation email
+      \item Tenant receives invitation email
       \item message is marked as “invited” (Advertiser)
       \item "Doodle" is generaded
       \item "Doodle" has expiration date  
@@ -166,20 +347,21 @@
       \item Advertiser select message ...
       \item ... and select time slots for visite
       \item Click “send”
-      \item Notification email is send to student 
+      \item Notification email is send to tenant 
       \item Message is marked as “invided”
     \end{itemize}
+  \end{itemize}
 
-\subsection*{Advertiser writes message to student}
+\subsection*{Advertiser writes message to tenant}
 \begin{itemize}
   \item Actors
     \begin{itemize}
       \item Advertiser
-      \item Student
+      \item Tenant
     \end{itemize}
   \item Description
     \begin{itemize}
-      \item Advertiser wants to send a message to an interested student
+      \item Advertiser wants to send a message to an interested tenant
     \end{itemize}
   \item Trigger
     \begin{itemize}
@@ -192,8 +374,8 @@
     \end{itemize}
   \item Post-conditions
     \begin{itemize}
-      \item Student receives notification mail
-      \item Student receives message (in web app)
+      \item Tenant receives notification mail
+      \item Tenant receives message (in web app)
       \item message is marked as “responded to” (Advertiser)
     \end{itemize}
   \item Main Scenario
@@ -203,22 +385,143 @@
       \item Select message
       \item Writes new message
       \item Click “send”
-      \item Email is send to student 
+      \item Email is send to tenant 
       \item Message is marked as “responded to”
     \end{itemize}
 \end{itemize}
 
-\subsection*{Other possible use cases}
+
+
+
+
+
+\subsection*{Rank promising tenants (Advertiser)}
 \begin{itemize}
-  \item Generate Advertisment
-  \item Close/take offline/Prolong Advertisment
-  \item Change Advertisment
-  \item Register account
-  \item Ranking for interested students (Advertiser) Promising students
-  \item Ranking for interesting advertisements ? (Student) -> “Private Ranking and listing”
-  \item Searching advertisments (Student) Has to be logged in
-  \item Set alarm according to certain search criterias (student) -> notification by mail
+	\item Actors
+		\begin{itemize}
+			\item Advertiser
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item The advertiser has an overview over all the tenants who are interested in one of his ads. He can arrange them to his liking, sorting them to by the most promising candidate.
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item Advertiser changes to the appropriate view and moves a tenant in his list to another position (Drag and Drop)
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item Tenants show a serious interest in an advertisement (Click the appropriate button)
+			\item Advertisement is still open
+			\item Advertiser is logged in and in appropriate view
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item List order of interested tenants is updated
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item A advertiser receives multiple interests for one ad. He has a preference for his property and wants the list of interested tenants to reflect this.
+			\item He can move tenants in his list to other positions
+		\end{itemize}
 \end{itemize}
+
+\subsection*{Rank interesting advertisements (Tenant)}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item Tenants
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item A tenant is interested in several offers. He has preferences and wants the list of his bookmarks to reflect that.
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item Dragging and dropping a bookmarked ad to another position
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item Ad is open
+			\item Ad is bookmarked
+			\item Tenant is logged in
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item List order of bookmarked adds is updated
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item A tenant logs in for his first search
+			\item He bookmarks several ads
+			\item He sees a list with all his bookmarks
+			\item By dragging and dropping, he can arrange them according to his liking
+			\item The first few ads will show up on his main page
+		\end{itemize}
 \end{itemize}
+
+
+\subsection*{Tenant is no longer interested in ad}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item Tenant
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item A tenant changes his opinion and an ad he bookmarked or even declared a serious interest in (contacted the advertiser) is no longer seen as desirable. He therefore wants to remove the ad from his bookmarks
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item Clicking the appropriate button
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item Ad is bookmarked
+			\item Ad is open
+			\item User is logged in
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item Ad is no longer listed under bookmarked ads
+			\item If the tenant has contacted the advertiser, the second is notified about the change
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item A tenant has received more information about a bookmarked ad and decides that he is no longer interested in it.
+			\item He selects the ad.
+			\item He clicks the button that removed
+		\end{itemize}
+\end{itemize}
+
+
+\subsection*{Usecase - Template}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item
+		\end{itemize}
+\end{itemize}
+
 
 \end{document}
