@@ -13,7 +13,11 @@
 
 	<!-- search for controllers (@Controller)  -->
     <mvc:annotation-driven />
+<<<<<<< HEAD
     <context:component-scan base-package="org.studihome"/> 
+=======
+    <context:component-scan base-package="org.sample"/> 
+>>>>>>> b9f8dc3a27668c592082fbe6bec4f857e2a66a7a
 	
     <!-- handler  -->
     <mvc:default-servlet-handler/>     

@@ -6,7 +6,11 @@
 
     <title>TestApp</title>
 
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="/studihome/css/main.css" media="all"/>
+=======
+    <link rel="stylesheet" type="text/css" href="/Skeleton/css/main.css" media="all"/>
+>>>>>>> b9f8dc3a27668c592082fbe6bec4f857e2a66a7a
     <script type="text/javascript"  src="dn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
