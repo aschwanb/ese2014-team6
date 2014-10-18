@@ -183,18 +183,15 @@
 		</dependency>
 
 		<dependency>
-<<<<<<< HEAD
 <!-- 			<groupId>org.mortbay.jetty</groupId> -->
 <!-- 			<artifactId>jsp-2.1</artifactId> -->
 <!-- 			<version>6.0.0</version> -->
   <groupId>org.eclipse.jetty</groupId>
   <artifactId>jetty-maven-plugin</artifactId>
   <version>9.2.3.v20140905</version>
-=======
 			<groupId>org.mortbay.jetty</groupId>
 			<artifactId>jsp-2.1</artifactId>
 			<version>6.0.0</version>
->>>>>>> b9f8dc3a27668c592082fbe6bec4f857e2a66a7a
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -220,7 +217,6 @@
 			<build>
 				<plugins>
 					<plugin>
-<<<<<<< HEAD
 <!-- 						<groupId>org.mortbay.jetty</groupId> -->
 <!-- 						<artifactId>maven-jetty-plugin</artifactId> -->
 <!-- 						<version>6.1.26</version> -->
@@ -230,14 +226,12 @@
 						<configuration>
 							<useTestClasspath>true</useTestClasspath>
 							<contextPath>/studihome</contextPath>
-=======
 						<groupId>org.mortbay.jetty</groupId>
 						<artifactId>maven-jetty-plugin</artifactId>
 						<version>6.1.26</version>
 						<configuration>
 							<useTestClasspath>true</useTestClasspath>
 							<contextPath>/Skeleton</contextPath>
->>>>>>> b9f8dc3a27668c592082fbe6bec4f857e2a66a7a
 							<stopKey>1</stopKey>
 							<stopPort>9999</stopPort>
 						</configuration>
