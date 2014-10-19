@@ -14,15 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class IndexController {
+public class LoginController {
 
     @Autowired
     SampleService sampleService;
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView index() {
-    	ModelAndView model = new ModelAndView("index");
+    	ModelAndView model = new ModelAndView("login");
     	return model;
     }
 

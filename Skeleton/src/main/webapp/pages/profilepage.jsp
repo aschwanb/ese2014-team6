@@ -6,10 +6,6 @@
 
 <c:import url="template/header.jsp" />
 
-<h1>Welcome to StudiHome</h1>
-<h2>Start looking for your home today</h2>
-<a href='register'>No account? Sign Up Here!</a>
-<a href='login'>Log in with your account</a>
-
+<h1>Temporary Profile Page</h1>
 
 <c:import url="template/footer.jsp" />
