@@ -21,10 +21,11 @@ public class SampleServiceImpl implements SampleService {
     @Transactional
     public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException{
 
-        String firstName = signupForm.getFirstName();
+//        String firstName = signupForm.getFirstName();
+    	String email = signupForm.getEmail();
 
-        if(!StringUtils.isEmpty(firstName) && "ESE".equalsIgnoreCase(firstName)) {
-            throw new InvalidUserException("Sorry, ESE is not a valid name");   // throw exception
+        if(!StringUtils.isEmpty(email) && "ESE".equalsIgnoreCase(email)) {
+            throw new InvalidUserException("Sorry, ESE is not a valid email");   // throw exception
         }
 
 
@@ -32,9 +33,9 @@ public class SampleServiceImpl implements SampleService {
         address.setStreet("TestStreet-foo");
         
         User user = new User();
-        user.setFirstName(signupForm.getFirstName());
+//        user.setFirstName(signupForm.getFirstName());
         user.setEmail(signupForm.getEmail());
-        user.setLastName(signupForm.getLastName());
+//        user.setLastName(signupForm.getLastName());
         user.setAddress(address);
         user.setPassword(signupForm.getPassword());
         

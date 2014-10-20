@@ -21,7 +21,7 @@ public class RegisterController {
 
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView index() {
+    public ModelAndView register() {
     	ModelAndView model = new ModelAndView("register");
     	model.addObject("signupForm", new SignupForm());    	
         return model;
@@ -33,13 +33,13 @@ public class RegisterController {
     	if (!result.hasErrors()) {
             try {
             	sampleService.saveFrom(signupForm);
-            	model = new ModelAndView("show");
+            	model = new ModelAndView("profilepage");
             } catch (InvalidUserException e) {
             	model = new ModelAndView("register");
             	model.addObject("page_error", e.getMessage());
             }
         } else {
-        	model = new ModelAndView("index");
+        	model = new ModelAndView("register");
         }   	
     	return model;
     }

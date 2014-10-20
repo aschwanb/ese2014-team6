@@ -26,6 +26,7 @@ public class IndexController {
     	return model;
     }
 
+    
 //    @RequestMapping(value = "/create", method = RequestMethod.POST)
 //    public ModelAndView create(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
 //    	ModelAndView model;    	
