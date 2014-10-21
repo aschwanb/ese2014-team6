@@ -20,12 +20,11 @@ public class IndexController {
     SampleService sampleService;
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public ModelAndView index() {
     	ModelAndView model = new ModelAndView("index");
     	return model;
     }
-
     
 //    @RequestMapping(value = "/create", method = RequestMethod.POST)
 //    public ModelAndView create(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {

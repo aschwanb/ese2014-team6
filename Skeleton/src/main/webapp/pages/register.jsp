@@ -33,8 +33,9 @@
         </div>
              
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Sign up</button>            
-            <button type="button" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Sign up</button>
+            <a class="btn btn-default" href="index">Cancel</a>            
+<!--             <button type="button" class="btn">Cancel</button> -->
         </div>
 
     </fieldset>
