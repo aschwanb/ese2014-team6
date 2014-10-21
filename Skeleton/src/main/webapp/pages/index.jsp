@@ -11,15 +11,8 @@
 
         <div class="form-actions">
             <a class="btn btn-default" href="register">Sign Up Here!</a>            
-            <a class="btn btn-default" href="login">Login</a>            
+            <a class="btn btn-default" href="login">Login</a>   
+            <a class="btn btn-default" href="profilepage">My Profile</a>            
         </div>
-
-<!--         <div class="form-actions"> -->
-<!--             <button type="submit" class="btn" value="register">Sign Up Here!</button>             -->
-<!--             <button type="submit" class="btn" value="login">Login</button> -->
-<!--         </div> -->
-
-<a href='register'>No account? Sign Up Here!</a>
-<a href='login'>Log in with your account</a>
 
 <c:import url="template/footer.jsp" />
