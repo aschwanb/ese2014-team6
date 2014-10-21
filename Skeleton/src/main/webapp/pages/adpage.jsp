@@ -6,8 +6,8 @@
 
 <c:import url="template/header.jsp" />
 
-<h1>Temporary Profile Page</h1>
+<h1>Advert Page</h1>
 
-<a class="btn" href=adpage>Create new Ad</a>
+Nothing much yet.
 
 <c:import url="template/footer.jsp" />
