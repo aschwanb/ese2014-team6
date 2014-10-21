@@ -1,5 +1,6 @@
 package org.sample.controller.config;
 
+import javax.sql.DataSource;
 import javax.validation.Valid;
 
 import org.sample.controller.exceptions.InvalidUserException;
@@ -22,11 +23,15 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 @Configuration
 @EnableWebMvcSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	private DataSource dataSource;
+	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
-        	.antMatchers("/index", "/", "/register").permitAll()
+        	.antMatchers("/index", "/", "/register", "/create").permitAll() //"create" might be necessary to register new users
             .anyRequest().authenticated()
             .and()
         .formLogin()
@@ -37,17 +42,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .permitAll();
     }
 
-    @Configuration
-    protected static class AuthenticationConfiguration extends
-            GlobalAuthenticationConfigurerAdapter {
-
-        @Override
-        public void init(AuthenticationManagerBuilder auth) throws Exception {
-            auth
-                    .inMemoryAuthentication()
-                    .withUser("user").password("password").roles("USER");
-        }
-
+    @Autowired
+    public void configureGolobal(AuthenticationManagerBuilder auth) throws Exception {
+//    	auth
+//    		.jdbcAuthentication()
+//    			.dataSource(dataSource)
+//    			.usersByUsernameQuery("select email,password, enable from Users where email=?");
+      auth
+      .inMemoryAuthentication()
+      .withUser("admin").password("admin").roles("USER");    			
     }
 
 }
