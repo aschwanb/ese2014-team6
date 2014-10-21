@@ -1,4 +1,4 @@
-package org.sample.controller;
+package org.sample.controller.config;
 
 import javax.validation.Valid;
 
@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
-        	.antMatchers("/index", "/register").permitAll()
+        	.antMatchers("/index", "/", "/register").permitAll()
             .anyRequest().authenticated()
             .and()
         .formLogin()
