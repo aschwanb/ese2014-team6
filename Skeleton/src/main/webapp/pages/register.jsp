@@ -7,7 +7,9 @@
 <c:import url="template/header.jsp" />
 
 
-<h1>Sign Up Here!</h1>
+<div class="page-header">
+	<h1>Sign Up Here!</h1>
+</div>
 
 
 <form:form method="post" modelAttribute="signupForm" action="create" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
@@ -44,13 +46,13 @@
 
 
 
-	<c:if test="${page_error != null }">
-        <div class="alert alert-error">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h4>Error!</h4>
-                ${page_error}
-        </div>
-    </c:if>
+<c:if test="${page_error != null }">
+	<div class="alert alert-error">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<h4>Error!</h4>
+		${page_error}
+	</div>
+</c:if>
 
 
 <c:import url="template/footer.jsp" />

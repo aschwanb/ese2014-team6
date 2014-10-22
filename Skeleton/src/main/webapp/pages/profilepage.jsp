@@ -5,29 +5,32 @@
 
 <c:import url="template/header.jsp" />
 
-<script type="text/javascript"  src="js/tab.js"></script>
+<script type="text/javascript"  src="js/bootstrap.js"></script>
 
-<h1>Temporary Profile Page</h1>
+<div class="page-header">
+	<h1>Temporary Profile Page</h1>
+</div>
+
 <%-- <a class="btn btn-default" href="<c:url value="j_spring_security_logout" />">Logout</a>            --%>
 
-<a class="btn" href=adpage>Create new Ad</a>
+<a class="btn btn-default" href=adpage>Create new Ad</a>
 
 <!-- Quick Search -->
-<form>
-	<div class="row">
-	  </div><!-- /.col-lg-6 -->
-	  <div class="col-lg-6">
-	    <div class="input-group">
-	      <input type="text" class="form-control">
-	      <span class="input-group-btn">
-	        <button class="btn btn-default" type="button">Go!</button>
-	      </span>
-	    </div><!-- /input-group -->
-	  </div><!-- /.col-lg-6 -->
-	</div><!-- /.row -->
-</form>
 
 <div>
+	<form>
+		<div class="row">
+		  <div class="col-lg-6">
+		    <div class="input-group">
+		      <input type="text" class="form-control">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button">Go!</button>
+		      </span>
+		    </div><!-- /input-group -->
+		  </div><!-- /.col-lg-6 -->
+		</div><!-- /.row -->
+	</form>
+	
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist">
 	  <li class="active"><a href="#profile-cal" role="tab" data-toggle="tab">Calendar</a></li>

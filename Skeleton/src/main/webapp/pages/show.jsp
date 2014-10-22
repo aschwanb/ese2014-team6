@@ -6,8 +6,9 @@
 
 <c:import url="template/header.jsp" />
 
-<h1>Sign Up Complete!</h1>
-
+<div class="page-header">
+	<h1>Sign Up Complete!</h1>
+</div>
 
 
 <c:import url="template/footer.jsp" />
