@@ -8,6 +8,16 @@
 
 <h1>Advert Page</h1>
 
-Nothing much yet.
+[Pictures]
+
+<form role="form-horizontal">
+
+<input type="text" placeholder="Title" />
+<input type="text" placeholder="Address" />
+<input type="text" placeholder="Price" />
+<input type="text" placeholder="Description" />
+<a class="btn btn-primary" href=>Create Ad</a>
+<a class="btn" href=adpage>Cancel</a>
+</form>
 
 <c:import url="template/footer.jsp" />
