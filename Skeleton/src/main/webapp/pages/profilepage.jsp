@@ -5,9 +5,44 @@
 
 <c:import url="template/header.jsp" />
 
+<script type="text/javascript"  src="js/tab.js"></script>
+
 <h1>Temporary Profile Page</h1>
 <%-- <a class="btn btn-default" href="<c:url value="j_spring_security_logout" />">Logout</a>            --%>
 
 <a class="btn" href=adpage>Create new Ad</a>
+
+<!-- Quick Search -->
+<form>
+	<div class="row">
+	  </div><!-- /.col-lg-6 -->
+	  <div class="col-lg-6">
+	    <div class="input-group">
+	      <input type="text" class="form-control">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" type="button">Go!</button>
+	      </span>
+	    </div><!-- /input-group -->
+	  </div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
+</form>
+
+<div>
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+	  <li class="active"><a href="#profile-cal" role="tab" data-toggle="tab">Calendar</a></li>
+	  <li><a href="#profile-msg" role="tab" data-toggle="tab">Messages</a></li>
+	  <li><a href="#profile-bm" role="tab" data-toggle="tab">Bookmarks</a></li>
+	  <li><a href="#profile-adv" role="tab" data-toggle="tab">My Adverts</a></li>
+	</ul>
+	
+	<!-- Tab panes -->
+	<div class="tab-content">
+	  <div class="tab-pane fade in active" id="profile-cal">A...</div>
+	  <div class="tab-pane fade" id="profile-msg">B...</div>
+	  <div class="tab-pane fade" id="profile-bm">C...</div>
+	  <div class="tab-pane fade" id="profile-adv">D...</div>
+	</div>
+</div>
 
 <c:import url="template/footer.jsp" />
