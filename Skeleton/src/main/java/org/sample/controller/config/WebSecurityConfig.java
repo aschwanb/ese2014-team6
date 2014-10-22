@@ -51,9 +51,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGolobal(AuthenticationManagerBuilder auth) throws Exception {
+//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 //    	auth
 //    		.jdbcAuthentication()
 //    			.dataSource(dataSource)
+//    			.usersByUsernameQuery(
+//			"select email,password, enabled from User where email=?");
 //    			.usersByUsernameQuery("select email,password, enable from Users where email=?");
       auth
       .inMemoryAuthentication()
