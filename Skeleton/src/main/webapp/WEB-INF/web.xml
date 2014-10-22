@@ -6,9 +6,9 @@
     <display-name>Sample App</display-name>
     <distributable/>
 
-    <welcome-file-list>
-        <welcome-file>index</welcome-file>
-    </welcome-file-list>
+<!--     <welcome-file-list> -->
+<!--         <welcome-file>index</welcome-file> -->
+<!--     </welcome-file-list> -->
         
     
     <!-- import config files -->    

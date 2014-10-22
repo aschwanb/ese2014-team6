@@ -3,36 +3,35 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-
 <c:import url="template/header.jsp" />
-
-<c:url value="/login" var="loginUrl"/>
-<form action="${loginUrl}" method="post">       
-    <c:if test="${param.error != null}">        
-        <p>
-            Invalid email and password.
-        </p>
-    </c:if>
-    <c:if test="${param.logout != null}">       
-        <p>
-            You have been logged out.
-        </p>
-    </c:if>
-    <p>
-<!--             <label for="email">Email</label> -->
-<!--         <input type="text" id="email" name="email"/>	 -->
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username"/>	
-    </p>
-    <p>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password"/>	
-    </p>
-    <input type="hidden"                        
-        name="${_csrf.parameterName}"
-        value="${_csrf.token}"/>
-    <button type="submit" class="btn">Log in</button>
-    <a class="btn btn-default" href="index">Cancel</a>            
-</form>
+<head>
+	<title>Please Login</title>
+</head>
+<body>
+	<c:url value="/login" var="loginUrl"/>
+	<form:form name="f" action="${loginUrl}" method="POST">
+		<fieldset>
+			<legend>Please Login</legend>
+			<c:if test="${param.error != null}">
+			<div class="alert alert-error">
+				Invalid username or password.
+			</div>
+			</c:if>
+				<c:if test="${param.logout != null}">
+				<div class="alert alert-success">
+					You have been logged out.
+				</div>
+			</c:if>
+			<label for="username">Username</label>
+			<input type="text" id="username" name="username" value="${username}"/>
+			<label for="password">Password</label>
+			<input type="password" id="password" name="password"/>
+			<div class="form-actions">
+				<button type="submit" class="btn">Log in</button>
+				<a class="btn btn-default" href="index">Cancel</a>
+			</div>
+		</fieldset>
+	</form:form>
+</body>
 
 <c:import url="template/footer.jsp" />
