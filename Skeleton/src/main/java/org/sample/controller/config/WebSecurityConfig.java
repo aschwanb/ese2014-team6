@@ -31,8 +31,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
-        	.antMatchers("/index", "/", "/register", "/create").permitAll() //"create" might be necessary to register new users
-            .anyRequest().authenticated()
+        	.antMatchers("/index", "/", "/register", "/create").permitAll() // "create" might be necessary to register new users
+            .antMatchers("/css/*").permitAll()								// Access css before login
+        	.anyRequest().authenticated()
             .and()
         .formLogin()
             .loginPage("/login")
