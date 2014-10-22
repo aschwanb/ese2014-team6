@@ -15,13 +15,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AdpageController {
+	
+	public boolean editable;
 
     @Autowired
     SampleService sampleService;
 
 
     @RequestMapping(value = "/adpage", method = RequestMethod.GET)
-    public ModelAndView index() {
+    public ModelAndView show() {
+    	editable = false;
+    	ModelAndView model = new ModelAndView("adpage");
+    	return model;
+    }
+    
+    @RequestMapping(value = "/adpage_edit", method = RequestMethod.GET)
+    public ModelAndView edit() {
+    	editable = true;
     	ModelAndView model = new ModelAndView("adpage");
     	return model;
     }

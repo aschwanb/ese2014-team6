@@ -8,10 +8,10 @@
 
 <!-- no edit -->
 <div class="page-header">
-	<h1>Advert Page</h1>
+	<h1>Advert Page <c:if test="${editable}"><small>edit mode</small></c:if></h1>
 </div>
 
-<a href="adpageEdit" class="btn btn-default">switch</a>
+<a href="${editable ? 'adpage' : 'adpage_edit'}" class="btn btn-default">switch</a>
 
 <div>
 	[Pictures]
@@ -19,20 +19,20 @@
 
 <div>
 	<div class="form-group">
-		<input type="text" class="form-control" style="cursor: text;" readonly value="Title" />
+		<input type="text" class="form-control" <c:if test="${editable == false}">style="cursor: text;" readonly value="Title"</c:if> placeholder="Title" />
 	</div>
 	<div class="form-group">
-		<input type="text" class="form-control" style="cursor: text;" readonly value="Address" />
+		<input type="text" class="form-control" <c:if test="${editable == false}">style="cursor: text;" readonly value="Address"</c:if> placeholder="Address" />
 	</div>
 	<div class="form-group">
-		<input type="text" class="form-control" style="cursor: text;" readonly value="Price" />
+		<input type="text" class="form-control" <c:if test="${editable == false}">style="cursor: text;" readonly value="Price"</c:if> placeholder="Price" />
 	</div>
 	<div class="form-group">
-		<textarea class="form-control" style="cursor: text;" rows="5" readonly>Description</textarea>
+		<textarea class="form-control" rows="5" <c:if test="${editable == false}">style="cursor: text;" readonly</c:if> placeholder="Description"><c:if test="${editable == false}">Description</c:if></textarea>
 	</div>
 	<div class="form-group">
-		<a class="btn btn-primary" href="bookmark">Bookmark</a>
-		<a class="btn btn-default" href="contact">Contact</a>
+		<a class="btn btn-primary" href="${editable ? 'save' : 'bookmark'}">${editable ? 'Save' : 'Bookmark'}</a>
+		<a class="btn btn-default" href="${editable ? 'discard' : 'contact'}">${editable ? 'Discard' : 'Contact'}</a>
 	</div>
 </div>
 
