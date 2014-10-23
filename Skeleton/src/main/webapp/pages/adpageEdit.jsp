@@ -7,9 +7,11 @@
 <c:import url="template/header.jsp" />
 
 <!-- Edit Page -->
-<h1>Advert Page</h1>
+<div class="page-header">
+	<h1>Advert Page <small>edit mode</small></h1>
+</div>
 
-<a href="adpage" class="btn">switch</a>
+<a href="adpage" class="btn btn-default">switch</a>
 
 <div>
 	[Pictures]
@@ -31,7 +33,7 @@
 	</div>
 	<div class="form-group">
 		<a class="btn btn-primary" href="bookmark">Save</a>
-		<a class="btn" href="contact">Discard</a>
+		<a class="btn btn-default" href="contact">Discard</a>
 	</div>
 </form>
 </div>
