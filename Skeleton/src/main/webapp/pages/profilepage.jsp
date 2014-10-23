@@ -10,7 +10,9 @@
 <div class="page-header">
 	<h1>Temporary Profile Page</h1>
 </div>
-
+	<c:if test="${pageContext.request.userPrincipal.name != null}">
+	   <h2>Welcome : ${pageContext.request.userPrincipal.name} 
+</h2>	</c:if>
 <%-- <a class="btn btn-default" href="<c:url value="j_spring_security_logout" />">Logout</a>            --%>
 
 <a class="btn btn-default" href=adpage>Create new Ad</a>
