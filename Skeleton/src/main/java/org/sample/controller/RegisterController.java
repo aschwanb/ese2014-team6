@@ -33,7 +33,8 @@ public class RegisterController {
     	if (!result.hasErrors()) {
             try {
             	sampleService.saveFrom(signupForm);
-            	model = new ModelAndView("profilepage");
+//            	model = new ModelAndView("profilepage");
+            	model = new ModelAndView("index");
             } catch (InvalidUserException e) {
             	model = new ModelAndView("register");
             	model.addObject("page_error", e.getMessage());

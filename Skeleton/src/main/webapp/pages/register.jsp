@@ -24,7 +24,15 @@
                 <form:errors path="email" cssClass="help-inline" element="span"/>
             </div>
         </div>
-        
+        <c:set var="userNameErrors"><form:errors path="userName"/></c:set>
+        <div class="control-group<c:if test="${not empty userNameErrors}"> error</c:if>">
+            <label class="control-label" for="field-userName">userName</label>
+            <div class="controls">
+                <form:input path="userName" id="field-userName" tabindex="1" maxlength="45" placeholder="userName"/>
+                <form:errors path="userName" cssClass="help-inline" element="span"/>
+            </div>
+        </div>
+                
         <c:set var="passwordErrors"><form:errors path="password"/></c:set>
         <div class="control-group<c:if test="${not empty passwordErrors}"> error</c:if>">
             <label class="control-label" for="field-password">Password</label>
@@ -37,7 +45,6 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Sign up</button>
             <a class="btn btn-default" href="index">Cancel</a>            
-<!--             <button type="button" class="btn">Cancel</button> -->
         </div>
 
     </fieldset>

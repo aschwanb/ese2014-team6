@@ -10,6 +10,9 @@ public class SignupForm {
 //    private String firstName;
 //    private String lastName;
     @NotNull
+    private String userName;
+    
+    @NotNull
     @Size(min = 6, message = "Password to short")
     private String password;
 
@@ -57,5 +60,12 @@ public class SignupForm {
     public void setId(Long id) {
         this.id = id;
     }
+    public String getUserName() {
+    	return userName;
+    }
+    public void setUserName(String userName) {
+    	this.userName = userName;
+    }
+    
     
 }
