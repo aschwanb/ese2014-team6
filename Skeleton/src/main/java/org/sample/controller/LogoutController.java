@@ -15,31 +15,15 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class LoginController {
+public class LogoutController {
 
     @Autowired
     SampleService sampleService;
 
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout) {
-	 
-		  ModelAndView model = new ModelAndView();
-		  if (error != null) {
-			model.addObject("error", "Invalid email and password!");
-		  }
-	 
-		  if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully.");
-		  }
-		  model.setViewName("login");
-	 
-		  return model;
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout () { 
+		ModelAndView model = new ModelAndView("logout");  
+    	return model;
     }
-    
-    //    public ModelAndView index() {
-//    	ModelAndView model = new ModelAndView("login");
-//    	return model;
-//    }
 }

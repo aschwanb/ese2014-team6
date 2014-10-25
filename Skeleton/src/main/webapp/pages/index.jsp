@@ -14,8 +14,10 @@
 
         <div class="form-actions">
             <a class="btn btn-warning" href="register">Sign Up Here!</a>     
-            <a class="btn btn-primary" href="login">Login</a>
             <a class="btn btn-default" href="profilepage">My Profile</a>
+			<c:if test="${pageContext.request.userPrincipal.name != null}">
+            	<a class="btn btn-default" href="<c:url value="/j_spring_security_logout" />" >Logout</a>
+            </c:if>            
         </div>
 
 <c:import url="template/footer.jsp" />

@@ -16,8 +16,11 @@ public class User {
 
     private String firstName;
     private String lastName;
+    private String userName;
     private String email;
     private String password;
+    private String user_role;
+    private String enabled;
     
     @OneToOne(cascade = {CascadeType.ALL})
     private Address address; 
@@ -68,6 +71,30 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String username) {
+		this.userName = username;
+	}
+
+	public String getUser_role() {
+		return user_role;
+	}
+
+	public void setUser_role(String user_role) {
+		this.user_role = user_role;
+	}
+
+	public String getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(String enabled) {
+		this.enabled = enabled;
 	}
 
     

@@ -26,7 +26,11 @@
   	\item Changed user called \textit{student} to \textit{tenant}
   	\item Changed functional requirements for advertisements
   \end{itemize} \\ \hline
-  0.02 & & \\ \hline
+  0.02 & October & 
+  \begin{itemize}
+  	\item Added minimal information requirement to use case \textit{Generate Advertisement}
+  	\item Added use case \textit{Login}
+  \end{itemize} \\ \hline
   0.03 & & \\ \hline
   0.04 & & \\ \hline
 \end{tabular}
@@ -108,7 +112,41 @@
 	\includegraphics[width=400bp]{UseCases.png}
 \end{center}
 
-
+\subsection*{Login}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item User
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item Users have to have an account and have to be logged in in order to use advanced features like bookmarking, setting alerts and creating ads
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item User clicks the "login button"
+			\item User is not logged in and clicks on one of the advanced features
+			\begin{itemize}
+				\item Example: User wants to bookmark an ad after a search
+			\end{itemize}
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item User is not logged in
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item User has an account
+			\item User is logged in
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item A new user comes to studihome and would like to create an ad
+			\item After clicking on the "create ad" button, he is asked to log in or to register an account
+			\item If he does not have an account, he can register one (see use case "Register account")
+			\item If he has an account, he can log in with his credential and is redirected to the appropriate page
+		\end{itemize}
+\end{itemize}
 
 \subsection*{Register account}
 \begin{itemize}
@@ -142,6 +180,7 @@
 			\item A new account is created.
 		\end{itemize}
 \end{itemize}
+
 \subsection*{Generate Advertisement}
 \begin{itemize}
 	\item Actors
@@ -164,8 +203,14 @@
 		\begin{itemize}
 			\item An advertisement object is created
 				\begin{itemize}
-					\item There are no minimal information requirements
-					\item The advertiser is free to give as little information as desired
+					\item The minimal information requirements are
+					\begin{itemize}
+						\item address
+						\item rent
+						\item room size
+						\item room number
+					\end{itemize}
+					\item The advertiser is free to give additional information if required
 				\end{itemize}
 			\item The ad is visible in "my ads" on the advertisers page
 			\item The ad is visible for other users and can be searched for
@@ -503,33 +548,33 @@
 \end{itemize}
 
 
-\subsection*{Usecase - Template}
-\begin{itemize}
-	\item Actors
-		\begin{itemize}
-			\item
-		\end{itemize}
-	\item Description
-		\begin{itemize}
-			\item
-		\end{itemize}
-	\item Trigger
-		\begin{itemize}
-			\item
-		\end{itemize}
-	\item Pre-Condition
-		\begin{itemize}
-			\item
-		\end{itemize}
-	\item Post-Condition
-		\begin{itemize}
-			\item
-		\end{itemize}
-	\item Main Scenario
-		\begin{itemize}
-			\item
-		\end{itemize}
-\end{itemize}
+%\subsection*{Usecase - Template}
+%\begin{itemize}
+%	\item Actors
+%		\begin{itemize}
+%			\item
+%		\end{itemize}
+%	\item Description
+%		\begin{itemize}
+%			\item
+%		\end{itemize}
+%	\item Trigger
+%		\begin{itemize}
+%			\item
+%		\end{itemize}
+%	\item Pre-Condition
+%		\begin{itemize}
+%			\item
+%		\end{itemize}
+%	\item Post-Condition
+%		\begin{itemize}
+%			\item
+%		\end{itemize}
+%	\item Main Scenario
+%		\begin{itemize}
+%			\item
+%		\end{itemize}
+%\end{itemize}
 
 
 \end{document}

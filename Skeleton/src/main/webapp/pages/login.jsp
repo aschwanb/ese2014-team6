@@ -6,37 +6,44 @@
 <c:import url="template/header.jsp" />
 
 <div class="page-header">
-	<h1>Please Login</h1>
+	<h1>Login</h1>
 </div>
 
-<c:url value="/login" var="loginUrl"/>
-<form:form name="f" action="${loginUrl}" method="POST">
-	<fieldset>
-		<c:if test="${param.error != null}">
-		<div class="alert alert-error">
-			Invalid username or password.
-		</div>
-		</c:if>
-			<c:if test="${param.logout != null}">
-			<div class="alert alert-success">
-				You have been logged out.
-			</div>
-		</c:if>
-		
-		<div class="control-group">
-			<label for="username">Username</label>
-			<input type="text" id="username" name="username" value="${username}"/>
-		</div>
-		<div class="control-group">
-			<label for="password">Password</label>
-			<input type="password" id="password" name="password"/>
-		</div>
-		
-		<div class="form-actions">
-			<button type="submit" class="btn btn-primary">Log in</button>
-			<a class="btn btn-default" href="index">Cancel</a>
-		</div>
-	</fieldset>
-</form:form>
+<div id="login-box">
+	<c:if test="${not empty error}">
+		<div class="error">${error}</div>
+	</c:if>
+	<c:if test="${not empty msg}">
+		<div class="msg">${msg}</div>
+	</c:if>
+ 
+ 	<form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
+ 		<table>
+			<tr>
+				<td>Email:</td>
+				<td><input type='text' name='email'></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type='password' name='password' /></td>
+			</tr>
+<!-- 			<tr> -->
+<!-- 				<td colspan='2'><input name="submit" type="submit" -->
+<!-- 				  value="submit" /></td> -->
+<!-- 			</tr> -->
+		  </table>
+      <div class="form-actions">
+      		<button name="submit" type="submit" value="submit" class="btn btn-primary">login</button>
+            <a class="btn btn-default" href="index">Cancel</a>            
+        </div>
+		  <input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+ 
+		</form>
+	</div>
+ 
+</body>
+
+	
 
 <c:import url="template/footer.jsp" />
