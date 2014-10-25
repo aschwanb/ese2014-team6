@@ -25,18 +25,17 @@
 			login-page="/login"
 			authentication-failure-url="/login?error"
 			default-target-url="/index"
-			username-parameter="username"
+			username-parameter="email"
 			password-parameter="password"/>
 			<security:logout logout-success-url="/logout"/>
-<!-- 		<security:logout invalidate-session="true" logout-success-url="/logout" logout-url="/logout" /> -->
 	</security:http>
 
 	<!-- Declare an authentication-manager to use a custom userDetailsService -->
 	<security:authentication-manager>
 		<security:authentication-provider >
     		<security:jdbc-user-service data-source-ref="mainDataSource"
-    		users-by-username-query="select userName, password, enabled from User where userName=?"
-    		authorities-by-username-query="select userName, user_role from User where userName=? "/> 
+    		users-by-username-query="select email, password, enabled from User where email=?"
+    		authorities-by-username-query="select email, user_role from User where email=? "/> 
 <!-- 		<security:user-service> -->
 <!-- 		<security:user name="test" password="test" authorities="ROLE_USER" /> -->
 <!-- 	    </security:user-service> -->

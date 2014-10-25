@@ -35,7 +35,7 @@ public class SampleServiceImpl implements SampleService {
         User user = new User();
 //        user.setFirstName(signupForm.getFirstName());
         user.setEmail(signupForm.getEmail());
-        user.setUserName(signupForm.getUserName());
+//        user.setUserName(signupForm.getUserName());
 //        user.setLastName(signupForm.getLastName());
         user.setAddress(address);
         user.setPassword(signupForm.getPassword());

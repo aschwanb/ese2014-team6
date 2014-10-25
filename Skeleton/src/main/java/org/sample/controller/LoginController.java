@@ -27,7 +27,7 @@ public class LoginController {
 	 
 		  ModelAndView model = new ModelAndView();
 		  if (error != null) {
-			model.addObject("error", "Invalid username and password!");
+			model.addObject("error", "Invalid email and password!");
 		  }
 	 
 		  if (logout != null) {
