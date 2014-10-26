@@ -7,19 +7,12 @@
 	<artifactId>Skeleton</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-    
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.1.8.RELEASE</version>
-    </parent>
-    
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<repositories>
-	
 		<repository>
 			<id>atlassian</id>
 			<name>Atlassian repo</name>
@@ -31,7 +24,6 @@
 				<enabled>true</enabled>
 			</releases>
 		</repository>
-	
 		<repository>
 			<id>atlassian-snapshot</id>
 			<name>Atlassian repo</name>
@@ -43,7 +35,6 @@
 				<enabled>false</enabled>
 			</releases>
 		</repository>
-	
 	</repositories>
 
 	<build>
@@ -207,11 +198,6 @@
 			<version>3.2.5.RELEASE</version>
 		</dependency>
 
-<!-- Spring boot -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 	</dependencies>
 
 
@@ -224,7 +210,6 @@
 			</activation>
 			<build>
 				<plugins>
-	
 					<plugin>
 						<groupId>org.mortbay.jetty</groupId>
 						<artifactId>maven-jetty-plugin</artifactId>
@@ -255,13 +240,6 @@
 							</execution>
 						</executions>
 					</plugin>
-					
-<!-- 					Spring boot -->
-					<plugin>
-                		<groupId>org.springframework.boot</groupId>
-                		<artifactId>spring-boot-maven-plugin</artifactId>
-            		</plugin>
-				
 				</plugins>
 			</build>
 		</profile>
