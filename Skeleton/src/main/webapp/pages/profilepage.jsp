@@ -14,7 +14,7 @@
 	   <h2>Welcome : ${pageContext.request.userPrincipal.name}</h2>
 		<a class="btn btn-default" href="<c:url value="j_spring_security_logout" />">Logout</a>           
 	</c:if>
-<a class="btn btn-default" href=adpage>Create new Ad</a>
+<a class="btn btn-default" href="adpage">Create new Ad</a>
 
 <!-- Quick Search -->
 <div>
