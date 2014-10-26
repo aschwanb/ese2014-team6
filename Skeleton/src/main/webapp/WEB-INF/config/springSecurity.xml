@@ -18,6 +18,9 @@
 		<security:intercept-url pattern="/create*" access="permitAll"/>
 <!-- Presentation		 -->
 		<security:intercept-url pattern="/css/**" access="permitAll" />
+		<security:intercept-url pattern="/fonts/**" access="permitAll" />
+		<security:intercept-url pattern="/img/**" access="permitAll" />
+		<security:intercept-url pattern="/js/**" access="permitAll" />
 <!-- Everything else		 -->
 		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 		
