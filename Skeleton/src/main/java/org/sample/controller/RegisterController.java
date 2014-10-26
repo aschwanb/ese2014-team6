@@ -40,7 +40,7 @@ public class RegisterController {
             	model.addObject("page_error", e.getMessage());
             }
         } else {
-        	model = new ModelAndView("register");
+        	model = new ModelAndView("create");
         }   	
     	return model;
     }

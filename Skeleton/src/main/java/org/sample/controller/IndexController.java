@@ -22,22 +22,18 @@ public class IndexController {
     SampleService sampleService;
 
 
-//    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
-//    public ModelAndView index() {
-//    	ModelAndView model = new ModelAndView("index");
-//    	return model;
-//    }
-    
-	@RequestMapping(value={ "/", "/index"}, method=RequestMethod.GET)
-	public String loadIndex(ModelMap m) {
-		return "/index";
-	}
-
-    @RequestMapping(value = "/security-error", method = RequestMethod.GET)
-    public String securityError(RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("page_error", "You do have have permission to do that!");
-        return "redirect:/";
+    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    public ModelAndView index() {
+    	ModelAndView model = new ModelAndView("index");
+    	return model;
     }
+
+
+//    @RequestMapping(value = "/security-error", method = RequestMethod.GET)
+//    public String securityError(RedirectAttributes redirectAttributes) {
+//        redirectAttributes.addFlashAttribute("page_error", "You do have have permission to do that!");
+//        return "redirect:/";
+//    }
 
 }
 
