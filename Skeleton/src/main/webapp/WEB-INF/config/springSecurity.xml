@@ -7,7 +7,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-	<security:http auto-config="true" use-expressions="true" access-denied-page="/access-denied">
+	<security:http auto-config="true" use-expressions="true" access-denied-page="/noAccess">
+<!-- 	<security:access-denied-handler error-page="/noAccess" /> -->
 <!-- 	index -->
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/index" access="permitAll"/>
