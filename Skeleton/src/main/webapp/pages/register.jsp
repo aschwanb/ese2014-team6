@@ -46,12 +46,10 @@
             <button type="submit" class="btn btn-primary">Sign up</button>
             <a class="btn btn-default" href="index">Cancel</a>            
         </div>
+         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
     </fieldset>
 </form:form>
-
-
-
 
 <c:if test="${page_error != null }">
 	<div class="alert alert-error">
@@ -60,6 +58,5 @@
 		${page_error}
 	</div>
 </c:if>
-
 
 <c:import url="template/footer.jsp" />

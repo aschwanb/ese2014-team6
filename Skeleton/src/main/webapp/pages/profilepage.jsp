@@ -15,6 +15,7 @@
 		<a class="btn btn-default" href="<c:url value="j_spring_security_logout" />">Logout</a>           
 	</c:if>
 <a class="btn btn-default" href=adpage>Create new Ad</a>
+<a class="btn btn-default" href=fileupload>Upload Images</a>
 
 <!-- Quick Search -->
 <div>

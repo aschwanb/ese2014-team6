@@ -22,6 +22,10 @@
 		<security:intercept-url pattern="/fonts/**" access="permitAll" />
 		<security:intercept-url pattern="/img/**" access="permitAll" />
 		<security:intercept-url pattern="/js/**" access="permitAll" />
+		
+<!-- 		excluded for developpement -->
+		<security:intercept-url pattern="/fileupload" access="permitAll" />
+		<security:intercept-url pattern="/savefile" access="permitAll" />
 <!-- Everything else		 -->
 		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 		

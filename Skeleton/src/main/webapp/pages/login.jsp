@@ -36,9 +36,6 @@
       		<button name="submit" type="submit" value="submit" class="btn btn-primary">login</button>
             <a class="btn btn-default" href="index">Cancel</a>            
         </div>
-		  <input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
- 
 		</form>
 	</div>
  
