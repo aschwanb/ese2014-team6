@@ -2,9 +2,7 @@ package org.sample.controller;
 
 import javax.validation.Valid;
 
-import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.controller.pojos.AdForm;
-import org.sample.controller.pojos.SignupForm;
 import org.sample.controller.service.AdLoadService;
 import org.sample.controller.service.AdSaveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +32,6 @@ public class AdpageController {
     	{
 	    	model.addObject("editable", "true");
 	    	model.addObject("adForm", new AdForm());
-	    	
     	}else
     	{
     		AdForm adForm = adLoadService.loadById(advId);
@@ -47,12 +44,11 @@ public class AdpageController {
     			if(adForm.getOwnerEmail().equals("owner"))	//TODO
     			{
     				model.addObject("editable", "true");
-    		    	model.addObject("adForm", adForm);
     			}else
     			{
     				model.addObject("editable", "false");
-    		    	model.addObject("adForm", adForm);
     			}
+		    	model.addObject("adForm", adForm);
     		}
     	}
     	
@@ -62,6 +58,8 @@ public class AdpageController {
     @RequestMapping(value = "/saveAdvert", method = RequestMethod.POST)
     public ModelAndView save(@Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes)
     {
+    	ModelAndView model = new ModelAndView("adpage");
+    	
     	if(!result.hasErrors())
     	{
         	adForm = adSaveService.saveFrom(adForm);
@@ -69,7 +67,6 @@ public class AdpageController {
         {
         }
     	
-    	ModelAndView model = new ModelAndView("adpage");
     	model.addObject("editable", "true");
     	model.addObject("adForm", adForm);
     	return model;

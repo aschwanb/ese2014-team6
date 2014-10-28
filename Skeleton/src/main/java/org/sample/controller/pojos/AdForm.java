@@ -6,10 +6,10 @@ import javax.validation.constraints.Size;
 
 public class AdForm {
 
-    private Long id;
+    private long id;
     
     @NotNull
-    @Size(min = 8, message = "Title to short")
+    @Size(min = 8, message = "Title too short")
     private String title;
     
     @NotNull(message = "Must enter a street")
@@ -26,16 +26,17 @@ public class AdForm {
     @NotNull(message = "Must enter a price")
     private String price;
     
-    @NotNull(message = "Must enter a description")
+    @NotNull
+    @Size(min = 12, message = "Description too short")
     private String description;
     
     private String ownerEmail;
     
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
