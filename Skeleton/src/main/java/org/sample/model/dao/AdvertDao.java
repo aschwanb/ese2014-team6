@@ -1,7 +1,7 @@
 package org.sample.model.dao;
 
-import org.sample.model.User;
+import org.sample.model.Advert;
 import org.springframework.data.repository.CrudRepository;
 
-public interface AdvertDao extends CrudRepository<User,Long> {
+public interface AdvertDao extends CrudRepository<Advert,Long> {
 }

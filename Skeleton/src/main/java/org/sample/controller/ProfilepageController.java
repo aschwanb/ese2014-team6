@@ -16,10 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class ProfilepageController {
 
-    @Autowired
-    SampleService sampleService;
-
-
     @RequestMapping(value = "/profilepage", method = RequestMethod.GET)
     public ModelAndView index() {
     	ModelAndView model = new ModelAndView("profilepage");

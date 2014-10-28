@@ -29,15 +29,15 @@ public class SampleServiceImpl implements SampleService {
         }
 
 
-        Address address = new Address();
-        address.setStreet("TestStreet-foo");
+        //Address address = new Address();
+        //address.setStreet("TestStreet-foo");
         
         User user = new User();
 //        user.setFirstName(signupForm.getFirstName());
         user.setEmail(signupForm.getEmail());
 //        user.setUserName(signupForm.getUserName());
 //        user.setLastName(signupForm.getLastName());
-        user.setAddress(address);
+        //user.setAddress(address);
         user.setPassword(signupForm.getPassword());
         user.setUser_role("ROLE_USER");
         user.setEnabled("TRUE");
