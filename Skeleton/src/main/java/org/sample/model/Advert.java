@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import org.springframework.web.multipart.MultipartFile;
-
 
 @Entity
 public class Advert {
@@ -21,10 +19,10 @@ public class Advert {
     private String title;
     private String price;
     private String description;
+    private String imgPath;
     
     @OneToOne(cascade = {CascadeType.ALL})
     private Address address;
-//    private MultipartFile image;
     
 	public Long getId() {
 		return id;
@@ -74,13 +72,12 @@ public class Advert {
 		this.address = address;
 	}
 
-//	public MultipartFile getImage() {
-//		return image;
-//	}
-//
-//	public void setImage(MultipartFile image) {
-//		this.image = image;
-//	} 
-    
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
 	
 }

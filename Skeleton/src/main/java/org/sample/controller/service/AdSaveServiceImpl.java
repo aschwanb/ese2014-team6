@@ -8,6 +8,7 @@ import org.sample.model.dao.AdvertDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Service
@@ -37,6 +38,10 @@ public class AdSaveServiceImpl implements AdSaveService {
         ad.setDescription(adForm.getDescription());
         ad.setIdUser(adForm.getOwnerEmail());
         
+		MultipartFile image = adForm.getImage();
+		String imgPath = "user/ad/img/" + image.getOriginalFilename() + "-uploaded";
+		ad.setImgPath(imgPath);
+		
         if(adForm.getId() != 0)
         {
         	ad.setId(adForm.getId());

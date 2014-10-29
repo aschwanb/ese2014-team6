@@ -37,12 +37,12 @@ public class FileUploadController {
 			ModelAndView model;
 			if (!result.hasErrors()) {
 				try {
-					String name = uploadForm.getName();
+					String name = "user/ad/img/" + uploadForm.getName() + "-uploaded";
 					MultipartFile file = uploadForm.getFile();
 					byte[] bytes = file.getBytes();
 					BufferedOutputStream stream = 
 							new BufferedOutputStream(
-									new FileOutputStream(new File(name + "-uploaded")));
+									new FileOutputStream(new File(name)));
 					stream.write(bytes);
 					stream.close();
 					model = new ModelAndView("savefile");

@@ -70,11 +70,11 @@ public class AdpageController {
     		// Save image
 			try {
 				MultipartFile image = adForm.getImage();
-				String name = image.getOriginalFilename();
+				String imgPath = "user/ad/img/" + image.getOriginalFilename() + "-uploaded";
 				byte[] bytes = image.getBytes();
 				BufferedOutputStream stream = 
 						new BufferedOutputStream(
-								new FileOutputStream(new File(name + "-uploaded")));
+								new FileOutputStream(new File(imgPath)));
 				stream.write(bytes);
 				stream.close();
 			} catch (Exception e) {
