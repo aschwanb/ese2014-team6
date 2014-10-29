@@ -2,14 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="base" tagdir="/WEB-INF/tags" %>
 
 
-<c:import url="template/header.jsp" />
+<base:page title="Error">
 
-<div class="page-header">
-	<h1>Error:</h1>
-</div>
-
-<h2>${errortext}</h2>
-
-<c:import url="template/footer.jsp" />
+	<div class="page-header">
+		<h1>Error:</h1>
+	</div>
+	
+	<h2>${errortext}</h2>
+	
+</base:page>

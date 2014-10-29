@@ -2,10 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="base" tagdir="/WEB-INF/tags" %>
 
 
-<c:import url="template/header.jsp" />
-
-<h1>${msg}</h1>
-
-<c:import url="template/footer.jsp" />
+<base:page title="Save File">
+	
+	<h1>${msg}</h1>
+	
+</base:page>

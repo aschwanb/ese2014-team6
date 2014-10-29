@@ -13,9 +13,7 @@
     	<c:import url="template/top.jsp"/>
     	
     	<div class="container theme-showcase" role="main">
-			<jsp:body>
-				<jsp:doBody/>
-			</jsp:body>
+			<jsp:doBody/>
     	</div>
     	
 		<c:import url="template/bottom.jsp"/>
