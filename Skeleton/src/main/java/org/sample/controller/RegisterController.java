@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.controller.pojos.SignupForm;
 import org.sample.controller.service.SampleService;
+import org.sample.controller.validator.PasswordValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -30,8 +31,14 @@ public class RegisterController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView create(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
-    	ModelAndView model;    	
-    	if (!result.hasErrors()) {
+    	
+    	ModelAndView model; 
+    	
+    	if (!signupForm.getPassword().equals(signupForm.getConfirmPassword())) {
+        	model = new ModelAndView("register");
+        	model.addObject("signupForm", new SignupForm());    	
+        	model.addObject("error", "Passwords not matching");
+    	} else if (!result.hasErrors()) {
             try {
             	sampleService.saveFrom(signupForm);
             	model = new ModelAndView("index");
