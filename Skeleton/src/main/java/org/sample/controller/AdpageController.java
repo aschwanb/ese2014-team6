@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 
 import javax.validation.Valid;
 
+import org.jboss.logging.Logger;
 import org.sample.controller.pojos.AdForm;
 import org.sample.controller.service.AdLoadService;
 import org.sample.controller.service.AdSaveService;
@@ -21,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AdpageController {
-	
+	static Logger log = Logger.getLogger(AdpageController.class.getName());
     @Autowired
     AdSaveService adSaveService;
     
@@ -56,14 +57,15 @@ public class AdpageController {
 		    	model.addObject("adForm", adForm);
     		}
     	}
-    	
+    	log.info("Returning adpage model");
     	return model;
     }
     
     @RequestMapping(value = "/saveAdvert", method = RequestMethod.POST)
     public ModelAndView save(@Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes)
     {
-    	ModelAndView model = new ModelAndView("adpage");
+    	log.info("Receiving form. Checking ...");
+    	ModelAndView model;
     	
     	if(!result.hasErrors())
     	{
@@ -78,15 +80,17 @@ public class AdpageController {
 				stream.write(bytes);
 				stream.close();
 			} catch (Exception e) {
-				return model;
+				return model = new ModelAndView("adpage");
 			}
         	adForm = adSaveService.saveFrom(adForm);
-        }else
-        {
+        	model = new ModelAndView("profilepage");
+        }else {
+        	log.info("Error in form. Returning new one");
+        	model = new ModelAndView("adpage");
+        	model.addObject("editable", "true");
+        	model.addObject("adForm", adForm);
+
         }
-    	
-    	model.addObject("editable", "true");
-    	model.addObject("adForm", adForm);
     	return model;
     }
 
