@@ -45,7 +45,7 @@
 	  <div class="tab-pane fade in active" id="profile-cal">A...</div>
 	  <div class="tab-pane fade" id="profile-msg">B...</div>
 	  <div class="tab-pane fade" id="profile-bm">C...</div>
-	  <div class="tab-pane fade" id="profile-adv">D...</div>
+	  <div class="tab-pane fade" id="profile-adv"><a class="btn btn-default" href=adpage?id=1>Open Ad 1</a> </div>
 	</div>
 </div>
 

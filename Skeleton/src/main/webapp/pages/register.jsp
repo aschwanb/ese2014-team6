@@ -17,7 +17,7 @@
         <legend>Enter Your Information</legend>
 
         <c:set var="emailErrors"><form:errors path="email"/></c:set>
-        <div class="control-group<c:if test="${not empty emailErrors}"> error</c:if>">
+        <div class="control-group<c:if test="${not empty emailErrors}"> has-error</c:if>">
             <label class="control-label" for="field-email">Email</label>
             <div class="controls">
                 <form:input path="email" id="field-email" tabindex="1" maxlength="45" placeholder="Email"/>
@@ -25,7 +25,7 @@
             </div>
         </div>
 <%--         <c:set var="userNameErrors"><form:errors path="userName"/></c:set> --%>
-<%--         <div class="control-group<c:if test="${not empty userNameErrors}"> error</c:if>"> --%>
+<%--         <div class="control-group<c:if test="${not empty userNameErrors}"> has-error</c:if>"> --%>
 <!--             <label class="control-label" for="field-userName">userName</label> -->
 <!--             <div class="controls"> -->
 <%--                 <form:input path="userName" id="field-userName" tabindex="1" maxlength="45" placeholder="userName"/> --%>
@@ -34,7 +34,7 @@
 <!--         </div> -->
                 
         <c:set var="passwordErrors"><form:errors path="password"/></c:set>
-        <div class="control-group<c:if test="${not empty passwordErrors}"> error</c:if>">
+        <div class="control-group<c:if test="${not empty passwordErrors}"> has-error</c:if>">
             <label class="control-label" for="field-password">Password</label>
             <div class="controls">
                 <form:input type="password" path="password" id="field-password" tabindex="2" maxlength="35" placeholder="Password"/>
