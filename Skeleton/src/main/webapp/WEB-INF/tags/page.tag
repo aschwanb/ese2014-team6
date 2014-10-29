@@ -7,10 +7,10 @@
 	<head>
 	    <title>${title}</title>
 	    
-	    <c:import url="template/htmlHead.jsp"/>
+	    <c:import url="template/head.jsp"/>
 	</head>
     <body>
-    	<c:import url="template/header.jsp"/>
+    	<c:import url="template/top.jsp"/>
     	
     	<div class="container theme-showcase" role="main">
 			<jsp:body>
@@ -18,6 +18,6 @@
 			</jsp:body>
     	</div>
     	
-		<c:import url="template/footer.jsp"/>
+		<c:import url="template/bottom.jsp"/>
     </body>
 </html>
