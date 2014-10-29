@@ -10,6 +10,7 @@
 	<h1>Welcome to StudiHome</h1>
 </div>
 
+
 <h2>Start looking for your home today</h2>
 
         <div class="form-actions">

@@ -10,6 +10,9 @@
        http://www.hdiv.org/schema/hdiv http://www.hdiv.org/schema/hdiv/hdiv.xsd">
 
 	<!-- context configuration: how to instantiate beans to bind to DispatcherServlet  -->
+	
+<!-- 	integrating properties file -->
+      <context:property-placeholder location="/WEB-INF/config/spring.properties" />
 
 	<!-- search for controllers (@Controller)  -->
     <mvc:annotation-driven />

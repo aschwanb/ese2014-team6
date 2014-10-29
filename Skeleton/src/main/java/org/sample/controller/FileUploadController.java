@@ -11,6 +11,7 @@ import org.sample.controller.pojos.FileUploadForm;
 import org.sample.controller.pojos.SignupForm;
 import org.sample.controller.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class FileUploadController {
+	@Value("${path.adimg}")
+	private String imgPath;
 	
 	@RequestMapping(value = "/fileupload", method = RequestMethod.GET)
 		public ModelAndView fileUpload() {
@@ -34,10 +37,12 @@ public class FileUploadController {
 	
 	@RequestMapping(value = "/savefile", method = RequestMethod.POST)
 		public ModelAndView  saveFile(@Valid FileUploadForm uploadForm, BindingResult result, RedirectAttributes redirectAttributes) {
+			
 			ModelAndView model;
+			
 			if (!result.hasErrors()) {
 				try {
-					String name = "user/ad/img/" + uploadForm.getName() + "-uploaded";
+					String name = imgPath + uploadForm.getName();
 					MultipartFile file = uploadForm.getFile();
 					byte[] bytes = file.getBytes();
 					BufferedOutputStream stream = 
