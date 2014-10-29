@@ -90,4 +90,8 @@
 	</div>
 </form:form>
 
+<c:if test="${editable == false}"> <%-- TODO --%>
+	<img src="/Skeleton/user/ad/img/square.jpg" alt="..." class="img-thumbnail">
+</c:if>
+
 <c:import url="template/footer.jsp" />

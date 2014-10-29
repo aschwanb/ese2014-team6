@@ -22,6 +22,7 @@
 		<security:intercept-url pattern="/fonts/**" access="permitAll" />
 		<security:intercept-url pattern="/img/**" access="permitAll" />
 		<security:intercept-url pattern="/js/**" access="permitAll" />
+		<security:intercept-url pattern="/user/ad/img/**" access="permitAll" />
 		
 <!-- 		excluded for developpement -->
 		<security:intercept-url pattern="/fileupload" access="permitAll" />
