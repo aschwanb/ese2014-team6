@@ -24,7 +24,7 @@ public class Advert {
     
     @OneToOne(cascade = {CascadeType.ALL})
     private Address address;
-    private MultipartFile image;
+//    private MultipartFile image;
     
 	public Long getId() {
 		return id;
@@ -74,13 +74,13 @@ public class Advert {
 		this.address = address;
 	}
 
-	public MultipartFile getImage() {
-		return image;
-	}
-
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	} 
+//	public MultipartFile getImage() {
+//		return image;
+//	}
+//
+//	public void setImage(MultipartFile image) {
+//		this.image = image;
+//	} 
     
 	
 }
