@@ -10,12 +10,7 @@
 	<h1>Advert Page <c:if test="${editable}"><small>edit mode</small></c:if></h1>
 </div>
 
-<div>
-	[Pictures]
-	<button id="upldBtn">Show upload</button>
-</div>
-
-<form:form method="post" modelAttribute="adForm" action="saveAdvert" id="adForm" cssClass="form-horizontal"  autocomplete="off">
+<form:form method="post" modelAttribute="adForm" action="saveAdvert" id="adForm" cssClass="form-horizontal"  enctype="multipart/form-data" autocomplete="off">
 	<c:set var="titleErrors"><form:errors path="title"/></c:set>
 	<div class="form-group<c:if test="${not empty titleErrors}"> error</c:if>">
 		<c:if test="${editable == true}">
@@ -71,6 +66,15 @@
 		</c:if>
 	</div>
 	
+        <c:set var="imageErrors"><form:errors path="image"/></c:set>
+        <div class="form-group<c:if test="${not empty imageErrors}">error</c:if>">
+            <label class="control-label" for="field-image">Upload image</label>
+            <div class="controls">
+                <form:input type = "file" path="image" id="field-image" tabindex="1" maxlength="45" placeholder="Email"/>
+                <form:errors path="image" cssClass="help-inline" element="span"/>
+            </div>
+        </div>	
+	
 	<form:input type="hidden"  path="ownerEmail" id="field-ownerEmail" value="${pageContext.request.userPrincipal.name}" />
 	
 	<div class="form-group">
@@ -83,18 +87,5 @@
 		<a class="btn btn-default" href="${editable ? 'discard' : 'contact'}">${editable ? 'Discard' : 'Contact'}</a>
 	</div>
 </form:form>
-
-<div id="pictureUploadFormular" style="display: none;">
-	<!-- Hier das upload Formular einfügen -->
-	blabla
-</div>
-
-<script type="text/javascript">
-<!--
-document.getElementById('upldBtn').onclick = function() {
-	document.getElementById('pictureUploadFormular').style = "";
-};
-//-->
-</script>
 
 <c:import url="template/footer.jsp" />

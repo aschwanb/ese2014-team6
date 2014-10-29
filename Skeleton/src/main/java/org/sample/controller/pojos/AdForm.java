@@ -4,6 +4,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class AdForm {
 
     private long id;
@@ -31,6 +33,8 @@ public class AdForm {
     private String description;
     
     private String ownerEmail;
+    private MultipartFile image;
+    
     
 	public long getId() {
 		return id;
@@ -94,6 +98,14 @@ public class AdForm {
 
 	public void setOwnerEmail(String ownerEmail) {
 		this.ownerEmail = ownerEmail;
+	}
+
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
 	}
     
     
