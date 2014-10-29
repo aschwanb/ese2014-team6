@@ -32,8 +32,10 @@ public class AdForm {
     @Size(min = 12, message = "Description too short")
     private String description;
     
-    private String ownerEmail;
+    @NotNull(message = "Invalide file")
     private MultipartFile image;
+
+    private String ownerEmail;
     
     
 	public long getId() {
