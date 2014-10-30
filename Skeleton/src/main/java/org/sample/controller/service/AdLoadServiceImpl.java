@@ -5,6 +5,7 @@ import org.sample.model.Advert;
 import org.sample.model.dao.AddressDao;
 import org.sample.model.dao.AdvertDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,6 +14,9 @@ public class AdLoadServiceImpl implements AdLoadService {
 	@Autowired    AdvertDao advertDao;
     @Autowired    AddressDao addDao;
     
+    // Image location = imgPath + imageName
+    @Value("${path.adimg}")
+	private String imgPath;
     
 	public AdForm loadById(String adId)
 	{

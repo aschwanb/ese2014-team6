@@ -4,6 +4,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+
 public class SignupForm {
 
     private Long id;
@@ -14,10 +16,11 @@ public class SignupForm {
     @NotNull
     @Size(min = 6, message = "Password to short")
     private String password;
+    @NotNull
+    private String confirmPassword;
 
     @NotNull
-    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", 
-    message = "Must be valid email address")
+    @Email(message = "Must be valid email address")
     private String email;
 
 //    public String getFirstName() {
@@ -65,6 +68,14 @@ public class SignupForm {
 //    public void setUserName(String userName) {
 //    	this.userName = userName;
 //    }
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
     
     
 }

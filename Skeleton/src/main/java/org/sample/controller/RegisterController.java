@@ -8,7 +8,6 @@ import org.sample.controller.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,8 +29,14 @@ public class RegisterController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView create(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
-    	ModelAndView model;    	
-    	if (!result.hasErrors()) {
+    	
+    	ModelAndView model; 
+    	
+    	if (!signupForm.getPassword().equals(signupForm.getConfirmPassword())) {
+        	model = new ModelAndView("register");
+        	model.addObject("signupForm", new SignupForm());    	
+        	model.addObject("error", "Passwords not matching");
+    	} else if (!result.hasErrors()) {
             try {
             	sampleService.saveFrom(signupForm);
             	model = new ModelAndView("index");

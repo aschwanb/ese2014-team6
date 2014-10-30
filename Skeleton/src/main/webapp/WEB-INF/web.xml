@@ -10,7 +10,9 @@
         <welcome-file>index</welcome-file>
     </welcome-file-list>
         
-    
+	<!-- Load in application properties reference -->
+
+
     <!-- import config files -->    
     <context-param>
     	<param-name>contextConfigLocation</param-name>
@@ -19,7 +21,6 @@
     		/WEB-INF/config/springSecurity.xml
     	</param-value>
 	</context-param>
-    
         
     <!-- Spring Security Filters -->    
     <filter>

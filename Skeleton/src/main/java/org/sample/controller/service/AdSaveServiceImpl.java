@@ -39,7 +39,7 @@ public class AdSaveServiceImpl implements AdSaveService {
         ad.setIdUser(adForm.getOwnerEmail());
         
 		MultipartFile image = adForm.getImage();
-		String imgPath = "user/ad/img/" + image.getOriginalFilename() + "-uploaded";
+		String imgPath = image.getOriginalFilename();
 		ad.setImgPath(imgPath);
 		
         if(adForm.getId() != 0)

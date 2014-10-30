@@ -11,6 +11,7 @@ import org.sample.controller.pojos.AdForm;
 import org.sample.controller.service.AdLoadService;
 import org.sample.controller.service.AdSaveService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class AdpageController {
 	static Logger log = Logger.getLogger(AdpageController.class.getName());
-    @Autowired
+    
+	@Value("${path.adimg}")
+	private String imgPath;
+	
+	@Autowired
     AdSaveService adSaveService;
     
     @Autowired
@@ -72,7 +77,7 @@ public class AdpageController {
     		// Save image
 			try {
 				MultipartFile image = adForm.getImage();
-				String imgPath = "user/ad/img/" + image.getOriginalFilename();
+				imgPath = imgPath + image.getOriginalFilename();
 				byte[] bytes = image.getBytes();
 				BufferedOutputStream stream = 
 						new BufferedOutputStream(
