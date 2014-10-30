@@ -19,7 +19,6 @@ public class User {
     private String userName;
     private String email;
     private String password;
-    private String confirmPassword;
     private String user_role;
     private String enabled;
     
@@ -98,15 +97,4 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
-
-    
-	
-	
 }
