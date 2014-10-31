@@ -1,6 +1,6 @@
 package org.sample.controller.service;
 
-import org.sample.controller.pojos.AdForm;
+import org.sample.model.pojos.AdForm;
 import org.sample.model.Address;
 import org.sample.model.Advert;
 import org.sample.model.dao.AddressDao;
@@ -19,11 +19,6 @@ public class AdSaveServiceImpl implements AdSaveService {
     
     @Transactional
     public AdForm saveFrom(AdForm adForm){
-    	if(adForm == null)
-    	{
-    		System.out.println("FUCK!");
-    		return null;
-    	}
     	
         Address address = new Address();
         address.setStreet(adForm.getStreet());

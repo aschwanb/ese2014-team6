@@ -7,8 +7,8 @@ import java.io.FileOutputStream;
 import javax.validation.Valid;
 
 import org.sample.controller.exceptions.InvalidUserException;
-import org.sample.controller.pojos.FileUploadForm;
-import org.sample.controller.pojos.SignupForm;
+import org.sample.model.pojos.FileUploadForm;
+import org.sample.model.pojos.SignupForm;
 import org.sample.controller.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

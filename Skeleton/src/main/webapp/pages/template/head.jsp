@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/theme.css"/>
+<link rel="stylesheet" type="text/css" href="css/formating.css"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript"  src="js/bootstrap.min.js"></script>
 
