@@ -1,6 +1,6 @@
 package org.sample.controller.service;
 
-import org.sample.controller.pojos.AdForm;
+import org.sample.model.pojos.AdForm;
 import org.sample.model.Advert;
 import org.sample.model.dao.AddressDao;
 import org.sample.model.dao.AdvertDao;

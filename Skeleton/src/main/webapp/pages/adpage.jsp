@@ -42,7 +42,7 @@
 			<div class="row setup-content" id="main">
 				<div class="col-xs-12">
 					<div class="col-md-12">
-						<%@include file="adpage_parts/adp_mainInfo.jsp"%>
+						<%@include file="/WEB-INF/jspf/adpage_parts/adp_mainInfo.jspf"%>
 						<button class="btn btn-primary nextBtn btn-lg pull-right"  type="button" >Next</button>
 					</div>
 				</div>
@@ -50,7 +50,7 @@
 			<div class="row setup-content" id="add">
 				<div class="col-xs-12">
 					<div class="col-md-12">
-						<%@include file="adpage_parts/adp_additionalInfo.jsp"%>
+						<%@include file="/WEB-INF/jspf/adpage_parts/adp_additionalInfo.jspf"%>
 						<button class="btn btn-primary prevBtn btn-lg"  type="button" >Previous</button>
 						<button class="btn btn-primary nextBtn btn-lg pull-right"  type="button" >Next</button>
 					</div>
@@ -59,7 +59,7 @@
 			<div class="row setup-content" id="map">
 				<div class="col-xs-12">
 					<div class="col-md-12">
-						<%@include file="adpage_parts/adp_map.jsp"%>
+						<%@include file="/WEB-INF/jspf/adpage_parts/adp_map.jspf"%>
 						<button class="btn btn-primary prevBtn btn-lg" type="button" >Previous</button>
 						<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
 					</div>
@@ -68,7 +68,7 @@
 			<div class="row setup-content" id="pics">
 				<div class="col-xs-12">
 					<div class="col-md-12">
-						<%@include file="adpage_parts/adp_pictures.jsp"%>
+						<%@include file="/WEB-INF/jspf/adpage_parts/adp_pictures.jspf"%>
 						<button class="btn btn-primary prevBtn btn-lg" type="button" >Previous</button>
 					</div>
 				</div>

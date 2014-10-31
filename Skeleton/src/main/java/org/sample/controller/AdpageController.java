@@ -7,7 +7,7 @@ import java.io.FileOutputStream;
 import javax.validation.Valid;
 
 import org.jboss.logging.Logger;
-import org.sample.controller.pojos.AdForm;
+import org.sample.model.pojos.AdForm;
 import org.sample.controller.service.AdLoadService;
 import org.sample.controller.service.AdSaveService;
 import org.springframework.beans.factory.annotation.Autowired;
