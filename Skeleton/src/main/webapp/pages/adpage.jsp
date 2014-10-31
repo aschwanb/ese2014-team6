@@ -6,93 +6,90 @@
 
 
 <base:page title="Advert">
+	<jsp:attribute name="customHead">
+		<script type="text/javascript"  src="js/adp_carousel.js"></script>
+		<script type="text/javascript"  src="js/adp_tabs.js"></script>
+	</jsp:attribute>
 
-	<div class="page-header">
-		<h1>Advert<c:if test="${editable}"> <small>edit mode</small></c:if></h1>
-	</div>
-	
-	<form:form method="post" modelAttribute="adForm" action="saveAdvert" id="adForm" cssClass="form-horizontal"  enctype="multipart/form-data" autocomplete="off">
-		<c:set var="titleErrors"><form:errors path="title"/></c:set>
-		<div class="form-group<c:if test="${not empty titleErrors}"> has-error</c:if>">
-			<c:if test="${editable == true}">
-				<form:input path="title" id="field-title" tabindex="1" type="text" class="form-control" placeholder="Title" />
-				<form:errors path="title" cssClass="help-inline" element="span"/>
-			</c:if>
-			<c:if test="${editable == false}">
-				<form:input path="title" id="field-title" tabindex="1" type="text" class="form-control" style="cursor: text;" readonly="true" placeholder="Title" />
-			</c:if>
-		</div>
-		<c:set var="streetErrors"><form:errors path="street"/></c:set>
-		<div class="form-group<c:if test="${not empty streetErrors}"> has-error</c:if>">
-			<c:if test="${editable == true}">
-				<form:input path="street" id="field-street" tabindex="2" type="text" class="form-control" placeholder="Street" />
-				<form:errors path="street" cssClass="help-inline" element="span"/>
-			</c:if>
-			<c:if test="${editable == false}">
-				<form:input path="street" id="field-street" tabindex="2" type="text" class="form-control" style="cursor: text;" readonly="true" placeholder="Street" />
-			</c:if>
-		</div>
-		<c:set var="plzErrors"><form:errors path="plz"/></c:set>
-		<c:set var="cityErrors"><form:errors path="city"/></c:set>
-		<div class="form-group<c:if test="${not empty plzErrors or not empty cityErrors}"> has-error</c:if>">
-			<c:if test="${editable == true}">
-				<form:input path="plz" id="field-plz" tabindex="3" type="text" class="form-control" placeholder="Plz." />
-				<form:errors path="plz" cssClass="help-inline" element="span"/>
-				<form:input path="city" id="field-city" tabindex="4" type="text" class="form-control" placeholder="City" />
-				<form:errors path="city" cssClass="help-inline" element="span"/>
-			</c:if>
-			<c:if test="${editable == false}">
-				<form:input path="plz" id="field-plz" tabindex="3" type="text" class="form-control" style="cursor: text;" readonly="true" placeholder="Plz." />
-				<form:input path="city" id="field-city" tabindex="4" type="text" class="form-control" style="cursor: text;" readonly="true" placeholder="City" />
-			</c:if>
-		</div>
-		<c:set var="priceErrors"><form:errors path="price"/></c:set>
-		<div class="form-group<c:if test="${not empty priceErrors}"> has-error</c:if>">
-			<c:if test="${editable == true}">
-				<form:input path="price" id="field-price" tabindex="5" type="text" class="form-control" placeholder="Price" />
-				<form:errors path="price" cssClass="help-inline" element="span"/>
-			</c:if>
-			<c:if test="${editable == false}">
-				<form:input path="price" id="field-price" tabindex="5" type="text" class="form-control" style="cursor: text;" readonly="true"  placeholder="Price" />
-			</c:if>
-		</div>
-		<c:set var="descriptionErrors"><form:errors path="description"/></c:set>
-		<div class="form-group<c:if test="${not empty descriptionErrors}"> has-error</c:if>">
-			<c:if test="${editable == true}">
-				<form:textarea path="description" id="field-description" tabindex="6" class="form-control" rows="5" placeholder="Description"></form:textarea>
-				<form:errors path="description" cssClass="help-inline" element="span"/>
-			</c:if>
-			<c:if test="${editable == false}">
-				<form:textarea path="description" id="field-description" tabindex="6" class="form-control" rows="5" style="cursor: text;" readonly="true" placeholder="Description"></form:textarea>
-			</c:if>
+	<jsp:body>
+		<div class="page-header">
+			<h1>Advert<c:if test="${editable}"> <small>edit mode</small></c:if></h1>
 		</div>
 		
-		<c:if test="${editable == true}">
-	        <c:set var="imageErrors"><form:errors path="image"/></c:set>
-	        <div class="form-group<c:if test="${not empty imageErrors}">error</c:if>">
-	            <label class="control-label" for="field-image">Upload image</label>
-	            <div class="controls">
-	                <form:input type = "file" path="image" id="field-image" tabindex="7" maxlength="45" placeholder="Picture"/>
-	                <form:errors path="image" cssClass="help-inline" element="span"/>
-	            </div>
-	        </div>	
-		</c:if>
-		
-		<form:input type="hidden"  path="ownerEmail" id="field-ownerEmail" value="${pageContext.request.userPrincipal.name}" />
-		
-		<div class="form-group">
-			<c:if test="${editable == false}">
-				<a class="btn btn-primary" href="bookmark">Bookmark</a>
-			</c:if>
-			<c:if test="${editable == true}">
-				<button type="submit" class="btn btn-primary" >Save</button>
-			</c:if>
-			<a class="btn btn-default" href="${editable ? 'discard' : 'contact'}">${editable ? 'Discard' : 'Contact'}</a>
+		<div class="stepwizard">
+			<div class="stepwizard-row setup-panel">
+				<div class="stepwizard-step">
+					<a href="#main" type="button" class="btn btn-primary btn-circle"> </a>
+					<p>Main Info</p>
+				</div>
+				<div class="stepwizard-step">
+					<a href="#add" type="button" class="btn btn-default btn-circle" ${adForm.id == 0 ? 'disabled="disabled"':''}> </a>
+					<p>Additional Info</p>
+				</div>
+				<div class="stepwizard-step">
+					<a href="#map" type="button" class="btn btn-default btn-circle" ${adForm.id == 0 ? 'disabled="disabled"':''}> </a>
+					<p>Map</p>
+				</div>
+				<div class="stepwizard-step">
+					<a href="#pics" type="button" class="btn btn-default btn-circle" ${adForm.id == 0 ? 'disabled="disabled"':''}> </a>
+					<p>Pictures</p>
+				</div>
+			</div>
 		</div>
-	</form:form>
-	
-	<c:if test="${editable == false}"> <%-- TODO --%>
-		<img src="/Skeleton/user/ad/img/square.jpg" alt="..." class="img-thumbnail">
-	</c:if>
-
+		
+		<form:form method="post" modelAttribute="adForm" action="saveAdvert" id="adForm" cssClass="form-horizontal"  enctype="multipart/form-data" autocomplete="off" role="form">
+			
+			<div class="row setup-content" id="main">
+				<div class="col-xs-12">
+					<div class="col-md-12">
+						<%@include file="adpage_parts/adp_mainInfo.jsp"%>
+						<button class="btn btn-primary nextBtn btn-lg pull-right"  type="button" >Next</button>
+					</div>
+				</div>
+			</div>
+			<div class="row setup-content" id="add">
+				<div class="col-xs-12">
+					<div class="col-md-12">
+						<%@include file="adpage_parts/adp_additionalInfo.jsp"%>
+						<button class="btn btn-primary prevBtn btn-lg"  type="button" >Previous</button>
+						<button class="btn btn-primary nextBtn btn-lg pull-right"  type="button" >Next</button>
+					</div>
+				</div>
+			</div>
+			<div class="row setup-content" id="map">
+				<div class="col-xs-12">
+					<div class="col-md-12">
+						<%@include file="adpage_parts/adp_map.jsp"%>
+						<button class="btn btn-primary prevBtn btn-lg" type="button" >Previous</button>
+						<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+					</div>
+				</div>
+			</div>
+			<div class="row setup-content" id="pics">
+				<div class="col-xs-12">
+					<div class="col-md-12">
+						<%@include file="adpage_parts/adp_pictures.jsp"%>
+						<button class="btn btn-primary prevBtn btn-lg" type="button" >Previous</button>
+					</div>
+				</div>
+			</div>
+			
+			<%-- username unnötig? --%>
+			<form:input type="hidden"  path="ownerEmail" id="field-ownerEmail" value="${pageContext.request.userPrincipal.name}" />
+			
+			<div class="form-group">
+				<div class="col-xs-12 adpage-buttongroup">
+					<div class="col-md-12 pull-right">
+						<c:if test="${editable == false}">
+							<a class="btn btn-primary btn-lg adpage-buttongroupbutton" href="bookmark">Bookmark</a>
+						</c:if>
+						<c:if test="${editable == true}">
+							<button type="submit" class="btn btn-primary btn-lg adpage-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
+						</c:if>
+						<a class="btn btn-default btn-lg adpage-buttongroupbutton" href="${editable ? 'discard' : 'contact'}" ${adForm.id == 0 ? 'disabled="disabled"':''}>${editable ? 'Discard' : 'Contact'}</a>
+					</div>
+				</div>
+			</div>
+		</form:form>
+	</jsp:body>
 </base:page>

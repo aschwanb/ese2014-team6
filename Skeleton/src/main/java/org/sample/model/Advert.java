@@ -1,6 +1,7 @@
 package org.sample.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,6 +19,8 @@ public class Advert {
     private String EmailUser;
     private String title;
     private String price;
+    
+    @Column(columnDefinition="character varying (2048) not null")
     private String description;
     private String imgPath;
     

@@ -19,11 +19,6 @@ public class AdSaveServiceImpl implements AdSaveService {
     
     @Transactional
     public AdForm saveFrom(AdForm adForm){
-    	if(adForm == null)
-    	{
-    		System.out.println("FUCK!");
-    		return null;
-    	}
     	
         Address address = new Address();
         address.setStreet(adForm.getStreet());
