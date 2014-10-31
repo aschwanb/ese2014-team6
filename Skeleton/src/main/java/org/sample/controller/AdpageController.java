@@ -77,14 +77,15 @@ public class AdpageController {
     		// Save image
 			try {
 				MultipartFile image = adForm.getImage();
-				imgPath = imgPath + image.getOriginalFilename();
+				String imagePath = imgPath + image.getOriginalFilename();
 				byte[] bytes = image.getBytes();
 				BufferedOutputStream stream = 
 						new BufferedOutputStream(
-								new FileOutputStream(new File(imgPath)));
+								new FileOutputStream(new File(imagePath)));
 				stream.write(bytes);
 				stream.close();
 			} catch (Exception e) {
+				log.info(e.toString());
 				return model = new ModelAndView("adpage");
 			}
         	adForm = adSaveService.saveFrom(adForm);
