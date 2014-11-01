@@ -1,5 +1,4 @@
 jQuery(document).ready(function($) {
-	// "Tabs":
 	var navListItems = $('div.setup-panel div a'),
 		allWells = $('.setup-content'),
 		allNextBtn = $('.nextBtn'),

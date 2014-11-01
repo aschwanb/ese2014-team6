@@ -1,7 +1,6 @@
 jQuery(document).ready(function($) {
-	// Carousel:
 	$('#myCarousel').carousel({
-		interval: 5000
+		interval: 0
 	});
 	 
 	$('#carousel-text').html($('#slide-content-0').html());

@@ -74,9 +74,6 @@
 				</div>
 			</div>
 			
-			<%-- username unnötig? --%>
-			<form:input type="hidden"  path="ownerEmail" id="field-ownerEmail" value="${pageContext.request.userPrincipal.name}" />
-			
 			<div class="form-group">
 				<div class="col-xs-12 adpage-buttongroup">
 					<div class="col-md-12 pull-right">

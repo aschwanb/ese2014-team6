@@ -3,6 +3,7 @@ package org.sample.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.security.Principal;
 
 import javax.validation.Valid;
 
@@ -35,7 +36,7 @@ public class AdpageController {
     AdLoadService adLoadService;
 
     @RequestMapping(value = "/adpage", method = RequestMethod.GET)
-    public ModelAndView show(@RequestParam(value = "id", required=false)String advId)
+    public ModelAndView show(@RequestParam(value = "id", required=false)String advId, Principal principal)
     {
     	ModelAndView model = new ModelAndView("adpage");
     	
@@ -52,7 +53,8 @@ public class AdpageController {
     			model.addObject("errortext", "Ups, the advert " + advId + " could not be found.");
     		}else
     		{
-    			if(adForm.getOwnerEmail().equals("owner"))	//TODO
+    			log.info("principal: " + principal.getName() + " owner: " + adForm.getOwnerEmail());
+    			if(principal.getName().equals(adForm.getOwnerEmail()))	//TODO better
     			{
     				model.addObject("editable", "true");
     			}else
@@ -67,7 +69,7 @@ public class AdpageController {
     }
     
     @RequestMapping(value = "/saveAdvert", method = RequestMethod.POST)
-    public ModelAndView save(@Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes)
+    public ModelAndView save(@Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal)
     {
     	log.info("Receiving form. Checking ...");
     	ModelAndView model;
@@ -88,6 +90,7 @@ public class AdpageController {
 				log.info(e.toString());
 				return model = new ModelAndView("adpage");
 			}
+    		adForm.setOwnerEmail(principal.getName());
         	adForm = adSaveService.saveFrom(adForm);
         	model = new ModelAndView("profilepage");
         }else {

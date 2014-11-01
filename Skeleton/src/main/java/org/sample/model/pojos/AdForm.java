@@ -77,7 +77,7 @@ public class AdForm {
 	public void setCity(String city) {
 		this.city = city;
 	}
-
+	
 	public String getPrice() {
 		return price;
 	}
