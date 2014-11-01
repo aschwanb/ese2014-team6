@@ -13,7 +13,7 @@ import org.springframework.util.StringUtils;
 
 
 @Service
-public class SampleServiceImpl implements SampleService {
+public class SignupServiceImpl implements SignupService {
 
     @Autowired    UserDao userDao;
     @Autowired    AddressDao addDao;

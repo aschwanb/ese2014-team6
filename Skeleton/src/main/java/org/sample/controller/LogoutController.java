@@ -4,7 +4,7 @@ import javax.validation.Valid;
 
 import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.model.pojos.SignupForm;
-import org.sample.controller.service.SampleService;
+import org.sample.controller.service.SignupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class LogoutController {
 
     @Autowired
-    SampleService sampleService;
+    SignupService sampleService;
 
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)

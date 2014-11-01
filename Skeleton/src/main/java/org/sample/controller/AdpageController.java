@@ -9,8 +9,7 @@ import javax.validation.Valid;
 
 import org.jboss.logging.Logger;
 import org.sample.model.pojos.AdForm;
-import org.sample.controller.service.AdLoadService;
-import org.sample.controller.service.AdSaveService;
+import org.sample.controller.service.AdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -28,12 +27,9 @@ public class AdpageController {
     
 	@Value("${path.adimg}")
 	private String imgPath;
-	
-	@Autowired
-    AdSaveService adSaveService;
     
     @Autowired
-    AdLoadService adLoadService;
+    AdService adService;
 
     @RequestMapping(value = "/adpage", method = RequestMethod.GET)
     public ModelAndView show(@RequestParam(value = "id", required=false)String advId, Principal principal)
@@ -46,7 +42,7 @@ public class AdpageController {
 	    	model.addObject("adForm", new AdForm());
     	}else
     	{
-    		AdForm adForm = adLoadService.loadById(advId);
+    		AdForm adForm = adService.loadById(advId);
     		if(adForm == null)
     		{
     			model = new ModelAndView("error");
@@ -91,7 +87,7 @@ public class AdpageController {
 				return model = new ModelAndView("adpage");
 			}
     		adForm.setOwnerEmail(principal.getName());
-        	adForm = adSaveService.saveFrom(adForm);
+        	adForm = adService.saveFrom(adForm);
         	model = new ModelAndView("profilepage");
         }else {
         	log.info("Error in form. Returning new one");
