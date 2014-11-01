@@ -2,7 +2,6 @@ package org.sample.controller.service;
 
 import org.sample.controller.exceptions.InvalidUserException;
 import org.sample.model.pojos.SignupForm;
-import org.sample.model.Address;
 import org.sample.model.User;
 import org.sample.model.dao.AddressDao;
 import org.sample.model.dao.UserDao;
