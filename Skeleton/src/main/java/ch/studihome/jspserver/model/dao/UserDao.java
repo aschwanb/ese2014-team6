@@ -1,7 +1,8 @@
-package org.sample.model.dao;
+package ch.studihome.jspserver.model.dao;
 
-import org.sample.model.User;
 import org.springframework.data.repository.CrudRepository;
+
+import ch.studihome.jspserver.model.User;
 
 public interface UserDao extends CrudRepository<User,Long> {
 }

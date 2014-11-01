@@ -1,4 +1,4 @@
-package org.sample.model.pojos;
+package ch.studihome.jspserver.model.pojos;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

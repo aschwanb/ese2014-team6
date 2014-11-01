@@ -1,7 +1,8 @@
-package org.sample.model.dao;
+package ch.studihome.jspserver.model.dao;
 
-import org.sample.model.Address;
 import org.springframework.data.repository.CrudRepository;
+
+import ch.studihome.jspserver.model.Address;
 
 
 public interface AddressDao  extends CrudRepository<Address,Long>{

@@ -1,4 +1,4 @@
-package org.sample.controller;
+package ch.studihome.jspserver.controller;
 
 import java.security.Principal;
 

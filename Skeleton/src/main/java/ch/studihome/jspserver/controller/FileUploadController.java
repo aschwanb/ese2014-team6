@@ -1,4 +1,4 @@
-package org.sample.controller;
+package ch.studihome.jspserver.controller;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 
 import javax.validation.Valid;
 
-import org.sample.model.pojos.FileUploadForm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import ch.studihome.jspserver.model.pojos.FileUploadForm;
 
 @Controller
 public class FileUploadController {

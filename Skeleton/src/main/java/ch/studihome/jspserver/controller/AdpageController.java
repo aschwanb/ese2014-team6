@@ -1,4 +1,4 @@
-package org.sample.controller;
+package ch.studihome.jspserver.controller;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -8,8 +8,6 @@ import java.security.Principal;
 import javax.validation.Valid;
 
 import org.jboss.logging.Logger;
-import org.sample.model.pojos.AdForm;
-import org.sample.controller.service.AdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -20,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import ch.studihome.jspserver.controller.service.AdService;
+import ch.studihome.jspserver.model.pojos.AdForm;
 
 @Controller
 public class AdpageController {

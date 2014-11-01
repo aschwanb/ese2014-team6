@@ -1,14 +1,15 @@
-package org.sample.controller.service;
+package ch.studihome.jspserver.controller.service;
 
-import org.sample.controller.exceptions.InvalidUserException;
-import org.sample.model.pojos.SignupForm;
-import org.sample.model.User;
-import org.sample.model.dao.AddressDao;
-import org.sample.model.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+
+import ch.studihome.jspserver.controller.exceptions.InvalidUserException;
+import ch.studihome.jspserver.model.User;
+import ch.studihome.jspserver.model.dao.AddressDao;
+import ch.studihome.jspserver.model.dao.UserDao;
+import ch.studihome.jspserver.model.pojos.SignupForm;
 
 
 @Service

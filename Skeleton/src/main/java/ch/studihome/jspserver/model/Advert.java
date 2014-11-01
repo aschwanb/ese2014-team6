@@ -1,4 +1,4 @@
-package org.sample.model;
+package ch.studihome.jspserver.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

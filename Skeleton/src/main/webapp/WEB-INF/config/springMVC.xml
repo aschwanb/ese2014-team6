@@ -11,19 +11,18 @@
 
 	<!-- context configuration: how to instantiate beans to bind to DispatcherServlet  -->
 	
-<!-- 	integrating properties file -->
-      <context:property-placeholder location="/WEB-INF/config/spring.properties" />
+	<!-- 	integrating properties file -->
+	<context:property-placeholder location="/WEB-INF/config/spring.properties" />
 
 	<!-- search for controllers (@Controller)  -->
     <mvc:annotation-driven />
-    <context:component-scan base-package="org.sample"/> 
+    <context:component-scan base-package="ch.studihome.jspserver"/> 
 	
     <!-- handler  -->
     <mvc:default-servlet-handler/>     
 
 	<!--     picture upload -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	
   	<!-- view resolver  -->
     <bean id="jspViewResolver" 

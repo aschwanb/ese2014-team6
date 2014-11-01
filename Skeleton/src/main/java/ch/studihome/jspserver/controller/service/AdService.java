@@ -1,6 +1,6 @@
-package org.sample.controller.service;
+package ch.studihome.jspserver.controller.service;
 
-import org.sample.model.pojos.AdForm;
+import ch.studihome.jspserver.model.pojos.AdForm;
 
 public interface AdService {
 	

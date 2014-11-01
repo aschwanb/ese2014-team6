@@ -1,4 +1,4 @@
-package org.sample.controller.exceptions;
+package ch.studihome.jspserver.controller.exceptions;
 
 public class InvalidUserException extends RuntimeException {
 

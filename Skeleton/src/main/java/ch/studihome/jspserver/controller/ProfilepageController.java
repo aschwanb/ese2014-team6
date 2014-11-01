@@ -1,4 +1,4 @@
-package org.sample.controller;
+package ch.studihome.jspserver.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MapController {
+public class ProfilepageController {
 
-	@RequestMapping(value = "/map", method = RequestMethod.GET)
+    @RequestMapping(value = "/profilepage", method = RequestMethod.GET)
     public ModelAndView index() {
-    	ModelAndView model = new ModelAndView("map");
+    	ModelAndView model = new ModelAndView("profilepage");
     	return model;
     }
 
