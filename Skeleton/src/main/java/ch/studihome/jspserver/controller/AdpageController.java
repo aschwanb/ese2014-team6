@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import ch.studihome.jspserver.controller.exceptions.ImageSaveException;
 import ch.studihome.jspserver.controller.service.AdService;
 import ch.studihome.jspserver.model.pojos.AdForm;
 
@@ -73,23 +74,17 @@ public class AdpageController {
     	
     	if(!result.hasErrors())
     	{
-    		// Save image
-			try {
-				MultipartFile image = adForm.getImage();
-				String imagePath = imgPath + image.getOriginalFilename();
-				byte[] bytes = image.getBytes();
-				BufferedOutputStream stream = 
-						new BufferedOutputStream(
-								new FileOutputStream(new File(imagePath)));
-				stream.write(bytes);
-				stream.close();
-			} catch (Exception e) {
-				log.info(e.toString());
-				return model = new ModelAndView("adpage");
-			}
-    		adForm.setOwnerEmail(principal.getName());
-        	adForm = adService.saveFrom(adForm);
-        	model = new ModelAndView("profilepage");
+    		try {
+    			adForm.setOwnerEmail(principal.getName());
+            	adForm = adService.saveFrom(adForm);
+            	model = new ModelAndView("profilepage");
+    		} catch (ImageSaveException e) {
+    			log.info("Error while saving ad to db");
+    			model = new ModelAndView("adpage");
+    			model.addObject("page_error", e.getMessage());
+    		}
+    		log.info("Saved object in db");
+    		
         }else {
         	log.info("Error in form. Returning new one");
         	model = new ModelAndView("adpage");

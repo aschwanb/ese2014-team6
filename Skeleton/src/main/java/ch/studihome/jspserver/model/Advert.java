@@ -22,7 +22,7 @@ public class Advert {
     
     @Column(columnDefinition="character varying (2048) not null")
     private String description;
-    private String imgPath;
+    private String imgName;
     
     @OneToOne(cascade = {CascadeType.ALL})
     private Address address;
@@ -75,12 +75,12 @@ public class Advert {
 		this.address = address;
 	}
 
-	public String getImgPath() {
-		return imgPath;
+	public String getImgName() {
+		return imgName;
 	}
 
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
 	}
 	
 }
