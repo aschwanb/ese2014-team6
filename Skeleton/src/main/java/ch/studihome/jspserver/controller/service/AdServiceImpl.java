@@ -52,11 +52,12 @@ public class AdServiceImpl implements AdService {
 		return adForm;
 	}
 	
-	@Transactional
+    @Transactional(readOnly = false)
     public AdForm saveFrom(AdForm adForm)
 	{
     	User user = usrDao.findOne(Long.decode(adForm.getOwnerId()));
-    	Advert[] adverts = (Advert[]) user.getAds().toArray();
+    	Advert[] adverts = new Advert[0];
+    	adverts = user.getAds().toArray(adverts);
         Set<Advert> newset = new HashSet<Advert>(0);
     	
         Address address = new Address();
@@ -67,6 +68,7 @@ public class AdServiceImpl implements AdService {
         Advert ad = new Advert();
         
         ad.setAddress(address);
+        address.setAdvert(ad);
         if(adForm.getId() != 0)
         {
         	ad.setId(adForm.getId());
@@ -74,6 +76,7 @@ public class AdServiceImpl implements AdService {
         ad.setTitle(adForm.getTitle());
         ad.setPrice(Integer.parseInt(adForm.getPrice()));
         ad.setDescription(adForm.getDescription());
+        ad.setUser(user);
         
         for(Advert a: adverts)
         {
