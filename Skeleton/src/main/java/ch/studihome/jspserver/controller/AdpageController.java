@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.studihome.jspserver.controller.service.AdService;
+import ch.studihome.jspserver.model.User;
+import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.AdForm;
 
 @Controller
@@ -31,6 +33,9 @@ public class AdpageController {
     
     @Autowired
     AdService adService;
+    
+    @Autowired
+    UserDao usrDao;
 
     @RequestMapping(value = "/adpage", method = RequestMethod.GET)
     public ModelAndView show(@RequestParam(value = "id", required=false)String advId, Principal principal)
@@ -50,8 +55,8 @@ public class AdpageController {
     			model.addObject("errortext", "Ups, the advert " + advId + " could not be found.");
     		}else
     		{
-    			log.info("principal: " + principal.getName() + " owner: " + adForm.getOwnerEmail());
-    			if(principal.getName().equals(adForm.getOwnerEmail()))	//TODO better
+    			User user = usrDao.findByEmail(principal.getName()).get(0);
+    			if(user.getId() == Long.decode(adForm.getOwnerId()))	//TODO better
     			{
     				model.addObject("editable", "true");
     			}else
@@ -87,7 +92,8 @@ public class AdpageController {
 				log.info(e.toString());
 				return model = new ModelAndView("adpage");
 			}
-    		adForm.setOwnerEmail(principal.getName());
+			User user = usrDao.findByEmail(principal.getName()).get(0);
+    		adForm.setOwnerId(user.getId().toString());
         	adForm = adService.saveFrom(adForm);
         	model = new ModelAndView("profilepage");
         }else {

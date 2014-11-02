@@ -1,10 +1,13 @@
 package ch.studihome.jspserver.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -12,7 +15,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long usr_id;
 
     private String firstName;
     private String lastName;
@@ -22,15 +25,16 @@ public class User {
     private String user_role;
     private String enabled;
     
-    @OneToOne(cascade = {CascadeType.ALL})
-    private Address address; 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    private Set<Advert> ads = new HashSet<Advert>(0);
+    
     
     public Long getId() {
-        return id;
+        return usr_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.usr_id = id;
     }
 
     public String getFirstName() {
@@ -56,14 +60,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 
 	public String getPassword() {
 		return password;
@@ -95,6 +91,14 @@ public class User {
 
 	public void setEnabled(String enabled) {
 		this.enabled = enabled;
+	}
+
+	public Set<Advert> getAds() {
+		return ads;
+	}
+
+	public void setAds(Set<Advert> ads) {
+		this.ads = ads;
 	}
 
 	

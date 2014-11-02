@@ -25,7 +25,9 @@ public class AdForm {
     @NotNull(message = "Must enter a city name")
     private String city;
     
-    @NotNull(message = "Must enter a price")
+    @NotNull
+    @Pattern(regexp = "[1-9][0-9]*", 
+    message = "Must be valid number")
     private String price;
     
     @NotNull
@@ -35,7 +37,7 @@ public class AdForm {
     @NotNull(message = "Invalide file")
     private MultipartFile image;
 
-    private String ownerEmail;
+    private String ownerId;
     
     
 	public long getId() {
@@ -94,12 +96,12 @@ public class AdForm {
 		this.description = description;
 	}
 
-	public String getOwnerEmail() {
-		return ownerEmail;
+	public String getOwnerId() {
+		return ownerId;
 	}
 
-	public void setOwnerEmail(String ownerEmail) {
-		this.ownerEmail = ownerEmail;
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
 	}
 
 	public MultipartFile getImage() {

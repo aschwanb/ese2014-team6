@@ -74,6 +74,11 @@
 				</div>
 			</div>
 			
+			<div class="form-group hidden">
+				<form:input type="hidden" path="id" id="field-id"/>
+				<form:input type="hidden" path="ownerId" id="field-ownerId"/>
+			</div>
+			
 			<div class="form-group">
 				<div class="col-xs-12 adpage-buttongroup">
 					<div class="col-md-12 pull-right">
