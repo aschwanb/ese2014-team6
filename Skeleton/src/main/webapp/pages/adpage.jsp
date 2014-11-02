@@ -16,6 +16,20 @@
 			<h1>Advert<c:if test="${editable}"> <small>edit mode</small></c:if></h1>
 		</div>
 		
+		<c:if test="${not empty alertGood}">
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<strong>Success!</strong> ${alertGood}
+			</div>
+		</c:if>
+		
+		<c:if test="${not empty alertError}">
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<strong>Failed!</strong> ${alertError}
+			</div>
+		</c:if>
+		
 		<div class="stepwizard">
 			<div class="stepwizard-row setup-panel">
 				<div class="stepwizard-step">

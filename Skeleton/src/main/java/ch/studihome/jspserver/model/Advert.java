@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
-
 @Entity
 public class Advert {
 	@Id

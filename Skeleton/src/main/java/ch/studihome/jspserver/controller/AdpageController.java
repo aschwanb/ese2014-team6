@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import ch.studihome.jspserver.controller.exceptions.ImageSaveException;
 import ch.studihome.jspserver.controller.service.AdService;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.UserDao;
@@ -74,35 +75,29 @@ public class AdpageController {
     public ModelAndView save(@Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal)
     {
     	log.info("Receiving form. Checking ...");
-    	ModelAndView model;
+    	ModelAndView model = new ModelAndView("adpage");
     	
     	if(!result.hasErrors())
     	{
-    		// Save image
-			try {
-				MultipartFile image = adForm.getImage();
-				String imagePath = imgPath + image.getOriginalFilename();
-				byte[] bytes = image.getBytes();
-				BufferedOutputStream stream = 
-						new BufferedOutputStream(
-								new FileOutputStream(new File(imagePath)));
-				stream.write(bytes);
-				stream.close();
-			} catch (Exception e) {
-				log.info(e.toString());
-				return model = new ModelAndView("adpage");
-			}
-			User user = usrDao.findByEmail(principal.getName()).get(0);
-    		adForm.setOwnerId(user.getId().toString());
-        	adForm = adService.saveFrom(adForm);
-        	model = new ModelAndView("profilepage");
+    		try {
+    			User user = usrDao.findByEmail(principal.getName()).get(0);
+        		adForm.setOwnerId(user.getId().toString());
+            	adForm = adService.saveFrom(adForm);
+            	model.addObject("alertGood", "Ad saved.");
+            	
+        		log.info("Saved object in db");
+    		} catch (ImageSaveException e) {
+    			log.info("Error while saving ad to db");
+    			
+    			model.addObject("alertError", e.getMessage());
+    		}
+    		
         }else {
         	log.info("Error in form. Returning new one");
-        	model = new ModelAndView("adpage");
-        	model.addObject("editable", "true");
-        	model.addObject("adForm", adForm);
-
         }
+    	
+    	model.addObject("editable", "true");
+    	model.addObject("adForm", adForm);
     	return model;
     }
 

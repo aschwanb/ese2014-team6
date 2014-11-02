@@ -2,6 +2,10 @@ package ch.studihome.jspserver.controller.service;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,8 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import ch.studihome.jspserver.controller.exceptions.ImageSaveException;
 import ch.studihome.jspserver.model.Address;
 import ch.studihome.jspserver.model.Advert;
+import ch.studihome.jspserver.model.RoomImg;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AddressDao;
 import ch.studihome.jspserver.model.dao.AdvertDao;
@@ -53,7 +59,7 @@ public class AdServiceImpl implements AdService {
 	}
 	
     @Transactional(readOnly = false)
-    public AdForm saveFrom(AdForm adForm)
+    public AdForm saveFrom(AdForm adForm) throws ImageSaveException
 	{
     	User user = usrDao.findOne(Long.decode(adForm.getOwnerId()));
     	Advert[] adverts = new Advert[0];
@@ -77,6 +83,32 @@ public class AdServiceImpl implements AdService {
         ad.setPrice(Integer.parseInt(adForm.getPrice()));
         ad.setDescription(adForm.getDescription());
         ad.setUser(user);
+
+		//Save image to directory
+		try {
+			MultipartFile image = adForm.getImage();
+//			String name = Objects.toString(ad.getId());
+			String name = image.getOriginalFilename();
+			String imagePath = imgPath + name;
+			byte[] bytes = image.getBytes();
+			BufferedOutputStream stream = 
+					new BufferedOutputStream(
+							new FileOutputStream(new File(imagePath)));
+			stream.write(bytes);
+			stream.close();
+			
+			// Save image name to db
+			RoomImg img = new RoomImg();
+			img.setAdvert(ad);
+			img.setImgDescription("Temp description");
+			img.setImgName(name);
+			img.setImgNum(1);
+			Set<RoomImg> rset = new HashSet<RoomImg>(0);
+			rset.add(img);
+			ad.setImgs(rset);
+		} catch (Exception e) {
+			throw new ImageSaveException("Error while saving your image.\n" + e.toString());
+		}
         
         for(Advert a: adverts)
         {
@@ -87,11 +119,7 @@ public class AdServiceImpl implements AdService {
         }
         newset.add(ad);
         user.setAds(newset);
-        /*
-		MultipartFile image = adForm.getImage();
-		String imgPath = image.getOriginalFilename();
-		ad.setImgPath(imgPath);
-		*/
+        
 		ad = advertDao.save(ad);	// save ad to DB (has to be done, to easily get the adId
         
         adForm.setId(ad.getId());
