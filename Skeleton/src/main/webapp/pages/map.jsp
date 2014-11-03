@@ -6,7 +6,22 @@
 
 
 <base:page title="Map">
-
-<h1>Temporary Map Page</h1>
+	<jsp:attribute name="customHead">
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="js/map.js"></script>
+	</jsp:attribute>
+	
+	<jsp:body>
+		<h1>Temporary Map Page</h1>
+		
+		
+		<div id="map_container"></div>
+		
+		
+		<script type="text/javascript">
+			loadMap();
+		</script>
+	</jsp:body>
 
 </base:page>
+
