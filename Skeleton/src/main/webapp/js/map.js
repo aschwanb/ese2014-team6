@@ -2,28 +2,6 @@ var geocoder;
 var map;
 var marker;
 
-function HomeControl(controlDiv, map) {
-
-	  // Set CSS styles for the DIV containing the control
-	  // Setting padding to 5 px will offset the control
-	  // from the edge of the map.
-	  controlDiv.style.padding = '5px';
-
-	  // Set CSS for the control border.
-	  var controlUI = document.createElement('button');
-	  controlUI.style.cursor = 'pointer';
-	  controlUI.style.textAlign = 'center';
-	  controlUI.title = 'Click to set the marker to the center of the map.';
-	  controlUI.innerHTML = "Center marker"
-	  controlDiv.appendChild(controlUI);
-
-	  // Setup the click event listeners: simply set the map to Chicago.
-	  google.maps.event.addDomListener(controlUI, 'click', function() {
-		  document.getElementById("latlng").value = map.getCenter().toString().replace('(', '').replace(')', '');
-		  codeLatLng();
-	  });
-	}
-
 
 function initialize()
 {
@@ -50,42 +28,94 @@ function initialize()
 
 	google.maps.event.addListener(marker, 'dragend', function(event) {
 		document.getElementById("latlng").value = event.latLng.toString().replace('(', '').replace(')', '');
-		codeLatLng();
+		codeLatLng('kein zoom');
 	});
 	
-	// Create the DIV to hold the control and call the HomeControl() constructor
-	  // passing in this DIV.
-	  var homeControlDiv = document.createElement('div');
-	  var homeControl = new HomeControl(homeControlDiv, map);
-
-	  homeControlDiv.index = 1;
-	  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
-
+	// Reset button:
+	var controlDiv = document.createElement('div');
+	controlDiv.innerHTML = '<div ><div class="mapButton" title="Click to set the marker to the center of the map.">Reset Marker</div></div>';
+	controlDiv.className = 'gmnoprint';//class="gm-style-mtc"
 	
+	// Setup the click event listeners: simply set the map to Chicago.
+	google.maps.event.addDomListener(controlDiv.firstChild.firstChild, 'click', function() {
+		document.getElementById("latlng").value = map.getCenter().toString()
+				.replace('(', '').replace(')', '');
+		codeLatLng('kein zoom');
+	});
+	
+	controlDiv.index = 1;
+	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
+
 }
 
-function codeAddress()
+google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(document.getElementById("map_canvas"), "resize",
+									function() {
+										var center = map.getCenter();
+										google.maps.event.trigger(map, "resize");
+										map.setCenter(center); 
+									});
+
+
+function decodeAddress(results)
 {
-	var address = document.getElementById("address").value;
-	geocoder.geocode({
-		'address' : address
-	}, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-			map.setCenter(results[0].geometry.location);
-			map.setZoom(16);
-			marker.setTitle(address);
-			marker.setPosition(results[0].geometry.location);
-			document.getElementById("address").value = results[0].formatted_address;
-			document.getElementById("latlng").value = results[0].geometry.location.toString().replace('(', '').replace(')', '');
-		} else {
-			alert("Geocode was not successful for the following reason: "
-					+ status);
+	var strNum;
+	var route;
+	var local;
+	var postCode;
+	
+	for(var i = 0; i < results[0].address_components.length; i++)
+	{
+		var ac = results[0].address_components[i];
+
+		if(ac.types.indexOf("street_number") >= 0)
+		{
+			strNum = ac.long_name;
 		}
-	});
+		if(ac.types.indexOf("route") >= 0)
+		{
+			route = ac.long_name;
+		}
+		if(ac.types.indexOf("locality") >= 0)
+		{
+			local = ac.long_name;
+		}
+		if(ac.types.indexOf("postal_code") >= 0)
+		{
+			postCode = ac.long_name;
+		}
+	}
+	
+	document.getElementById("field-street").value = route + " " + strNum;
+	document.getElementById("field-plz").value = postCode;
+	document.getElementById("field-city").value = local;
+}
+
+function codeAddress(zoom)
+{
+	var address = document.getElementById("field-street").value + " " + 
+				  document.getElementById("field-plz").value + " " + 
+				  document.getElementById("field-city").value;
+	geocoder.geocode({'address' : address},
+					function(results, status) {
+						if (status == google.maps.GeocoderStatus.OK) {
+							if(!zoom)
+							{
+								map.setCenter(results[0].geometry.location);
+								map.setZoom(16);
+							}
+							marker.setTitle(address);
+							marker.setPosition(results[0].geometry.location);
+							decodeAddress(results);
+							document.getElementById("latlng").value = results[0].geometry.location.toString().replace('(', '').replace(')', '');
+						} else {
+							alert("Geocoder failed due to: " + status);
+						}
+					});
 }
 
 
-function codeLatLng() {
+function codeLatLng(zoom) {
 	var input = document.getElementById("latlng").value;
 	var latlngStr = input.split(",", 2);
 	var lat = parseFloat(latlngStr[0]);
@@ -95,11 +125,14 @@ function codeLatLng() {
 					function(results, status) {
 						if (status == google.maps.GeocoderStatus.OK) {
 							if (results[1]) {
-								map.setCenter(latlng);
-								map.setZoom(16);
+								if(!zoom)
+								{
+									map.setCenter(latlng);
+									map.setZoom(16);
+								}
 								marker.setPosition(latlng);
 								marker.setTitle();
-								document.getElementById("address").value = results[0].formatted_address;
+								decodeAddress(results);
 							}
 						} else {
 							alert("Geocoder failed due to: " + status);

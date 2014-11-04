@@ -1,15 +1,12 @@
 package ch.studihome.jspserver.controller.service;
 
 import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
 import org.jboss.logging.Logger;
-import org.mortbay.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

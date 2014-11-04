@@ -7,8 +7,10 @@
 
 <base:page title="Advert">
 	<jsp:attribute name="customHead">
-		<script type="text/javascript"  src="js/adp_carousel.js"></script>
 		<script type="text/javascript"  src="js/adp_tabs.js"></script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="js/map.js"></script>
+		<script type="text/javascript"  src="js/adp_carousel.js"></script>
 	</jsp:attribute>
 
 	<jsp:body>
@@ -93,9 +95,9 @@
 				<form:input type="hidden" path="ownerId" id="field-ownerId"/>
 			</div>
 			
-			<div class="form-group">
-				<div class="col-xs-12 adpage-buttongroup">
-					<div class="col-md-12 pull-right">
+			<div class="col-xs-12 adpage-buttongroup">
+				<div class="col-md-12 pull-right">
+					<div class="form-group">
 						<c:if test="${editable == false}">
 							<a class="btn btn-primary btn-lg adpage-buttongroupbutton" href="bookmark">Bookmark</a>
 						</c:if>

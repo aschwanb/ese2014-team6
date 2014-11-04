@@ -1,0 +1,29 @@
+<c:set var="streetErrors"><form:errors path="street"/></c:set>
+<c:set var="plzErrors"><form:errors path="plz"/></c:set>
+<c:set var="cityErrors"><form:errors path="city"/></c:set>
+<div class="form-group<c:if test="${not empty streetErrors or not empty plzErrors or not empty cityErrors}"> has-error</c:if>">
+	<label class="control-label">Address</label>
+	<label class="control-label sr-only" for="field-street">Street</label>
+	<label class="control-label sr-only" for="field-plz">Postleitzahl</label>
+	<label class="control-label sr-only" for="field-city">City</label>
+	<c:if test="${editable == true}">
+		<form:input path="street" id="field-street" type="text" class="form-control" placeholder="e.g. Dorfstrasse 35B" />
+		<form:errors path="street" cssClass="help-inline" element="span"/>
+		<form:input path="plz" id="field-plz" type="text" class="form-control" placeholder="e.g. 3012" />
+		<form:errors path="plz" cssClass="help-inline" element="span"/>
+		<form:input path="city" id="field-city" type="text" class="form-control" placeholder="e.g. Bern" />
+		<form:errors path="city" cssClass="help-inline" element="span"/>
+		<a class="btn btn-default" onclick="codeAddress()">Set marker to address</a>
+		<input class="form-control" id="latlng" type="text" value="46.9520921, 7.4374421"/>
+		<a class="btn btn-default" onclick="codeLatLng()">Set marker to coordinates</a>
+	</c:if>
+	<c:if test="${editable == false}">
+		<form:input path="street" id="field-street" type="text" class="form-control adform-output" readonly="true" />
+		<form:input path="plz" id="field-plz" type="text" class="form-control adform-output" readonly="true" />
+		<form:input path="city" id="field-city" type="text" class="form-control adform-output" readonly="true" />
+		<input class="form-control" id="latlng" type="text" value="46.9520921, 7.4374421">
+	</c:if>
+</div>
+
+<div id="map_canvas"></div>
+
