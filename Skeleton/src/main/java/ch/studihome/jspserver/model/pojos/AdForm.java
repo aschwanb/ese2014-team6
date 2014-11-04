@@ -26,6 +26,9 @@ public class AdForm {
     private String city;
     
     @NotNull
+    private String latlng;
+    
+    @NotNull
     @Pattern(regexp = "[1-9][0-9]*", 
     message = "Must be valid number")
     private String price;
@@ -38,6 +41,19 @@ public class AdForm {
     private MultipartFile image;
 
     private String ownerId;
+    
+    @NotNull
+    private boolean isWG;
+    
+    @NotNull
+	private int appartementSize;	//in square meters
+    
+    @NotNull
+	private int numberOfRooms;
+    
+	private int roomSize;	//in square meters, only for WG
+    
+	private int numberOfInhabitants;	//only for WG
     
     
 	public long getId() {
@@ -110,6 +126,54 @@ public class AdForm {
 
 	public void setImage(MultipartFile image) {
 		this.image = image;
+	}
+
+	public String getLatlng() {
+		return latlng;
+	}
+
+	public void setLatlng(String latlng) {
+		this.latlng = latlng;
+	}
+
+	public boolean getIsWG() {
+		return isWG;
+	}
+
+	public void setIsWG(boolean isWG) {
+		this.isWG = isWG;
+	}
+
+	public int getAppartementSize() {
+		return appartementSize;
+	}
+
+	public void setAppartementSize(int appartementSize) {
+		this.appartementSize = appartementSize;
+	}
+
+	public int getNumberOfRooms() {
+		return numberOfRooms;
+	}
+
+	public void setNumberOfRooms(int numberOfRooms) {
+		this.numberOfRooms = numberOfRooms;
+	}
+
+	public int getRoomSize() {
+		return roomSize;
+	}
+
+	public void setRoomSize(int roomSize) {
+		this.roomSize = roomSize;
+	}
+
+	public int getNumberOfInhabitants() {
+		return numberOfInhabitants;
+	}
+
+	public void setNumberOfInhabitants(int numberOfInhabitants) {
+		this.numberOfInhabitants = numberOfInhabitants;
 	}
     
     

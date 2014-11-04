@@ -41,6 +41,20 @@ div.mapButton
 	font-weight: 400;
 }
 
+div.mapButton-left
+{
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+div.mapButton-right
+{
+	border-left-style: none;
+	border-left-width: 0;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
 div.mapButton:hover
 {
 	color: rgb(0, 0, 0);
@@ -72,7 +86,7 @@ margin-top:20px;
 }
 
 .stepwizard-step {
-	width: 25%;
+	width: 33%;
 }
 
 .stepwizard-step button[disabled] {

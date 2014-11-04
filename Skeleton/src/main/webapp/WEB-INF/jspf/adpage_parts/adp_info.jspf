@@ -1,0 +1,127 @@
+<c:set var="titleErrors"><form:errors path="title"/></c:set>
+<div class="form-group<c:if test="${not empty titleErrors}"> has-error</c:if>">
+	<label class="control-label" for="field-title">Title</label>
+	<c:if test="${editable == true}">
+		<form:input path="title" id="field-title" type="text" class="form-control" placeholder="e.g. WG-Room 2 Min. from UniBern HG" />
+		<form:errors path="title" cssClass="help-inline" element="span"/>
+	</c:if>
+	<c:if test="${editable == false}">
+		<form:input path="title" id="field-title" type="text" class="form-control adform-output" readonly="true" />
+	</c:if>
+</div>
+
+<c:set var="priceErrors"><form:errors path="price"/></c:set>
+<div class="form-group<c:if test="${not empty priceErrors}"> has-error</c:if>">
+	<label class="control-label" for="field-price">Price</label>
+	<c:if test="${editable == true}">
+		<div class="input-group">
+			<form:input path="price" id="field-price" type="text" class="form-control" placeholder="e.g. 500" />
+			<span class="input-group-addon">SFr.</span>
+		</div>
+		<form:errors path="price" cssClass="help-inline" element="span"/>
+	</c:if>
+	<c:if test="${editable == false}">
+		<div class="input-group">
+			<form:input path="price" id="field-price" type="text" class="form-control adform-output" readonly="true" />
+			<span class="input-group-addon adform-output">SFr.</span>
+		</div>
+	</c:if>
+</div>
+
+<!--  -->
+
+<c:set var="appartementSizeErrors"><form:errors path="appartementSize"/></c:set>
+<div class="form-group<c:if test="${not empty appartementSizeErrors}"> has-error</c:if>">
+	<label class="control-label" for="field-appartementSize">Appartement Size</label>
+	<c:if test="${editable == true}">
+		<div class="input-group">
+			<form:input path="appartementSize" id="field-appartementSize" type="text" class="form-control" placeholder="e.g. 20" />
+			<span class="input-group-addon">&#13217;</span>
+		</div>
+		<form:errors path="appartementSize" cssClass="help-inline" element="span"/>
+	</c:if>
+	<c:if test="${editable == false}">
+		<div class="input-group">
+			<form:input path="appartementSize" id="field-appartementSize" type="text" class="form-control adform-output" readonly="true" />
+			<span class="input-group-addon adform-output">&#13217;</span>
+		</div>
+	</c:if>
+</div>
+
+<c:set var="numberOfRoomsErrors"><form:errors path="numberOfRooms"/></c:set>
+<div class="form-group<c:if test="${not empty numberOfRoomsErrors}"> has-error</c:if>">
+	<label class="control-label" for="field-numberOfRooms">Number Of Rooms In Appartement</label>
+	<c:if test="${editable == true}">
+		<form:input path="numberOfRooms" id="field-numberOfRooms" type="text" class="form-control" placeholder="e.g. 2.5" />
+		<form:errors path="numberOfRooms" cssClass="help-inline" element="span"/>
+	</c:if>
+	<c:if test="${editable == false}">
+		<form:input path="numberOfRooms" id="field-numberOfRooms" type="text" class="form-control adform-output" readonly="true" />
+	</c:if>
+</div>
+
+<c:set var="isWGErrors"><form:errors path="isWG"/></c:set>
+<div class="form-group<c:if test="${not empty isWGErrors}"> has-error</c:if>">
+	<label class="control-label" for="field-isWG"> </label>
+	<c:if test="${editable == true}">
+		<div class="checkbox">
+			<label>
+				<form:checkbox path="isWG" id="field-isWG" />
+				Shared flat
+			</label>
+		</div>
+		<form:errors path="isWG" cssClass="help-inline" element="span"/>
+	</c:if>
+	<c:if test="${editable == false}">
+		<div class="checkbox">
+			<label>
+				<form:checkbox path="isWG" id="field-isWG" class="adform-output" readonly="true" />
+				Shared flat
+			</label>
+		</div>
+	</c:if>
+</div>
+
+<c:set var="roomSizeErrors"><form:errors path="roomSize"/></c:set>
+<div class="form-group<c:if test="${not empty roomSizeErrors}"> has-error</c:if>" >
+	<label class="control-label" for="field-roomSize">Room Size</label>
+	<c:if test="${editable == true}">
+		<div class="input-group">
+			<form:input path="roomSize" id="field-roomSize" type="text" class="form-control" placeholder="e.g. 12" />
+			<span class="input-group-addon">&#13217;</span>
+		</div>
+		<form:errors path="roomSize" cssClass="help-inline" element="span"/>
+	</c:if>
+	<c:if test="${editable == false}">
+		<div class="input-group">
+			<form:input path="roomSize" id="field-roomSize" type="text" class="form-control adform-output" readonly="true" />
+			<span class="input-group-addon adform-output">&#13217;</span>
+		</div>
+	</c:if>
+</div>
+
+<c:set var="numberOfInhabitantsErrors"><form:errors path="numberOfInhabitants"/></c:set>
+<div class="form-group<c:if test="${not empty numberOfInhabitantsErrors}"> has-error</c:if>">
+	<label class="control-label" for="field-numberOfInhabitants">Total Number Of Inhabitants</label>
+	<c:if test="${editable == true}">
+		<form:input path="numberOfInhabitants" id="field-numberOfInhabitants" type="text" class="form-control" placeholder="e.g. 3" />
+		<form:errors path="numberOfInhabitants" cssClass="help-inline" element="span"/>
+	</c:if>
+	<c:if test="${editable == false}">
+		<form:input path="numberOfInhabitants" id="field-numberOfInhabitants" type="text" class="form-control adform-output" readonly="true" />
+	</c:if>
+</div>
+
+<!--  -->
+
+<c:set var="descriptionErrors"><form:errors path="description"/></c:set>
+<div class="form-group<c:if test="${not empty descriptionErrors}"> has-error</c:if>">
+	<label class="control-label" for="field-description">Description</label>
+	<c:if test="${editable == true}">
+		<form:textarea path="description" id="field-description" class="form-control" rows="5" ></form:textarea>
+		<form:errors path="description" cssClass="help-inline" element="span"/>
+	</c:if>
+	<c:if test="${editable == false}">
+		<form:textarea path="description" id="field-description" rows="5" class="form-control adform-output" readonly="true"></form:textarea>
+	</c:if>
+</div>

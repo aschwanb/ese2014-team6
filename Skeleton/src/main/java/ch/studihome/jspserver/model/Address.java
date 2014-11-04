@@ -15,6 +15,7 @@ public class Address {
 	private String street;
 	private String plz;
 	private String city;
+	private String coordinate;
 	
 	@OneToOne
 	private Advert advert;
@@ -57,6 +58,14 @@ public class Address {
 
 	public void setAdvert(Advert advert) {
 		this.advert = advert;
+	}
+
+	public String getCoordinate() {
+		return coordinate;
+	}
+
+	public void setCoordinate(String coordinate) {
+		this.coordinate = coordinate;
 	}
 	
 }

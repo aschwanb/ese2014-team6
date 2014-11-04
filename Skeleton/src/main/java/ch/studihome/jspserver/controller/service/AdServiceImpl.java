@@ -60,6 +60,12 @@ public class AdServiceImpl implements AdService {
 		adForm.setStreet(ad.getAddress().getStreet());
 		adForm.setPlz(ad.getAddress().getPlz());
 		adForm.setCity(ad.getAddress().getCity());
+		adForm.setLatlng(ad.getAddress().getCoordinate());
+		adForm.setIsWG(ad.isWG());
+		adForm.setAppartementSize(ad.getAppartementSize());
+		adForm.setNumberOfRooms(ad.getNumberOfRooms());
+		adForm.setRoomSize(ad.getRoomSize());
+		adForm.setNumberOfInhabitants(ad.getNumberOfInhabitants());
 		adForm.setDescription(ad.getDescription());
 		adForm.setOwnerId(ad.getUser().getId().toString());
 		
@@ -78,6 +84,7 @@ public class AdServiceImpl implements AdService {
         address.setStreet(adForm.getStreet());
         address.setPlz(adForm.getPlz());
         address.setCity(adForm.getCity());
+        address.setCoordinate(adForm.getLatlng());
         
         Advert ad = new Advert();
         
@@ -89,6 +96,11 @@ public class AdServiceImpl implements AdService {
         }
         ad.setTitle(adForm.getTitle());
         ad.setPrice(Integer.parseInt(adForm.getPrice()));
+        ad.setWG(adForm.getIsWG());
+        ad.setAppartementSize(adForm.getAppartementSize());
+        ad.setNumberOfRooms(adForm.getNumberOfRooms());
+        ad.setRoomSize(adForm.getRoomSize());
+        ad.setNumberOfInhabitants(adForm.getNumberOfInhabitants());
         ad.setDescription(adForm.getDescription());
         ad.setUser(user);
 

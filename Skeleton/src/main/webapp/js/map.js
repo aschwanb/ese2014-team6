@@ -33,8 +33,8 @@ function initialize()
 	
 	// Reset button:
 	var controlDiv = document.createElement('div');
-	controlDiv.innerHTML = '<div ><div class="mapButton" title="Click to set the marker to the center of the map.">Reset Marker</div></div>';
-	controlDiv.className = 'gmnoprint';//class="gm-style-mtc"
+	controlDiv.innerHTML = '<div ><div class="mapButton mapButton-right" title="Click to set the marker to the center of the map.">Reset Marker</div></div>';
+	controlDiv.className = 'gmnoprint';
 	
 	// Setup the click event listeners: simply set the map to Chicago.
 	google.maps.event.addDomListener(controlDiv.firstChild.firstChild, 'click', function() {
@@ -45,7 +45,26 @@ function initialize()
 	
 	controlDiv.index = 1;
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
+	
+	// Center on Marker button:
+	controlDiv = document.createElement('div');
+	controlDiv.innerHTML = '<div ><div class="mapButton mapButton-left" title="Click to center the map on the position of the marker.">Go to Marker</div></div>';
+	controlDiv.className = 'gmnoprint';
+	
+	// Setup the click event listeners: simply set the map to Chicago.
+	google.maps.event.addDomListener(controlDiv.firstChild.firstChild, 'click', function() {
+		map.setCenter(marker.getPosition());
+	});
+	
+	controlDiv.index = 1;
+	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
+	
+	
+}
 
+function lockMarker()
+{
+	marker.setDraggable(false);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
