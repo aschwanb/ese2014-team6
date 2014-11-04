@@ -1,16 +1,21 @@
 package ch.studihome.jspserver.controller.service;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.jboss.logging.Logger;
+import org.mortbay.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import ch.studihome.jspserver.controller.AdpageController;
 import ch.studihome.jspserver.controller.exceptions.ImageSaveException;
 import ch.studihome.jspserver.model.Address;
 import ch.studihome.jspserver.model.Advert;
@@ -27,6 +32,8 @@ public class AdServiceImpl implements AdService {
 	@Autowired    AdvertDao advertDao;
     @Autowired    AddressDao addrDao;
     @Autowired    UserDao usrDao;
+	static Logger log = Logger.getLogger(AdpageController.class.getName());
+
     
     // Image location = imgPath + imageName
     @Value("${path.adimg}")
@@ -82,10 +89,17 @@ public class AdServiceImpl implements AdService {
         ad.setDescription(adForm.getDescription());
         ad.setUser(user);
 
-		//Save image to directory
-		try {
+        // Todo: Check if upload is an image. (eg "image" = image.getContentType().split("/")[0])
+
+        try {
+			//Save image to directory
+			Integer imgNr = 1;
 			MultipartFile image = adForm.getImage();
-//			String name = Objects.toString(ad.getId());
+			log.info("INFO: File Content Type is " + image.getContentType());
+//			TODO: Read Ad id correctly
+//			String name = Objects.toString(ad.getId()) + 
+//					"_" + Objects.toString(imgNr) + 
+//					"." + image.getContentType().split("/")[1];
 			String name = image.getOriginalFilename();
 			String imagePath = imgPath + name;
 			byte[] bytes = image.getBytes();
@@ -100,7 +114,7 @@ public class AdServiceImpl implements AdService {
 			img.setAdvert(ad);
 			img.setImgDescription("Temp description");
 			img.setImgName(name);
-			img.setImgNum(1);
+			img.setImgNum(imgNr);
 			Set<RoomImg> rset = new HashSet<RoomImg>(0);
 			rset.add(img);
 			ad.setImgs(rset);
