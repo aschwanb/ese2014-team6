@@ -19,6 +19,7 @@ jQuery(document).ready(function($) {
 			$target.show();
 			$target.find('textarea:eq(0)').focus();
 			$target.find('input:eq(0)').focus();
+			(document.getElementById("map_canvas").dispatchEvent||document.getElementById("map_canvas").fireEvent)(new Event("resize"))	//fugly but needed
 	    }
 	});
 	

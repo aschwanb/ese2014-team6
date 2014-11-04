@@ -7,8 +7,10 @@
 
 <base:page title="Advert">
 	<jsp:attribute name="customHead">
-		<script type="text/javascript"  src="js/adp_carousel.js"></script>
 		<script type="text/javascript"  src="js/adp_tabs.js"></script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="js/map.js"></script>
+		<script type="text/javascript"  src="js/adp_carousel.js"></script>
 	</jsp:attribute>
 
 	<jsp:body>
@@ -34,14 +36,10 @@
 			<div class="stepwizard-row setup-panel">
 				<div class="stepwizard-step">
 					<a href="#main" type="button" class="btn btn-primary btn-circle"> </a>
-					<p>Main Info</p>
+					<p>Info</p>
 				</div>
 				<div class="stepwizard-step">
-					<a href="#add" type="button" class="btn btn-default btn-circle" ${adForm.id == 0 ? 'disabled="disabled"':''}> </a>
-					<p>Additional Info</p>
-				</div>
-				<div class="stepwizard-step">
-					<a href="#map" type="button" class="btn btn-default btn-circle" ${adForm.id == 0 ? 'disabled="disabled"':''}> </a>
+					<a href="#map" type="button" class="btn btn-default btn-circle"> </a>
 					<p>Map</p>
 				</div>
 				<div class="stepwizard-step">
@@ -56,16 +54,7 @@
 			<div class="row setup-content" id="main">
 				<div class="col-xs-12">
 					<div class="col-md-12">
-						<%@include file="/WEB-INF/jspf/adpage_parts/adp_mainInfo.jspf"%>
-						<button class="btn btn-primary nextBtn btn-lg pull-right"  type="button" >Next</button>
-					</div>
-				</div>
-			</div>
-			<div class="row setup-content" id="add">
-				<div class="col-xs-12">
-					<div class="col-md-12">
-						<%@include file="/WEB-INF/jspf/adpage_parts/adp_additionalInfo.jspf"%>
-						<button class="btn btn-primary prevBtn btn-lg"  type="button" >Previous</button>
+						<%@include file="/WEB-INF/jspf/adpage_parts/adp_info.jspf"%>
 						<button class="btn btn-primary nextBtn btn-lg pull-right"  type="button" >Next</button>
 					</div>
 				</div>
@@ -93,9 +82,9 @@
 				<form:input type="hidden" path="ownerId" id="field-ownerId"/>
 			</div>
 			
-			<div class="form-group">
-				<div class="col-xs-12 adpage-buttongroup">
-					<div class="col-md-12 pull-right">
+			<div class="col-xs-12 adpage-buttongroup">
+				<div class="col-md-12 pull-right">
+					<div class="form-group">
 						<c:if test="${editable == false}">
 							<a class="btn btn-primary btn-lg adpage-buttongroupbutton" href="bookmark">Bookmark</a>
 						</c:if>

@@ -3,6 +3,65 @@ body{
 }
 
 
+/* map */
+div#map_canvas
+{
+	width:100%;
+	height:500px;
+}
+
+div.gmnoprint
+{
+	margin-top: 5px;
+}
+
+div.mapButton
+{
+	cursor: pointer;
+	direction: ltr;
+	overflow: hidden;
+	text-align: center;
+	position: relative;
+	color: rgb(86, 86, 86);
+	font-family: Roboto,Arial,sans-serif;
+	font-size: 11px;
+	-moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+	-moz-user-select: none;
+	font-size: 11px;
+	background-color: rgb(255, 255, 255);
+	padding: 1px 6px;
+	border-radius: 2px;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.3);
+	min-width: 34px;
+	font-weight: 400;
+}
+
+div.mapButton-left
+{
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+div.mapButton-right
+{
+	border-left-style: none;
+	border-left-width: 0;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+div.mapButton:hover
+{
+	color: rgb(0, 0, 0);
+	background-color: rgb(235, 235, 235);
+}
+
+
 /* carousel for ad pictures */
 .hide-bullets {
 list-style:none;
@@ -27,7 +86,7 @@ margin-top:20px;
 }
 
 .stepwizard-step {
-	width: 25%;
+	width: 33%;
 }
 
 .stepwizard-step button[disabled] {

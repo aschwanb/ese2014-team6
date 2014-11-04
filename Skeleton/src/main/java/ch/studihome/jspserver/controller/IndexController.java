@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.studihome.jspserver.controller.service.AdService;
-import ch.studihome.jspserver.controller.service.AdServiceImpl;
 import ch.studihome.jspserver.controller.service.SignupService;
 import ch.studihome.jspserver.model.Advert;
 
