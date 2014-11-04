@@ -1,6 +1,7 @@
 package ch.studihome.jspserver.controller.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.io.BufferedOutputStream;
@@ -33,11 +34,16 @@ public class AdServiceImpl implements AdService {
     @Autowired    AddressDao addrDao;
     @Autowired    UserDao usrDao;
 	static Logger log = Logger.getLogger(AdpageController.class.getName());
-
     
     // Image location = imgPath + imageName
     @Value("${path.adimg}")
 	private String imgPath;
+
+    public Iterable<Advert> findAll() {
+    	log.info("INFO: There are " + advertDao.count() + 
+    			" adverts registered. Returning them all");
+    	return advertDao.findAll();
+    }
     
     @Transactional
 	public AdForm loadById(String adId)

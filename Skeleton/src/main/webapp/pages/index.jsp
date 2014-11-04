@@ -12,6 +12,20 @@
 	</div>
 	
 	<h2>Start looking for your home today</h2>
+
+	<c:if test="${not empty ads}">
+		<table>
+			<tr><th>ID</th><th>Title</th><th>Price</th></tr>
+			<c:forEach var="ad" items="${ads}">
+				<tr>
+					<td><c:out value="${ad.id}"/></td>
+					<td><c:out value="${ad.title}"/></td>
+					<td><c:out value="${ad.price}"/></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
+	
 	
 	<div class="form-actions">
 		<a class="btn btn-warning" href="register">Sign Up Here!</a>     
