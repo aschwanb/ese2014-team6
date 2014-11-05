@@ -17,6 +17,8 @@
 <!-- User creation		 -->
 		<security:intercept-url pattern="/register*" access="permitAll"/>
 		<security:intercept-url pattern="/create*" access="permitAll"/>
+<!-- 	Ad view	 		 -->
+		<security:intercept-url pattern="/adpage*" access="permitAll"/>
 <!-- Presentation		 -->
 		<security:intercept-url pattern="/css/**" access="permitAll" />
 		<security:intercept-url pattern="/fonts/**" access="permitAll" />
@@ -27,8 +29,8 @@
 <!-- 		excluded for developpement -->
 		<security:intercept-url pattern="/map" access="permitAll" />
 <!-- Everything else		 -->
-		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
-		
+ 		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+
 		<security:form-login
 			login-page="/login"
 			authentication-failure-url="/login?error"

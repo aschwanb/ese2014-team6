@@ -35,7 +35,7 @@ public class AdpageController {
     UserDao usrDao;
 
     @RequestMapping(value = "/adpage", method = RequestMethod.GET)
-    public ModelAndView show(@RequestParam(value = "id", required=false)String advId, Principal principal)
+    public ModelAndView show(@RequestParam(value = "id", required=false)String advId, @RequestParam(required=false)Principal principal)
     {
     	ModelAndView model = new ModelAndView("adpage");
     	
@@ -52,12 +52,13 @@ public class AdpageController {
     			model.addObject("errortext", "Ups, the advert " + advId + " could not be found.");
     		}else
     		{
-    			User user = usrDao.findByEmail(principal.getName()).get(0);
-    			if(user.getId() == Long.decode(adForm.getOwnerId()))	//TODO better
-    			{
-    				model.addObject("editable", "true");
-    			}else
-    			{
+    			if (principal != null) {
+    				User user = usrDao.findByEmail(principal.getName()).get(0);
+    				//TODO better
+    				if(user.getId() == Long.decode(adForm.getOwnerId())) {     			
+    					model.addObject("editable", "true");
+    				}
+    			}else {
     				model.addObject("editable", "false");
     			}
 		    	model.addObject("adForm", adForm);
