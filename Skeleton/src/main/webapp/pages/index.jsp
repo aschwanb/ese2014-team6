@@ -17,8 +17,8 @@
 		<table>
 			<tr><th>ID</th><th>Title</th><th>Price</th></tr>
 			<c:forEach var="ad" items="${ads}">
-				<tr onclick="document.location='adpage?id=${ad.id}';">
-					<td><c:out value="${ad.id}"/></td>
+				<tr onclick="document.location='adpage?id=${ad.adv_id}';">
+					<td><c:out value="${ad.adv_id}"/></td>
 					<td><c:out value="${ad.title}"/></td>
 					<td><c:out value="${ad.price}"/></td>
 				</tr>
