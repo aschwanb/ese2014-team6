@@ -30,11 +30,11 @@ public class User {
     private Set<Advert> ads = new HashSet<Advert>(0);
     
     
-    public Long getId() {
+    public Long getUsr_id() {
         return usr_id;
     }
 
-    public void setId(Long id) {
+    public void setUsr_id(Long id) {
         this.usr_id = id;
     }
 

@@ -19,11 +19,11 @@ public class RoomImg{
 	@ManyToOne @JoinColumn(name="adv_id", nullable=false)
 	Advert advert;
 	
-	public Long getId() {
+	public Long getRimg_id() {
 		return rimg_id;
 	}
 	
-	public void setId(Long id) {
+	public void setRimg_id(Long id) {
 		this.rimg_id = id;
 	}
 	

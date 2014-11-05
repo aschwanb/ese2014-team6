@@ -43,11 +43,11 @@ public class Advert {
 	private Set<RoomImg> imgs = new HashSet<RoomImg>(0);
 	
 	
-	public Long getId() {
+	public Long getAdv_id() {
 		return adv_id;
 	}
 	
-	public void setId(Long id) {
+	public void setAdv_id(Long id) {
 		this.adv_id = id;
 	}
 	

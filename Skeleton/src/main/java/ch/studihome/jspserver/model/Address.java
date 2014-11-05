@@ -20,11 +20,11 @@ public class Address {
 	@OneToOne
 	private Advert advert;
 	
-	public Long getId() {
+	public Long getAdr_id() {
 		return adr_id;
 	}
 	
-	public void setId(Long id) {
+	public void setAdr_id(Long id) {
 		this.adr_id = id;
 	}
 	
