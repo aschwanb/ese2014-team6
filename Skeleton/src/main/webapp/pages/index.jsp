@@ -14,7 +14,7 @@
 	<h2>Start looking for your home today</h2>
 
 	<c:if test="${not empty ads}">
-		<table>
+		<table class="table table-striped table-hover">
 			<tr><th>ID</th><th>Title</th><th>Price</th></tr>
 			<c:forEach var="ad" items="${ads}">
 				<tr onclick="document.location='adpage?id=${ad.adv_id}';">
@@ -25,5 +25,4 @@
 			</c:forEach>
 		</table>
 	</c:if>
-	
 </base:page>
