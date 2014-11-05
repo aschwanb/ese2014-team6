@@ -49,7 +49,7 @@ public class SignupServiceImpl implements SignupService {
         // Address anAddress = addDao.findOne((long)3); // find by ID
         
         
-        signupForm.setId(user.getId());
+        signupForm.setId(user.getUsr_id());
 
         return signupForm;
 

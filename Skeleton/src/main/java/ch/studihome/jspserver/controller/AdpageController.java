@@ -55,7 +55,7 @@ public class AdpageController {
     			if (principal != null) {
     				User user = usrDao.findByEmail(principal.getName()).get(0);
     				//TODO better
-    				if(user.getId() == Long.decode(adForm.getOwnerId())) {     			
+    				if(user.getUsr_id() == Long.decode(adForm.getOwnerId())) {     			
     					model.addObject("editable", "true");
     				}
     			}else {
@@ -78,7 +78,7 @@ public class AdpageController {
     	{
     		try {
     			User user = usrDao.findByEmail(principal.getName()).get(0);
-        		adForm.setOwnerId(user.getId().toString());
+        		adForm.setOwnerId(user.getUsr_id().toString());
             	adForm = adService.saveFrom(adForm);
             	model.addObject("alertGood", "Ad saved.");
             	

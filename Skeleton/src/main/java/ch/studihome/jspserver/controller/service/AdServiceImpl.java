@@ -54,7 +54,7 @@ public class AdServiceImpl implements AdService {
 			return null;
 		}
 		
-		adForm.setId(ad.getId());
+		adForm.setId(ad.getAdv_id());
 		adForm.setTitle(ad.getTitle());
 		adForm.setPrice(Integer.toString(ad.getPrice()));
 		adForm.setStreet(ad.getAddress().getStreet());
@@ -67,7 +67,7 @@ public class AdServiceImpl implements AdService {
 		adForm.setRoomSize(ad.getRoomSize());
 		adForm.setNumberOfInhabitants(ad.getNumberOfInhabitants());
 		adForm.setDescription(ad.getDescription());
-		adForm.setOwnerId(ad.getUser().getId().toString());
+		adForm.setOwnerId(ad.getUser().getUsr_id().toString());
 		
 		return adForm;
 	}
@@ -92,7 +92,7 @@ public class AdServiceImpl implements AdService {
         address.setAdvert(ad);
         if(adForm.getId() != 0)
         {
-        	ad.setId(adForm.getId());
+        	ad.setAdv_id(adForm.getId());
         }
         ad.setTitle(adForm.getTitle());
         ad.setPrice(Integer.parseInt(adForm.getPrice()));
@@ -139,7 +139,7 @@ public class AdServiceImpl implements AdService {
         
         for(Advert a: adverts)
         {
-        	if(!a.getId().equals(ad.getId()))
+        	if(!a.getAdv_id().equals(ad.getAdv_id()))
         	{
         		newset.add(a);
         	}
@@ -149,7 +149,7 @@ public class AdServiceImpl implements AdService {
         
 		ad = advertDao.save(ad);	// save ad to DB (has to be done, to easily get the adId
         
-        adForm.setId(ad.getId());
+        adForm.setId(ad.getAdv_id());
         
         user = usrDao.save(user);   // save user to DB
 
