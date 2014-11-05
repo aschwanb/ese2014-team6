@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="base" tagdir="/WEB-INF/tags" %>
 
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -25,7 +25,7 @@
                 			<li><a href="#">Calendar</a></li>
                 			<li><a href="#">Messages</a></li>
                 			<li><a href="#">Bookmarks</a></li>
-                			<li><a href="#">My Adverts</a></li>
+                			<li><a href="profilepage#profile-adv">My Adverts</a></li>
                 			<li class="divider"></li>
                <!--  <li class="dropdown-header">Nav header</li>-->
                				<li><a href="profilepage">My Profile</a></li>

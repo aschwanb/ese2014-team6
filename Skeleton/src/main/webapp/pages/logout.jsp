@@ -11,8 +11,8 @@
 		<h1>Logout sucessfull</h1>
 	</div>
 
-	<div class="form-actions">
+<!-- 	<div class="form-actions">
 		<a class="btn btn-default" href="index">Return to Index</a>
-	</div>
+	</div> -->
 
 </base:page>

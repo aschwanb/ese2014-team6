@@ -37,7 +37,6 @@
 	      <div class="form-actions">
 	      		<button name="submit" type="submit" value="submit" class="btn btn-primary">login</button>
 	            <a class="btn btn-default" href="index">Cancel</a>
-	            <a class="btn btn-warning" href="register">Sign Up Here!</a>                 
 	        </div>
 			</form>
 		</div>
