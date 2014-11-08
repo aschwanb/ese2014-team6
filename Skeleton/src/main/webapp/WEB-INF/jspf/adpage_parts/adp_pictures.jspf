@@ -109,7 +109,7 @@
                 </div>
         </div>
 </div>
-
+<!--
 <c:if test="${editable == true}">
 	<c:set var="imageErrors"><form:errors path="image"/></c:set>
 	<div class="form-group<c:if test="${not empty imageErrors}">error</c:if>">
@@ -122,4 +122,4 @@
 	<c:if test="${editable == false}"> <%-- TODO --%>
 		<img src="/Skeleton/user/ad/img/square.jpg" alt="..." class="img-thumbnail">
 	</c:if>
-</c:if>
+</c:if> -->

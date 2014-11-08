@@ -105,7 +105,7 @@ public class AdServiceImpl implements AdService {
         ad.setUser(user);
 
         // Todo: Check if upload is an image. (eg "image" = image.getContentType().split("/")[0])
-
+		/*
         try {
 			//Save image to directory
 			Integer imgNr = 1;
@@ -135,7 +135,7 @@ public class AdServiceImpl implements AdService {
 			ad.setImgs(rset);
 		} catch (Exception e) {
 			throw new ImageSaveException("Error while saving your image.\n" + e.toString());
-		}
+		}*/
         
         for(Advert a: adverts)
         {
