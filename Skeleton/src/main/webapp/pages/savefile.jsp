@@ -6,7 +6,11 @@
 
 
 <base:page title="Save File">
+	<jsp:attribute name="page_header">
+		<h1>${msg}</h1>
+	</jsp:attribute>
 	
-	<h1>${msg}</h1>
-	
+	<jsp:body>
+		
+	</jsp:body>
 </base:page>

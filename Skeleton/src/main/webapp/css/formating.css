@@ -8,6 +8,7 @@ div#map_canvas
 {
 	width:100%;
 	height:500px;
+	margin-bottom: 15px;
 }
 
 div.gmnoprint
@@ -67,6 +68,10 @@ div.mapButton:hover
 list-style:none;
 margin-left: -40px;
 margin-top:20px;
+}
+
+#slider-thumbs {
+	margin-bottom: 15px;
 }
 
 

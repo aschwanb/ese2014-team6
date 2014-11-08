@@ -6,13 +6,14 @@
 
 
 <base:page title="Logout">
-
-	<div class="page-header">
-		<h1>Logout sucessfull</h1>
-	</div>
+	<jsp:attribute name="page_header">
+		<h1>Logout successful</h1>
+	</jsp:attribute>
+	
+	<jsp:body>
 
 <!-- 	<div class="form-actions">
 		<a class="btn btn-default" href="index">Return to Index</a>
 	</div> -->
-
+	</jsp:body>
 </base:page>

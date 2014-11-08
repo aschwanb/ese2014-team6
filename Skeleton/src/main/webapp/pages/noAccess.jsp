@@ -6,11 +6,13 @@
 
 
 <base:page title="NO ACCESS">
-
-	<div class="page-header">
+	<jsp:attribute name="page_header">
 		<h1>Access denied</h1>
-	</div>	
+	</jsp:attribute>
 	
-	<h2>${msg}</h2>
-
+	<jsp:body>
+		<div class="alert alert-danger">
+			${msg}
+		</div>
+	</jsp:body>
 </base:page>
