@@ -12,13 +12,6 @@
 	
 	<jsp:body>
 		<div id="login-box">
-			<c:if test="${not empty error}">
-				<div class="error">${error}</div>
-			</c:if>
-			<c:if test="${not empty msg}">
-				<div class="msg">${msg}</div>
-			</c:if>
-		 
 		 	<form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
 		 		<table>
 					<tr>
@@ -38,7 +31,7 @@
 		      		<button name="submit" type="submit" value="submit" class="btn btn-primary">login</button>
 		            <a class="btn btn-default" href="index">Cancel</a>
 		        </div>
-				</form>
+			</form>
 		</div>
 	</jsp:body>
 </base:page>

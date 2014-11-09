@@ -20,7 +20,7 @@
 				<jsp:invoke fragment="page_header"/>
 			</div>
 			
-			<div class="alert-group">
+			<div class="alert-group" id="alertGroupPageTop">
 				<c:if test="${not empty alerts}">
 					<c:forEach var="alert" items="${alerts}">
 						<div class="alert alert-${alert.type} alert-dismissable">

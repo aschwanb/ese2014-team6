@@ -42,7 +42,7 @@
 			</div>
 		</c:if>
 		
-		<form:form method="post" modelAttribute="adForm" action="advert" id="adForm" cssClass="form-horizontal"  enctype="multipart/form-data" autocomplete="off" role="form">
+		<form:form method="post" modelAttribute="adForm" action="advert" id="adForm" cssClass="form-horizontal"  enctype="multipart/form-data;charset=UTF-8" autocomplete="off" role="form">
 			
 			<div class="row ${(editable)?('setup-content'):('') }" id="pics">
 				<div class="col-xs-12">
@@ -81,16 +81,16 @@
 				<form:input type="hidden" path="ownerId" id="field-ownerId"/>
 			</div>
 			
-			<div class="col-xs-12 adpage-buttongroup">
+			<div class="col-xs-12 advert-buttongroup">
 				<div class="col-md-12 pull-right">
 					<div class="form-group">
 						<c:if test="${editable == false}">
-							<a class="btn btn-primary btn-lg adpage-buttongroupbutton" href="bookmark">Bookmark</a>
+							<a class="btn btn-primary btn-lg advert-buttongroupbutton" href="bookmark">Bookmark</a>
 						</c:if>
 						<c:if test="${editable == true}">
-							<button type="submit" class="btn btn-primary btn-lg adpage-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
+							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
 						</c:if>
-						<a class="btn btn-default btn-lg adpage-buttongroupbutton" href="${editable ? 'discard' : 'contact'}" ${adForm.id == 0 ? 'disabled="disabled"':''}>${editable ? 'Discard' : 'Contact'}</a>
+						<a class="btn btn-default btn-lg advert-buttongroupbutton" href="${editable ? 'discard' : 'contact'}" ${adForm.id == 0 ? 'disabled="disabled"':''}>${editable ? 'Discard' : 'Contact'}</a>
 					</div>
 				</div>
 			</div>

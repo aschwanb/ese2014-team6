@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
 			$item.trigger('blur');
 			allWells.hide();
 			$target.show();
-			$target.find('textarea:eq(0)').focus();
+			//$target.find('textarea:eq(0)').focus();
 			$target.find('input:eq(0)').focus();
 			(document.getElementById("map_canvas").dispatchEvent||document.getElementById("map_canvas").fireEvent)(new Event("resize"))	//fugly but needed
 	    }
@@ -27,6 +27,7 @@ jQuery(document).ready(function($) {
 	    var curStep = $(this).closest(".setup-content"),
 	    	curStepBtn = curStep.attr("id"),
 	    	nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+	    	afternextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().next().children("a"),
 	    	curInputs = curStep.find("input[type='text'],input[type='url']"),
 	    	isValid = true;
 	    
@@ -39,10 +40,15 @@ jQuery(document).ready(function($) {
 	    }
 	
 	    if (isValid)
-	    	nextStepWizard.removeAttr('disabled').trigger('click');
-	    
-	    if(curStepBtn == "map"){
-	    	$('.adpage-buttongroupbutton').removeAttr('disabled');
+	    {
+	    	nextStepWizard.trigger('click');
+	    	if(nextStepWizard.attr("href") != "#pics")
+	    	{
+	    		afternextStepWizard.removeAttr('disabled');
+	    	}else
+	    	{
+	    		$('.advert-buttongroupbutton').removeAttr('disabled');
+	    	}
 	    }
 	});
 	

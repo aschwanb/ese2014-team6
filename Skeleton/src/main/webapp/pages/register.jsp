@@ -11,9 +11,7 @@
 	</jsp:attribute>
 	
 	<jsp:body>
-		<h2>${error}</h2>
-		
-		<form:form method="post" modelAttribute="signupForm" action="create" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
+		<form:form method="post" modelAttribute="signupForm" action="register" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
 		    <fieldset>
 		        <legend>Enter Your Information</legend>
 		
@@ -61,13 +59,5 @@
 		
 		    </fieldset>
 		</form:form>
-		
-		<c:if test="${page_error != null }">
-			<div class="alert alert-error">
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				<h4>Error!</h4>
-				${page_error}
-			</div>
-		</c:if>
 	</jsp:body>
 </base:page>

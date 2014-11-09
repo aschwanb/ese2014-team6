@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import ch.studihome.jspserver.controller.AdpageController;
+import ch.studihome.jspserver.controller.AdvertController;
 import ch.studihome.jspserver.controller.exceptions.ImageSaveException;
 import ch.studihome.jspserver.model.Address;
 import ch.studihome.jspserver.model.Advert;
@@ -30,7 +30,7 @@ public class AdServiceImpl implements AdService {
 	@Autowired    AdvertDao advertDao;
     @Autowired    AddressDao addrDao;
     @Autowired    UserDao usrDao;
-	static Logger log = Logger.getLogger(AdpageController.class.getName());
+	static Logger log = Logger.getLogger(AdvertController.class.getName());
     
     // Image location = imgPath + imageName
     @Value("${path.adimg}")

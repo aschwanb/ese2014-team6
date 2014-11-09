@@ -15,12 +15,11 @@
 	
 		<c:if test="${not empty ads}">
 			<table class="table table-striped table-hover">
-				<tr><th>ID</th><th>Title</th><th>Price</th></tr>
+				<tr><th>Title</th><th>Price</th></tr>
 				<c:forEach var="ad" items="${ads}">
-					<tr onclick="document.location='adpage?id=${ad.adv_id}';">
-						<td><c:out value="${ad.adv_id}"/></td>
-						<td><c:out value="${ad.title}"/></td>
-						<td><c:out value="${ad.price}"/></td>
+					<tr onclick="document.location='advert?id=${ad.adv_id}';">
+						<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.title}"/></a></td>
+						<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.price}"/></a></td>
 					</tr>
 				</c:forEach>
 			</table>

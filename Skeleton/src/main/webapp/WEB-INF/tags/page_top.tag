@@ -33,13 +33,13 @@
 								<li class="dropdown"><a href="#" class="dropdown-toggle"
 									data-toggle="dropdown">My Account <span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Calendar</a></li>
-										<li><a href="#">Messages</a></li>
-										<li><a href="#">Bookmarks</a></li>
-										<li><a href="profilepage#profile-adv">My Adverts</a></li>
+										<li><a href="profile#profile-cal">Calendar</a></li>
+										<li><a href="profile#profile-msg">Messages</a></li>
+										<li><a href="profile#profile-bm">Bookmarks</a></li>
+										<li><a href="profile#profile-adv">My Adverts</a></li>
 										<li class="divider"></li>
 										<!--  <li class="dropdown-header">Nav header</li>-->
-										<li><a href="profilepage">My Profile</a></li>
+										<li><a href="profile">My Profile</a></li>
 										<li><a href="<c:url value="j_spring_security_logout" />">Sign
 												Out</a></li>
 									</ul>

@@ -12,13 +12,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.studihome.jspserver.controller.exceptions.InvalidUserException;
 import ch.studihome.jspserver.controller.service.SignupService;
+import ch.studihome.jspserver.model.pojos.BSalert;
 import ch.studihome.jspserver.model.pojos.SignupForm;
 
 @Controller
 public class RegisterController {
 
     @Autowired
-    SignupService sampleService;
+    SignupService signupService;
 
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -28,22 +29,37 @@ public class RegisterController {
         return model;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView create(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
     	
     	ModelAndView model; 
     	
     	if (!signupForm.getPassword().equals(signupForm.getConfirmPassword())) {
         	model = new ModelAndView("register");
-        	model.addObject("signupForm", new SignupForm());    	
-        	model.addObject("error", "Passwords not matching");
+        	signupForm.setPassword("");
+        	signupForm.setConfirmPassword("");
+        	model.addObject("signupForm", signupForm);
+        	
+	    	BSalert[] alerts = new BSalert[1];
+	    	alerts[0] = new BSalert(BSalert.Type.danger, "Passwords not matching");
+	    	model.addObject("alerts", alerts);
     	} else if (!result.hasErrors()) {
             try {
-            	sampleService.saveFrom(signupForm);
+            	signupService.saveFrom(signupForm);
             	model = new ModelAndView("index");
+            	
+    	    	BSalert[] alerts = new BSalert[1];
+    	    	alerts[0] = new BSalert(BSalert.Type.success, "Sign Up Complete!");
+    	    	model.addObject("alerts", alerts);
             } catch (InvalidUserException e) {
             	model = new ModelAndView("register");
-            	model.addObject("page_error", e.getMessage());
+            	signupForm.setPassword("");
+            	signupForm.setConfirmPassword("");
+            	model.addObject("signupForm", signupForm);
+            	
+    	    	BSalert[] alerts = new BSalert[1];
+    	    	alerts[0] = new BSalert(BSalert.Type.danger, e.getMessage());
+    	    	model.addObject("alerts", alerts);
             }
         } else {
         	model = new ModelAndView("register");
@@ -53,7 +69,9 @@ public class RegisterController {
     
     @RequestMapping(value = "/security-error", method = RequestMethod.GET)
     public String securityError(RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("page_error", "You do have have permission to do that!");
+    	BSalert[] alerts = new BSalert[1];
+    	alerts[0] = new BSalert(BSalert.Type.danger, "You do have have permission to do that!");
+        redirectAttributes.addFlashAttribute("alerts", alerts);
         return "redirect:/";
     }
 

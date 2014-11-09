@@ -25,8 +25,8 @@ import ch.studihome.jspserver.model.pojos.AdForm;
 import ch.studihome.jspserver.model.pojos.BSalert;
 
 @Controller
-public class AdpageController {
-	static Logger log = Logger.getLogger(AdpageController.class.getName());
+public class AdvertController {
+	static Logger log = Logger.getLogger(AdvertController.class.getName());
     
 	@Value("${path.adimg}")
 	private String imgPath;
@@ -41,9 +41,9 @@ public class AdpageController {
     AdvertDao advDao;
 
     @RequestMapping(value = "/advert", method = RequestMethod.GET)
-    public ModelAndView show(@RequestParam(value = "id", required=false)String advId, @RequestParam(required=false)Principal principal)
+    public ModelAndView show(@RequestParam(value = "id", required=false)String advId, Principal principal)
     {
-    	ModelAndView model = new ModelAndView("adpage");
+    	ModelAndView model = new ModelAndView("advert");
     	
     	if(advId == null) // new ad
     	{
@@ -53,16 +53,22 @@ public class AdpageController {
     			model.addObject("adForm", new AdForm());
     		}else
     		{
-    			model = new ModelAndView("noAccess");
-    			model.addObject("msg", "You don't have the permission to access 'Adpage - edit'");
+    			model = new ModelAndView("infoPage");
+    			model.addObject("title", "Advert - Error 404");
+    			BSalert[] alerts = new BSalert[1];
+            	alerts[0] = new BSalert(BSalert.Type.warning, "You don't have the permission to access 'Advert - edit'");
+            	model.addObject("alerts", alerts);
     		}
     	}else
     	{
     		AdForm adForm = adService.loadById(advId);
     		if(adForm == null)
     		{
-    			model = new ModelAndView("error");
-    			model.addObject("errortext", "Ups, the advert " + advId + " could not be found.");
+    			model = new ModelAndView("infoPage");
+    			model.addObject("title", "Advert - Error 404");
+    			BSalert[] alerts = new BSalert[1];
+            	alerts[0] = new BSalert(BSalert.Type.warning, "Ups, the advert " + advId + " could not be found.");
+            	model.addObject("alerts", alerts);
     		}else
     		{
     			if (principal != null) {
@@ -77,7 +83,7 @@ public class AdpageController {
 		    	model.addObject("adForm", adForm);
     		}
     	}
-    	log.info("Returning adpage model");
+    	log.info("Returning advert model");
     	return model;
     }
     
@@ -87,7 +93,7 @@ public class AdpageController {
     	boolean noAccess = false;
     	
     	log.info("Receiving form. Checking ...");
-    	ModelAndView model = new ModelAndView("adpage");
+    	ModelAndView model = new ModelAndView("advert");
     	
     	if (principal != null)
 		{
@@ -101,7 +107,7 @@ public class AdpageController {
 		    		try {
 		        		adForm.setOwnerId(user.getUsr_id().toString());
 		            	adForm = adService.saveFrom(adForm);
-		            	BSalert[] alerts = new BSalert[3];
+		            	BSalert[] alerts = new BSalert[1];
 		            	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Ad saved.");
 		            	model.addObject("alerts", alerts);
 		            	
@@ -131,8 +137,11 @@ public class AdpageController {
 		
     	if(noAccess)
 		{
-			model = new ModelAndView("noAccess");
-			model.addObject("msg", "You don't have the permission change the advert '" + adForm.getTitle() + "'");
+			model = new ModelAndView("infoPage");
+	    	model.addObject("title", "Access denied!");
+	    	BSalert[] alerts = new BSalert[1];
+	    	alerts[0] = new BSalert(BSalert.Type.danger, "You don't have the permission to change the advert '" + adForm.getTitle() + "'");
+	    	model.addObject("alerts", alerts);
 		}
     	
     	return model;

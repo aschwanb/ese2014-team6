@@ -13,6 +13,10 @@ body {
 	font-family: sans-serif;
 }
 
+.dropdown-menu a{
+	text-shadow: none;
+}
+
 .form-control[readonly].adform-output, .input-group-addon.adform-output {
 	cursor: text;
 	background-color: inherit;
@@ -68,4 +72,13 @@ body {
             border-bottom-right-radius:5px;
             border-bottom-left-radius:5px;
     border-top:0
+}
+
+/* tables with links */
+table a, table a:hover, table a:link, table a:visited, table a:active, table a:focus{
+	display: block;
+	margin: -8px;
+	padding: 8px;
+	color: inherit;
+	text-decoration: inherit;
 }

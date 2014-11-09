@@ -5,15 +5,11 @@
 <%@taglib prefix="base" tagdir="/WEB-INF/tags" %>
 
 
-<base:page title="Logout">
+<base:page title="${title}">
 	<jsp:attribute name="page_header">
-		<h1>Logout successful</h1>
+		<h1>${title}</h1>
 	</jsp:attribute>
 	
 	<jsp:body>
-
-<!-- 	<div class="form-actions">
-		<a class="btn btn-default" href="index">Return to Index</a>
-	</div> -->
 	</jsp:body>
 </base:page>
