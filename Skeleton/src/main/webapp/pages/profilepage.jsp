@@ -15,7 +15,6 @@
 		</c:if>
 	<a class="btn btn-default" href=adpage>Create new Ad</a>
 	<a class="btn btn-default" href=fileupload>Upload Images</a>
-	
 	<!-- Quick Search -->
 	<div>
 		<form>
@@ -44,7 +43,20 @@
 		  <div class="tab-pane fade in active" id="profile-cal">A...</div>
 		  <div class="tab-pane fade" id="profile-msg">B...</div>
 		  <div class="tab-pane fade" id="profile-bm">C...</div>
-		  <div class="tab-pane fade" id="profile-adv"><a class="btn btn-default" href=adpage?id=1>Open Ad 1</a> </div>
+		  <div class="tab-pane fade" id="profile-adv">
+		  		<c:if test="${not empty ads}">
+					<table class="table table-striped table-hover">
+						<tr><th>ID</th><th>Title</th><th>Price</th></tr>
+						<c:forEach var="ad" items="${ads}">
+							<tr onclick="document.location='adpage?id=${ad.adv_id}';">
+								<td><c:out value="${ad.adv_id}"/></td>
+								<td><c:out value="${ad.title}"/></td>
+								<td><c:out value="${ad.price}"/></td>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:if>
+<!-- 		  <a class="btn btn-default" href=adpage?id=1>Open Ad 1</a> </div> -->
 		</div>
 	</div>
 

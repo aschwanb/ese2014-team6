@@ -28,11 +28,8 @@ public class AdpageController {
 	@Value("${path.adimg}")
 	private String imgPath;
     
-    @Autowired
-    AdService adService;
-    
-    @Autowired
-    UserDao usrDao;
+    @Autowired AdService adService;
+    @Autowired UserDao usrDao;
 
     @RequestMapping(value = "/adpage", method = RequestMethod.GET)
     public ModelAndView show(@RequestParam(value = "id", required=false)String advId, @RequestParam(required=false)Principal principal)

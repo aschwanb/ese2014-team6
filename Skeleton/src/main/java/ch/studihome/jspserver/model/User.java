@@ -29,7 +29,16 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
     private Set<Advert> ads = new HashSet<Advert>(0);
     
-    
+    public String toString() {
+    	String out = "FirstName: " + firstName + "\n"+
+    			"LastName: " + lastName + "\n"+
+    			"UserName: " + userName + "\n"+
+    			"Email: " + email + "\n"+
+    			"Password: " + password + "\n"+
+    			"UserRole: " + user_role + "\n"+
+    			"Enabled: " + enabled + "\n";
+    	return out;
+    }
     public Long getUsr_id() {
         return usr_id;
     }
