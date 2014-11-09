@@ -19,9 +19,18 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/theme.css"/>
 		<link rel="stylesheet" type="text/css" href="css/formating.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script type="text/javascript"  src="js/bootstrap.min.js"></script>
-		<script type="text/javascript"  src="js/bootsole.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/bootsole.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+		
+		<!-- DataTables CSS -->
+  
+<!-- jQuery -->
+  
+<!-- DataTables -->
 		
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
