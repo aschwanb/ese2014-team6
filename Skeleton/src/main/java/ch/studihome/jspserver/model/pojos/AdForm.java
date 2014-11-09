@@ -1,10 +1,11 @@
 package ch.studihome.jspserver.model.pojos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import org.springframework.web.multipart.MultipartFile;
 
 public class AdForm {
 
@@ -36,9 +37,6 @@ public class AdForm {
     @NotNull
     @Size(min = 12, message = "Description too short")
     private String description;
-    
-    @NotNull(message = "Invalide file")
-    private MultipartFile image;
 
     private String ownerId;
     
@@ -55,6 +53,7 @@ public class AdForm {
     
 	private int numberOfInhabitants;	//only for WG
     
+    private List<ImgObj> imgs = new ArrayList<ImgObj>();
     
 	public long getId() {
 		return id;
@@ -120,12 +119,12 @@ public class AdForm {
 		this.ownerId = ownerId;
 	}
 
-	public MultipartFile getImage() {
-		return image;
+	public List<ImgObj> getImgs() {
+		return imgs;
 	}
 
-	public void setImage(MultipartFile image) {
-		this.image = image;
+	public void setImgs(List<ImgObj> imgs) {
+		this.imgs = imgs;
 	}
 
 	public String getLatlng() {
