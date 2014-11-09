@@ -4,9 +4,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ImgObj{
 	private String description;
-	private MultipartFile file;
-	private String state;
-	private String number;
+	private MultipartFile file;	// for image upload
+	private String state;	// delete, new, change or nochange
+	private String number;	// identifies the image, important for delete and change
+	private String url;	// for image display
 	
 	public String getDescription() {
 		return description;
@@ -31,6 +32,12 @@ public class ImgObj{
 	}
 	public void setNumber(String number) {
 		this.number = number;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	
 }

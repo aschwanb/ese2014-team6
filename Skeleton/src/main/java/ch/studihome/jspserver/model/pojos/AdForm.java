@@ -175,5 +175,7 @@ public class AdForm {
 		this.numberOfInhabitants = numberOfInhabitants;
 	}
     
-    
+    public int getImgsCount(){
+    	return imgs.size();
+    }
 }
