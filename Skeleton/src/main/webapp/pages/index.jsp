@@ -22,9 +22,11 @@
 					<c:forEach var="ad" items="${ads}">
 						<tr onclick="document.location='advert?id=${ad.adv_id}';">
 							<td>
+								  <div class="col-xs-6 col-md-3">
 								<a href="advert?id=${ad.adv_id}">
-									<img src="usr/ad/img/placeholder.jpg" alt="INVALIDE JPG" class="img-thumbnail" />
+									<img src="/img/placeholder.jpg" alt="Image not found" class="img-thumbnail">
 								</a>
+								</div>
 							</td>
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.title}"/></a></td>
 							<td><a href="advert?id=${ad.adv_id}">
