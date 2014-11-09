@@ -16,12 +16,19 @@
 		<c:if test="${not empty ads}">
 			<table id="allAds" class="table table-striped table-hover display">
 				<thead>
-					<tr><th>Title</th><th>Price</th></tr>
+					<tr><th>Image</th><th>Title</th><th>Location</th><th>Price</th></tr>
 				</thead>
 				<tbody>
 					<c:forEach var="ad" items="${ads}">
 						<tr onclick="document.location='advert?id=${ad.adv_id}';">
+							<td>
+								<a href="advert?id=${ad.adv_id}">
+									<img src="usr/ad/img/placeholder.jpg" alt="INVALIDE JPG" class="img-thumbnail" />
+								</a>
+							</td>
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.title}"/></a></td>
+							<td><a href="advert?id=${ad.adv_id}">
+								<c:out value="${ad.address.street} ${ad.address.plz} ${ad.address.city}"/></a></td>
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.price}"/></a></td>
 						</tr>
 					</c:forEach>
