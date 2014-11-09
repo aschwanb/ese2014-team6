@@ -5,12 +5,11 @@
 <%@taglib prefix="base" tagdir="/WEB-INF/tags" %>
 
 
-<base:page title="NO ACCESS">
-
-	<div class="page-header">
-		<h1>Access denied</h1>
-	</div>	
+<base:page title="${title}">
+	<jsp:attribute name="page_header">
+		<h1>${title}</h1>
+	</jsp:attribute>
 	
-	<h2>${msg}</h2>
-
+	<jsp:body>
+	</jsp:body>
 </base:page>

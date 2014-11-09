@@ -1,14 +1,10 @@
-<c:set var="titleErrors"><form:errors path="title"/></c:set>
-<div class="form-group<c:if test="${not empty titleErrors}"> has-error</c:if>">
-	<label class="control-label" for="field-title">Title</label>
-	<c:if test="${editable == true}">
+<c:if test="${editable == true}"><c:set var="titleErrors"><form:errors path="title"/></c:set>
+	<div class="form-group<c:if test="${not empty titleErrors}"> has-error</c:if>">
+		<label class="control-label" for="field-title">Title</label>
 		<form:input path="title" id="field-title" type="text" class="form-control" placeholder="e.g. WG-Room 2 Min. from UniBern HG" />
 		<form:errors path="title" cssClass="help-inline" element="span"/>
-	</c:if>
-	<c:if test="${editable == false}">
-		<form:input path="title" id="field-title" type="text" class="form-control adform-output" readonly="true" />
-	</c:if>
-</div>
+	</div>
+</c:if>
 
 <c:set var="priceErrors"><form:errors path="price"/></c:set>
 <div class="form-group<c:if test="${not empty priceErrors}"> has-error</c:if>">

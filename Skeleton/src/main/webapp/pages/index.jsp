@@ -6,23 +6,23 @@
 
 
 <base:page title="StudiHome">
-
-	<div class="page-header">
+	<jsp:attribute name="page_header">
 		<h1>Welcome to StudiHome</h1>
-	</div>
+	</jsp:attribute>
 	
-	<h2>Start looking for your home today</h2>
-
-	<c:if test="${not empty ads}">
-		<table class="table table-striped table-hover">
-			<tr><th>ID</th><th>Title</th><th>Price</th></tr>
-			<c:forEach var="ad" items="${ads}">
-				<tr onclick="document.location='adpage?id=${ad.adv_id}';">
-					<td><c:out value="${ad.adv_id}"/></td>
-					<td><c:out value="${ad.title}"/></td>
-					<td><c:out value="${ad.price}"/></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</c:if>
+	<jsp:body>
+		<h2>Start looking for your home today</h2>
+	
+		<c:if test="${not empty ads}">
+			<table class="table table-striped table-hover">
+				<tr><th>Title</th><th>Price</th></tr>
+				<c:forEach var="ad" items="${ads}">
+					<tr onclick="document.location='advert?id=${ad.adv_id}';">
+						<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.title}"/></a></td>
+						<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.price}"/></a></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:if>
+	</jsp:body>
 </base:page>

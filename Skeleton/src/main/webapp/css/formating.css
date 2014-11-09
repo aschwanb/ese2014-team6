@@ -8,6 +8,7 @@ div#map_canvas
 {
 	width:100%;
 	height:500px;
+	margin-bottom: 15px;
 }
 
 div.gmnoprint
@@ -69,8 +70,12 @@ margin-left: -40px;
 margin-top:20px;
 }
 
+#slider-thumbs {
+	margin-bottom: 15px;
+}
 
-/* adpage "tabs" */
+
+/* advert page "tabs" */
 .stepwizard-step p {
     margin-top: 10px;
 }
@@ -126,7 +131,7 @@ margin-top:20px;
   border-radius: 15px;
 }
 
-.adpage-buttongroup {
+.advert-buttongroup {
 	padding-top: 15px;
 	margin-top:15px;
 	border-top: 1px solid #eee;

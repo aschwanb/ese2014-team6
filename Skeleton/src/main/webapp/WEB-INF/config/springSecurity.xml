@@ -18,17 +18,13 @@
 		<security:intercept-url pattern="/register*" access="permitAll"/>
 		<security:intercept-url pattern="/create*" access="permitAll"/>
 <!-- 	Ad view	 		 -->
-		<security:intercept-url pattern="/adpage*" access="permitAll"/>
+		<security:intercept-url pattern="/advert*" access="permitAll"/>
 <!-- Presentation		 -->
 		<security:intercept-url pattern="/css/**" access="permitAll" />
 		<security:intercept-url pattern="/fonts/**" access="permitAll" />
 		<security:intercept-url pattern="/img/**" access="permitAll" />
 		<security:intercept-url pattern="/js/**" access="permitAll" />
 		<security:intercept-url pattern="/user/ad/img/**" access="permitAll" />
-		
-<!-- 		excluded for developpement -->
-		<security:intercept-url pattern="/map" access="permitAll" />
-<!-- Everything else		 -->
  		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 
 		<security:form-login
