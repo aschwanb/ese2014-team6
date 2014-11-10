@@ -12,17 +12,35 @@
 	
 	<jsp:body>
 		<h2>Start looking for your home today</h2>
-	
+		
 		<c:if test="${not empty ads}">
-			<table class="table table-striped table-hover">
-				<tr><th>Title</th><th>Price</th></tr>
-				<c:forEach var="ad" items="${ads}">
-					<tr onclick="document.location='advert?id=${ad.adv_id}';">
-						<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.title}"/></a></td>
-						<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.price}"/></a></td>
-					</tr>
-				</c:forEach>
+			<table id="allAds" class="table table-striped table-hover display">
+				<thead>
+					<tr><th>Image</th><th>Title</th><th>Location</th><th>Price</th></tr>
+				</thead>
+				<tbody>
+					<c:forEach var="ad" items="${ads}">
+						<tr onclick="document.location='advert?id=${ad.adv_id}';">
+							<td>
+								  <div class="col-xs-6 col-md-3">
+								<a href="advert?id=${ad.adv_id}">
+									<img src="/img/placeholder.jpg" alt="Image not found" class="img-thumbnail">
+								</a>
+								</div>
+							</td>
+							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.title}"/></a></td>
+							<td><a href="advert?id=${ad.adv_id}">
+								<c:out value="${ad.address.street} ${ad.address.plz} ${ad.address.city}"/></a></td>
+							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.price}"/></a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 		</c:if>
 	</jsp:body>
 </base:page>
+<script>
+$(document).ready(function(){
+    $('#allAds').dataTable();
+});
+</script>

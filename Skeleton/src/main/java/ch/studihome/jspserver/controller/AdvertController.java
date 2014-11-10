@@ -123,7 +123,7 @@ public class AdvertController {
 		    		}
 		    		
 		        }else {
-		        	log.info("Error in form. Returning new one");
+		        	log.info("Error in form: " + result.getAllErrors().toString() + "/nReturning new one.");
 		        }
 		    	
 		    	model.addObject("editable", "true");

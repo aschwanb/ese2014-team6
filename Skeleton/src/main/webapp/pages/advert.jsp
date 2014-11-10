@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@taglib prefix="base" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="base" tagdir="/WEB-INF/tags" %>
 
 
 <base:page title="Advert - ${(editable)?('edit'):(adForm.title)}">
@@ -42,7 +42,7 @@
 			</div>
 		</c:if>
 		
-		<form:form method="post" modelAttribute="adForm" action="advert" id="adForm" cssClass="form-horizontal"  enctype="multipart/form-data;charset=UTF-8" autocomplete="off" role="form">
+		<form:form method="post" modelAttribute="adForm" action="advert" id="adForm" cssClass="form-horizontal"  enctype="multipart/form-data" autocomplete="off" role="form">
 			
 			<div class="row ${(editable)?('setup-content'):('') }" id="pics">
 				<div class="col-xs-12">
