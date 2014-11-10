@@ -32,13 +32,13 @@ public class AdForm {
     @NotNull
     @Pattern(regexp = "[1-9][0-9]*", 
     message = "Must be valid number")
-    private String price;
+    private int price;
     
     @NotNull
     @Size(min = 12, message = "Description too short")
     private String description;
 
-    private String ownerId;
+    private long ownerId;
     
     @NotNull
     private boolean isWG;
@@ -95,11 +95,11 @@ public class AdForm {
 		this.city = city;
 	}
 	
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
@@ -111,11 +111,11 @@ public class AdForm {
 		this.description = description;
 	}
 
-	public String getOwnerId() {
+	public long getOwnerId() {
 		return ownerId;
 	}
 
-	public void setOwnerId(String ownerId) {
+	public void setOwnerId(long ownerId) {
 		this.ownerId = ownerId;
 	}
 

@@ -123,7 +123,7 @@ public class UserTest
 	public void testSetUser_roleGetUser_role()
 	{
 		User user = new User();
-		String user_role = "Advertiser"; //TODO Advertiser gross oder chli
+		String user_role = "ROLE_USER"; 
 		user.setUser_role(user_role);
 		String actual = user.getUser_role();
 		assertEquals(user_role, actual);
@@ -133,7 +133,7 @@ public class UserTest
 	public void testSetEnabledGetEnabled()
 	{
 		User user = new User();
-		String enabled = "23/09/2008"; //TODO Format Enabled
+		String enabled = "TRUE"; 
 		user.setEnabled(enabled);
 		String actual = user.getEnabled();
 		assertEquals(enabled, actual);

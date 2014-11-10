@@ -2,93 +2,119 @@ package ch.studihome.model.pojos;
 
 import static org.junit.Assert.*;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import org.junit.Test;
 
-public class AdFormTest {
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+
+import org.junit.Test;
+
+import ch.studihome.jspserver.model.pojos.AdForm;
+
+public class AdFormTest
+{
 
 	@Test
-	public void testGetId() {
-		fail("Not yet implemented");
+	public void testSetIdGetId()
+	{
+		AdForm adForm = new AdForm();
+		long id = 2;
+		adForm.setId(id);
+		long actual = adForm.getId();
+		assertEquals(id, actual);
 	}
 
 	@Test
-	public void testSetId() {
-		fail("Not yet implemented");
+	public void testSetTitleGetTitle()
+	{
+		AdForm adForm = new AdForm();
+		String title = "An awsome title";
+		adForm.setTitle(title);
+		String actual = adForm.getTitle();
+		assertEquals(title, actual);
 	}
 
 	@Test
-	public void testGetTitle() {
-		fail("Not yet implemented");
+	public void testSetStreetGetStreet()
+	{
+		AdForm adForm = new AdForm();
+		String street = "Bernstrasse 11";
+		adForm.setStreet(street);
+		String actual = adForm.getStreet();
+		assertEquals(street, actual);
 	}
 
 	@Test
-	public void testSetTitle() {
-		fail("Not yet implemented");
+	public void testSetPlzGetPlz()
+	{
+		AdForm adForm = new AdForm();
+		String plz = "3066";
+		adForm.setPlz(plz);
+		String actual = adForm.getPlz();
+		assertEquals(plz, actual);
+	}
+	
+	@Test
+	public void testSetCityGetCity()
+	{
+		AdForm adForm = new AdForm();
+		String city = "Balzhausen";
+		adForm.setCity(city);
+		String actual = adForm.getCity();
+		assertEquals(city, actual);
 	}
 
 	@Test
-	public void testGetStreet() {
-		fail("Not yet implemented");
+	public void testSetPriceGetPrice()
+	{
+		AdForm adForm = new AdForm();
+		int price = 234;
+		adForm.setPrice(price);
+		int actual = adForm.getPrice();
+		assertEquals(price, actual);
 	}
 
 	@Test
-	public void testSetStreet() {
-		fail("Not yet implemented");
+	public void testSetDescriptionGetDescription()
+	{
+		AdForm adForm = new AdForm();
+		String description = "An awsome description";
+		adForm.setDescription(description);
+		String actual = adForm.getDescription();
+		assertEquals(description, actual);
 	}
 
 	@Test
-	public void testGetPlz() {
-		fail("Not yet implemented");
+	public void testSetOwnerIdGetOwnerId()
+	{
+		AdForm adForm = new AdForm();
+		long ownerId = 123;
+		adForm.setOwnerId(ownerId);
+		long actual = adForm.getOwnerId();
+		assertEquals(ownerId, actual);
 	}
 
 	@Test
-	public void testSetPlz() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetCity() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetCity() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetPrice() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetPrice() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetDescription() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetDescription() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetOwnerId() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetOwnerId() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetImgs() {
-		fail("Not yet implemented");
+	public void testSetImgsGetImgs()
+	{
+		AdForm adForm = new AdForm();
+		
 	}
 
 	@Test

@@ -107,7 +107,7 @@ public class AdvertController {
 		    	if(!result.hasErrors())
 		    	{
 		    		try {
-		        		adForm.setOwnerId(user.getUsr_id().toString());
+		        		adForm.setOwnerId(user.getUsr_id());
 		            	adForm = adService.saveFrom(adForm);
 		            	BSalert[] alerts = new BSalert[1];
 		            	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Ad saved.");
