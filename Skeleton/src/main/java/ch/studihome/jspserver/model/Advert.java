@@ -138,5 +138,68 @@ public class Advert {
 	public void setNumberOfInhabitants(int numberOfInhabitants) {
 		this.numberOfInhabitants = numberOfInhabitants;
 	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((adv_id == null) ? 0 : adv_id.hashCode());
+		result = prime * result + appartementSize;
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + (isWG ? 1231 : 1237);
+		result = prime * result + numberOfInhabitants;
+		result = prime * result + numberOfRooms;
+		result = prime * result + price;
+		result = prime * result + roomSize;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Advert other = (Advert) obj;
+		if (adv_id == null)
+		{
+			if (other.adv_id != null)
+				return false;
+		} else if (!adv_id.equals(other.adv_id))
+			return false;
+		if (appartementSize != other.appartementSize)
+			return false;
+		if (description == null)
+		{
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (isWG != other.isWG)
+			return false;
+		if (numberOfInhabitants != other.numberOfInhabitants)
+			return false;
+		if (numberOfRooms != other.numberOfRooms)
+			return false;
+		if (price != other.price)
+			return false;
+		if (roomSize != other.roomSize)
+			return false;
+		if (title == null)
+		{
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+	
+	
 	
 }
