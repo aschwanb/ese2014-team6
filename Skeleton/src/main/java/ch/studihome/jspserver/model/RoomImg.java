@@ -58,5 +58,52 @@ public class RoomImg{
 	public void setImgNum(int imgNum) {
 		this.imgNum = imgNum;
 	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((imgDescription == null) ? 0 : imgDescription.hashCode());
+		result = prime * result + ((imgName == null) ? 0 : imgName.hashCode());
+		result = prime * result + imgNum;
+		result = prime * result + ((rimg_id == null) ? 0 : rimg_id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RoomImg other = (RoomImg) obj;
+		if (imgDescription == null)
+		{
+			if (other.imgDescription != null)
+				return false;
+		} else if (!imgDescription.equals(other.imgDescription))
+			return false;
+		if (imgName == null)
+		{
+			if (other.imgName != null)
+				return false;
+		} else if (!imgName.equals(other.imgName))
+			return false;
+		if (imgNum != other.imgNum)
+			return false;
+		if (rimg_id == null)
+		{
+			if (other.rimg_id != null)
+				return false;
+		} else if (!rimg_id.equals(other.rimg_id))
+			return false;
+		return true;
+	}
+	
 	
 }
