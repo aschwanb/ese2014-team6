@@ -14,9 +14,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.springframework.beans.factory.annotation.Value;
+
+
 
 @Entity
 public class Advert {
+    // Image location = imgPath + imageName
+    @Value("${path.adimg}")
+	private String imgPath;	
+	
 	@Id
 	@GeneratedValue
 	private Long adv_id;
@@ -42,7 +49,11 @@ public class Advert {
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
 	private Set<RoomImg> imgs = new HashSet<RoomImg>(0);
 	
-	
+	public String getFirstImage() {
+//		return imgPath + this.getImgs().iterator().next().getImgName();
+		return this.getImgs().iterator().next().getImgName();
+
+	}
 	public Long getAdv_id() {
 		return adv_id;
 	}
