@@ -6,6 +6,12 @@
 
 
 <base:page title="StudiHome">
+	<jsp:attribute name="customHead">
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+	</jsp:attribute>
+	
 	<jsp:attribute name="page_header">
 		<h1>Welcome to StudiHome</h1>
 	</jsp:attribute>

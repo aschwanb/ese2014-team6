@@ -9,7 +9,7 @@
                             <!-- Carousel items -->
                             <div id="carousel-inner" class="carousel-inner">
                             	<c:forEach var="url" varStatus="status" items="${adForm.imgUrl}">
-                            		<div class="active item" data-slide-number="${status.index}">
+                            		<div class="item" data-slide-number="${status.index}">
 	                                	<img class="center-block" src="${url}">
 	                                </div>
                             	</c:forEach>
