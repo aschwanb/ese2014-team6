@@ -7,6 +7,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class AdForm {
 
     private long id;
@@ -52,8 +54,12 @@ public class AdForm {
 	private int roomSize;	//in square meters, only for WG
     
 	private int numberOfInhabitants;	//only for WG
-    
-    private List<ImgObj> imgs = new ArrayList<ImgObj>();
+
+    private List<String> imgDescription = new ArrayList<String>();
+    private List<MultipartFile> imgFile = new ArrayList<MultipartFile>();
+    private List<String> imgState = new ArrayList<String>();
+    private List<String> imgNumber = new ArrayList<String>();
+    private List<String> imgUrl = new ArrayList<String>();
     
 	public long getId() {
 		return id;
@@ -119,14 +125,6 @@ public class AdForm {
 		this.ownerId = ownerId;
 	}
 
-	public List<ImgObj> getImgs() {
-		return imgs;
-	}
-
-	public void setImgs(List<ImgObj> imgs) {
-		this.imgs = imgs;
-	}
-
 	public String getLatlng() {
 		return latlng;
 	}
@@ -175,5 +173,48 @@ public class AdForm {
 		this.numberOfInhabitants = numberOfInhabitants;
 	}
     
+    public int getImgsCount(){
+    	return imgUrl.size();
+    }
+
+	public List<String> getImgDescription() {
+		return imgDescription;
+	}
+
+	public void setImgDescription(List<String> imgDescription) {
+		this.imgDescription = imgDescription;
+	}
+
+	public List<MultipartFile> getImgFile() {
+		return imgFile;
+	}
+
+	public void setImgFile(List<MultipartFile> imgFile) {
+		this.imgFile = imgFile;
+	}
+
+	public List<String> getImgState() {
+		return imgState;
+	}
+
+	public void setImgState(List<String> imgState) {
+		this.imgState = imgState;
+	}
+
+	public List<String> getImgNumber() {
+		return imgNumber;
+	}
+
+	public void setImgNumber(List<String> imgNumber) {
+		this.imgNumber = imgNumber;
+	}
+
+	public List<String> getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(List<String> imgUrl) {
+		this.imgUrl = imgUrl;
+	}
     
 }

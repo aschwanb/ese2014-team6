@@ -1,10 +1,14 @@
 package ch.studihome.jspserver.controller.service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +25,7 @@ import ch.studihome.jspserver.model.RoomImg;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AddressDao;
 import ch.studihome.jspserver.model.dao.AdvertDao;
+import ch.studihome.jspserver.model.dao.RoomImgDao;
 import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.AdForm;
 
@@ -30,11 +35,16 @@ public class AdServiceImpl implements AdService {
 	@Autowired    AdvertDao advertDao;
     @Autowired    AddressDao addrDao;
     @Autowired    UserDao usrDao;
+    @Autowired    RoomImgDao rimgDao;
+    
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
     
     // Image location = imgPath + imageName
     @Value("${path.adimg}")
 	private String imgPath;
+    
+    @Value("${path.usrpath}")
+    private String usrPath;
 
     public Iterable<Advert> findAll() {
     	log.info("INFO: There are " + advertDao.count() + 
@@ -69,6 +79,22 @@ public class AdServiceImpl implements AdService {
 		adForm.setDescription(ad.getDescription());
 		adForm.setOwnerId(ad.getUser().getUsr_id().toString());
 		
+		RoomImg[] imgs = new RoomImg[0];
+		imgs = ad.getImgs().toArray(imgs);
+		List<String> imgDescription = new ArrayList<String>();
+	    List<String> imgNumber = new ArrayList<String>();
+	    List<String> imgUrl = new ArrayList<String>();
+		
+		for(int i = 0; i < imgs.length; i++)
+		{
+			imgDescription.add(imgs[i].getImgDescription());
+			imgNumber.add(Integer.toString(imgs[i].getImgNum()));
+			imgUrl.add(imgPath + imgs[i].getImgName());
+		}
+		adForm.setImgDescription(imgDescription);
+		adForm.setImgNumber(imgNumber);
+		adForm.setImgUrl(imgUrl);
+		
 		return adForm;
 	}
 	
@@ -76,9 +102,6 @@ public class AdServiceImpl implements AdService {
     public AdForm saveFrom(AdForm adForm) throws ImageSaveException
 	{
     	User user = usrDao.findOne(Long.decode(adForm.getOwnerId()));
-    	Advert[] adverts = new Advert[0];
-    	adverts = user.getAds().toArray(adverts);
-        Set<Advert> newset = new HashSet<Advert>(0);
     	
         Address address = new Address();
         address.setStreet(adForm.getStreet());
@@ -103,58 +126,95 @@ public class AdServiceImpl implements AdService {
         ad.setNumberOfInhabitants(adForm.getNumberOfInhabitants());
         ad.setDescription(adForm.getDescription());
         ad.setUser(user);
-
+        
+		ad = advertDao.save(ad);	// save ad to DB (has to be done, to easily get the adId
+        
+        adForm.setId(ad.getAdv_id());
+        
         // Todo: Check if upload is an image. (eg "image" = image.getContentType().split("/")[0])
-		/*
-        try {
-			//Save image to directory
-			Integer imgNr = 1;
-			MultipartFile image = adForm.getImage();
+        int limit = adForm.getImgFile().size();
+        
+        for(int i = 0; i < limit; i++)
+        {
+        	if(adForm.getImgState().get(i).equals("change"))
+        	{
+        		RoomImg img = (rimgDao.findByAdvertAndImgNum(ad, Integer.parseInt(adForm.getImgNumber().get(i)))).get(0);
+        		
+        		deleteFileFromServer(imgPath + img.getImgName());
+        		
+				String name = saveFileOnServer(ad, adForm.getImgFile().get(i), Integer.parseInt(adForm.getImgNumber().get(i)));
+				
+				img.setImgDescription(adForm.getImgDescription().get(i));
+				img.setImgName(name);
+				
+				rimgDao.save(img);
+        		
+        	}else if(adForm.getImgState().get(i).equals("new"))
+        	{
+        		int imgNr = 0;
+        		do
+        		{
+        			imgNr = (int)(Math.random()*100);
+        		}while((rimgDao.findByAdvertAndImgNum(ad, imgNr)).size() != 0);
+        		
+        		String name = saveFileOnServer(ad, adForm.getImgFile().get(i), imgNr);
+				
+        		RoomImg img = new RoomImg();
+				img.setAdvert(ad);
+				img.setImgDescription(adForm.getImgDescription().get(i));
+				img.setImgName(name);
+				img.setImgNum(imgNr);
+				
+				rimgDao.save(img);
+        	}else if(adForm.getImgState().get(i).equals("delete"))
+        	{
+        		RoomImg img = (rimgDao.findByAdvertAndImgNum(ad, Integer.parseInt(adForm.getImgNumber().get(i)))).get(0);
+        		
+        		deleteFileFromServer(imgPath + img.getImgName());
+        		
+        		rimgDao.delete(img);
+        	}
+        }
+
+        return adForm;
+
+    }
+
+	private String saveFileOnServer(Advert ad, MultipartFile image, Integer imgNr)throws ImageSaveException
+	{
+		try
+		{
 			log.info("INFO: File Content Type is " + image.getContentType());
-//			TODO: Read Ad id correctly
-//			String name = Objects.toString(ad.getId()) + 
-//					"_" + Objects.toString(imgNr) + 
-//					"." + image.getContentType().split("/")[1];
-			String name = image.getOriginalFilename();
-			String imagePath = imgPath + name;
+			
+			String name = ad.getAdv_id().toString() + 
+					"_" + Integer.toString(imgNr) + 
+					"." + image.getContentType().split("/")[1];
+			String imagePath = usrPath + imgPath + name;
 			byte[] bytes = image.getBytes();
 			BufferedOutputStream stream = 
 					new BufferedOutputStream(
 							new FileOutputStream(new File(imagePath)));
 			stream.write(bytes);
 			stream.close();
-			
-			// Save image name to db
-			RoomImg img = new RoomImg();
-			img.setAdvert(ad);
-			img.setImgDescription("Temp description");
-			img.setImgName(name);
-			img.setImgNum(imgNr);
-			Set<RoomImg> rset = new HashSet<RoomImg>(0);
-			rset.add(img);
-			ad.setImgs(rset);
-		} catch (Exception e) {
+			return name;
+		}catch (Exception e)
+		{
 			throw new ImageSaveException("Error while saving your image.\n" + e.toString());
-		}*/
-        
-        for(Advert a: adverts)
-        {
-        	if(!a.getAdv_id().equals(ad.getAdv_id()))
-        	{
-        		newset.add(a);
-        	}
-        }
-        newset.add(ad);
-        user.setAds(newset);
-        
-		ad = advertDao.save(ad);	// save ad to DB (has to be done, to easily get the adId
-        
-        adForm.setId(ad.getAdv_id());
-        
-        user = usrDao.save(user);   // save user to DB
-
-        return adForm;
-
-    }
+		}
+	}
+	
+	private void deleteFileFromServer(String filename)
+	{
+		String imagePath = usrPath + imgPath + filename;
+		
+		try
+		{
+			File file = new File(imagePath);
+			file.delete();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
 	
 }

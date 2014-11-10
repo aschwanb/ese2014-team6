@@ -76,7 +76,9 @@ public class AdvertController {
     				Advert adv = advDao.findOne(adForm.getId());
     				if(user.getUsr_id() == adv.getUser().getUsr_id()) {     			
     					model.addObject("editable", "true");
-    				}
+    				}else {
+        				model.addObject("editable", "false");
+        			}
     			}else {
     				model.addObject("editable", "false");
     			}
@@ -121,7 +123,7 @@ public class AdvertController {
 		    		}
 		    		
 		        }else {
-		        	log.info("Error in form. Returning new one");
+		        	log.info("Error in form: " + result.getAllErrors().toString() + "/nReturning new one.");
 		        }
 		    	
 		    	model.addObject("editable", "true");
