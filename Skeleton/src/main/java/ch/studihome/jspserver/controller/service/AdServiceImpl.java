@@ -42,6 +42,9 @@ public class AdServiceImpl implements AdService {
     // Image location = imgPath + imageName
     @Value("${path.adimg}")
 	private String imgPath;
+    
+    @Value("${path.usrpath}")
+    private String usrPath;
 
     public Iterable<Advert> findAll() {
     	log.info("INFO: There are " + advertDao.count() + 
@@ -186,7 +189,7 @@ public class AdServiceImpl implements AdService {
 			String name = ad.getAdv_id().toString() + 
 					"_" + Integer.toString(imgNr) + 
 					"." + image.getContentType().split("/")[1];
-			String imagePath = imgPath + name;
+			String imagePath = usrPath + imgPath + name;
 			byte[] bytes = image.getBytes();
 			BufferedOutputStream stream = 
 					new BufferedOutputStream(
@@ -202,7 +205,7 @@ public class AdServiceImpl implements AdService {
 	
 	private void deleteFileFromServer(String filename)
 	{
-		String imagePath = imgPath + filename;
+		String imagePath = usrPath + imgPath + filename;
 		
 		try
 		{
