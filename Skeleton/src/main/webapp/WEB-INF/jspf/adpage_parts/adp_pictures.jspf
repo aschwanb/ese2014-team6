@@ -8,9 +8,9 @@
                         <div class="carousel slide" id="myCarousel">
                             <!-- Carousel items -->
                             <div id="carousel-inner" class="carousel-inner">
-                            	<c:forEach var="img" varStatus="status" items="${adForm.imgs}">
+                            	<c:forEach var="url" varStatus="status" items="${adForm.imgUrl}">
                             		<div class="active item" data-slide-number="${status.index}">
-	                                	<img class="center-block" src="${img.url}">
+	                                	<img class="center-block" src="${url}">
 	                                </div>
                             	</c:forEach>
                     			<c:if test="${adForm.imgsCount lt 10 and editable}">
@@ -31,11 +31,11 @@
                     <div class="col-sm-4" id="carousel-text"></div>
 
                     <div id="slide-content" style="display: none;">
-                    	<c:forEach var="img" varStatus="status" items="${adForm.imgs}">
+                    	<c:forEach var="desc" varStatus="status" items="${adForm.imgDescription}">
                         	<div id="slide-content-${status.index}">
-                            	<p class="sub-text">${img.description}</p>
+                            	<p class="sub-text">${desc}</p>
 	                            <p class="sub-text"><a class="btn btn-lg btn-default" onclick="replaceImage(${status.index})">Change Picture</a></p>
-                            	<p class="picnumholder" hidden="hidden">${img.number}</p>
+                            	<p class="picnumholder" hidden="hidden">${adForm.imgNumber[status.index]}</p>
                         	</div>
                         </c:forEach>
                     	<c:if test="${adForm.imgsCount lt 10 and editable}">
@@ -51,9 +51,9 @@
         <div class="row hidden-xs" id="slider-thumbs">
                 <!-- Bottom switcher of slider -->
                 <ul id="hide-bullets" class="hide-bullets">
-                	<c:forEach var="img" varStatus="status" items="${adForm.imgs}">
+                	<c:forEach var="url" varStatus="status" items="${adForm.imgUrl}">
                      	<li class="col-sm-2">
-                         	<a class="thumbnail" id="carousel-selector-${status.index}"><img src="${img.url}"></a>
+                         	<a class="thumbnail" id="carousel-selector-${status.index}"><img src="${url}"></a>
                      	</li>
                     </c:forEach>
                     <c:if test="${adForm.imgsCount lt 10 and editable}">
@@ -71,14 +71,14 @@
 	
 	</div>
 <%--
-	<c:set var="imageErrors"><form:errors path="image"/></c:set>
-	<div class="form-group<c:if test="${not empty imageErrors}">error</c:if>">
+	<c:set var="imageErrors"><form:errors path="imgFile[0]"/></c:set>
+	<div class="form-group">
 		<label class="control-label" for="field-image">Upload image</label>
 		<div class="controls">
-			<form:input type = "file" path="image" id="field-image" maxlength="45" placeholder="Picture"/>
-			<form:errors path="image" cssClass="help-inline" element="span"/>
+			<form:input type = "file" path="imgsFile[0]" id="field-file" maxlength="45" placeholder="Picture"/>
+			<form:errors path="imgFile[0]" cssClass="help-inline" element="span"/>
 		</div>
-	</div>	
+	</div>	<%--
 	<c:if test="${editable == false}"> <%-- TODO -- %>
 		<img src="/Skeleton/user/ad/img/square.jpg" alt="..." class="img-thumbnail">
 	</c:if> --%>

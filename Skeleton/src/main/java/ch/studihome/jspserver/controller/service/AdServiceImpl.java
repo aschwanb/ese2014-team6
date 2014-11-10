@@ -28,7 +28,6 @@ import ch.studihome.jspserver.model.dao.AdvertDao;
 import ch.studihome.jspserver.model.dao.RoomImgDao;
 import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.AdForm;
-import ch.studihome.jspserver.model.pojos.ImgObj;
 
 @Service
 public class AdServiceImpl implements AdService {
@@ -79,17 +78,19 @@ public class AdServiceImpl implements AdService {
 		
 		RoomImg[] imgs = new RoomImg[0];
 		imgs = ad.getImgs().toArray(imgs);
-		List<ImgObj> imgObjs = new ArrayList<ImgObj>();
+		List<String> imgDescription = new ArrayList<String>();
+	    List<String> imgNumber = new ArrayList<String>();
+	    List<String> imgUrl = new ArrayList<String>();
 		
 		for(int i = 0; i < imgs.length; i++)
 		{
-			ImgObj imgObj = new ImgObj();
-			imgObj.setDescription(imgs[i].getImgDescription());
-			imgObj.setNumber(Integer.toString(imgs[i].getImgNum()));
-			imgObj.setUrl(imgPath + imgs[i].getImgName());
-			imgObjs.add(imgObj);
+			imgDescription.add(imgs[i].getImgDescription());
+			imgNumber.add(Integer.toString(imgs[i].getImgNum()));
+			imgUrl.add(imgPath + imgs[i].getImgName());
 		}
-		adForm.setImgs(imgObjs);
+		adForm.setImgDescription(imgDescription);
+		adForm.setImgNumber(imgNumber);
+		adForm.setImgUrl(imgUrl);
 		
 		return adForm;
 	}
@@ -126,26 +127,26 @@ public class AdServiceImpl implements AdService {
 		ad = advertDao.save(ad);	// save ad to DB (has to be done, to easily get the adId
         
         adForm.setId(ad.getAdv_id());
-
-        // Todo: Check if upload is an image. (eg "image" = image.getContentType().split("/")[0])
-        List<ImgObj> imgObjs = adForm.getImgs();
         
-        for(ImgObj imgObj:imgObjs)
+        // Todo: Check if upload is an image. (eg "image" = image.getContentType().split("/")[0])
+        int limit = adForm.getImgFile().size();
+        
+        for(int i = 0; i < limit; i++)
         {
-        	if(imgObj.getState().equals("change"))
+        	if(adForm.getImgState().get(i).equals("change"))
         	{
-        		RoomImg img = (rimgDao.findByAdvertAndImgNum(ad, Integer.parseInt(imgObj.getNumber()))).get(0);
+        		RoomImg img = (rimgDao.findByAdvertAndImgNum(ad, Integer.parseInt(adForm.getImgNumber().get(i)))).get(0);
         		
         		deleteFileFromServer(imgPath + img.getImgName());
         		
-				String name = saveFileOnServer(ad, imgObj, Integer.parseInt(imgObj.getNumber()));
+				String name = saveFileOnServer(ad, adForm.getImgFile().get(i), Integer.parseInt(adForm.getImgNumber().get(i)));
 				
-				img.setImgDescription(imgObj.getDescription());
+				img.setImgDescription(adForm.getImgDescription().get(i));
 				img.setImgName(name);
 				
 				rimgDao.save(img);
         		
-        	}else if(imgObj.getState().equals("new"))
+        	}else if(adForm.getImgState().get(i).equals("new"))
         	{
         		int imgNr = 0;
         		do
@@ -153,18 +154,18 @@ public class AdServiceImpl implements AdService {
         			imgNr = (int)(Math.random()*100);
         		}while((rimgDao.findByAdvertAndImgNum(ad, imgNr)).size() != 0);
         		
-        		String name = saveFileOnServer(ad, imgObj, imgNr);
+        		String name = saveFileOnServer(ad, adForm.getImgFile().get(i), imgNr);
 				
         		RoomImg img = new RoomImg();
 				img.setAdvert(ad);
-				img.setImgDescription(imgObj.getDescription());
+				img.setImgDescription(adForm.getImgDescription().get(i));
 				img.setImgName(name);
 				img.setImgNum(imgNr);
 				
 				rimgDao.save(img);
-        	}else if(imgObj.getState().equals("delete"))
+        	}else if(adForm.getImgState().get(i).equals("delete"))
         	{
-        		RoomImg img = (rimgDao.findByAdvertAndImgNum(ad, Integer.parseInt(imgObj.getNumber()))).get(0);
+        		RoomImg img = (rimgDao.findByAdvertAndImgNum(ad, Integer.parseInt(adForm.getImgNumber().get(i)))).get(0);
         		
         		deleteFileFromServer(imgPath + img.getImgName());
         		
@@ -176,11 +177,10 @@ public class AdServiceImpl implements AdService {
 
     }
 
-	private String saveFileOnServer(Advert ad, ImgObj imgObj, Integer imgNr)throws ImageSaveException
+	private String saveFileOnServer(Advert ad, MultipartFile image, Integer imgNr)throws ImageSaveException
 	{
 		try
 		{
-			MultipartFile image = imgObj.getFile();
 			log.info("INFO: File Content Type is " + image.getContentType());
 			
 			String name = ad.getAdv_id().toString() + 

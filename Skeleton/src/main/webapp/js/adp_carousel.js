@@ -35,23 +35,23 @@ function createUpload(state, number)
 	
 	var file = document.createElement("input");
 	file.setAttribute("type", "file");
-	file.setAttribute("name", "imgs[" + actionCount + "].file");
+	file.setAttribute("name", "imgFile[" + actionCount + "]");
 	container.appendChild(file);
 	
 	var desc = document.createElement("textarea");
-	desc.setAttribute("name", "imgs[" + actionCount + "].description");
+	desc.setAttribute("name", "imgDescription[" + actionCount + "]");
 	container.appendChild(desc);
 	
 	var sta = document.createElement("input");
 	sta.setAttribute("type", "text");
-	sta.setAttribute("name", "imgs[" + actionCount + "].state");
+	sta.setAttribute("name", "imgState[" + actionCount + "]");
 	sta.value = state;
 	sta.setAttribute("hidden","hidden");
 	container.appendChild(sta);
 	
 	var num = document.createElement("input");
 	num.setAttribute("type", "text");
-	num.setAttribute("name", "imgs[" + actionCount + "].number");
+	num.setAttribute("name", "imgNumber[" + actionCount + "]");
 	num.value = number;
 	num.setAttribute("hidden","hidden");
 	container.appendChild(num);
@@ -124,7 +124,7 @@ function setImage(actionid, imgid)
 	var desc = document.getElementById("slide-content-" + imgid).getElementsByTagName('p')[0];
 	
 	// read img and display
-	var f = ubatch.querySelector('[name="imgs[' + actionid + '].file"]').files[0];
+	var f = ubatch.querySelector('[name="imgFile[' + actionid + ']"]').files[0];
 	
 	var reader = new FileReader();
     // Closure to capture the file information.

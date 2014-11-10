@@ -14,6 +14,7 @@
 		<security:intercept-url pattern="/index" access="permitAll"/>
 		<security:intercept-url pattern="/login*" access="permitAll" />
 		<security:intercept-url pattern="/logout*" access="permitAll" />
+		<security:intercept-url pattern="/noAccess*" access="permitAll"/>
 <!-- User creation		 -->
 		<security:intercept-url pattern="/register*" access="permitAll"/>
 		<security:intercept-url pattern="/create*" access="permitAll"/>
