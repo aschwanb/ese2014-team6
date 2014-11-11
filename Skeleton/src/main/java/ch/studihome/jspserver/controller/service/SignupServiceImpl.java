@@ -11,7 +11,11 @@ import ch.studihome.jspserver.model.dao.AddressDao;
 import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.SignupForm;
 
-
+/**
+ * Implements SignupService using the Hibernate Daos
+ * 
+ * @author TeamSiX
+ */
 @Service
 public class SignupServiceImpl implements SignupService {
 
