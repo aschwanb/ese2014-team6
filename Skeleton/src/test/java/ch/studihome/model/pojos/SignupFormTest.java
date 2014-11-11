@@ -37,7 +37,7 @@ public class SignupFormTest {
 	public void testSetEmailGetEmail()
 	{
 		SignupForm signupForm = new SignupForm();
-		String email = "Not my Birthdate";
+		String email = "test@test.com";
 		signupForm.setEmail(email);
 		String actual = signupForm.getEmail();
 		assertEquals(email, actual);

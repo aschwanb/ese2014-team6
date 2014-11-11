@@ -33,7 +33,6 @@ import ch.studihome.jspserver.model.pojos.AdForm;
 public class AdServiceImpl implements AdService {
 	
 	@Autowired    AdvertDao advertDao;
-    @Autowired    AddressDao addrDao;
     @Autowired    UserDao usrDao;
     @Autowired    RoomImgDao rimgDao;
     
@@ -45,6 +44,15 @@ public class AdServiceImpl implements AdService {
     
     @Value("${path.usrpath}")
     private String usrPath;
+    
+    public AdServiceImpl(){}
+    
+    public AdServiceImpl(AdvertDao advertDao, UserDao usrDao, RoomImgDao rimgDao)
+    {
+    	this.advertDao = advertDao;
+    	this.usrDao = usrDao;
+    	this.rimgDao = rimgDao;
+    }
 
     public Iterable<Advert> findAll() {
     	log.info("INFO: There are " + advertDao.count() + 
