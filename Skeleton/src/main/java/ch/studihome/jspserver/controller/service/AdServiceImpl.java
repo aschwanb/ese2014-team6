@@ -29,6 +29,11 @@ import ch.studihome.jspserver.model.dao.RoomImgDao;
 import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.AdForm;
 
+/**
+ * Implements AdService using the Hibernate Daos
+ * 
+ * @author TeamSiX
+ */
 @Service
 public class AdServiceImpl implements AdService {
 	
@@ -179,7 +184,16 @@ public class AdServiceImpl implements AdService {
         return adForm;
 
     }
-
+    
+    /**
+     *  Saves an image in file structure on server
+     *  
+     * @param ad The advert owning the image
+     * @param image The image data
+     * @param imgNr	The advert intern id of the image
+     * @return The Filename of the saved image
+     * @throws ImageSaveException thrown if problems appear while saving
+     */
 	private String saveFileOnServer(Advert ad, MultipartFile image, Integer imgNr)throws ImageSaveException
 	{
 		try
@@ -203,6 +217,11 @@ public class AdServiceImpl implements AdService {
 		}
 	}
 	
+	/**
+	 * Deletes file from file structure on server
+	 * 
+	 * @param filename name of the file to delete
+	 */
 	private void deleteFileFromServer(String filename)
 	{
 		String imagePath = usrPath + imgPath + filename;

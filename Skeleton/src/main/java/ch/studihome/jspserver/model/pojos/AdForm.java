@@ -9,6 +9,11 @@ import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * Used to Hand Advert data to the jsp or to retrieve the content of a uploaded Advert Form
+ * 
+ * @author TeamSiX
+ */
 public class AdForm {
 
     private long id;
@@ -173,6 +178,9 @@ public class AdForm {
 		this.numberOfInhabitants = numberOfInhabitants;
 	}
     
+	/**
+	 * @return number of image entries belonging to this advert
+	 */
     public int getImgsCount(){
     	return imgUrl.size();
     }

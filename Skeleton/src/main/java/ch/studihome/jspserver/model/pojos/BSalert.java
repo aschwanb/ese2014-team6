@@ -1,7 +1,15 @@
 package ch.studihome.jspserver.model.pojos;
 
+/**
+ * Used to feed BootStrap Alert data to the jsp
+ * 
+ * @author TeamSiX
+ */
 public class BSalert
 {
+	/**
+	 *	type corresponding to the BootStrap alert styles
+	 */
 	public enum Type{
 		success,
 		info,
@@ -12,6 +20,10 @@ public class BSalert
 	private String type;
 	private String message;
 	
+	/**
+	 * @param type Type of alert
+	 * @param message Displayed message
+	 */
 	public BSalert(Type type, String message)
 	{
 		this.message = message;
