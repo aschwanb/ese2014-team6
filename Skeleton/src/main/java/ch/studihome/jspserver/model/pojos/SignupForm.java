@@ -5,6 +5,11 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
+/**
+ * Used to get the data from a Signup Form
+ * 
+ * @author TeamSiX
+ */
 public class SignupForm {
 
     private Long id;
