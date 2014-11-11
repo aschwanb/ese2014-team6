@@ -17,6 +17,12 @@ import javax.persistence.OneToOne;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Transient;
 
+/**
+ * Generic advert object. Can be for shared flats or apartments.
+ *  
+ * @author TeamSix
+ *
+ */
 
 
 @Entity
@@ -46,6 +52,7 @@ public class Advert {
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
 	private Set<RoomImg> imgs = new HashSet<RoomImg>(0);
 	
+	// To get image name from jsp-file
 	public String getFirstImage() {
 		return this.getImgs().iterator().next().getImgName();
 

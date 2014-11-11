@@ -24,6 +24,13 @@ import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.AdForm;
 import ch.studihome.jspserver.model.pojos.BSalert;
 
+/**
+ * Load and return advert view 
+ * 
+ * @author TeamSix
+ */
+
+
 @Controller
 public class AdvertController {
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
@@ -40,6 +47,12 @@ public class AdvertController {
     @Autowired
     AdvertDao advDao;
 
+    /**
+     * 
+     * @param advId Id of the advert in the DB
+     * @param principal User object
+     * @return model containing advert view
+     */
     @RequestMapping(value = "/advert", method = RequestMethod.GET)
     public ModelAndView show(@RequestParam(value = "id", required=false)String advId, Principal principal)
     {
@@ -89,6 +102,14 @@ public class AdvertController {
     	return model;
     }
     
+    /**
+     * 
+     * @param adForm Form to validate data integrity with advert object
+     * @param result Return of the form validation.
+     * @param redirectAttributes For user information
+     * @param principal User object 
+     * @return
+     */
     @RequestMapping(value = "/advert", method = RequestMethod.POST)
     public ModelAndView save(@Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal)
     {

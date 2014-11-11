@@ -11,13 +11,24 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.studihome.jspserver.controller.service.SignupService;
 import ch.studihome.jspserver.model.pojos.BSalert;
 
+/**
+ * Controller for redirect tasks
+ * 
+ * @author TeamSix
+ */
+
 @Controller
 public class LoginController {
 
     @Autowired
     SignupService sampleService;
 
-
+/**
+ * Show error message after failes login attempt
+ * 
+ * @param error Error message
+ * @return Login view
+ */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
 	 
@@ -31,6 +42,11 @@ public class LoginController {
 		  return model;
     }
     
+    /**
+     * Redirect user after logout
+     * @param redirectAttributes To inform user
+     * @return index view 
+     */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(RedirectAttributes redirectAttributes)
     {

@@ -14,14 +14,21 @@ import ch.studihome.jspserver.controller.exceptions.InvalidUserException;
 import ch.studihome.jspserver.controller.service.SignupService;
 import ch.studihome.jspserver.model.pojos.BSalert;
 import ch.studihome.jspserver.model.pojos.SignupForm;
-
+/**
+ * Load and return register view 
+ * 
+ * @author TeamSix
+ */
 @Controller
 public class RegisterController {
 
     @Autowired
     SignupService signupService;
 
-
+/**
+ * 
+ * @return register view
+ */
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register() {
     	ModelAndView model = new ModelAndView("register");
@@ -29,6 +36,14 @@ public class RegisterController {
         return model;
     }
 
+    /**
+     * Most method 
+     * @param signupForm Form to validate integrity with user object
+     * @param result Return of form validation
+     * @param redirectAttributes to inform user
+     * @return
+     */
+    
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView create(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
     	

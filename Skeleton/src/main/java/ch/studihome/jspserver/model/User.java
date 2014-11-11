@@ -10,6 +10,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+/**
+ * Object representing a user of our web service
+ * 
+ * For first registratin, only the following paramters are necessar:
+ * email, password, user_role, enabled
+ * 
+ * user_role and enabled are not set by the user
+ * 
+ * @author TeamSix
+ *
+ */
 
 @Entity
 public class User {

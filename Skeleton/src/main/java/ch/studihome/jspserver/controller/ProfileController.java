@@ -12,12 +12,21 @@ import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.UserDao;
 
+/**
+ * Load and return user profile view 
+ * 
+ * @author TeamSix
+ */
 @Controller
 public class ProfileController {
 	
 	@Autowired
     UserDao usrDao;
-	
+	/**
+	 * 
+	 * @param principal User object
+	 * @return Profile view
+	 */
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView index(Principal principal)
     {

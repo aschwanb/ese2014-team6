@@ -5,6 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+/**
+ * Address object for adverts
+ * 
+ * @author TeamSix
+ *
+ */
+
 
 @Entity
 public class Address {

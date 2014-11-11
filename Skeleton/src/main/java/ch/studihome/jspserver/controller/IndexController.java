@@ -11,6 +11,11 @@ import ch.studihome.jspserver.controller.service.AdService;
 import ch.studihome.jspserver.controller.service.SignupService;
 import ch.studihome.jspserver.model.Advert;
 
+/**
+ * Load and return index view 
+ * 
+ * @author TeamSix
+ */
 @Controller
 public class IndexController {
 
@@ -18,9 +23,11 @@ public class IndexController {
 	@Value("${path.adimg}") private String imgPath;	
     @Autowired SignupService sampleService;
     @Autowired AdService adService;
-    // Autowired is not working for AdServiceImpl
-//    AdServiceImpl adService = new AdServiceImpl();
     
+    /**
+     * 
+     * @return Index view
+     */
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public ModelAndView index() {
     	
@@ -30,9 +37,6 @@ public class IndexController {
     	model.addObject("imgPath", imgPath);
     	return model;
     	
-//    	getId();
-//    	getTitle();
-//    	getPrice();
     }
 
 }

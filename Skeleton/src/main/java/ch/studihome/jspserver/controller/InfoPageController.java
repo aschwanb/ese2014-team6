@@ -9,9 +9,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.studihome.jspserver.model.pojos.BSalert;
 
+/**
+ * Load and return info/ access denied view 
+ * 
+ * @author TeamSix
+ */
 @Controller
 public class InfoPageController {
 
+	/**
+	 * 
+	 * @param user User object
+	 * @return access denied page
+	 */
     @RequestMapping(value = "/noAccess", method = RequestMethod.GET)
     public ModelAndView noAccess(Principal user) {
     	ModelAndView model = new ModelAndView("infoPage");

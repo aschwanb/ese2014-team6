@@ -6,6 +6,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+/**
+ * Image name and information.
+ * The images themselves are not saved in the database, but in the file system. 
+ * Here is the information necessary to display the in the correct order 
+ * 
+ * @author TeamSix
+ *
+ */
+
 @Entity
 public class RoomImg{
 	@Id
