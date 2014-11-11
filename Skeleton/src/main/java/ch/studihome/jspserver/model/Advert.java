@@ -15,14 +15,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.annotation.Transient;
 
 
 
 @Entity
 public class Advert {
-    // Image location = imgPath + imageName
-    @Value("${path.adimg}")
-	private String imgPath;	
 	
 	@Id
 	@GeneratedValue
@@ -35,7 +33,6 @@ public class Advert {
 	private int numberOfRooms;
 	private int roomSize;	//in square meters, only for WG
 	private int numberOfInhabitants;	//only for WG
-	
 	
 	@Column(columnDefinition="character varying (2048) not null")
 	private String description;
@@ -50,7 +47,6 @@ public class Advert {
 	private Set<RoomImg> imgs = new HashSet<RoomImg>(0);
 	
 	public String getFirstImage() {
-//		return imgPath + this.getImgs().iterator().next().getImgName();
 		return this.getImgs().iterator().next().getImgName();
 
 	}
