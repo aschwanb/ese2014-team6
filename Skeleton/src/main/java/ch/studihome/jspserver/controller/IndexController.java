@@ -18,7 +18,16 @@ public class IndexController {
     // Autowired is not working for AdServiceImpl
 //    AdServiceImpl adService = new AdServiceImpl();
     
-    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    public IndexController() {}
+    
+    
+    
+    public IndexController(AdService adService)
+    {
+		this.adService = adService;
+	}
+
+	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public ModelAndView index() {
     	
     	Iterable<Advert> ads = adService.findAll();
