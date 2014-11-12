@@ -22,6 +22,14 @@ public class SignupServiceImpl implements SignupService {
     @Autowired    UserDao userDao;
     @Autowired    AddressDao addDao;
     
+    public SignupServiceImpl() {}
+    
+    public SignupServiceImpl(UserDao userDao, AddressDao addDao)
+    {
+    	this.userDao = userDao;
+    	this.addDao = addDao;
+    }
+    
     @Transactional
     public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException{
 

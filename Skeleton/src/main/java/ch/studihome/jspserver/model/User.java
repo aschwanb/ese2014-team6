@@ -94,8 +94,8 @@ public class User {
 		return userName;
 	}
 
-	public void setUserName(String username) {
-		this.userName = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getUser_role() {
@@ -120,6 +120,86 @@ public class User {
 
 	public void setAds(Set<Advert> ads) {
 		this.ads = ads;
+	}
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((enabled == null) ? 0 : enabled.hashCode());
+		result = prime * result
+				+ ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result
+				+ ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result
+				+ ((userName == null) ? 0 : userName.hashCode());
+		result = prime * result
+				+ ((user_role == null) ? 0 : user_role.hashCode());
+		result = prime * result + ((usr_id == null) ? 0 : usr_id.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (email == null)
+		{
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (enabled == null)
+		{
+			if (other.enabled != null)
+				return false;
+		} else if (!enabled.equals(other.enabled))
+			return false;
+		if (firstName == null)
+		{
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null)
+		{
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (password == null)
+		{
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (userName == null)
+		{
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		if (user_role == null)
+		{
+			if (other.user_role != null)
+				return false;
+		} else if (!user_role.equals(other.user_role))
+			return false;
+		if (usr_id == null)
+		{
+			if (other.usr_id != null)
+				return false;
+		} else if (!usr_id.equals(other.usr_id))
+			return false;
+		return true;
 	}
 
 	

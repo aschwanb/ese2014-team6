@@ -23,12 +23,21 @@ public class IndexController {
 	@Value("${path.adimg}") private String imgPath;	
     @Autowired SignupService sampleService;
     @Autowired AdService adService;
+
+    public IndexController() {}
     
-    /**
+    
+    
+    public IndexController(AdService adService)
+    {
+		this.adService = adService;
+	}
+	
+	/**
      * 
      * @return Index view
      */
-    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public ModelAndView index() {
     	
     	Iterable<Advert> ads = adService.findAll();

@@ -38,7 +38,6 @@ import ch.studihome.jspserver.model.pojos.AdForm;
 public class AdServiceImpl implements AdService {
 	
 	@Autowired    AdvertDao advertDao;
-    @Autowired    AddressDao addrDao;
     @Autowired    UserDao usrDao;
     @Autowired    RoomImgDao rimgDao;
     
@@ -50,6 +49,15 @@ public class AdServiceImpl implements AdService {
     
     @Value("${path.usrpath}")
     private String usrPath;
+    
+    public AdServiceImpl(){}
+    
+    public AdServiceImpl(AdvertDao advertDao, UserDao usrDao, RoomImgDao rimgDao)
+    {
+    	this.advertDao = advertDao;
+    	this.usrDao = usrDao;
+    	this.rimgDao = rimgDao;
+    }
 
     public Iterable<Advert> findAll() {
     	log.info("INFO: There are " + advertDao.count() + 
@@ -71,7 +79,7 @@ public class AdServiceImpl implements AdService {
 		
 		adForm.setId(ad.getAdv_id());
 		adForm.setTitle(ad.getTitle());
-		adForm.setPrice(Integer.toString(ad.getPrice()));
+		adForm.setPrice(ad.getPrice());
 		adForm.setStreet(ad.getAddress().getStreet());
 		adForm.setPlz(ad.getAddress().getPlz());
 		adForm.setCity(ad.getAddress().getCity());
@@ -82,7 +90,7 @@ public class AdServiceImpl implements AdService {
 		adForm.setRoomSize(ad.getRoomSize());
 		adForm.setNumberOfInhabitants(ad.getNumberOfInhabitants());
 		adForm.setDescription(ad.getDescription());
-		adForm.setOwnerId(ad.getUser().getUsr_id().toString());
+		adForm.setOwnerId(ad.getUser().getUsr_id());
 		
 		RoomImg[] imgs = new RoomImg[0];
 		imgs = ad.getImgs().toArray(imgs);
@@ -106,7 +114,7 @@ public class AdServiceImpl implements AdService {
     @Transactional(readOnly = false)
     public AdForm saveFrom(AdForm adForm) throws ImageSaveException
 	{
-    	User user = usrDao.findOne(Long.decode(adForm.getOwnerId()));
+    	User user = usrDao.findOne(adForm.getOwnerId());
     	
         Address address = new Address();
         address.setStreet(adForm.getStreet());
@@ -123,7 +131,7 @@ public class AdServiceImpl implements AdService {
         	ad.setAdv_id(adForm.getId());
         }
         ad.setTitle(adForm.getTitle());
-        ad.setPrice(Integer.parseInt(adForm.getPrice()));
+        ad.setPrice(adForm.getPrice());
         ad.setWG(adForm.getIsWG());
         ad.setAppartementSize(adForm.getAppartementSize());
         ad.setNumberOfRooms(adForm.getNumberOfRooms());
