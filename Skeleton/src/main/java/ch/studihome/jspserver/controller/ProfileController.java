@@ -18,7 +18,16 @@ public class ProfileController {
 	@Autowired
     UserDao usrDao;
 	
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public ProfileController() {}
+		
+    public ProfileController(UserDao usrDao)
+    {
+		this.usrDao = usrDao;
+	}
+
+
+
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView index(Principal principal)
     {
     	ModelAndView model = new ModelAndView("profile");

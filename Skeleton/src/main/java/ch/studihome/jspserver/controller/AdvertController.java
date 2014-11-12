@@ -39,8 +39,19 @@ public class AdvertController {
     
     @Autowired
     AdvertDao advDao;
+    
+    public AdvertController() {}
+    
+    
+    public AdvertController(AdService adService, UserDao usrDao, AdvertDao advDao)
+    {
+		this.adService = adService;
+		this.usrDao = usrDao;
+		this.advDao = advDao;
+	}
 
-    @RequestMapping(value = "/advert", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/advert", method = RequestMethod.GET)
     public ModelAndView show(@RequestParam(value = "id", required=false)String advId, Principal principal)
     {
     	ModelAndView model = new ModelAndView("advert");
