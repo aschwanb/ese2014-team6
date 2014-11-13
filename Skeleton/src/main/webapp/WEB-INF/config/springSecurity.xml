@@ -29,26 +29,18 @@
 		
 		<security:intercept-url pattern="/user/ad/img/**" access="permitAll" />
  		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
-
+	
 		<security:form-login
 			login-page="/login"
 			authentication-failure-url="/login?error"
 			default-target-url="/index"
 			username-parameter="email"
 			password-parameter="password"/>
-			<security:logout logout-success-url="/logout"/>
+		<security:logout logout-success-url="/logout"/>
 	</security:http>
 
 	<!-- Declare an authentication-manager to use a custom userDetailsService -->
 	<security:authentication-manager>
-		<security:authentication-provider >
-    		<security:jdbc-user-service data-source-ref="mainDataSource"
-    		users-by-username-query="select email, password, enabled from User where email=?"
-    		authorities-by-username-query="select email, user_role from User where email=? "/> 
-<!-- 		<security:user-service> -->
-<!-- 		<security:user name="test" password="test" authorities="ROLE_USER" /> -->
-<!-- 	    </security:user-service> -->
-	    </security:authentication-provider>
+    	<security:authentication-provider user-service-ref="myUserDetailsService" />
 	</security:authentication-manager>
-
 </beans>

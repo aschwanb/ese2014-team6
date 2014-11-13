@@ -33,36 +33,20 @@ public class SignupServiceImpl implements SignupService {
     @Transactional
     public SignupForm saveFrom(SignupForm signupForm) throws InvalidUserException{
 
-//        String firstName = signupForm.getFirstName();
     	String email = signupForm.getEmail();
 
         if(!StringUtils.isEmpty(email) && "ESE".equalsIgnoreCase(email)) {
             throw new InvalidUserException("Sorry, ESE is not a valid email");   // throw exception
         }
-
-
-        //Address address = new Address();
-        //address.setStreet("TestStreet-foo");
-        
+    
         User user = new User();
-//        user.setFirstName(signupForm.getFirstName());
         user.setEmail(signupForm.getEmail());
-//        user.setUserName(signupForm.getUserName());
-//        user.setLastName(signupForm.getLastName());
-        //user.setAddress(address);
         user.setPassword(signupForm.getPassword());
         user.setUser_role("ROLE_USER");
-        user.setEnabled("TRUE");
-        
-        user = userDao.save(user);   // save object to DB
-        
-        
-        // Iterable<Address> addresses = addDao.findAll();  // find all 
-        // Address anAddress = addDao.findOne((long)3); // find by ID
-        
+        user.setEnabled("TRUE");  
+        user = userDao.save(user);         // save object to DB
         
         signupForm.setId(user.getUsr_id());
-
         return signupForm;
 
     }

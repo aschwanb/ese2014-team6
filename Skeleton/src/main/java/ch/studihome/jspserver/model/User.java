@@ -1,5 +1,6 @@
 package ch.studihome.jspserver.model;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,6 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * Object representing a user of our web service
@@ -23,7 +27,7 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue
@@ -36,6 +40,7 @@ public class User {
     private String password;
     private String user_role;
     private String enabled;
+    private GrantedAuthority authorities;
     
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
     private Set<Advert> ads = new HashSet<Advert>(0);
@@ -121,6 +126,8 @@ public class User {
 	public void setAds(Set<Advert> ads) {
 		this.ads = ads;
 	}
+	
+	// Methods needed by spring security
 	@Override
 	public int hashCode()
 	{
@@ -201,6 +208,13 @@ public class User {
 			return false;
 		return true;
 	}
+	public Collection<? extends GrantedAuthority> getAuthorities() {return (Collection<? extends GrantedAuthority>) this.authorities;}
+	// We don't have these attributes
+	public String getUsername() {return this.getEmail();}
+	public boolean isAccountNonExpired() {return false;}
+	public boolean isAccountNonLocked() {return false;}
+	public boolean isCredentialsNonExpired() {return false;}
+	public boolean isEnabled() {return false;}
 
 	
 }
