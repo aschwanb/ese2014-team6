@@ -18,11 +18,18 @@ public class MyUserDetailsService implements UserDetailsService {
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 
 	public User loadUserByUsername(String userName) throws UsernameNotFoundException {
+	
 		log.info("User Details Service for username " + userName + "!");
-		User user = userDao.findByEmail(userName).get(0);
-		log.info("Generated new user object with: " + user.toString());
-		
-		return user;
+		try {
+			User user = userDao.findByEmail(userName).get(0);
+			log.info("Generated new user object with: " + user.toString());	
+			return user;
+		} catch (Exception e) {
+			log.info("User " + userName + " not found");
+			throw new UsernameNotFoundException("User " + userName + " not found.");
+		}
+
+
 	}
 
 }
