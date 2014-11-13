@@ -52,7 +52,8 @@ public class User implements UserDetails {
     			"Email: " + email + "\n"+
     			"Password: " + password + "\n"+
     			"UserRole: " + user_role + "\n"+
-    			"Enabled: " + enabled + "\n";
+    			"Enabled: " + enabled + "\n" +
+    			"GrantedAuthority: ";
     	return out;
     }
     public Long getUsr_id() {
@@ -211,10 +212,10 @@ public class User implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {return (Collection<? extends GrantedAuthority>) this.authorities;}
 	// We don't have these attributes
 	public String getUsername() {return this.getEmail();}
-	public boolean isAccountNonExpired() {return false;}
-	public boolean isAccountNonLocked() {return false;}
-	public boolean isCredentialsNonExpired() {return false;}
-	public boolean isEnabled() {return false;}
+	public boolean isAccountNonExpired() {return true;}
+	public boolean isAccountNonLocked() {return true;}
+	public boolean isCredentialsNonExpired() {return true;}
+	public boolean isEnabled() {return true;}
 
 	
 }
