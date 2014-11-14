@@ -1,5 +1,7 @@
 package ch.studihome.jspserver.controller.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +44,7 @@ public class SignupServiceImpl implements SignupService {
         User user = new User();
         user.setEmail(signupForm.getEmail());
         user.setPassword(signupForm.getPassword());
+        user.setUserName(email);
         user.setUser_role("ROLE_USER");
         user.setEnabled("TRUE");  
         user = userDao.save(user);         // save object to DB

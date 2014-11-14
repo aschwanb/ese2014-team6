@@ -1,7 +1,9 @@
 package ch.studihome.jspserver.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
@@ -40,7 +43,6 @@ public class User implements UserDetails {
     private String password;
     private String user_role;
     private String enabled;
-    private GrantedAuthority authorities;
     
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
     private Set<Advert> ads = new HashSet<Advert>(0);
@@ -52,8 +54,7 @@ public class User implements UserDetails {
     			"Email: " + email + "\n"+
     			"Password: " + password + "\n"+
     			"UserRole: " + user_role + "\n"+
-    			"Enabled: " + enabled + "\n" +
-    			"GrantedAuthority: ";
+    			"Enabled: " + enabled + "\n";
     	return out;
     }
     public Long getUsr_id() {
@@ -209,13 +210,16 @@ public class User implements UserDetails {
 			return false;
 		return true;
 	}
-	public Collection<? extends GrantedAuthority> getAuthorities() {return (Collection<? extends GrantedAuthority>) this.authorities;}
 	// We don't have these attributes
 	public String getUsername() {return this.getEmail();}
 	public boolean isAccountNonExpired() {return true;}
 	public boolean isAccountNonLocked() {return true;}
 	public boolean isCredentialsNonExpired() {return true;}
 	public boolean isEnabled() {return true;}
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		GrantedAuthority auth = new GrantedAuthorityImpl("ROLE_USER");
+		return (Collection<GrantedAuthority>) auth;
+	}
 
 	
 }
