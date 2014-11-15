@@ -16,7 +16,6 @@ import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
@@ -224,11 +223,7 @@ public class User implements UserDetails {
 	public boolean isEnabled() {return true;}
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 //		return (Collection<? extends GrantedAuthority>) userRoles;
-//		return null;
-		GrantedAuthority auth = new SimpleGrantedAuthority("ROLE_USER");
-		List<GrantedAuthority> colAuth = new ArrayList<GrantedAuthority>();
-		colAuth.add(auth);
-		return colAuth;
+		return null;
 	}
 
 	
