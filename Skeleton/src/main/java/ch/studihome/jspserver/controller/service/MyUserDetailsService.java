@@ -17,7 +17,7 @@ public class MyUserDetailsService implements UserDetailsService {
 	@Autowired UserDao userDao;
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 
-	public User loadUserByUsername(String userName) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 	
 		log.info("User Details Service for username " + userName + "!");
 		try {
