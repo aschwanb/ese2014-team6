@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
@@ -54,7 +55,8 @@ public class User implements UserDetails {
     			"Email: " + email + "\n"+
     			"Password: " + password + "\n"+
     			"UserRole: " + user_role + "\n"+
-    			"Enabled: " + enabled + "\n";
+    			"Enabled: " + enabled + "\n" +
+    			"GrantedAuthority: " + this.getAuthorities().iterator().next().toString();
     	return out;
     }
     public Long getUsr_id() {
@@ -216,10 +218,12 @@ public class User implements UserDetails {
 	public boolean isAccountNonLocked() {return true;}
 	public boolean isCredentialsNonExpired() {return true;}
 	public boolean isEnabled() {return true;}
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		GrantedAuthority auth = new GrantedAuthorityImpl("ROLE_USER");
-		return (Collection<GrantedAuthority>) auth;
-	}
+    public Collection<? extends    GrantedAuthority> getAuthorities() {
+        GrantedAuthority auth = new SimpleGrantedAuthority(user_role);
+        List<GrantedAuthority> colAuth = new ArrayList<GrantedAuthority>();
+        colAuth.add(auth);
+        return colAuth;
+    } 
 
 	
 }
