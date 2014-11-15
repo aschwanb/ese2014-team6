@@ -8,6 +8,8 @@ import ch.studihome.jspserver.model.User;
 
 public interface UserDao extends CrudRepository<User,Long> {
 	List<User> findByEmail(String email);
+	Iterable<User> findAll();
+	long count();
 	// Implementation for spring security
 	User findByUserName(String username);
 }

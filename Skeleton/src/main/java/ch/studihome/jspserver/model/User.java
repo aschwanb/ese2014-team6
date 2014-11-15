@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -41,8 +42,10 @@ public class User implements UserDetails {
     private String userName;
     private String email;
     private String password;
-    private String user_role;
     private String enabled;
+    
+    @ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
+    private Set<UserRole> userRoles = new HashSet<UserRole>();
     
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
     private Set<Advert> ads = new HashSet<Advert>(0);
@@ -53,8 +56,11 @@ public class User implements UserDetails {
     			"UserName: " + userName + "\n"+
     			"Email: " + email + "\n"+
     			"Password: " + password + "\n"+
-    			"UserRole: " + user_role + "\n"+
-    			"Enabled: " + enabled + "\n";
+    			"Enabled: " + enabled + "\n" +
+    			"UserRoles: ";
+    	for (UserRole u : userRoles) {
+    		out += u.getRole();
+    	}
     	return out;
     }
     public Long getUsr_id() {
@@ -105,14 +111,6 @@ public class User implements UserDetails {
 		this.userName = userName;
 	}
 
-	public String getUser_role() {
-		return user_role;
-	}
-
-	public void setUser_role(String user_role) {
-		this.user_role = user_role;
-	}
-
 	public String getEnabled() {
 		return enabled;
 	}
@@ -129,6 +127,13 @@ public class User implements UserDetails {
 		this.ads = ads;
 	}
 	
+	public Set<UserRole> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(Set<UserRole> userRoles) {
+		this.userRoles = userRoles;
+	}	
 	// Methods needed by spring security
 	@Override
 	public int hashCode()
@@ -146,7 +151,7 @@ public class User implements UserDetails {
 		result = prime * result
 				+ ((userName == null) ? 0 : userName.hashCode());
 		result = prime * result
-				+ ((user_role == null) ? 0 : user_role.hashCode());
+				+ ((userRoles == null) ? 0 : userRoles.hashCode());
 		result = prime * result + ((usr_id == null) ? 0 : usr_id.hashCode());
 		return result;
 	}
@@ -196,11 +201,11 @@ public class User implements UserDetails {
 				return false;
 		} else if (!userName.equals(other.userName))
 			return false;
-		if (user_role == null)
+		if (userRoles == null)
 		{
-			if (other.user_role != null)
+			if (other.userRoles != null)
 				return false;
-		} else if (!user_role.equals(other.user_role))
+		} else if (!userRoles.equals(other.userRoles))
 			return false;
 		if (usr_id == null)
 		{
@@ -217,8 +222,8 @@ public class User implements UserDetails {
 	public boolean isCredentialsNonExpired() {return true;}
 	public boolean isEnabled() {return true;}
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		GrantedAuthority auth = new GrantedAuthorityImpl("ROLE_USER");
-		return (Collection<GrantedAuthority>) auth;
+//		return (Collection<? extends GrantedAuthority>) userRoles;
+		return null;
 	}
 
 	
