@@ -44,6 +44,7 @@ public class UserTest
 		String password = "NotMyBirthDate";
 		user.setPassword(password);
 		String user_role = "advertiser";
+		user.setUser_role(user_role);
 		String enabled = "12/12/2012";
 		user.setEnabled(enabled);
 		
@@ -52,6 +53,7 @@ public class UserTest
     			"UserName: " + userName + "\n"+
     			"Email: " + email + "\n"+
     			"Password: " + password + "\n"+
+    			"UserRole: " + user_role + "\n"+
     			"Enabled: " + enabled + "\n";
 		String actual = user.toString();
 		assertEquals(expected, actual);
@@ -115,6 +117,16 @@ public class UserTest
 		user.setUserName(userName);
 		String actual = user.getUserName();
 		assertEquals(userName, actual);
+	}
+
+	@Test
+	public void testSetUser_roleGetUser_role()
+	{
+		User user = new User();
+		String user_role = "ROLE_USER"; 
+		user.setUser_role(user_role);
+		String actual = user.getUser_role();
+		assertEquals(user_role, actual);
 	}
 
 	@Test

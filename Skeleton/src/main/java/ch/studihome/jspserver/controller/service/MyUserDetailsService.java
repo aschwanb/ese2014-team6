@@ -23,18 +23,12 @@ public class MyUserDetailsService implements UserDetailsService {
 		try {
 			User user = userDao.findByEmail(userName).get(0);
 			log.info("Generated new user object with: " + user.toString());	
-		
-			Iterable<User> users = userDao.findAll();			
-			for (User t : users) {
-				log.info(t.toString());
-			}
 			return user;
 		} catch (Exception e) {
 			log.info("User " + userName + " not found");
-			log.info("Exception is " + e.getLocalizedMessage());
-			
 			throw new UsernameNotFoundException("User " + userName + " not found.");
 		}
+
 
 	}
 
