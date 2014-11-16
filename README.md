@@ -1,8 +1,7 @@
-ese2014-team6
-=============
 Group Project for ESE: Introduction to Software Engineering 2014
-
+----------------------------------------------------------------
 Build instructions
+
 1. You will need Apache, Jetty and MySQL to run the project.
 2. Spring expects MySQL user and password to be "root". If you wandt, you can set your own user and password in springData.xml
 3. Apache and MySQL must be running befor you start the project.
