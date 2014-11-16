@@ -44,11 +44,8 @@ public class AdServiceImpl implements AdService {
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
     
     // Image location = imgPath + imageName
-    @Value("${path.adimg}")
-	private String imgPath;
-    
-    @Value("${path.usrpath}")
-    private String usrPath;
+    @Value("${path.adimg}")	private String imgPath;  
+    @Value("${path.usrpath}") private String usrPath;
     
     public AdServiceImpl(){}
     

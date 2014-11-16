@@ -7,7 +7,9 @@
 
 <base:page title="Profile">
 	<jsp:attribute name="page_header">
-		<h1>Profile of ${pageContext.request.userPrincipal.name}</h1>
+		<h1>Username: ${user.userName}</h1>
+		<h1>ID: ${user.usr_id}</h1>
+		
 	</jsp:attribute>
 
 	<jsp:body>

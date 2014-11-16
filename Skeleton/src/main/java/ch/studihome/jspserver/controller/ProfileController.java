@@ -1,8 +1,11 @@
 package ch.studihome.jspserver.controller;
 
 import java.security.Principal;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,11 +43,11 @@ public class ProfileController {
     {
     	ModelAndView model = new ModelAndView("profile");
     	
-    	User user = usrDao.findByEmail(principal.getName()).get(0);
-    	
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	model.addObject("user", user);
+        		
     	Advert[] ads = new Advert[0];
     	ads = user.getAds().toArray(ads);
-    	
     	model.addObject("ads", ads);
     	
     	return model;
