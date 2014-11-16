@@ -37,8 +37,6 @@ public class AdForm {
     private String latlng;
     
     @NotNull
-    @Pattern(regexp = "[1-9][0-9]*", 
-    message = "Must be valid number")
     private int price;
     
     @NotNull
