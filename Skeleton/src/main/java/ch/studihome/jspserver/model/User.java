@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -48,7 +49,16 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
     private Set<Advert> ads = new HashSet<Advert>(0);
     
-    public String toString() {
+    @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="message")
+    private Set<Message> msgs = new HashSet<Message>(0);
+    
+    public Set<Message> getMsgs() {
+		return msgs;
+	}
+	public void setMsgs(Set<Message> msgs) {
+		this.msgs = msgs;
+	}
+	public String toString() {
     	String out = "FirstName: " + firstName + "\n"+
     			"LastName: " + lastName + "\n"+
     			"UserName: " + userName + "\n"+

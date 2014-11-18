@@ -90,7 +90,8 @@
 						<c:if test="${editable == true}">
 							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
 						</c:if>
-						<a class="btn btn-default btn-lg advert-buttongroupbutton" href="${editable ? 'discard' : 'contact'}" ${adForm.id == 0 ? 'disabled="disabled"':''}>${editable ? 'Discard' : 'Contact'}</a>
+						<a class="btn btn-default btn-lg advert-buttongroupbutton" 
+						href="${editable ? 'discard' : 'contact'}" ${adForm.id == 0 ? 'disabled="disabled"':''}>${editable ? 'Discard' : 'Contact'}</a>
 					</div>
 				</div>
 			</div>

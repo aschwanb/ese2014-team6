@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -30,18 +31,29 @@ public class Message {
     private Long fromId;
     private Long toId;
     private Date date;
-    private String message;
-    private Boolean unread;
-    private Boolean responded;
+    private String title;
+	private String message;
+//	TODO: Spring does not like Boolean values. Why not?
+//    private Boolean read;
+//    private Boolean responded;
 	
-    Message(Long from_id, Long to_id, String message) {
+    Message(Long from_id, Long to_id, String title, String message) {
     	this.fromId = from_id;
     	this.toId = to_id;
+    	this.title = title;
     	this.message = message;
-    	this.unread = true;
-    	this.responded = false;
+//    	this.read = false;
+//    	this.responded = false;
     }
     
+    public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
     public Long getFrom_id() {
 		return fromId;
 	}
@@ -60,17 +72,17 @@ public class Message {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public Boolean getUnread() {
-		return unread;
-	}
-	public void setUnread(Boolean unread) {
-		this.unread = unread;
-	}
-	public Boolean getResponded() {
-		return responded;
-	}
-	public void setResponded(Boolean responded) {
-		this.responded = responded;
-	}
+//	public Boolean getUnread() {
+//		return read;
+//	}
+//	public void setUnread(Boolean unread) {
+//		this.read = unread;
+//	}
+//	public Boolean getResponded() {
+//		return responded;
+//	}
+//	public void setResponded(Boolean responded) {
+//		this.responded = responded;
+//	}
     	
 }
