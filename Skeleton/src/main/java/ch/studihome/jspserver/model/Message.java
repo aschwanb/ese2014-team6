@@ -12,7 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -27,9 +29,15 @@ public class Message {
     @Id
     @GeneratedValue
     private Long id;
+    	
+	@ManyToOne
+    @JoinColumn(name="fromUser", nullable=false)
+    private User fromUser;
+
+	@ManyToOne
+    @JoinColumn(name="toUser", nullable=false)
+    private User toUser;
     
-    private Long fromId;
-    private Long toId;
     private Date date;
     private String title;
 	private String message;
@@ -37,15 +45,31 @@ public class Message {
 //    private Boolean read;
 //    private Boolean responded;
 	
-    Message(Long from_id, Long to_id, String title, String message) {
-    	this.fromId = from_id;
-    	this.toId = to_id;
+    Message(User fromUser, User toUser, String title, String message) {
+    	this.fromUser = fromUser;
+    	this.toUser = toUser;
     	this.title = title;
     	this.message = message;
 //    	this.read = false;
 //    	this.responded = false;
     }
-    
+  
+    public User getFromUser() {
+		return fromUser;
+	}
+
+	public void setFromUser(User fromUser) {
+		this.fromUser = fromUser;
+	}
+
+	public User getToUser() {
+		return toUser;
+	}
+
+	public void setToUser(User toUser) {
+		this.toUser = toUser;
+	}
+	
     public String getTitle() {
 		return title;
 	}
@@ -53,18 +77,20 @@ public class Message {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-    public Long getFrom_id() {
-		return fromId;
+    public Long getId() {
+		return id;
 	}
-	public void setFrom_id(Long from_id) {
-		this.fromId = from_id;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public Long getTo_id() {
-		return toId;
+
+	public Date getDate() {
+		return date;
 	}
-	public void setTo_id(Long to_id) {
-		this.toId = to_id;
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	public String getMessage() {
 		return message;

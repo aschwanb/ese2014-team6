@@ -49,15 +49,25 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
     private Set<Advert> ads = new HashSet<Advert>(0);
     
-    @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="message")
-    private Set<Message> msgs = new HashSet<Message>(0);
-    
-    public Set<Message> getMsgs() {
-		return msgs;
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="fromUser")
+    private Set<Message> fromMsgs = new HashSet<Message>(0);
+
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="toUser")
+    private Set<Message> toMsgs = new HashSet<Message>(0);
+	
+	public Set<Message> getFromMsgs() {
+		return fromMsgs;
 	}
-	public void setMsgs(Set<Message> msgs) {
-		this.msgs = msgs;
+	public void setFromMsgs(Set<Message> fromMsgs) {
+		this.fromMsgs = fromMsgs;
 	}
+	public Set<Message> getToMsgs() {
+		return toMsgs;
+	}
+	public void setToMsgs(Set<Message> toMsgs) {
+		this.toMsgs = toMsgs;
+	}
+
 	public String toString() {
     	String out = "FirstName: " + firstName + "\n"+
     			"LastName: " + lastName + "\n"+

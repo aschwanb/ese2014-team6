@@ -8,8 +8,9 @@ import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.User;
 
 public interface MessageDao extends CrudRepository<Message,Long> {
+
 	Message findById(Long id);
-	List<Message> findByFromId(Long fromId);
-	List<Message> findByToId(Long toId);
+	User findByFromUser(User user);
+	User findByToUser(User user);
 	
 }

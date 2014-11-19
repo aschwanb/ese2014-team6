@@ -32,11 +32,16 @@ public class MessageController {
     public ModelAndView messageTo() {
     	
 		ModelAndView model = new ModelAndView("contact");
-		
-
 		return model;
-    	
     }
+	
+	@RequestMapping(value = { "/test", "/msgTest" }, method = RequestMethod.GET)
+	public ModelAndView messageTest(){
+		ModelAndView model = new ModelAndView("msgTest");
+		
+		
+		return model;
+	}
 
 }
 
