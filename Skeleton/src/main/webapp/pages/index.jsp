@@ -45,11 +45,14 @@
 							var latlngStr = input.split(",", 2);
 							var lat = parseFloat(latlngStr[0]);
 							var lng = parseFloat(latlngStr[1]);
-							new google.maps.Marker({
+							var marker = new google.maps.Marker({
 								position : new google.maps.LatLng(lat, lng),
 								map : map,
 								title : "${ad.title}",
 								draggable : false
+							});
+							google.maps.event.addListener(marker, 'click', function() {
+								window.location.href = "advert?id=${ad.adv_id}";
 							});
 						</c:forEach>
 					}
