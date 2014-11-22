@@ -21,23 +21,36 @@
 		
 		<c:if test="${not empty ads}">
 			<table>
-		        <tbody><tr>
-		            <td>Minimum price:</td>
-		            <td><input id="min_price" name="min_price" type="text"></td>
-		            <td>Minimum room size:</td>
-		            <td><input id="min_room_size" name="min_room_size" type="text"></td>
-		        </tr>
-		        <tr>
-		            <td>Maximum price:</td>
-		            <td><input id="max_price" name="max_price" type="text"></td>
-		            <td>Minimum room size:</td>
-		            <td><input id="max_room_size" name="max_room_size" type="text"></td>
-		        </tr>
+		        <tbody>
+			        <tr>
+			            <td>Minimum price:</td>
+			            <td><input id="min_price" name="min_price" type="text"></td>
+			        </tr>
+			        <tr>
+			            <td>Maximum price:</td>
+			            <td><input id="max_price" name="max_price" type="text"></td>
+			        </tr>
+			        <tr>
+			            <td>Minimum room size:</td>
+			            <td><input id="min_room_size" name="min_room_size" type="text"></td>
+			        </tr>
+			        <tr>
+			            <td>Maximum room size:</td>
+			            <td><input id="max_room_size" name="max_room_size" type="text"></td>
+			        </tr>
+			        <tr>
+			            <td>Minimum apartment size:</td>
+			            <td><input id="min_apartment_size" name="min_apartment_size" type="text"></td>
+			        </tr>
+			        <tr>
+			            <td>Maximum apartment size:</td>
+			            <td><input id="max_apartment_size" name="max_apartment_size" type="text"></td>
+			        </tr>
 		    	</tbody>
 		    </table>
 			<table id="allAds" class="display">
 				<thead>
-					<tr><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th></tr>
+					<tr><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th><th>Apartment Size</th></tr>
 				</thead>
 				<tbody>
 					<c:forEach var="ad" items="${ads}">
@@ -54,6 +67,7 @@
 								<c:out value="${ad.address.street} ${ad.address.plz} ${ad.address.city}"/></a></td>
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.price}"/></a></td>
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.roomSize}"/></a></td>
+							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.appartementSize}"/></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
