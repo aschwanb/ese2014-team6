@@ -12,13 +12,19 @@ import org.hibernate.validator.constraints.Email;
 public class MessageForm {
 
     private Long id;
-    @NotNull @Email
+    @NotNull //Why you not work? :-(
+    @Size(min=1, message="Not a valid email")
+    @Email
     private String fromUserEmail;
-    @NotNull @Email
+    @NotNull
+    @Size(min=1, message="Not a valid email")
+    @Email
     private String toUserEmail;
-    @NotNull @Size(min = 1, message = "Your message has no title")
+    @NotNull
+    @Size(min = 1, message = "Your message has no title")
     private String title;
-    @NotNull @Size(min = 3, message = "Plese enter your message")
+    @NotNull
+    @Size(min = 3, message = "Plese enter your message")
     private String message;
     
     public String toString(){

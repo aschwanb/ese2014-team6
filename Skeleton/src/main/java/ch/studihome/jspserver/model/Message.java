@@ -45,7 +45,7 @@ public class Message {
     private Boolean hasRead;
     private Boolean hasResponded;
 	
-    Message(User fromUser, User toUser, String title, String message) {
+    public Message(User fromUser, User toUser, String title, String message) {
     	this.fromUser = fromUser;
     	this.toUser = toUser;
     	this.title = title;

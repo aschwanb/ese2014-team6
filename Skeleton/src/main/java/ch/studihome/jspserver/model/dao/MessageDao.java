@@ -10,7 +10,10 @@ import ch.studihome.jspserver.model.User;
 public interface MessageDao extends CrudRepository<Message,Long> {
 
 	Message findById(Long id);
-	User findByFromUser(User user);
-	User findByToUser(User user);
+	Iterable<Message> findAll();
+
+// Not needed? -> user.getFromMsg/ToMsg()
+//	Iterable<Message> findByFromUser(User user);
+//	Iterable<Message> findByToUser(User user);
 	
 }
