@@ -46,11 +46,19 @@
 			            <td>Maximum apartment size:</td>
 			            <td><input id="max_apartment_size" name="max_apartment_size" type="text"></td>
 			        </tr>
+			        <tr>
+			            <td>Minimum number of inhabitants:</td>
+			            <td><input id="min_number_of_inhabitants" name="min_number_of_inhabitants" type="text"></td>
+			        </tr>
+			        <tr>
+			            <td>Maximum number of inhabitants:</td>
+			            <td><input id="max_number_of_inhabitants" name="max_number_of_inhabitants" type="text"></td>
+			        </tr>
 		    	</tbody>
 		    </table>
 			<table id="allAds" class="display">
 				<thead>
-					<tr><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th><th>Apartment Size</th></tr>
+					<tr><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th><th>Apartment Size</th><th>Number Of Inhabitants</th></tr>
 				</thead>
 				<tbody>
 					<c:forEach var="ad" items="${ads}">
@@ -68,6 +76,7 @@
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.price}"/></a></td>
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.roomSize}"/></a></td>
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.appartementSize}"/></a></td>
+							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.numberOfInhabitants}"/></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
