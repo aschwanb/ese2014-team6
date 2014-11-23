@@ -58,11 +58,21 @@
 			            <td>Area:</td>
 			            <td><input id="area" name="area" type="text"></td>
 			        </tr>
+			        <tr>
+			        	<td>Type Of Apartment</td>
+			        	<td>
+			        		<select id="type_of_apartment" name="type_of_apartment">
+			        			<option>Shared Flat</option>
+			        			<option>Single Apartment</option>
+			        			<option selected="selected">All</option>
+			        		</select>
+			        	</td>
+			        </tr>
 		    	</tbody>
 		    </table>
 			<table id="allAds" class="display">
 				<thead>
-					<tr><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th><th>Apartment Size</th><th>Number Of Inhabitants</th></tr>
+					<tr><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th><th>Apartment Size</th><th>Number Of Inhabitants</th><th>Type Of Apartment</th></tr>
 				</thead>
 				<tbody>
 					<c:forEach var="ad" items="${ads}">
@@ -81,6 +91,7 @@
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.roomSize}"/></a></td>
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.appartementSize}"/></a></td>
 							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.numberOfInhabitants}"/></a></td>
+							<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.isWG?'Shared Flat':'Single Apartment'}"/></a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

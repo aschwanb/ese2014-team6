@@ -117,8 +117,8 @@ public class AdvertTest
 	{
 		Advert advert = new Advert();
 		boolean isWG = true;
-		advert.setWG(isWG);
-		boolean actual = advert.isWG();
+		advert.setIsWG(isWG);
+		boolean actual = advert.getIsWG();
 		assertEquals(isWG, actual);
 	}
 
