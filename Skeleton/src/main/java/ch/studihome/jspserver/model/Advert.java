@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -51,6 +52,9 @@ public class Advert {
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
 	private Set<RoomImg> imgs = new HashSet<RoomImg>(0);
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	private Set<User> bookmarkees = new HashSet<User>(0);
 	
 	// To get image name from jsp-file
 	public String getFirstImage() {
@@ -153,6 +157,12 @@ public class Advert {
 		this.numberOfInhabitants = numberOfInhabitants;
 	}
 
+	public Set<User> getBookmarkees() {
+		return bookmarkees;
+	}
+	public void setBookmarkees(Set<User> bookmarkees) {
+		this.bookmarkees = bookmarkees;
+	}
 	@Override
 	public int hashCode()
 	{
