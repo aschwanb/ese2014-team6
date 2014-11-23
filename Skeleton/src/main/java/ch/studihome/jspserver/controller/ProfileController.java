@@ -51,9 +51,10 @@ public class ProfileController {
     	ads = user.getAds().toArray(ads);
     	model.addObject("ads", ads);
 //    	Messages
-//    	Message[] msgs = new Message[0];
-//    	msgs = user.getMsgs().toArray(msgs);
-//    	model.addObject("msgs", msgs);
+    	Message[] msgs = new Message[0];
+    	msgs = user.getFromMsgs().toArray(msgs);
+//    	msgs = user.getToMsgs().toArray(msgs);
+    	model.addObject("msgs", msgs);
 //    	Todo:
 //    		Calendar
 //    		Bookmarks
