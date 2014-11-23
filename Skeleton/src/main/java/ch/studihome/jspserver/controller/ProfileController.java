@@ -1,6 +1,7 @@
 package ch.studihome.jspserver.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,14 +52,13 @@ public class ProfileController {
     	ads = user.getAds().toArray(ads);
     	model.addObject("ads", ads);
 //    	Messages
-    	Message[] msgs = new Message[0];
-    	msgs = user.getFromMsgs().toArray(msgs);
-//    	msgs = user.getToMsgs().toArray(msgs);
+    	ArrayList<Message> msgs = new ArrayList<Message>();
+    	msgs.addAll(user.getFromMsgs());
+    	msgs.addAll(user.getToMsgs());
     	model.addObject("msgs", msgs);
 //    	Todo:
 //    		Calendar
 //    		Bookmarks
-    	
     	return model;
     }
 
