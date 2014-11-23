@@ -54,6 +54,10 @@
 			            <td>Maximum number of inhabitants:</td>
 			            <td><input id="max_number_of_inhabitants" name="max_number_of_inhabitants" type="text"></td>
 			        </tr>
+			        <tr>
+			            <td>Area:</td>
+			            <td><input id="area" name="area" type="text"></td>
+			        </tr>
 		    	</tbody>
 		    </table>
 			<table id="allAds" class="display">

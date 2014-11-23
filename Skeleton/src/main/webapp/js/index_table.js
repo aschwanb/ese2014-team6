@@ -52,4 +52,8 @@ $(document).ready(function() {
     $('#min_price, #max_price, #min_room_size, #max_room_size, #min_apartment_size, #max_apartment_size, #min_number_of_inhabitants, #max_number_of_inhabitants').keyup( function() {
         table.draw();
     } );
+    
+    $( '#area' ).keyup( function () {
+        table.column( 2 ).search( this.value ).draw();
+    } );
 } );
