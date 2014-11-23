@@ -53,7 +53,7 @@ public class Advert {
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
 	private Set<RoomImg> imgs = new HashSet<RoomImg>(0);
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)	//TODO LAZY vs EAGER problem
 	private Set<User> bookmarkees = new HashSet<User>(0);
 	
 	// To get image name from jsp-file

@@ -20,6 +20,7 @@
 		<security:intercept-url pattern="/create*" access="permitAll"/>
 <!-- 	Ad view	 		 -->
 		<security:intercept-url pattern="/advert*" access="permitAll"/>
+		<security:intercept-url pattern="/bookmark*" access="permitAll"/>
 <!-- Presentation		 -->
 		<security:intercept-url pattern="/css/**" access="permitAll" />
 		<security:intercept-url pattern="/fonts/**" access="permitAll" />

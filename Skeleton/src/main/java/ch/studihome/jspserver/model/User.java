@@ -57,7 +57,7 @@ public class User implements UserDetails {
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="toUser")
     private Set<Message> toMsgs = new HashSet<Message>(0);
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "bookmarklist",
 			   joinColumns = { @JoinColumn(name = "usr_id", nullable = false, updatable = false) }, 
 			   inverseJoinColumns = { @JoinColumn(name = "adv_id", nullable = false, updatable = false) })

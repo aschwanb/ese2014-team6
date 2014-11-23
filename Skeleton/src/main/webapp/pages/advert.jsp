@@ -11,6 +11,7 @@
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript" src="js/map.js"></script>
 		<script type="text/javascript"  src="js/adp_carousel.js"></script>
+		<script type="text/javascript"  src="js/adp_bookmark.js"></script>
 	</jsp:attribute>
 
 	<jsp:attribute name="page_header">
@@ -85,7 +86,7 @@
 				<div class="col-md-12 pull-right">
 					<div class="form-group">
 						<c:if test="${editable == false}">
-							<a class="btn btn-primary btn-lg advert-buttongroupbutton" href="bookmark">Bookmark</a>
+							<a class="btn btn-primary btn-lg advert-buttongroupbutton" href="#" onclick="setBookmark(${adForm.id})">Bookmark</a>
 						</c:if>
 						<c:if test="${editable == true}">
 							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
