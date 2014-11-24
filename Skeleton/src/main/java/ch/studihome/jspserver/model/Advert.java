@@ -117,11 +117,11 @@ public class Advert {
 		this.user = user;
 	}
 
-	public boolean isWG() {
+	public boolean getIsWG() {
 		return isWG;
 	}
 
-	public void setWG(boolean isWG) {
+	public void setIsWG(boolean isWG) {
 		this.isWG = isWG;
 	}
 
