@@ -45,6 +45,7 @@ public class MessageServiceImpl implements MessageService {
 		try {
 			Message message = new Message(fromUser, toUser, messageForm.getTitle(), messageForm.getMessage());
 			messageDao.save(message);		
+			// TODO: Update existing user object with the new information.
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
