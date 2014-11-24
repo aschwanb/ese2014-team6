@@ -81,7 +81,7 @@ public class AdServiceImpl implements AdService {
 		adForm.setPlz(ad.getAddress().getPlz());
 		adForm.setCity(ad.getAddress().getCity());
 		adForm.setLatlng(ad.getAddress().getCoordinate());
-		adForm.setIsWG(ad.isWG());
+		adForm.setIsWG(ad.getIsWG());
 		adForm.setAppartementSize(ad.getAppartementSize());
 		adForm.setNumberOfRooms(ad.getNumberOfRooms());
 		adForm.setRoomSize(ad.getRoomSize());
@@ -129,7 +129,7 @@ public class AdServiceImpl implements AdService {
         }
         ad.setTitle(adForm.getTitle());
         ad.setPrice(adForm.getPrice());
-        ad.setWG(adForm.getIsWG());
+        ad.setIsWG(adForm.getIsWG());
         ad.setAppartementSize(adForm.getAppartementSize());
         ad.setNumberOfRooms(adForm.getNumberOfRooms());
         ad.setRoomSize(adForm.getRoomSize());
