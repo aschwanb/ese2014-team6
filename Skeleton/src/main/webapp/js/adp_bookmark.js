@@ -2,7 +2,6 @@ function setBookmark(id)
 {
 	$.get("bookmark", {id: id})
 		.done(function(data){
-			alert("'" + data + "'\nTrimmed: '" + data.trim() + "'");
 			if(data.trim() == "success")
 			{
 				addAlert("success", "Ad bookmarked.");
