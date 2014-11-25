@@ -27,6 +27,14 @@ public class Address {
 	@OneToOne
 	private Advert advert;
 	
+	public Address() {}
+	public Address(String street, String plz, String city, String coordinate) {
+		this.street = street;
+		this.plz = plz;
+		this.city = city;
+		this.coordinate = coordinate;
+	}
+	
 	public Long getAdr_id() {
 		return adr_id;
 	}

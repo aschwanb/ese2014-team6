@@ -52,6 +52,23 @@ public class Advert {
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
 	private Set<RoomImg> imgs = new HashSet<RoomImg>(0);
 	
+	public Advert() {}
+	// TODO: Add images in constructor
+	public Advert(
+			String title, int price, boolean isWG, int appartementSize, int numberOfRooms, 
+			int roomSize, int numberOfInhabitants, String description, User user, Address address
+			) {
+		this.title = title;
+		this.price = price;
+		this.isWG = isWG;
+		this.numberOfRooms = numberOfRooms;
+		this.roomSize = roomSize;
+		this.numberOfInhabitants = numberOfInhabitants;
+		this.description = description;
+		this.user = user;
+		this.address = address;
+	}
+	
 	// To get image name from jsp-file
 	public String getFirstImage() {
 		return this.getImgs().iterator().next().getImgName();
