@@ -47,10 +47,13 @@ public class MessageController {
      */
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
     public ModelAndView messageTo(
-    		@RequestParam(value = "id", required = true)String id) {
-    	
-//		User toUser = adService.loadById(id).get
+    		@RequestParam(value = "id", required = true)String id
+    		) {
 		ModelAndView model = new ModelAndView("contact");
+		model.addObject("id", id);
+		model.addObject("messageForm", new MessageForm());
+//    	TODO: Add fromUser and toUser to model
+//		User toUser = adService.loadById(id).get
 		return model;
     }
 	
@@ -71,6 +74,8 @@ public class MessageController {
 		
 	}
 	
+	
+//	The following functions are for testing only
 	@RequestMapping(value = { "/test", "/msgTest" }, method = RequestMethod.GET)
 	public ModelAndView newMessageTest(){
 		ModelAndView model = new ModelAndView("msgTest");
