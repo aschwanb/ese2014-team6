@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -53,10 +54,13 @@ public class Advert {
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
 	private Set<RoomImg> imgs = new HashSet<RoomImg>(0);
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)	//TODO LAZY vs EAGER problem
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="bookmarks")	//TODO LAZY vs EAGER problem
 	private Set<User> bookmarkees = new HashSet<User>(0);
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
+	@JoinTable(name = "interestlist",
+			   joinColumns = { @JoinColumn(name = "adv_id", nullable = false, updatable = false) }, 
+			   inverseJoinColumns = { @JoinColumn(name = "usr_id", nullable = false, updatable = false) })
 	private Set<User> interestees = new HashSet<User>(0);
 	
 	// To get image name from jsp-file

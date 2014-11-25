@@ -70,7 +70,7 @@ public class BookmarkController {
 	 * @param user User object
 	 * @return ajax response page
 	 */
-    @RequestMapping(value = "ahowinterest", method = RequestMethod.GET)
+    @RequestMapping(value = "showinterest", method = RequestMethod.GET)
     public ModelAndView setInterest(@RequestParam(value = "id", required=false)Long advId, Principal principal) {
     	ModelAndView model = new ModelAndView("ajaxAnswer");
     	

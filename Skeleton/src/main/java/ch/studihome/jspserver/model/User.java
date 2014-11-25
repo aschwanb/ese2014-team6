@@ -63,10 +63,7 @@ public class User implements UserDetails {
 			   inverseJoinColumns = { @JoinColumn(name = "adv_id", nullable = false, updatable = false) })
 	private Set<Advert> bookmarks = new HashSet<Advert>(0);
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)	//TODO LAZY vs EAGER problem
-	@JoinTable(name = "interestlist",
-			   joinColumns = { @JoinColumn(name = "usr_id", nullable = false, updatable = false) }, 
-			   inverseJoinColumns = { @JoinColumn(name = "adv_id", nullable = false, updatable = false) })
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="interestees")	//TODO LAZY vs EAGER problem
 	private Set<Advert> interests = new HashSet<Advert>(0);
 	
 	public Set<Message> getFromMsgs() {
