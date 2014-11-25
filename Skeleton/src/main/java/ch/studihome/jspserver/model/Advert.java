@@ -56,6 +56,9 @@ public class Advert {
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)	//TODO LAZY vs EAGER problem
 	private Set<User> bookmarkees = new HashSet<User>(0);
 	
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
+	private Set<User> interestees = new HashSet<User>(0);
+	
 	// To get image name from jsp-file
 	public String getFirstImage() {
 		return this.getImgs().iterator().next().getImgName();
@@ -162,6 +165,12 @@ public class Advert {
 	}
 	public void setBookmarkees(Set<User> bookmarkees) {
 		this.bookmarkees = bookmarkees;
+	}
+	public Set<User> getInterestees() {
+		return interestees;
+	}
+	public void setInterestees(Set<User> interestees) {
+		this.interestees = interestees;
 	}
 	@Override
 	public int hashCode()
