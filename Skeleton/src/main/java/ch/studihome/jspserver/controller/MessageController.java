@@ -1,5 +1,7 @@
 package ch.studihome.jspserver.controller;
 
+import java.lang.ProcessBuilder.Redirect;
+
 import javax.validation.Valid;
 
 import org.jboss.logging.Logger;
@@ -35,6 +37,8 @@ public class MessageController {
 
     @Autowired MessageDao messageDao;
     @Autowired MessageService messageService;
+    @Autowired AdService adService;
+    
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
 	/**
@@ -42,20 +46,27 @@ public class MessageController {
      * @return Edit form
      */
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
-    public ModelAndView messageTo() {
+    public ModelAndView messageTo(
+    		@RequestParam(value = "id", required = true)String id) {
     	
+//		User toUser = adService.loadById(id).get
 		ModelAndView model = new ModelAndView("contact");
 		return model;
     }
 	
 	@RequestMapping(value = "/message", method = RequestMethod.GET)
 	public ModelAndView messageShow(
-			@RequestParam(value = "id", required=true)Long id
+			@RequestParam(value = "id", required = true)Long id
 			) {
 		ModelAndView model = new ModelAndView("message");
-		Message msg = messageDao.findById(id);
-		model.addObject("msg", msg);
 		
+		Message msg = messageDao.findById(id);
+		if (msg == null) {
+			//TODO: Propper error handling
+			return model;
+		}
+		
+		model.addObject("msg", msg);
 		return model;
 		
 	}

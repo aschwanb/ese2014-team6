@@ -10,9 +10,15 @@
 		<h1>Message Detail view</h1>
 	</jsp:attribute>
 		<jsp:body>
-			<c:if test="{not empty msg}">
-				<c:out value="${msg.title}"/>
-				<c:out value="${msg.message}" />
+			<c:if test="${not empty msg}">
+				<div><h4><c:out value="${msg.title}"/></h4></div>
+				<div><p><c:out value="${msg.message}"/></p></div>
+				<div class="form-group">
+    				<div>
+    		    		<a class="btn btn-primary" href="msgTest">Responde</a>
+		        		<a class="btn btn-default" href="profile">Cancel</a>            
+		     		</div>
+		    	</div>				
 			</c:if>
 		</jsp:body>
 </base:page>
