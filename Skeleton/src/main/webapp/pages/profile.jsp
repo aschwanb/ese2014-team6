@@ -63,7 +63,20 @@
 						You have no messages
 					</c:if>				</div>
 				<div class="tab-pane fade" id="profile-bm">
-					C...
+					<c:if test="${not empty bookmarks}">
+						<table class="table table-striped table-hover">
+							<tr><th>Title</th><th>Price</th></tr>
+							<c:forEach var="ad" items="${bookmarks}">
+								<tr onclick="document.location='advert?id=${ad.adv_id}';">
+									<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.title}"/></a></td>
+									<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.price}"/></a></td>
+								</tr>
+							</c:forEach>
+						</table>
+					</c:if>
+					<c:if test="${empty bookmarks}">
+						No Ads bookmarked.
+					</c:if>
 				</div>
 				<div class="tab-pane fade" id="profile-adv">
 					<c:if test="${not empty ads}">

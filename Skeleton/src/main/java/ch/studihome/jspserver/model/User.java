@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -55,6 +57,15 @@ public class User implements UserDetails {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="toUser")
     private Set<Message> toMsgs = new HashSet<Message>(0);
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
+	@JoinTable(name = "bookmarklist",
+			   joinColumns = { @JoinColumn(name = "usr_id", nullable = false, updatable = false) }, 
+			   inverseJoinColumns = { @JoinColumn(name = "adv_id", nullable = false, updatable = false) })
+	private Set<Advert> bookmarks = new HashSet<Advert>(0);
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="interestees")	//TODO LAZY vs EAGER problem
+	private Set<Advert> interests = new HashSet<Advert>(0);
 	
 	public User(){}
 	public User(String firstName, String lastName, String email, String password) {
@@ -256,7 +267,20 @@ public class User implements UserDetails {
         List<GrantedAuthority> colAuth = new ArrayList<GrantedAuthority>();
         colAuth.add(auth);
         return colAuth;
-    } 
+    }
+    
+	public Set<Advert> getBookmarks() {
+		return bookmarks;
+	}
+	public void setBookmarks(Set<Advert> bookmarks) {
+		this.bookmarks = bookmarks;
+	}
+	public Set<Advert> getInterests() {
+		return interests;
+	}
+	public void setInterests(Set<Advert> interests) {
+		this.interests = interests;
+	} 
 
 	
 }

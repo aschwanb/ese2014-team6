@@ -47,10 +47,17 @@ public class ProfileController {
     	
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	model.addObject("user", user);
-//      Ads		
+    	
+    	// Ads		
     	Advert[] ads = new Advert[0];
     	ads = user.getAds().toArray(ads);
     	model.addObject("ads", ads);
+    	
+    	// Bookmarks
+    	Advert[] bms = new Advert[0];
+    	bms = user.getBookmarks().toArray(bms);
+    	model.addObject("bookmarks", bms);
+    	
 //    	Messages
     	ArrayList<Message> msgs = new ArrayList<Message>();
     	msgs.addAll(user.getFromMsgs());
