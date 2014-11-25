@@ -70,16 +70,4 @@
 	<div id=uploadContainer>
 	
 	</div>
-<%--
-	<c:set var="imageErrors"><form:errors path="imgFile[0]"/></c:set>
-	<div class="form-group">
-		<label class="control-label" for="field-image">Upload image</label>
-		<div class="controls">
-			<form:input type = "file" path="imgsFile[0]" id="field-file" maxlength="45" placeholder="Picture"/>
-			<form:errors path="imgFile[0]" cssClass="help-inline" element="span"/>
-		</div>
-	</div>	<%--
-	<c:if test="${editable == false}"> <%-- TODO -- %>
-		<img src="/Skeleton/user/ad/img/square.jpg" alt="..." class="img-thumbnail">
-	</c:if> --%>
 </c:if>

@@ -87,12 +87,14 @@
 					<div class="form-group">
 						<c:if test="${editable == false}">
 							<a class="btn btn-primary btn-lg advert-buttongroupbutton" href="#" onclick="setBookmark(${adForm.id})">Bookmark</a>
+							<a class="btn btn-primary btn-lg advert-buttongroupbutton" href="#" onclick="showInterest(${adForm.id})">Show Interest</a>
+							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="contact/?adId=${adForm.id}">Contact</a>
 						</c:if>
 						<c:if test="${editable == true}">
 							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
+							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="discard" ${adForm.id == 0 ? 'disabled="disabled"':''}>Discard</a>
 						</c:if>
-						<a class="btn btn-default btn-lg advert-buttongroupbutton" 
-						href="${editable ? 'discard' : 'contact/?adId=${adForm.id}'}" ${adForm.id == 0 ? 'disabled="disabled"':''}>${editable ? 'Discard' : 'Contact'}</a>
+						
 					</div>
 				</div>
 			</div>
