@@ -14,7 +14,8 @@
 		<div>
 			You are about to contact the owner of ad <c:out value="${id}"/>
 		</div>
-				<form:form method="post" modelAttribute="messageForm" action="msgTest" id="messageForm" class="form-horizontal" role="form">
+
+		<form:form method="post" modelAttribute="messageForm" action="msgTest" id="messageForm" class="form-horizontal" role="form">
 	
 			<div class="form-group">
 		        <c:set var="toUserEmailErrors"><form:errors path="toUserEmail"/></c:set>
