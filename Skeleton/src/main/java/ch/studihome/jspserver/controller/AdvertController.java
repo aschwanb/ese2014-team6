@@ -101,6 +101,11 @@ public class AdvertController {
     				Advert adv = advDao.findOne(adForm.getId());
     				if(user.getUsr_id() == adv.getUser().getUsr_id()) {     			
     					model.addObject("editable", "true");
+    					
+    					// interestees
+    					User[] intr = new User[0];
+    					intr = adv.getInterestees().toArray(intr);
+    			    	model.addObject("interestees", intr);
     				}else {
         				model.addObject("editable", "false");
         			}

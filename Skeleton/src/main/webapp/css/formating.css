@@ -90,8 +90,12 @@ margin-top:20px;
     position: relative;
 }
 
-.stepwizard-step {
+.stepwizard-step.three {
 	width: 33%;
+}
+
+.stepwizard-step.four {
+	width: 25%;
 }
 
 .stepwizard-step button[disabled] {
