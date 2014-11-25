@@ -101,7 +101,7 @@
 								</table>
 							</c:if>
 							<c:if test="${empty interestees}">
-								No Interestees.
+								<p>No Interestees.</p>
 							</c:if>
 							
 							<button class="btn btn-primary prevBtn btn-lg" type="button" >Previous</button>
