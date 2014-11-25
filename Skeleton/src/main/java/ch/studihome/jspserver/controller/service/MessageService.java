@@ -15,10 +15,11 @@ import ch.studihome.jspserver.model.pojos.MessageForm;
  */
 public interface MessageService {
 	
+//	Load
 	public Iterable<Message> findAll();
-	public Message loadByFromUser(User user);
-	public Message loadByToUser(User user);
-	
-	public Message saveMessage(MessageForm messageForm) throws InvalidUserException;
+	public Iterable<Message> findByFromUser(User user);
+	public Iterable<Message> findByToUser(User user);
+//	Save
+	public MessageForm saveMessage(MessageForm messageForm) throws InvalidUserException;
 
 }

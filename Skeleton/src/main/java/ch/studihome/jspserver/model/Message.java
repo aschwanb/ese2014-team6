@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
@@ -41,17 +42,29 @@ public class Message {
     private Date date;
     private String title;
 	private String message;
-//	TODO: Spring does not like Boolean values. Why not?
-//    private Boolean read;
-//    private Boolean responded;
+    private Boolean hasRead;
+    private Boolean hasResponded;
 	
-    Message(User fromUser, User toUser, String title, String message) {
+    public Message() {}
+    
+    public Message(User fromUser, User toUser, String title, String message) {
     	this.fromUser = fromUser;
     	this.toUser = toUser;
     	this.title = title;
     	this.message = message;
-//    	this.read = false;
-//    	this.responded = false;
+    	this.hasRead = false;
+    	this.hasResponded = false;
+    }
+    
+    public String toString() {
+    	String out = "ID: " + this.id + "\n" +
+    				 "From User: " + this.getFromUser().getEmail() + "\n" +
+    				 "To User: " + this.getToUser().getEmail() + "\n" +
+    				 "Message is unread: " + this.getHasRead().toString() + "\n" +
+    				 "From User: " + this.getHasResponded().toString() + "\n" +
+    				 "Title: " + this.getTitle() + "\n" +
+    				 "Message: " + this.getMessage();
+    	return out;
     }
   
     public User getFromUser() {
@@ -98,17 +111,17 @@ public class Message {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-//	public Boolean getUnread() {
-//		return read;
-//	}
-//	public void setUnread(Boolean unread) {
-//		this.read = unread;
-//	}
-//	public Boolean getResponded() {
-//		return responded;
-//	}
-//	public void setResponded(Boolean responded) {
-//		this.responded = responded;
-//	}
+	public Boolean getHasRead() {
+		return hasRead;
+	}
+	public void setHasRead(Boolean hasRead) {
+		this.hasRead = hasRead;
+	}
+	public Boolean getHasResponded() {
+		return hasResponded;
+	}
+	public void setHasResponded(Boolean hasResponded) {
+		this.hasResponded = hasResponded;
+	}
     	
 }

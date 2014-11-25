@@ -48,8 +48,20 @@
 					A...
 				</div>
 				<div class="tab-pane fade" id="profile-msg">
-					B...
-				</div>
+					<c:if test="${not empty msgs}">
+						<table class="table table-striped table-hover">
+							<tr><th>Title</th><th>Message</th></tr>
+							<c:forEach var="msg" items="${msgs}">
+								<tr onclick="document.location='message?id=${msg.id}';">
+									<td><a href="message?id=${msg.id}"><c:out value="${msg.title}"/></a></td>
+									<td><a href="message?id=${msg.id}"><c:out value="${msg.message}"/></a></td>
+								</tr>
+							</c:forEach>
+						</table>
+					</c:if>
+					<c:if test="${empty msgs}">
+						You have no messages
+					</c:if>				</div>
 				<div class="tab-pane fade" id="profile-bm">
 					C...
 				</div>
@@ -66,7 +78,7 @@
 						</table>
 					</c:if>
 					<c:if test="${empty ads}">
-						No Ads available.
+						No Ads available
 					</c:if>
 				</div>
 			</div>
