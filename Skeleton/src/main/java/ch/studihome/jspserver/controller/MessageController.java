@@ -65,6 +65,38 @@ public class MessageController {
 		return model;
     }
 	
+	@RequestMapping(value = { "/contact" }, method = RequestMethod.POST)
+	public ModelAndView messagePost(
+			@Valid MessageForm messageForm,
+			BindingResult result,
+			RedirectAttributes redirectAttributes
+			){
+		ModelAndView model = new ModelAndView("contact");
+		BSalert[] alerts = new BSalert[1];
+
+		if(!result.hasErrors()) {
+			log.info("Form valid");
+			try {
+				messageForm = messageService.saveMessage(messageForm);
+            	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Message send.");
+				model.addObject("message", messageForm.toString());
+				
+				log.info("Message saved in db");            					
+			} catch (InvalidUserException e) {
+				log.info("User not found");				
+            	alerts[0] = new BSalert(BSalert.Type.danger, "<strong>Error!</strong> " + e.getMessage());
+			}
+
+		} else {
+			//TODO: Display error message
+			log.info("Form invalide. Error handling started");
+		}
+
+		model.addObject("messageForm", messageForm);  	
+		model.addObject("alerts", alerts);
+		return model;
+	}
+	
 	@RequestMapping(value = "/message", method = RequestMethod.GET)
 	public ModelAndView messageShow(
 			@RequestParam(value = "id", required = true)Long id

@@ -12,7 +12,7 @@
 	
 	<jsp:body>
 
-		<form:form method="post" modelAttribute="messageForm" action="msgTest" id="messageForm" class="form-horizontal" role="form">
+		<form:form method="post" modelAttribute="messageForm" action="contact" id="messageForm" class="form-horizontal" role="form">
 	
 			<div class="form-group" style="display: none;">
 		        <c:set var="toUserEmailErrors"><form:errors path="toUserEmail"/></c:set>
