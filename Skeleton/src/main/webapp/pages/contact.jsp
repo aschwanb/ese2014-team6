@@ -11,29 +11,28 @@
 	</jsp:attribute>
 	
 	<jsp:body>
-		<div>
-			You are about to contact the owner of ad <c:out value="${id}"/>
-		</div>
 
 		<form:form method="post" modelAttribute="messageForm" action="msgTest" id="messageForm" class="form-horizontal" role="form">
 	
-			<div class="form-group">
+			<div class="form-group" style="display: none;">
 		        <c:set var="toUserEmailErrors"><form:errors path="toUserEmail"/></c:set>
 		      		<div class="control-group<c:if test="${not empty toUserEmailErrors}"> has-error</c:if>">			
 					<label for="field-toUserEmail" class="col-sm-2 control-label">To User Email</label>
 					<div class="col-sm-10 form-inline" >
-						<form:input type="text" class="form-control" path="toUserEmail" id="field-toUserEmail" placeholder="Their Email" />
+						<form:input type="text" class="form-control" path="toUserEmail"
+						id="field-toUserEmail" placeholder="Their Email" value="${toUser.email}" />
 						<form:errors class="alert alert-danger" role="alert" path="toUserEmail"/>
 					</div>
 				</div>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group" style="display: none;">
 			    <c:set var="fromUserEmailErrors"><form:errors path="fromUserEmail"/></c:set>
 		      	<div class="control-group<c:if test="${not empty fromUserEmailErrors}"> has-error</c:if>">	
 		    	  	<label for="field-fromUserEmail" class="col-sm-2 control-label">Your Email</label>
 					<div class="col-sm-10 form-inline" >
-						<form:input type="text" class="form-control" path="fromUserEmail" id="field-fromUserEmail" placeholder="Your Email" />
+						<form:input type="text" class="form-control" path="fromUserEmail" 
+						id="field-fromUserEmail" placeholder="Your Email" value="${fromUser.email}"/>
 						<form:errors class="alert alert-danger" role="alert" path="fromUserEmail"/>
 					</div>
 				</div>

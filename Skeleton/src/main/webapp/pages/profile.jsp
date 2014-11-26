@@ -8,7 +8,7 @@
 <base:page title="Profile">
 	<jsp:attribute name="page_header">
 		<h1>Username: ${user.userName}</h1>
-		<h1>ID: ${user.usr_id}</h1>
+		<h1>ID: ${user.usrId}</h1>
 		
 	</jsp:attribute>
 
@@ -67,9 +67,9 @@
 						<table class="table table-striped table-hover">
 							<tr><th>Title</th><th>Price</th></tr>
 							<c:forEach var="ad" items="${bookmarks}">
-								<tr onclick="document.location='advert?id=${ad.adv_id}';">
-									<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.title}"/></a></td>
-									<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.price}"/></a></td>
+								<tr onclick="document.location='advert?id=${ad.advId}';">
+									<td><a href="advert?id=${ad.advId}"><c:out value="${ad.title}"/></a></td>
+									<td><a href="advert?id=${ad.advId}"><c:out value="${ad.price}"/></a></td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -83,9 +83,9 @@
 						<table class="table table-striped table-hover">
 							<tr><th>Title</th><th>Price</th></tr>
 							<c:forEach var="ad" items="${ads}">
-								<tr onclick="document.location='advert?id=${ad.adv_id}';">
-									<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.title}"/></a></td>
-									<td><a href="advert?id=${ad.adv_id}"><c:out value="${ad.price}"/></a></td>
+								<tr onclick="document.location='advert?id=${ad.advId}';">
+									<td><a href="advert?id=${ad.advId}"><c:out value="${ad.title}"/></a></td>
+									<td><a href="advert?id=${ad.advId}"><c:out value="${ad.price}"/></a></td>
 								</tr>
 							</c:forEach>
 						</table>

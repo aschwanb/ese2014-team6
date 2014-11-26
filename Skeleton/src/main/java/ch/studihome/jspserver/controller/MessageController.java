@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,7 @@ import ch.studihome.jspserver.controller.service.MessageService;
 import ch.studihome.jspserver.controller.service.SignupService;
 import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.Message;
+import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AdvertDao;
 import ch.studihome.jspserver.model.dao.MessageDao;
 import ch.studihome.jspserver.model.pojos.AdForm;
@@ -38,7 +40,7 @@ public class MessageController {
 
     @Autowired MessageDao messageDao;
     @Autowired MessageService messageService;
-    @Autowired AdService adService;
+    @Autowired AdvertDao advertDao;
     
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
@@ -48,14 +50,18 @@ public class MessageController {
      */
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
     public ModelAndView messageTo(
-    		@RequestParam(value = "id", required = true)String id
+    		@RequestParam(value = "id", required = true)Long id
     		) {
 		ModelAndView model = new ModelAndView("contact");
+
+		User toUser = advertDao.findByAdvId(id).getUser();
+        User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
 		model.addObject("id", id);
 		model.addObject("messageForm", new MessageForm());
-//    	TODO: Add fromUser and toUser to model
-		AdForm ad = adService.loadById(id);
-		
+		model.addObject("toUser", toUser);
+		model.addObject("fromUser", fromUser);
+        
 		return model;
     }
 	

@@ -93,7 +93,7 @@
 								<table class="table table-striped table-hover">
 									<tr><th>User name</th><th>E-Mail</th></tr>
 									<c:forEach var="user" items="${interestees}">
-										<tr> <!-- TODO onclick="document.location='advert?id=${ad.adv_id}';" -->
+										<tr> <!-- TODO onclick="document.location='advert?id=${ad.advId}';" -->
 											<td><a href="#TODO"><c:out value="${user.userName}"/></a></td>
 											<td><a href="#TODO"><c:out value="${user.email}"/></a></td>
 										</tr>
