@@ -57,13 +57,28 @@ public class MessageController {
 		User toUser = advertDao.findByAdvId(id).getUser();
         User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		model.addObject("id", id);
 		model.addObject("messageForm", new MessageForm());
 		model.addObject("toUser", toUser);
 		model.addObject("fromUser", fromUser);
         
 		return model;
     }
+	
+	@RequestMapping(value = "/responde", method = RequestMethod.GET)
+	public ModelAndView responde(
+			@RequestParam(value = "id", required = true)Long id
+			) {
+		ModelAndView model = new ModelAndView("contact");
+		
+		User toUser = messageDao.findById(id).getFromUser();
+		User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		model.addObject("messageForm", new MessageForm());
+		model.addObject("toUser", toUser);
+		model.addObject("fromUser", fromUser);
+        
+		return model;		
+	}
 	
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.POST)
 	public ModelAndView messagePost(
@@ -96,7 +111,7 @@ public class MessageController {
 		model.addObject("alerts", alerts);
 		return model;
 	}
-	
+		
 	@RequestMapping(value = "/message", method = RequestMethod.GET)
 	public ModelAndView messageShow(
 			@RequestParam(value = "id", required = true)Long id
