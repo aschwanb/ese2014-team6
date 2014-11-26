@@ -54,6 +54,7 @@ public class Message {
     	this.message = message;
     	this.hasRead = false;
     	this.hasResponded = false;
+    	this.date = new Date();
     }
     
     public String toString() {

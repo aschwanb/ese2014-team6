@@ -2,6 +2,8 @@ package ch.studihome.jspserver.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -58,14 +60,21 @@ public class ProfileController {
     	bms = user.getBookmarks().toArray(bms);
     	model.addObject("bookmarks", bms);
     	
-//    	Messages
+    	// Messages
     	ArrayList<Message> msgs = new ArrayList<Message>();
     	msgs.addAll(user.getFromMsgs());
     	msgs.addAll(user.getToMsgs());
+    	// Sorting messages according to date
+    	Collections.sort(msgs, new Comparator<Message>() {
+    		public int compare(Message msg1, Message msg2) {
+    			return -1 * msg1.getDate().compareTo(msg2.getDate()); // Oldest last
+    		}
+    	});
+    	
     	model.addObject("msgs", msgs);
 //    	Todo:
 //    		Calendar
-//    		Bookmarks
+
     	return model;
     }
 
