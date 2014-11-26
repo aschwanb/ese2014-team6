@@ -32,12 +32,12 @@ public class AdvertTest
 {
 
 	@Test
-	public void testSetAdv_idGetAdv_id()
+	public void testSetadvIdGetadvId()
 	{
 		Advert advert = new Advert();
 		long id = 122;
-		advert.setAdv_id(id);
-		long actual = advert.getAdv_id();
+		advert.setadvId(id);
+		long actual = advert.getadvId();
 		assertEquals(id, actual);
 	}
 

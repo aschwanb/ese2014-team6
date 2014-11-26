@@ -73,22 +73,22 @@ public class AdServiceImplTest
 				all.add(new Advert());
 				all.add(new Advert());
 				all.add(new Advert());
-				all.get(0).setAdv_id(1l);
-				all.get(1).setAdv_id(2l);
-				all.get(2).setAdv_id(3l);
+				all.get(0).setadvId(1l);
+				all.get(1).setadvId(2l);
+				all.get(2).setadvId(3l);
 				return all;
 			}
 		});
 		
 		ArrayList<Advert> all = (ArrayList<Advert>) adServiceImpl.findAll();
-		assertNotNull(all.get(0).getAdv_id());
-		assertNotNull(all.get(1).getAdv_id());
-		assertNotNull(all.get(2).getAdv_id());
+		assertNotNull(all.get(0).getadvId());
+		assertNotNull(all.get(1).getadvId());
+		assertNotNull(all.get(2).getadvId());
 		
 
-		assertTrue(all.get(0).getAdv_id() > 0);
-		assertTrue(all.get(1).getAdv_id() > 0);
-		assertTrue(all.get(2).getAdv_id() > 0);
+		assertTrue(all.get(0).getadvId() > 0);
+		assertTrue(all.get(1).getadvId() > 0);
+		assertTrue(all.get(2).getadvId() > 0);
 	}
 
 	@Test
@@ -99,10 +99,10 @@ public class AdServiceImplTest
 			public Advert answer(InvocationOnMock invocation) throws Throwable
 			{
 				Advert advert = new Advert();
-				advert.setAdv_id(2L);
+				advert.setadvId(2L);
 				advert.setAddress(new Address());
 				User user = new User();
-				user.setUsr_id(1L);
+				user.setusrId(1L);
 				advert.setUser(user);
 				return advert;
 			}
@@ -123,7 +123,7 @@ public class AdServiceImplTest
 			public Advert answer(InvocationOnMock invocation) throws Throwable
 			{
 				Advert advert = (Advert) invocation.getArguments()[0];
-				advert.setAdv_id(2L);
+				advert.setadvId(2L);
 				return advert;
 			}
 			

@@ -39,14 +39,14 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue
-    private Long usr_id;
+    private Long usrId;
 
     private String firstName;
     private String lastName;
     private String userName;
     private String email;
     private String password;
-    private String user_role;
+    private String userRole;
     private String enabled;
     
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
@@ -60,8 +60,8 @@ public class User implements UserDetails {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
 	@JoinTable(name = "bookmarklist",
-			   joinColumns = { @JoinColumn(name = "usr_id", nullable = false, updatable = false) }, 
-			   inverseJoinColumns = { @JoinColumn(name = "adv_id", nullable = false, updatable = false) })
+			   joinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) }, 
+			   inverseJoinColumns = { @JoinColumn(name = "advId", nullable = false, updatable = false) })
 	private Set<Advert> bookmarks = new HashSet<Advert>(0);
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="interestees")	//TODO LAZY vs EAGER problem
@@ -74,7 +74,7 @@ public class User implements UserDetails {
 		this.email = email;
 		this.userName = email;
 		this.password = password;
-		this.user_role = "ROLE_USER";
+		this.userRole = "ROLE_USER";
 		this.enabled = "true";
 	}
 	
@@ -98,17 +98,17 @@ public class User implements UserDetails {
     			"UserName: " + userName + "\n"+
     			"Email: " + email + "\n"+
     			"Password: " + password + "\n"+
-    			"UserRole: " + user_role + "\n"+
+    			"UserRole: " + userRole + "\n"+
     			"Enabled: " + enabled + "\n" +
     			"GrantedAuthority: " + this.getAuthorities().iterator().next().toString();
     	return out;
     }
-    public Long getUsr_id() {
-        return usr_id;
+    public Long getusrId() {
+        return usrId;
     }
 
-    public void setUsr_id(Long id) {
-        this.usr_id = id;
+    public void setusrId(Long id) {
+        this.usrId = id;
     }
 
     public String getFirstName() {
@@ -152,11 +152,11 @@ public class User implements UserDetails {
 	}
 
 	public String getUser_role() {
-		return user_role;
+		return userRole;
 	}
 
 	public void setUser_role(String user_role) {
-		this.user_role = user_role;
+		this.userRole = user_role;
 	}
 
 	public String getEnabled() {
@@ -192,8 +192,8 @@ public class User implements UserDetails {
 		result = prime * result
 				+ ((userName == null) ? 0 : userName.hashCode());
 		result = prime * result
-				+ ((user_role == null) ? 0 : user_role.hashCode());
-		result = prime * result + ((usr_id == null) ? 0 : usr_id.hashCode());
+				+ ((userRole == null) ? 0 : userRole.hashCode());
+		result = prime * result + ((usrId == null) ? 0 : usrId.hashCode());
 		return result;
 	}
 	@Override
@@ -242,17 +242,17 @@ public class User implements UserDetails {
 				return false;
 		} else if (!userName.equals(other.userName))
 			return false;
-		if (user_role == null)
+		if (userRole == null)
 		{
-			if (other.user_role != null)
+			if (other.userRole != null)
 				return false;
-		} else if (!user_role.equals(other.user_role))
+		} else if (!userRole.equals(other.userRole))
 			return false;
-		if (usr_id == null)
+		if (usrId == null)
 		{
-			if (other.usr_id != null)
+			if (other.usrId != null)
 				return false;
-		} else if (!usr_id.equals(other.usr_id))
+		} else if (!usrId.equals(other.usrId))
 			return false;
 		return true;
 	}
@@ -263,7 +263,7 @@ public class User implements UserDetails {
 	public boolean isCredentialsNonExpired() {return true;}
 	public boolean isEnabled() {return true;}
     public Collection<? extends    GrantedAuthority> getAuthorities() {
-        GrantedAuthority auth = new SimpleGrantedAuthority(user_role);
+        GrantedAuthority auth = new SimpleGrantedAuthority(userRole);
         List<GrantedAuthority> colAuth = new ArrayList<GrantedAuthority>();
         colAuth.add(auth);
         return colAuth;

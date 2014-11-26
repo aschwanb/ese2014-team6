@@ -74,7 +74,7 @@ public class AdServiceImpl implements AdService {
 			return null;
 		}
 		
-		adForm.setId(ad.getAdv_id());
+		adForm.setId(ad.getadvId());
 		adForm.setTitle(ad.getTitle());
 		adForm.setPrice(ad.getPrice());
 		adForm.setStreet(ad.getAddress().getStreet());
@@ -87,7 +87,7 @@ public class AdServiceImpl implements AdService {
 		adForm.setRoomSize(ad.getRoomSize());
 		adForm.setNumberOfInhabitants(ad.getNumberOfInhabitants());
 		adForm.setDescription(ad.getDescription());
-		adForm.setOwnerId(ad.getUser().getUsr_id());
+		adForm.setOwnerId(ad.getUser().getusrId());
 		
 		RoomImg[] imgs = new RoomImg[0];
 		imgs = ad.getImgs().toArray(imgs);
@@ -125,7 +125,7 @@ public class AdServiceImpl implements AdService {
         address.setAdvert(ad);
         if(adForm.getId() != 0)
         {
-        	ad.setAdv_id(adForm.getId());
+        	ad.setadvId(adForm.getId());
         }
         ad.setTitle(adForm.getTitle());
         ad.setPrice(adForm.getPrice());
@@ -139,7 +139,7 @@ public class AdServiceImpl implements AdService {
         
 		ad = advertDao.save(ad);	// save ad to DB (has to be done, to easily get the adId
         
-        adForm.setId(ad.getAdv_id());
+        adForm.setId(ad.getadvId());
         
         // Todo: Check if upload is an image. (eg "image" = image.getContentType().split("/")[0])
         int limit = adForm.getImgFile().size();
@@ -205,7 +205,7 @@ public class AdServiceImpl implements AdService {
 		{
 			log.info("INFO: File Content Type is " + image.getContentType());
 			
-			String name = ad.getAdv_id().toString() + 
+			String name = ad.getadvId().toString() + 
 					"_" + Integer.toString(imgNr) + 
 					"." + image.getContentType().split("/")[1];
 			String imagePath = usrPath + imgPath + name;

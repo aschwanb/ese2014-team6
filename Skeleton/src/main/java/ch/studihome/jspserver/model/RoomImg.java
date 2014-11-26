@@ -19,21 +19,21 @@ import javax.persistence.ManyToOne;
 public class RoomImg{
 	@Id
 	@GeneratedValue
-	private Long rimg_id;
+	private Long rimgId;
 	
 	private int imgNum;
 	private String imgName;
 	private String imgDescription;
 	
-	@ManyToOne @JoinColumn(name="adv_id", nullable=false)
+	@ManyToOne @JoinColumn(name="advId", nullable=false)
 	Advert advert;
 	
 	public Long getRimg_id() {
-		return rimg_id;
+		return rimgId;
 	}
 	
 	public void setRimg_id(Long id) {
-		this.rimg_id = id;
+		this.rimgId = id;
 	}
 	
 	public String getImgName() {
@@ -77,7 +77,7 @@ public class RoomImg{
 				+ ((imgDescription == null) ? 0 : imgDescription.hashCode());
 		result = prime * result + ((imgName == null) ? 0 : imgName.hashCode());
 		result = prime * result + imgNum;
-		result = prime * result + ((rimg_id == null) ? 0 : rimg_id.hashCode());
+		result = prime * result + ((rimgId == null) ? 0 : rimgId.hashCode());
 		return result;
 	}
 
@@ -105,11 +105,11 @@ public class RoomImg{
 			return false;
 		if (imgNum != other.imgNum)
 			return false;
-		if (rimg_id == null)
+		if (rimgId == null)
 		{
-			if (other.rimg_id != null)
+			if (other.rimgId != null)
 				return false;
-		} else if (!rimg_id.equals(other.rimg_id))
+		} else if (!rimgId.equals(other.rimgId))
 			return false;
 		return true;
 	}

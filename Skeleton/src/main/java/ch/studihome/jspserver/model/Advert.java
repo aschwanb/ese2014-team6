@@ -32,7 +32,7 @@ public class Advert {
 	
 	@Id
 	@GeneratedValue
-	private Long adv_id;
+	private Long advId;
 	
 	private String title;
 	private int price;
@@ -45,7 +45,7 @@ public class Advert {
 	@Column(columnDefinition="character varying (2048) not null")
 	private String description;
 	
-	@ManyToOne @JoinColumn(name="usr_id", nullable=false)
+	@ManyToOne @JoinColumn(name="usrId", nullable=false)
 	private User user;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy="advert")
@@ -59,8 +59,8 @@ public class Advert {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
 	@JoinTable(name = "interestlist",
-			   joinColumns = { @JoinColumn(name = "adv_id", nullable = false, updatable = false) }, 
-			   inverseJoinColumns = { @JoinColumn(name = "usr_id", nullable = false, updatable = false) })
+			   joinColumns = { @JoinColumn(name = "advId", nullable = false, updatable = false) }, 
+			   inverseJoinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) })
 	private Set<User> interestees = new HashSet<User>(0);
 
 	
@@ -86,12 +86,12 @@ public class Advert {
 		return this.getImgs().iterator().next().getImgName();
 
 	}
-	public Long getAdv_id() {
-		return adv_id;
+	public Long getadvId() {
+		return advId;
 	}
 	
-	public void setAdv_id(Long id) {
-		this.adv_id = id;
+	public void setadvId(Long id) {
+		this.advId = id;
 	}
 	
 	public String getTitle() {
@@ -199,7 +199,7 @@ public class Advert {
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((adv_id == null) ? 0 : adv_id.hashCode());
+		result = prime * result + ((advId == null) ? 0 : advId.hashCode());
 		result = prime * result + appartementSize;
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
@@ -222,11 +222,11 @@ public class Advert {
 		if (getClass() != obj.getClass())
 			return false;
 		Advert other = (Advert) obj;
-		if (adv_id == null)
+		if (advId == null)
 		{
-			if (other.adv_id != null)
+			if (other.advId != null)
 				return false;
-		} else if (!adv_id.equals(other.adv_id))
+		} else if (!advId.equals(other.advId))
 			return false;
 		if (appartementSize != other.appartementSize)
 			return false;

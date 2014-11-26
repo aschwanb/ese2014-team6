@@ -99,7 +99,7 @@ public class AdvertController {
     			if (principal != null) {
     				User user = usrDao.findByEmail(principal.getName()).get(0);
     				Advert adv = advDao.findOne(adForm.getId());
-    				if(user.getUsr_id() == adv.getUser().getUsr_id()) {     			
+    				if(user.getusrId() == adv.getUser().getusrId()) {     			
     					model.addObject("editable", "true");
     					
     					// interestees
@@ -140,12 +140,12 @@ public class AdvertController {
 
 			User user = usrDao.findByEmail(principal.getName()).get(0);
 			Advert adv = advDao.findOne(adForm.getId());
-			if(adForm.getId() == 0 || user.getUsr_id() == adv.getUser().getUsr_id())
+			if(adForm.getId() == 0 || user.getusrId() == adv.getUser().getusrId())
 			{
 		    	if(!result.hasErrors())
 		    	{
 		    		try {
-		        		adForm.setOwnerId(user.getUsr_id());
+		        		adForm.setOwnerId(user.getusrId());
 		            	adForm = adService.saveFrom(adForm);
 		            	BSalert[] alerts = new BSalert[1];
 		            	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Ad saved.");

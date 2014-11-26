@@ -66,7 +66,7 @@ public class IndexControllerTest {
 			{
 				ArrayList<Advert> ads = new ArrayList<Advert>();
 				Advert advert = new Advert();
-				advert.setAdv_id(1l);
+				advert.setadvId(1l);
 				ads.add(advert);
 				return ads;
 			}
@@ -79,7 +79,7 @@ public class IndexControllerTest {
 		assertNotNull(ads.size());
 		assertTrue(ads.size() > 0);
 		Advert advert = ads.get(0);
-		assertEquals(advert.getAdv_id(), new Long(1));
+		assertEquals(advert.getadvId(), new Long(1));
 	}
 
 }

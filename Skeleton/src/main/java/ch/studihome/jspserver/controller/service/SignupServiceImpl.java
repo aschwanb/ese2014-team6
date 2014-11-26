@@ -49,7 +49,7 @@ public class SignupServiceImpl implements SignupService {
         user.setEnabled("TRUE");  
         user = userDao.save(user);         // save object to DB
         
-        signupForm.setId(user.getUsr_id());
+        signupForm.setId(user.getusrId());
         return signupForm;
 
     }

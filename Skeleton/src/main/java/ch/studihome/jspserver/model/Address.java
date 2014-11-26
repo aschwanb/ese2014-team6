@@ -17,7 +17,7 @@ import javax.persistence.OneToOne;
 public class Address {
 	@Id
 	@GeneratedValue
-	private Long adr_id;
+	private Long adrId;
 	
 	private String street;
 	private String plz;
@@ -36,11 +36,11 @@ public class Address {
 	}
 	
 	public Long getAdr_id() {
-		return adr_id;
+		return adrId;
 	}
 	
 	public void setAdr_id(Long id) {
-		this.adr_id = id;
+		this.adrId = id;
 	}
 	
 	public String getStreet() {
@@ -88,7 +88,7 @@ public class Address {
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((adr_id == null) ? 0 : adr_id.hashCode());
+		result = prime * result + ((adrId == null) ? 0 : adrId.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result
 				+ ((coordinate == null) ? 0 : coordinate.hashCode());
@@ -107,11 +107,11 @@ public class Address {
 		if (getClass() != obj.getClass())
 			return false;
 		Address other = (Address) obj;
-		if (adr_id == null)
+		if (adrId == null)
 		{
-			if (other.adr_id != null)
+			if (other.adrId != null)
 				return false;
-		} else if (!adr_id.equals(other.adr_id))
+		} else if (!adrId.equals(other.adrId))
 			return false;
 		if (city == null)
 		{

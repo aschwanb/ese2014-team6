@@ -60,12 +60,12 @@ public class UserTest
 	}
 
 	@Test
-	public void testSetUsr_idGetUsr_id()
+	public void testSetusrIdGetusrId()
 	{
 		User user = new User();
 		long id = 123;
-		user.setUsr_id(id);
-		long actual = user.getUsr_id();
+		user.setusrId(id);
+		long actual = user.getusrId();
 		assertEquals(id, actual);
 	}
 
@@ -145,11 +145,11 @@ public class UserTest
 		User user = new User();
 		Set<Advert> ads = new HashSet<Advert>(0);
 		Advert ad1 = new Advert();
-		ad1.setAdv_id(1l);
+		ad1.setadvId(1l);
 		Advert ad2 = new Advert();
-		ad2.setAdv_id(2l);
+		ad2.setadvId(2l);
 		Advert ad3 = new Advert();
-		ad3.setAdv_id(3l);
+		ad3.setadvId(3l);
 		ads.add(ad1);
 		ads.add(ad2);
 		ads.add(ad3);

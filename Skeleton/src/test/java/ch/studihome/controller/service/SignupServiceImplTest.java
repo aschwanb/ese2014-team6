@@ -63,7 +63,7 @@ public class SignupServiceImplTest
 			public User answer(InvocationOnMock invocation) throws Throwable
 			{
 				User user = (User) invocation.getArguments()[0];
-				user.setUsr_id(1L);
+				user.setusrId(1L);
 				return user;
 			}
 			

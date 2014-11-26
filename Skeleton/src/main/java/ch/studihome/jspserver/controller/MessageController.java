@@ -24,6 +24,7 @@ import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.dao.AdvertDao;
 import ch.studihome.jspserver.model.dao.MessageDao;
+import ch.studihome.jspserver.model.pojos.AdForm;
 import ch.studihome.jspserver.model.pojos.BSalert;
 import ch.studihome.jspserver.model.pojos.MessageForm;
 
@@ -53,7 +54,8 @@ public class MessageController {
 		model.addObject("id", id);
 		model.addObject("messageForm", new MessageForm());
 //    	TODO: Add fromUser and toUser to model
-//		User toUser = adService.loadById(id).get
+		AdForm ad = adService.loadById(id);
+		
 		return model;
     }
 	

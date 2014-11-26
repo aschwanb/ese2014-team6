@@ -8,7 +8,7 @@
 <base:page title="Profile">
 	<jsp:attribute name="page_header">
 		<h1>Public Page of ${user.userName}</h1>
-		<h1>ID: ${user.usr_id}</h1>
+		<h1>ID: ${user.usrId}</h1>
 		
 	</jsp:attribute>
 
