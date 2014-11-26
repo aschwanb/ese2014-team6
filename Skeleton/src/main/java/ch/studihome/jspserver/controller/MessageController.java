@@ -54,52 +54,32 @@ public class MessageController {
 	//TODO: Refactor all three methodes into one wiht three not obligatory parameters advId, msgId, usrId
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
     public ModelAndView messageToAdvertiser(
-    		@RequestParam(value = "id", required = true)Long id
+    		@RequestParam(value = "AdvId", required = false)Long AdvId,
+    		@RequestParam(value = "UsrId", required = false)Long UsrId,
+    		@RequestParam(value = "MsgId", required = false)Long MsgId
     		) {
+				
 		ModelAndView model = new ModelAndView("contact");
-
-		User toUser = advertDao.findByAdvId(id).getUser();
-        User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		model.addObject("messageForm", new MessageForm());
-		model.addObject("toUser", toUser);
-		model.addObject("fromUser", fromUser);
-        
-		return model;
-    }
-	
-	@RequestMapping(value = { "/contactInterested" }, method = RequestMethod.GET)
-    public ModelAndView messageToInterested(
-    		@RequestParam(value = "id", required = true)Long id
-    		) {
-		ModelAndView model = new ModelAndView("contact");
-
-		User toUser = userDao.findByUsrId(id);
-        User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		model.addObject("messageForm", new MessageForm());
-		model.addObject("toUser", toUser);
-		model.addObject("fromUser", fromUser);
-        
-		return model;
-    }
-	
-	@RequestMapping(value = "/responde", method = RequestMethod.GET)
-	public ModelAndView responde(
-			@RequestParam(value = "id", required = true)Long id
-			) {
-		ModelAndView model = new ModelAndView("contact");
-		
-		User toUser = messageDao.findById(id).getFromUser();
 		User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User toUser = new User();
 		
-		model.addObject("messageForm", new MessageForm());
+		if (AdvId != null) {
+			toUser = advertDao.findByAdvId(AdvId).getUser();
+		} else if (UsrId != null) {
+			toUser = userDao.findByUsrId(UsrId);
+		} else if (MsgId != null) {
+			toUser = messageDao.findById(MsgId).getFromUser();
+		} else {
+			throw new InvalidUserException("No valide User ID could be determined");
+		}
+		
+        model.addObject("messageForm", new MessageForm());
+        model.addObject("fromUser", fromUser);
 		model.addObject("toUser", toUser);
-		model.addObject("fromUser", fromUser);
         
-		return model;		
-	}
-	
+		return model;
+    }
+		
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.POST)
 	public ModelAndView messagePost(
 			@Valid MessageForm messageForm,
@@ -148,48 +128,6 @@ public class MessageController {
 		return model;
 		
 	}
-	
-	
-//	The following functions are for testing only
-	@RequestMapping(value = { "/test", "/msgTest" }, method = RequestMethod.GET)
-	public ModelAndView newMessageTest(){
-		ModelAndView model = new ModelAndView("msgTest");
-		model.addObject("messageForm", new MessageForm());
-		return model;
-	}
-	
-	@RequestMapping(value = { "/test", "/msgTest" }, method = RequestMethod.POST)
-	public ModelAndView saveMsg(
-			@Valid MessageForm messageForm,
-			BindingResult result,
-			RedirectAttributes redirectAttributes
-			){
-		ModelAndView model = new ModelAndView("msgTest");
-		BSalert[] alerts = new BSalert[1];
-
-		if(!result.hasErrors()) {
-			log.info("Form valid");
-			try {
-				messageForm = messageService.saveMessage(messageForm);
-            	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Message send.");
-				model.addObject("message", messageForm.toString());
-				
-				log.info("Message saved in db");            					
-			} catch (InvalidUserException e) {
-				log.info("User not found");				
-            	alerts[0] = new BSalert(BSalert.Type.danger, "<strong>Error!</strong> " + e.getMessage());
-			}
-
-		} else {
-			//TODO: Display error message
-			log.info("Form invalide. Error handling started");
-		}
-
-		model.addObject("messageForm", messageForm);  	
-		model.addObject("alerts", alerts);
-		return model;
-	}
-
 }
 
 
