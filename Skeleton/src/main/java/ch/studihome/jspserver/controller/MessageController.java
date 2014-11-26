@@ -26,6 +26,7 @@ import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AdvertDao;
 import ch.studihome.jspserver.model.dao.MessageDao;
+import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.AdForm;
 import ch.studihome.jspserver.model.pojos.BSalert;
 import ch.studihome.jspserver.model.pojos.MessageForm;
@@ -41,6 +42,7 @@ public class MessageController {
     @Autowired MessageDao messageDao;
     @Autowired MessageService messageService;
     @Autowired AdvertDao advertDao;
+    @Autowired UserDao userDao;
     
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
@@ -48,13 +50,31 @@ public class MessageController {
      * 
      * @return Edit form
      */
+	
+	//TODO: Refactor all three methodes into one wiht three not obligatory parameters advId, msgId, usrId
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
-    public ModelAndView messageTo(
+    public ModelAndView messageToAdvertiser(
     		@RequestParam(value = "id", required = true)Long id
     		) {
 		ModelAndView model = new ModelAndView("contact");
 
 		User toUser = advertDao.findByAdvId(id).getUser();
+        User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		model.addObject("messageForm", new MessageForm());
+		model.addObject("toUser", toUser);
+		model.addObject("fromUser", fromUser);
+        
+		return model;
+    }
+	
+	@RequestMapping(value = { "/contactInterested" }, method = RequestMethod.GET)
+    public ModelAndView messageToInterested(
+    		@RequestParam(value = "id", required = true)Long id
+    		) {
+		ModelAndView model = new ModelAndView("contact");
+
+		User toUser = userDao.findByUsrId(id);
         User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		model.addObject("messageForm", new MessageForm());

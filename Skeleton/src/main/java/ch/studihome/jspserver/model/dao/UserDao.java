@@ -10,4 +10,5 @@ public interface UserDao extends CrudRepository<User,Long> {
 	List<User> findByEmail(String email);
 	// Implementation for spring security
 	User findByUserName(String username);
+	User findByUsrId(Long id);
 }

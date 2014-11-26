@@ -63,7 +63,6 @@ public class Advert {
 			   inverseJoinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) })
 	private Set<User> interestees = new HashSet<User>(0);
 
-	
 	public Advert() {}
 	// TODO: Add images in constructor
 	public Advert(
