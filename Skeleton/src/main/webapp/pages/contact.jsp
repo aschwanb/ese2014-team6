@@ -11,9 +11,8 @@
 	</jsp:attribute>
 	
 	<jsp:body>
+		<form:form method="post" modelAttribute="messageForm" action="contact?msgId=${MsgId}" id="messageForm" class="form-horizontal" role="form">
 
-		<form:form method="post" modelAttribute="messageForm" action="contact" id="messageForm" class="form-horizontal" role="form">
-	
 			<div class="form-group" style="display: none;">
 		        <c:set var="toUserEmailErrors"><form:errors path="toUserEmail"/></c:set>
 		      		<div class="control-group<c:if test="${not empty toUserEmailErrors}"> has-error</c:if>">			

@@ -62,8 +62,9 @@ public class ProfileController {
     	
     	// Messages
     	ArrayList<Message> msgs = new ArrayList<Message>();
-    	msgs.addAll(user.getFromMsgs());
     	msgs.addAll(user.getToMsgs());
+//    	Uncomment to display messages send by this user
+//    	msgs.addAll(user.getFromMsgs());
     	// Sorting messages according to date
     	Collections.sort(msgs, new Comparator<Message>() {
     		public int compare(Message msg1, Message msg2) {

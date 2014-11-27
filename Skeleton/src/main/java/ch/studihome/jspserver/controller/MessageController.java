@@ -46,29 +46,24 @@ public class MessageController {
     
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
-	/**
-     * 
-     * @return Edit form
-     */
-	
-	//TODO: Refactor all three methodes into one wiht three not obligatory parameters advId, msgId, usrId
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
     public ModelAndView messageToAdvertiser(
-    		@RequestParam(value = "AdvId", required = false)Long AdvId,
-    		@RequestParam(value = "UsrId", required = false)Long UsrId,
-    		@RequestParam(value = "MsgId", required = false)Long MsgId
+    		@RequestParam(value = "advId", required = false)Long advId,
+    		@RequestParam(value = "usrId", required = false)Long usrId,
+    		@RequestParam(value = "msgId", required = false)Long msgId
     		) {
 				
 		ModelAndView model = new ModelAndView("contact");
 		User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User toUser = new User();
 		
-		if (AdvId != null) {
-			toUser = advertDao.findByAdvId(AdvId).getUser();
-		} else if (UsrId != null) {
-			toUser = userDao.findByUsrId(UsrId);
-		} else if (MsgId != null) {
-			toUser = messageDao.findById(MsgId).getFromUser();
+		User toUser = new User();
+		if (advId != null) {
+			toUser = advertDao.findByAdvId(advId).getUser();
+		} else if (usrId != null) {
+			toUser = userDao.findByUsrId(usrId);
+		} else if (msgId != null) {
+			toUser = messageDao.findById(msgId).getFromUser();
+			model.addObject("MsgId", msgId);
 		} else {
 			throw new InvalidUserException("No valide User ID could be determined");
 		}
@@ -76,6 +71,7 @@ public class MessageController {
         model.addObject("messageForm", new MessageForm());
         model.addObject("fromUser", fromUser);
 		model.addObject("toUser", toUser);
+		
         
 		return model;
     }
@@ -84,7 +80,8 @@ public class MessageController {
 	public ModelAndView messagePost(
 			@Valid MessageForm messageForm,
 			BindingResult result,
-			RedirectAttributes redirectAttributes
+			RedirectAttributes redirectAttributes,
+    		@RequestParam(value = "msgId", required = false)Long msgId			
 			){
 		ModelAndView model = new ModelAndView("contact");
 		BSalert[] alerts = new BSalert[1];
@@ -96,7 +93,14 @@ public class MessageController {
             	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Message send.");
 				model.addObject("message", messageForm.toString());
 				
-				log.info("Message saved in db");            					
+				log.info("Message saved in db"); 
+				if (msgId != null) {
+					Message oldMessage = messageDao.findById(msgId);
+					oldMessage.setHasResponded(true);
+					messageDao.save(oldMessage);
+					log.info("Message marked as responded to in db. Message " + oldMessage.getId());
+					
+				}
 			} catch (InvalidUserException e) {
 				log.info("User not found");				
             	alerts[0] = new BSalert(BSalert.Type.danger, "<strong>Error!</strong> " + e.getMessage());
@@ -123,6 +127,10 @@ public class MessageController {
 			//TODO: Propper error handling
 			return model;
 		}
+		
+		msg.setHasRead(true);
+		messageDao.save(msg);
+		log.info("Updated message status to read for message " + msg.getId());
 		
 		model.addObject("msg", msg);
 		return model;

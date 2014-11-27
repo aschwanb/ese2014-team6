@@ -15,7 +15,7 @@
 				<div><p><c:out value="${msg.message}"/></p></div>
 				<div class="form-group">
     				<div>
-    		    		<a class="btn btn-primary" href="contact?MsgId=${msg.id}">Responde</a>
+    		    		<a class="btn btn-primary" href="contact?msgId=${msg.id}">Responde</a>
 		        		<a class="btn btn-default" href="profile">Cancel</a>            
 		     		</div>
 		    	</div>				
