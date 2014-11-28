@@ -27,30 +27,26 @@
 					<a class="navbar-brand" href="index">Studi Home</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<c:choose>
-							<c:when test="${pageContext.request.userPrincipal.name != null}">
-								<li class="dropdown"><a href="#" class="dropdown-toggle"
-									data-toggle="dropdown">My Account <span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="profile#profile-cal">Calendar</a></li>
-										<li><a href="profile#profile-msg">Messages</a></li>
-										<li><a href="profile#profile-bm">Bookmarks</a></li>
-										<li><a href="profile#profile-adv">My Adverts</a></li>
-										<li class="divider"></li>
-										<!--  <li class="dropdown-header">Nav header</li>-->
-										<li><a href="profile">My Profile</a></li>
-										<li><a href="<c:url value="j_spring_security_logout" />">Sign
-												Out</a></li>
-									</ul>
-								</li>
-							</c:when>
-							<c:otherwise>
+					<c:choose>
+						<c:when test="${pageContext.request.userPrincipal.name != null}">
+							<ul class="nav navbar-nav navbar-left">
+								<li><a href="profile#profile-cal">Calendar</a></li>
+								<li><a href="profile#profile-msg">Messages</a></li>
+								<li><a href="profile#profile-bm">Bookmarks</a></li>
+								<li><a href="profile#profile-adv">My Adverts</a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="profile">My Profile</a></li>
+								<li><a href="<c:url value="j_spring_security_logout" />">Sign Out</a></li>
+							</ul>
+						</c:when>
+						<c:otherwise>
+							<ul class="nav navbar-nav navbar-right">
 								<li><a href="login">Login</a></li>
 								<li><a href="register">Sign Up</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul>
+							</ul>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<!--/.nav-collapse -->
 			</div>
