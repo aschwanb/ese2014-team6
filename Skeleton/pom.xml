@@ -245,6 +245,15 @@
 			<version>1.9.5</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Java Planner (http://javaplanner.com)
+		This was manually added to the repository using the following tutorial:
+		http://www.mkyong.com/maven/how-to-include-library-manully-into-maven-local-repository/ -->
+		<dependency>
+      		<groupId>com.javaplanner.code</groupId>
+     		<artifactId>javaplanner</artifactId>
+    		<version>1.5</version>
+		</dependency>
 	</dependencies>
 
 
