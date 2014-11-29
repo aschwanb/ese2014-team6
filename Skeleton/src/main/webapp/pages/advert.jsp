@@ -49,7 +49,7 @@
 			</div>
 		</c:if>
 		
-		<form:form method="post" modelAttribute="adForm" action="advert" id="adForm" cssClass="form-horizontal"  enctype="multipart/form-data" autocomplete="off" role="form">
+		<form:form method="post" modelAttribute="adForm" action="advert" id="adForm" cssClass="form-horizontal" accept-charset="UTF-8" enctype="multipart/form-data" autocomplete="off" role="form">
 			
 			<div class="row ${(editable)?('setup-content'):('') }" id="pics">
 				<div class="col-xs-12">

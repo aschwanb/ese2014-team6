@@ -21,7 +21,26 @@
     		/WEB-INF/config/springSecurity.xml
     	</param-value>
 	</context-param>
-        
+    
+    <!-- Set encoding to UTF-8 -->
+    <!-- Neccessary to fix encoding bugs with multipart forms -->
+    <filter>
+     <filter-name>EncodingFilter</filter-name>
+     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+     <init-param>
+         <param-name>encoding</param-name>
+         <param-value>UTF-8</param-value>
+     </init-param>
+     <init-param>
+         <param-name>forceEncoding</param-name>
+         <param-value>true</param-value>
+     </init-param>
+ 	</filter>
+ 	<filter-mapping>
+	<filter-name>EncodingFilter</filter-name>
+	  <url-pattern>*</url-pattern>
+	</filter-mapping>
+ 
     <!-- Spring Security Filters -->    
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>

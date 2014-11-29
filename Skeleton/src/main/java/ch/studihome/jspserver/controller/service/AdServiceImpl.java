@@ -41,7 +41,7 @@ public class AdServiceImpl implements AdService {
     @Autowired    UserDao usrDao;
     @Autowired    RoomImgDao rimgDao;
     
-	static Logger log = Logger.getLogger(AdvertController.class.getName());
+	static Logger log = Logger.getLogger(AdServiceImpl.class.getName());
     
     // Image location = imgPath + imageName
     @Value("${path.adimg}")	private String imgPath;  
@@ -111,6 +111,9 @@ public class AdServiceImpl implements AdService {
     @Transactional(readOnly = false)
     public AdForm saveFrom(AdForm adForm) throws ImageSaveException
 	{
+        log.debug("title: " + adForm.getTitle());
+        
+        
     	User user = usrDao.findOne(adForm.getOwnerId());
     	
         Address address = new Address();
