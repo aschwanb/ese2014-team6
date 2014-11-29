@@ -1,9 +1,8 @@
 package ch.studihome.jspserver.controller;
 
 import java.security.Principal;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +13,6 @@ import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AdvertDao;
 import ch.studihome.jspserver.model.dao.UserDao;
-import ch.studihome.jspserver.model.pojos.BSalert;
 
 /**
  * Functionality for bookmarking adverts
@@ -31,8 +29,32 @@ public class BookmarkController {
     AdvertDao advDao;
 
     /**
-	 * 
-	 * @param user User object
+     * Shows the Bookmarks page
+     * @return bookmarks page model
+     */
+    @RequestMapping(value = "/bookmarks", method = RequestMethod.GET)
+    public ModelAndView index()
+    {
+    	ModelAndView model = new ModelAndView("bookmarks");
+    	
+    	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	model.addObject("user", user);
+    	
+    	// Bookmarks
+    	Advert[] bms = new Advert[0];
+    	bms = user.getBookmarks().toArray(bms);
+    	model.addObject("bookmarks", bms);
+    	
+    	// Interests
+    	Advert[] intr = new Advert[0];
+    	intr = user.getInterests().toArray(intr);
+    	model.addObject("interests", intr);
+    	
+    	return model;
+    }
+    
+    /**
+	 * Bookmarks a given ad
 	 * @return ajax response page
 	 */
     @RequestMapping(value = "bookmark", method = RequestMethod.GET)
@@ -66,8 +88,7 @@ public class BookmarkController {
     }
     
     /**
-	 * 
-	 * @param user User object
+	 * Marks a given ad as "interested in"
 	 * @return ajax response page
 	 */
     @RequestMapping(value = "showinterest", method = RequestMethod.GET)

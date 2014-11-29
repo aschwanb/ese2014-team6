@@ -6,3 +6,13 @@ function addAlert(type, message)
 	
 	document.getElementById("alertGroupPageTop").appendChild(alertDiv);
 }
+
+/* activate all tooltips * /
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip()
+})*/
+
+/* activate all popovers */
+$(function () {
+	$('[data-toggle="popover"]').popover()
+})
