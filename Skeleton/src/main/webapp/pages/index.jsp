@@ -44,14 +44,34 @@
 							var latlngStr = input.split(",", 2);
 							var lat = parseFloat(latlngStr[0]);
 							var lng = parseFloat(latlngStr[1]);
+							
+							var contentString = 
+								'<div class="info-window-content">'+
+								'<b>${ad.title}</b><br/>'+
+								'${ad.address.street} ${ad.address.plz} ${ad.address.city}<br/>'+
+								'${ad.numberOfRooms} room '+
+								'${(ad.isWG == true)?("shared flat"):("single apartment")} '+
+								'(${ad.appartementSize} &#13217;)<br/>'+
+								'Rent: ${ad.price} Fr.'+
+								'</div>';
+							var infowindow = new google.maps.InfoWindow({
+								content: contentString
+							});
+							
 							var marker = new google.maps.Marker({
 								position : new google.maps.LatLng(lat, lng),
 								map : map,
-								title : "${ad.title}",
+								//title : "${ad.title}",
 								draggable : false
 							});
 							google.maps.event.addListener(marker, 'click', function() {
 								window.location.href = "advert?id=${ad.advId}";
+							});
+							google.maps.event.addListener(marker, 'mouseover', function() {
+								infowindow.open(map, marker);
+							});
+							google.maps.event.addListener(marker, 'mouseout', function() {
+								infowindow.close();
 							});
 						</c:forEach>
 					}

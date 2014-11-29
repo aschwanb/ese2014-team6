@@ -57,6 +57,12 @@ ul.navbar-nav.navbar-left>li{
 	white-space: nowrap;
 }
 
+/* img thumbnail*/
+.img-thumbnail{
+	height: 80px;
+	max-width: none;
+}
+
 /* Alert group */
 .alert-group>.alert:first-child:not(:last-child){
     -webkit-border-top-left-radius:5px;
