@@ -31,19 +31,24 @@
 						<c:when test="${pageContext.request.userPrincipal.name != null}">
 							<ul class="nav navbar-nav navbar-left">
 								<li><a href="profile#profile-cal">Calendar</a></li>
-								<li><a href="profile#profile-msg">Messages</a></li>
 								<li><a href="profile#profile-bm">Bookmarks</a></li>
+								<li><a href="profile#profile-adv">Alerts</a></li>
+								<li><a href="profile#profile-msg">Messages</a></li>
 								<li><a href="profile#profile-adv">My Adverts</a></li>
+								<li><a href="advert">Create Advert</a></li>
+							</ul>
+							<ul class="nav navbar-nav">
+								<li class="divider"></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="profile">My Profile</a></li>
-								<li><a href="<c:url value="j_spring_security_logout" />">Sign Out</a></li>
+								<li><a href="profile">${pageContext.request.userPrincipal.name} <span class="glyphicon glyphicon-user"></span></a></li>
+								<li><a id="logoutbtn" href="<c:url value="j_spring_security_logout" />" data-toggle="popover" data-placement="bottom" data-trigger="hover focus" data-content="Sign Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
 							</ul>
 						</c:when>
 						<c:otherwise>
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="login">Login</a></li>
-								<li><a href="register">Sign Up</a></li>
+								<li><a href="register">Register</a></li>
+								<li><a href="login">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
 							</ul>
 						</c:otherwise>
 					</c:choose>
