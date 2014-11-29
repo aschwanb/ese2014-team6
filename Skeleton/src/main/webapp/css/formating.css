@@ -62,6 +62,9 @@ div.mapButton:hover
 	background-color: rgb(235, 235, 235);
 }
 
+.info-window-content{
+	white-space: nowrap;
+}
 
 /* carousel for ad pictures */
 .hide-bullets {
