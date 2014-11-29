@@ -8,21 +8,6 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-
 import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.User;
 
@@ -54,7 +39,8 @@ public class UserTest
     			"Email: " + email + "\n"+
     			"Password: " + password + "\n"+
     			"UserRole: " + user_role + "\n"+
-    			"Enabled: " + enabled + "\n";
+    			"Enabled: " + enabled + "\n"+
+    	    	"GrantedAuthority: " + user_role;
 		String actual = user.toString();
 		assertEquals(expected, actual);
 	}
