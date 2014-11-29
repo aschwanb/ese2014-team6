@@ -1,14 +1,13 @@
 package ch.studihome.jspserver.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.User;
-import ch.studihome.jspserver.model.dao.UserDao;
 
 /**
  * Load and return user profile view 
@@ -16,29 +15,24 @@ import ch.studihome.jspserver.model.dao.UserDao;
  * @author TeamSix
  */
 @Controller
-public class ProfileController {
-	
-	@Autowired
-    UserDao usrDao;
-	
-	public ProfileController() {}
-		
-    public ProfileController(UserDao usrDao)
-    {
-		this.usrDao = usrDao;
-	}
+public class myAdvertsController {
 
 	/**
 	 * 
-	 * @return Profile view
+	 * @return myAdverts view
 	 */
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	@RequestMapping(value = "/myAdverts", method = RequestMethod.GET)
     public ModelAndView index()
     {
-    	ModelAndView model = new ModelAndView("profile");
+    	ModelAndView model = new ModelAndView("myAdverts");
     	
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	model.addObject("user", user);
+    	
+    	// Ads		
+    	Advert[] ads = new Advert[0];
+    	ads = user.getAds().toArray(ads);
+    	model.addObject("ads", ads);
 
     	return model;
     }

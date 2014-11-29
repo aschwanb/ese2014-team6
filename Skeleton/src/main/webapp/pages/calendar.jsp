@@ -5,14 +5,13 @@
 <%@taglib prefix="base" tagdir="/WEB-INF/tags" %>
 
 
-<base:page title="Profile">
+<base:page title="Calendar">
 	<jsp:attribute name="page_header">
-		<h1>${user.userName}'s Profile</h1>
-		<h2>ID: ${user.usrId}</h2>
-		
+		<h1>${user.userName}'s calendar</h1>
 	</jsp:attribute>
 
 	<jsp:body>
 		<!-- TODO -->
+		TODO
 	</jsp:body>
 </base:page>

@@ -30,11 +30,11 @@
 					<c:choose>
 						<c:when test="${pageContext.request.userPrincipal.name != null}">
 							<ul class="nav navbar-nav navbar-left">
-								<li><a href="profile#profile-cal">Calendar</a></li>
-								<li><a href="profile#profile-bm">Bookmarks</a></li>
-								<li><a href="profile#profile-adv">Alerts</a></li>
-								<li><a href="profile#profile-msg">Messages</a></li>
-								<li><a href="profile#profile-adv">My Adverts</a></li>
+								<li><a href="calendar">Calendar</a></li>
+								<li><a href="bookmarks">Bookmarks</a></li>
+								<li><a href="alerts">Alerts</a></li>
+								<li><a href="messages">Messages</a></li>
+								<li><a href="myAdverts">My Adverts</a></li>
 								<li><a href="advert">Create Advert</a></li>
 							</ul>
 							<ul class="nav navbar-nav">
