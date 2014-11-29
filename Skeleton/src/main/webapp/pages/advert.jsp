@@ -63,6 +63,14 @@
 						</c:if>
 					</div>
 				</div>
+				<c:if test="${editable == true}">
+					<div class="col-xs-12">
+						<div class="col-md-12 advert-buttongroup pull-right">
+							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
+							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="discard" ${adForm.id == 0 ? 'disabled="disabled"':''}>Discard</a>
+						</div>
+					</div>
+				</c:if>
 			</div>
 			<div class="row ${(editable)?('setup-content'):('') }" id="main">
 				<div class="col-xs-12">
@@ -73,6 +81,14 @@
 						</c:if>
 					</div>
 				</div>
+				<c:if test="${editable == true}">
+					<div class="col-xs-12">
+						<div class="col-md-12 advert-buttongroup pull-right">
+							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
+							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="discard" ${adForm.id == 0 ? 'disabled="disabled"':''}>Discard</a>
+						</div>
+					</div>
+				</c:if>
 			</div>
 			<div class="row ${(editable)?('setup-content'):('') }" id="map">
 				<div class="col-xs-12">
@@ -84,6 +100,14 @@
 						</c:if>
 					</div>
 				</div>
+				<c:if test="${editable == true}">
+					<div class="col-xs-12">
+						<div class="col-md-12 advert-buttongroup pull-right">
+							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
+							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="discard" ${adForm.id == 0 ? 'disabled="disabled"':''}>Discard</a>
+						</div>
+					</div>
+				</c:if>
 			</div>
 			<c:if test="${editable and adForm.id != 0}">
 				<div class="row setup-content" id="interested">
@@ -115,22 +139,17 @@
 				<form:input type="hidden" path="ownerId" id="field-ownerId"/>
 			</div>
 			
-			<div class="col-xs-12 advert-buttongroup">
-				<div class="col-md-12 pull-right">
-					<div class="form-group">
-						<c:if test="${editable == false}">
+			<c:if test="${editable == false}">
+				<div class="col-xs-12 advert-buttongroup">
+					<div class="col-md-12 pull-right">
+						<div class="form-group">
 							<a class="btn btn-primary btn-lg advert-buttongroupbutton" href="#" onclick="setBookmark(${adForm.id})">Bookmark</a>
 							<a class="btn btn-primary btn-lg advert-buttongroupbutton" href="#" onclick="showInterest(${adForm.id})">Show Interest</a>
 							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="contact?advId=${adForm.id}">Contact</a>
-						</c:if>
-						<c:if test="${editable == true}">
-							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
-							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="discard" ${adForm.id == 0 ? 'disabled="disabled"':''}>Discard</a>
-						</c:if>
-						
+						</div>
 					</div>
 				</div>
-			</div>
+			</c:if>
 		</form:form>
 	</jsp:body>
 </base:page>
