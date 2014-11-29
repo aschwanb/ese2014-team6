@@ -1,14 +1,14 @@
 package ch.studihome.jspserver.controller;
 
-import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.validation.Valid;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,16 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.studihome.jspserver.controller.exceptions.InvalidUserException;
-import ch.studihome.jspserver.controller.service.AdService;
 import ch.studihome.jspserver.controller.service.MessageService;
-import ch.studihome.jspserver.controller.service.SignupService;
-import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AdvertDao;
 import ch.studihome.jspserver.model.dao.MessageDao;
 import ch.studihome.jspserver.model.dao.UserDao;
-import ch.studihome.jspserver.model.pojos.AdForm;
 import ch.studihome.jspserver.model.pojos.BSalert;
 import ch.studihome.jspserver.model.pojos.MessageForm;
 
@@ -45,6 +41,34 @@ public class MessageController {
     @Autowired UserDao userDao;
     
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
+	
+	/**
+     * Shows the Messages page
+     * @return messages page model
+     */
+    @RequestMapping(value = "/messages", method = RequestMethod.GET)
+    public ModelAndView index()
+    {
+    	ModelAndView model = new ModelAndView("messages");
+    	
+    	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	model.addObject("user", user);
+    	
+    	// Messages
+    	ArrayList<Message> msgs = new ArrayList<Message>();
+    	msgs.addAll(user.getToMsgs());
+//    	Uncomment to display messages send by this user
+//    	msgs.addAll(user.getFromMsgs());
+    	// Sorting messages according to date
+    	Collections.sort(msgs, new Comparator<Message>() {
+    		public int compare(Message msg1, Message msg2) {
+    			return -1 * msg1.getDate().compareTo(msg2.getDate()); // Oldest last
+    		}
+    	});
+    	model.addObject("msgs", msgs);
+    	
+    	return model;
+    }
 	
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
     public ModelAndView messageToAdvertiser(

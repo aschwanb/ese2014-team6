@@ -7,12 +7,12 @@
 
 <base:page title="Profile">
 	<jsp:attribute name="page_header">
-		<h1>Public Page of ${user.userName}</h1>
-		<h1>ID: ${user.usrId}</h1>
+		<h1>${user.userName}'s alerts</h1>
 		
 	</jsp:attribute>
 
 	<jsp:body>
-		<h3>Some text. Some more text. And even more text.</h3>
+		<!-- TODO -->
+		TODO
 	</jsp:body>
 </base:page>

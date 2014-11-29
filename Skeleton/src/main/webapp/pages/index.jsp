@@ -39,19 +39,39 @@
 						map = new google.maps.Map(document.getElementById("map_canvas"),
 								myOptions);
 						
-						<c:forEach var="ad" items="${ads}">
+						<c:forEach var="ad" varStatus="status" items="${ads}">
 							var input = "${ad.address.coordinate}";
 							var latlngStr = input.split(",", 2);
 							var lat = parseFloat(latlngStr[0]);
 							var lng = parseFloat(latlngStr[1]);
-							var marker = new google.maps.Marker({
+							
+							var contentString = 
+								'<div class="info-window-content">'+
+								'<b>${ad.title}</b><br/>'+
+								'${ad.address.street} ${ad.address.plz} ${ad.address.city}<br/>'+
+								'${ad.numberOfRooms} room '+
+								'${(ad.isWG == true)?("shared flat"):("single apartment")} '+
+								'(${ad.appartementSize} &#13217;)<br/>'+
+								'Rent: ${ad.price} Fr.'+
+								'</div>';
+							var infowindow${status.index} = new google.maps.InfoWindow({
+								content: contentString
+							});
+							
+							var marker${status.index} = new google.maps.Marker({
 								position : new google.maps.LatLng(lat, lng),
 								map : map,
-								title : "${ad.title}",
+								//title : "${ad.title}",
 								draggable : false
 							});
-							google.maps.event.addListener(marker, 'click', function() {
+							google.maps.event.addListener(marker${status.index}, 'click', function() {
 								window.location.href = "advert?id=${ad.advId}";
+							});
+							google.maps.event.addListener(marker${status.index}, 'mouseover', function() {
+								infowindow${status.index}.open(map, marker${status.index});
+							});
+							google.maps.event.addListener(marker${status.index}, 'mouseout', function() {
+								infowindow${status.index}.close();
 							});
 						</c:forEach>
 					}

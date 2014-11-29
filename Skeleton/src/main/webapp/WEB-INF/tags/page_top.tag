@@ -27,30 +27,31 @@
 					<a class="navbar-brand" href="index">Studi Home</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<c:choose>
-							<c:when test="${pageContext.request.userPrincipal.name != null}">
-								<li class="dropdown"><a href="#" class="dropdown-toggle"
-									data-toggle="dropdown">My Account <span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="profile#profile-cal">Calendar</a></li>
-										<li><a href="profile#profile-msg">Messages</a></li>
-										<li><a href="profile#profile-bm">Bookmarks</a></li>
-										<li><a href="profile#profile-adv">My Adverts</a></li>
-										<li class="divider"></li>
-										<!--  <li class="dropdown-header">Nav header</li>-->
-										<li><a href="profile">My Profile</a></li>
-										<li><a href="<c:url value="j_spring_security_logout" />">Sign
-												Out</a></li>
-									</ul>
-								</li>
-							</c:when>
-							<c:otherwise>
-								<li><a href="login">Login</a></li>
-								<li><a href="register">Sign Up</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul>
+					<c:choose>
+						<c:when test="${pageContext.request.userPrincipal.name != null}">
+							<ul class="nav navbar-nav navbar-left">
+								<li><a href="calendar">Calendar</a></li>
+								<li><a href="bookmarks">Bookmarks</a></li>
+								<li><a href="alerts">Alerts</a></li>
+								<li><a href="messages">Messages</a></li>
+								<li><a href="myAdverts">My Adverts</a></li>
+								<li><a href="advert">Create Advert</a></li>
+							</ul>
+							<ul class="nav navbar-nav">
+								<li class="divider"></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="profile">${pageContext.request.userPrincipal.name} <span class="glyphicon glyphicon-user"></span></a></li>
+								<li><a id="logoutbtn" href="<c:url value="j_spring_security_logout" />" data-toggle="popover" data-placement="bottom" data-trigger="hover focus" data-content="Sign Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
+							</ul>
+						</c:when>
+						<c:otherwise>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="register">Register</a></li>
+								<li><a href="login">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
+							</ul>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<!--/.nav-collapse -->
 			</div>
