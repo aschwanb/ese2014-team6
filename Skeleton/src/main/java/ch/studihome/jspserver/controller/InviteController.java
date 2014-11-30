@@ -29,6 +29,7 @@ import ch.studihome.jspserver.model.dao.MessageDao;
 import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.AdForm;
 import ch.studihome.jspserver.model.pojos.BSalert;
+import ch.studihome.jspserver.model.pojos.InvitationForm;
 import ch.studihome.jspserver.model.pojos.MessageForm;
 
 /**
@@ -55,7 +56,7 @@ public class InviteController {
 //		User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		User toUser = userDao.findByUsrId(usrId);
 		
-        model.addObject("messageForm", new MessageForm());
+        model.addObject("invitationForm", new InvitationForm());
 //      model.addObject("fromUser", fromUser);
 //		model.addObject("toUser", toUser);
 		        
