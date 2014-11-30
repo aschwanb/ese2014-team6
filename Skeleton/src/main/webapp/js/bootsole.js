@@ -12,7 +12,7 @@ $(function () {
 	$('[data-toggle="tooltip"]').tooltip()
 })*/
 
-/* activate all popovers */
+/* activate all popovers * /
 $(function () {
 	$('[data-toggle="popover"]').popover()
-})
+})*/

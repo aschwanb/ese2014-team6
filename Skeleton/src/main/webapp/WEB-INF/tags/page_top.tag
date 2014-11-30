@@ -41,13 +41,13 @@
 								<li class="divider"></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="profile">${pageContext.request.userPrincipal.name} <span class="glyphicon glyphicon-user"></span></a></li>
-								<li><a id="logoutbtn" href="<c:url value="dologout" />" data-toggle="popover" data-placement="bottom" data-trigger="hover focus" data-content="Sign Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
+								<li><a href="profile" title="Show profile">${pageContext.request.userPrincipal.name} <span class="glyphicon glyphicon-user"></span></a></li>
+								<li><a id="logoutbtn" title="Log out" href="<c:url value="dologout" />" ><span class="glyphicon glyphicon-log-out"></span></a></li>
 							</ul>
 						</c:when>
 						<c:otherwise>
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="register">Register <span class="glyphicon glyphicon-pencil"></span></a></li>
+								<li><a href="register" title="Register a new account">Register <span class="glyphicon glyphicon-pencil"></span></a></li>
 								<li><a href="login">Login <span class="glyphicon glyphicon-log-in"></span></a></li>
 							</ul>
 						</c:otherwise>
