@@ -21,7 +21,7 @@ public class MyUserDetailsService implements UserDetailsService {
 	
 		log.info("User Details Service for username " + userName + "!");
 		try {
-			User user = userDao.findByEmail(userName).get(0);
+			User user = userDao.findByUserName(userName);
 			log.info("Generated new user object with: " + user.toString());	
 			return user;
 		} catch (Exception e) {

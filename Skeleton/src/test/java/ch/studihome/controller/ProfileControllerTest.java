@@ -62,7 +62,7 @@ public class ProfileControllerTest
 			
 		});
 		
-		ModelAndView model = profileController.index();
+		ModelAndView model = profileController.index(null, null);
 		String title = model.getViewName();
 		assertEquals("profile", title);
 	}

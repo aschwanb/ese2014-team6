@@ -23,19 +23,19 @@ public class LoginController {
     @Autowired
     SignupService sampleService;
 
-/**
- * Show error message after failes login attempt
- * 
- * @param error Error message
- * @return Login view
- */
+	/**
+	 * Show error message after failes login attempt
+	 * 
+	 * @param error Error message
+	 * @return Login view
+	 */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
 	 
 		  ModelAndView model = new ModelAndView("login");
 		  if (error != null) {
 		    	BSalert[] alerts = new BSalert[1];
-		    	alerts[0] = new BSalert(BSalert.Type.danger, "Invalid email and password!");
+		    	alerts[0] = new BSalert(BSalert.Type.danger, "Invalid user name and password!");
 		    	model.addObject("alerts", alerts);
 		  }
 	 

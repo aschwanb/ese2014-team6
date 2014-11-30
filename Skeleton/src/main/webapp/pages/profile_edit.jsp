@@ -5,26 +5,17 @@
 <%@taglib prefix="base" tagdir="/WEB-INF/tags" %>
 
 
-<base:page title="Register">
+<base:page title="Profile - edit">
 	<jsp:attribute name="page_header">
-		<h1>Register</h1>
+		<h1>${user.userName}'s profile <small>edit</small></h1>
 	</jsp:attribute>
-	
+
 	<jsp:body>
-		<form:form method="post" modelAttribute="signupForm" action="register" id="signupForm" cssClass="form-horizontal"  autocomplete="off">
+		<form:form method="post" modelAttribute="profileForm" action="updateprofile" id="profileForm" cssClass="form-horizontal"  autocomplete="off">
 		    <fieldset>
-		        <legend>Enter Your Information</legend>
-				
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="col-md-12">
-					        <c:set var="userNameErrors"><form:errors path="userName"/></c:set>
-					        <div class="form-group<c:if test="${not empty userNameErrors}"> has-error</c:if>">
-					            <label class="control-label" for="field-userName">User Name</label>
-				                <form:input path="userName" class="form-control"  id="field-userName" tabindex="1" maxlength="45" placeholder="e.g. theBimbo"/>
-				                <form:errors path="userName" cssClass="help-inline" element="span"/>
-					        </div>
-							
 					        <c:set var="firstNameErrors"><form:errors path="firstName"/></c:set>
 					        <div class="form-group<c:if test="${not empty firstNameErrors}"> has-error</c:if>">
 					            <label class="control-label" for="field-firstName">First Name</label>
@@ -45,26 +36,11 @@
 				                <form:input path="email" class="form-control"  id="field-email" tabindex="1" maxlength="45" placeholder="e.g. franz@muster.de"/>
 				                <form:errors path="email" cssClass="help-inline" element="span"/>
 					        </div>
-					      
-					        <c:set var="passwordErrors"><form:errors path="password"/></c:set>
-					        <div class="form-group<c:if test="${not empty passwordErrors}"> has-error</c:if>">
-					            <label class="control-label" for="field-password">Password</label>
-				                <form:input type="password" path="password" class="form-control"  id="field-password" tabindex="2" maxlength="35" placeholder="e.g. ****"/>
-				                <form:errors path="password" cssClass="help-inline" element="span"/>
-					        </div>
-					
-					        <c:set var="confirmPasswordErrors"><form:errors path="confirmPassword"/></c:set>
-					        <div class="form-group<c:if test="${not empty confirmPasswordErrors}"> has-error</c:if>">
-					            <label class="control-label" for="field-confirmPassword">Confirm Password</label>
-				                <form:input type="password" path="confirmPassword" class="form-control"  id="field-confirmPassword" tabindex="2" maxlength="35" placeholder="e.g. ****"/>
-				                <form:errors path="confirmPassword" cssClass="help-inline" element="span"/>
-					        </div>
 					             
 					        <div class="form-actions pull-right">
-					            <button type="submit" class="btn btn-primary">Sign up</button>
-					            <a class="btn btn-default" href="index">Cancel</a>            
+					            <button type="submit" class="btn btn-primary">Save Changes</button>
+					            <a class="btn btn-default" href="profile">Cancel</a>            
 					        </div>
-					         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						</div>
 					</div>
 				</div>

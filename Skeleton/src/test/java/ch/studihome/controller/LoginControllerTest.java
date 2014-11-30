@@ -58,7 +58,7 @@ public class LoginControllerTest {
 		ModelAndView model = loginController.login("error");
 		BSalert[] alerts = (BSalert[]) model.getModel().get("alerts");
 		BSalert alert = alerts[0];
-		assertEquals("Invalid email and password!", alert.getMessage());
+		assertEquals("Invalid user name and password!", alert.getMessage());
 		
 	}
 

@@ -25,9 +25,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 /**
  * Object representing a user of our web service
  * 
- * For first registratin, only the following paramters are necessar:
- * email, password, user_role, enabled
- * 
  * user_role and enabled are not set by the user
  * 
  * @author TeamSix
@@ -257,7 +254,7 @@ public class User implements UserDetails {
 		return true;
 	}
 	// We don't have these attributes
-	public String getUsername() {return this.getEmail();}
+	public String getUsername() {return userName;}
 	public boolean isAccountNonExpired() {return true;}
 	public boolean isAccountNonLocked() {return true;}
 	public boolean isCredentialsNonExpired() {return true;}

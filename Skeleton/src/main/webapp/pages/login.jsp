@@ -12,11 +12,11 @@
 	
 	<jsp:body>
 		<div id="login-box">
-		 	<form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
+		 	<form name='loginForm' action="<c:url value='/dologin' />" method='POST'>
 		 		<table>
 					<tr>
-						<td>Email:</td>
-						<td><input type='text' name='email'></td>
+						<td>User name:</td>
+						<td><input type='text' name='userName'></td>
 					</tr>
 					<tr>
 						<td>Password:</td>

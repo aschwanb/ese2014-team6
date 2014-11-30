@@ -42,7 +42,7 @@
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="profile">${pageContext.request.userPrincipal.name} <span class="glyphicon glyphicon-user"></span></a></li>
-								<li><a id="logoutbtn" href="<c:url value="j_spring_security_logout" />" data-toggle="popover" data-placement="bottom" data-trigger="hover focus" data-content="Sign Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
+								<li><a id="logoutbtn" href="<c:url value="dologout" />" data-toggle="popover" data-placement="bottom" data-trigger="hover focus" data-content="Sign Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
 							</ul>
 						</c:when>
 						<c:otherwise>
