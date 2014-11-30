@@ -60,7 +60,7 @@ ul.navbar-nav.navbar-left>li{
 /* img thumbnail*/
 .img-thumbnail{
 	height: 80px;
-	max-width: none;
+	max-width: 145px;
 }
 
 /* Alert group */
