@@ -16,9 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.annotation.Transient;
-
 /**
  * Generic advert object. Can be for shared flats or apartments.
  *  

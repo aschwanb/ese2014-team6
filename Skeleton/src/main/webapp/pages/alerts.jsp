@@ -12,7 +12,19 @@
 	</jsp:attribute>
 
 	<jsp:body>
-		<!-- TODO -->
-		TODO
+		<c:if test="${not empty alerts}">
+			<table class="table table-striped table-hover">
+				<tr><th>Title</th><th>Price</th></tr>
+				<c:forEach var="alert" items="${alerts}">
+					<tr><!--
+						<td><a><c:out value="${alert.title}"/></a></td>
+						<td><a><c:out value="${alert.price}"/></a></td> -->
+					</tr>
+				</c:forEach>
+			</table>
+		</c:if>
+		<c:if test="${empty ads}">
+			No Alerts set
+		</c:if>
 	</jsp:body>
 </base:page>
