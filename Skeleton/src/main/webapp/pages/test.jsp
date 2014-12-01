@@ -67,23 +67,49 @@
 				</div>
 			</div>
 
-		<!-- DateTimePicker test -->
+		<!-- Pick Date test -->
 	       	<div class="form-group">
-	       	    <c:set var="dateAndTimeErrors">
-					<form:errors path="dateAndTime" />
+	       	    <c:set var="invDateErrors">
+					<form:errors path="" />
 				</c:set>
-	       	   	<div class="control-group<c:if test="${not empty dateAndTimeErrors}"> has-error</c:if>">
-	   	        	<label for="field-dateAndTime" class="col-sm-2 control-label">Choose a date</label>
-	    			<div class="col-sm-10 form-inline date" id='datetimepicker1'>
-	               		<form:input type='text' class="form-control" path="dateAndTime" id="field-dateAndTime" data-date-format="DD/MM/YYYY HH:mm" />
+	       	   	<div class="control-group<c:if test="${not empty invDateErrors}"> has-error</c:if>">
+	   	        	<label for="field-invDate" class="col-sm-2 control-label">Choose a date</label>
+	    			<div class="col-sm-10 form-inline date" id='datepicker'>
+	               		<form:input type='text' class="form-control" path="invDate" id="field-invDate" data-date-format="DD/MM/YYYY" />
 	            		<span class="form-inline-addon">
 	          				<span class="glyphicon glyphicon-calendar"></span>
 	           			</span>
-	               		<form:errors class="alert alert-danger" role="alert" path="dateAndTime" />
+	               		<form:errors class="alert alert-danger" role="alert" path="invDate" />
 	        		</div>
 	        		<script type="text/javascript">
 	        	    	$(function () {
-	        	    	    $('#datetimepicker1').datetimepicker();
+	        	    	    $('#datepicker').datetimepicker({
+	        	    	    	pickTime: false
+	        	    	    });
+	        	   		});
+	        		</script>
+	    		</div>
+			</div>
+
+		<!-- Pick Date test -->
+	       	<div class="form-group">
+	       	    <c:set var="invFindErrors">
+					<form:errors path="" />
+				</c:set>
+	       	   	<div class="control-group<c:if test="${not empty invTimeErrors}"> has-error</c:if>">
+	   	        	<label for="field-invTime" class="col-sm-2 control-label">Choose a time</label>
+	    			<div class="col-sm-10 form-inline date" id='timepicker'>
+	               		<form:input type='text' class="form-control" path="invTime" id="field-invTime" data-date-format="HH:mm" />
+	            		<span class="form-inline-addon">
+	          				<span class="glyphicon glyphicon-time"></span>
+	           			</span>
+	               		<form:errors class="alert alert-danger" role="alert" path="invDate" />
+	        		</div>
+	        		<script type="text/javascript">
+	        	    	$(function () {
+	        	    	    $('#timepicker').datetimepicker({
+	        	    	    	pickDate: false
+	        	    	    });
 	        	   		});
 	        		</script>
 	    		</div>
