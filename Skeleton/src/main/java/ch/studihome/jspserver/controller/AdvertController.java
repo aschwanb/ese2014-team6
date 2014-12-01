@@ -97,7 +97,7 @@ public class AdvertController {
     		}else
     		{
     			if (principal != null) {
-    				User user = usrDao.findByEmail(principal.getName()).get(0);
+    				User user = usrDao.findByUserName(principal.getName());
     				Advert adv = advDao.findOne(adForm.getId());
     				if(user.getusrId() == adv.getUser().getusrId()) {     			
     					model.addObject("editable", "true");
@@ -138,7 +138,7 @@ public class AdvertController {
     	if (principal != null)
 		{
 
-			User user = usrDao.findByEmail(principal.getName()).get(0);
+			User user = usrDao.findByUserName(principal.getName());
 			Advert adv = advDao.findOne(adForm.getId());
 			if(adForm.getId() == 0 || user.getusrId() == adv.getUser().getusrId())
 			{

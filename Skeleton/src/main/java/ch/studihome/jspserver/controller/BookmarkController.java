@@ -70,7 +70,7 @@ public class BookmarkController {
     	}else
     	{
     		Advert adv = advDao.findOne(advId);
-    		User user = usrDao.findByEmail(principal.getName()).get(0);
+    		User user = usrDao.findByUserName(principal.getName());
     		
     		if(!user.getBookmarks().contains(adv))
     		{
@@ -104,7 +104,7 @@ public class BookmarkController {
     	}else
     	{
     		Advert adv = advDao.findOne(advId);
-    		User user = usrDao.findByEmail(principal.getName()).get(0);
+    		User user = usrDao.findByUserName(principal.getName());
     		
     		if(!adv.getInterestees().contains(user))
     		{

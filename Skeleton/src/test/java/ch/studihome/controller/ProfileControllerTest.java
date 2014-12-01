@@ -62,7 +62,19 @@ public class ProfileControllerTest
 			
 		});
 		
-		ModelAndView model = profileController.index();
+		when(usrDao.findByUserName(any(String.class))).thenAnswer(new Answer<User>() {
+
+			public User answer(InvocationOnMock invocation) throws Throwable
+			{
+				User user = new User();
+				Set<Advert> ads = new HashSet<Advert>();
+				user.setAds(ads);
+				return user;
+			}
+			
+		});
+		
+		ModelAndView model = profileController.index(null, null);
 		String title = model.getViewName();
 		assertEquals("profile", title);
 	}

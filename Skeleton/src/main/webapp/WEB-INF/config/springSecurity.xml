@@ -20,8 +20,6 @@
 		<security:intercept-url pattern="/create*" access="permitAll"/>
 <!-- 	Ad view	 		 -->
 		<security:intercept-url pattern="/advert*" access="permitAll"/>
-		<security:intercept-url pattern="/bookmark*" access="permitAll"/>
-		<security:intercept-url pattern="/showinterest*" access="permitAll"/>
 <!-- Presentation		 -->
 		<security:intercept-url pattern="/css/**" access="permitAll" />
 		<security:intercept-url pattern="/fonts/**" access="permitAll" />
@@ -33,12 +31,15 @@
 	
 		<security:form-login
 			login-page="/login"
+			login-processing-url="/dologin"
 			authentication-failure-url="/login?error"
 			default-target-url="/index"
 			always-use-default-target="true"
-			username-parameter="email"
+			username-parameter="userName"
 			password-parameter="password"/>
-		<security:logout logout-success-url="/logout"/>
+		<security:logout
+			logout-url="/dologout"
+			logout-success-url="/logout"/>
 	</security:http>
 
 	<!-- Declare an authentication-manager to use a custom userDetailsService -->
