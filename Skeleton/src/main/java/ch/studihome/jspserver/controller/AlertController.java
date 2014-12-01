@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.Alert;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.pojos.SearchForm;
