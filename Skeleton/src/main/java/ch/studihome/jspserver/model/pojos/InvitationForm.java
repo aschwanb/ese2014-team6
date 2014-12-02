@@ -1,13 +1,16 @@
 package ch.studihome.jspserver.model.pojos;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class InvitationForm extends MessageForm {
 	
 	@NotNull
+	@Size(min=2, message="Please enter a date.")
 	private String invDate;
 	
 	@NotNull
+	@Size(min=2, message="Please enter a time.")
 	private String invTime;
 	
 	public String getInvTime() {

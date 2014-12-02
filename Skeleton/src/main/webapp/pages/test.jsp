@@ -76,7 +76,7 @@
 	   	        	<label for="field-invDate" class="col-sm-2 control-label">Choose a date</label>
 	    			<div class="col-sm-10 form-inline date" id='datepicker'>
 	               		<form:input type='text' class="form-control" path="invDate" id="field-invDate" data-date-format="DD/MM/YYYY" />
-	            		<span class="form-inline-addon">
+	               		<span class="form-inline-addon">
 	          				<span class="glyphicon glyphicon-calendar"></span>
 	           			</span>
 	               		<form:errors class="alert alert-danger" role="alert" path="invDate" />
@@ -103,7 +103,7 @@
 	            		<span class="form-inline-addon">
 	          				<span class="glyphicon glyphicon-time"></span>
 	           			</span>
-	               		<form:errors class="alert alert-danger" role="alert" path="invDate" />
+	               		<form:errors class="alert alert-danger" role="alert" path="invTime" />
 	        		</div>
 	        		<script type="text/javascript">
 	        	    	$(function () {
@@ -122,12 +122,9 @@
 				</div>
 			</div>
 </form:form>
-
-		<!-- Calendar test -->
-		<div>
-			<c:out value="${calendar.string}" escapeXml="false" />	
-		</div>
-
+	<div>
+		<c:out value="${message}"></c:out>
+	</div>
 	</jsp:body>
 </base:page>
 
