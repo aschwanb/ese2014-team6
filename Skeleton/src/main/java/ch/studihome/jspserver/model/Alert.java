@@ -27,7 +27,8 @@ public class Alert
 	private int min_number_of_inhabitants;
 	private int max_number_of_inhabitants;
 	private String area;
-	private String type_of_apartment;
+	private boolean type_of_apartment;
+	private long timeAndDate;
 	
 	public Long getAlertId(){
 		return alertId;
@@ -117,12 +118,20 @@ public class Alert
 		this.area = area;
 	}
 
-	public String getType_of_apartment() {
+	public boolean getType_of_apartment() {
 		return type_of_apartment;
 	}
 
-	public void setType_of_apartment(String type_of_apartment) {
+	public void setType_of_apartment(boolean type_of_apartment) {
 		this.type_of_apartment = type_of_apartment;
+	}
+
+	public long getTimeAndDate() {
+		return timeAndDate;
+	}
+
+	public void setTimeAndDate(long timeAndDate) {
+		this.timeAndDate = timeAndDate;
 	}
 	
 	

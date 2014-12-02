@@ -59,6 +59,8 @@ public class Advert {
 			   joinColumns = { @JoinColumn(name = "advId", nullable = false, updatable = false) }, 
 			   inverseJoinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) })
 	private Set<User> interestees = new HashSet<User>(0);
+	
+	private long timeAndDate;
 
 	public Advert() {}
 	// TODO: Add images in constructor
@@ -189,6 +191,12 @@ public class Advert {
 	}
 	public void setInterestees(Set<User> interestees) {
 		this.interestees = interestees;
+	}
+	public long getTimeAndDate() {
+		return timeAndDate;
+	}
+	public void setTimeAndDate(long timeAndDate) {
+		this.timeAndDate = timeAndDate;
 	}
 	@Override
 	public int hashCode()
