@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import ch.studihome.jspserver.controller.exceptions.InvalidUserException;
+import ch.studihome.jspserver.model.Calendar;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AddressDao;
 import ch.studihome.jspserver.model.dao.UserDao;
@@ -47,7 +48,8 @@ public class SignupServiceImpl implements SignupService {
         user.setFirstName(signupForm.getFirstName());
         user.setLastName(signupForm.getLastName());
         user.setUser_role("ROLE_USER");
-        user.setEnabled("TRUE");  
+        user.setEnabled("TRUE");
+        user.setCalendar(new Calendar(user));
         user = userDao.save(user);         // save object to DB
         
         signupForm.setId(user.getusrId());

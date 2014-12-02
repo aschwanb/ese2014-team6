@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
@@ -54,6 +55,12 @@ public class User implements UserDetails {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="toUser")
     private Set<Message> toMsgs = new HashSet<Message>(0);
+
+//	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="fromUser")
+//    private Set<Invite> fromInvite= new HashSet<Invite>(0);
+//
+//	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="toUser")
+//    private Set<Invite> toInvite = new HashSet<Invite>(0);
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
 	@JoinTable(name = "bookmarklist",
@@ -63,6 +70,9 @@ public class User implements UserDetails {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="interestees")	//TODO LAZY vs EAGER problem
 	private Set<Advert> interests = new HashSet<Advert>(0);
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
+	private Calendar calendar;
 	
 	public User(){}
 	public User(String firstName, String lastName, String email, String password) {
@@ -89,6 +99,19 @@ public class User implements UserDetails {
 		this.toMsgs = toMsgs;
 	}
 
+//	public Set<Invite> getFromInvite() {
+//		return fromInvite;
+//	}
+//	public void setFromInvite(Set<Invite> fromInvite) {
+//		this.fromInvite = fromInvite;
+//	}
+//	public Set<Invite> getToInvite() {
+//		return toInvite;
+//	}
+//	public void setToInvite(Set<Invite> toInvite) {
+//		this.toInvite = toInvite;
+//	}
+	
 	public String toString() {
     	String out = "FirstName: " + firstName + "\n"+
     			"LastName: " + lastName + "\n"+
@@ -100,6 +123,13 @@ public class User implements UserDetails {
     			"GrantedAuthority: " + this.getAuthorities().iterator().next().toString();
     	return out;
     }
+	
+	public Calendar getCalendar() {
+		return this.calendar;
+	}
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
+	}
     public Long getusrId() {
         return usrId;
     }
