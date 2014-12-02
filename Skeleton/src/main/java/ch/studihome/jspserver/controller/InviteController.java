@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.studihome.jspserver.controller.exceptions.InvalidUserException;
 import ch.studihome.jspserver.controller.service.AdService;
+import ch.studihome.jspserver.controller.service.InviteService;
 import ch.studihome.jspserver.controller.service.MessageService;
 import ch.studihome.jspserver.controller.service.SignupService;
 import ch.studihome.jspserver.model.Advert;
@@ -28,6 +29,7 @@ import ch.studihome.jspserver.model.Event;
 import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AdvertDao;
+import ch.studihome.jspserver.model.dao.InviteDao;
 import ch.studihome.jspserver.model.dao.MessageDao;
 import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.AdForm;
@@ -43,8 +45,8 @@ import ch.studihome.jspserver.model.pojos.MessageForm;
 @Controller
 public class InviteController {
 
-    @Autowired MessageDao messageDao;
-    @Autowired MessageService messageService;
+    @Autowired InviteDao inviteDao;
+    @Autowired InviteService inviteService;
     @Autowired AdvertDao advertDao;
     @Autowired UserDao userDao;
     
@@ -69,13 +71,25 @@ public class InviteController {
 	@RequestMapping(value = "/test", method = RequestMethod.POST)
 	public ModelAndView getInvite(
 			@Valid InvitationForm invitationForm,
-			BindingResult result
+			BindingResult result,
+			RedirectAttributes redirectAttributes
 			) {
 		ModelAndView model = new ModelAndView("test");
+		BSalert[] alerts = new BSalert[1];
+		
 		if (!result.hasErrors()) {
-			model.addObject("message", invitationForm.toString());
-			model.addObject("invitationForm", new InvitationForm());
+			try {
+				invitationForm = inviteService.saveInvite(invitationForm);
+				alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation send.");
+		
+			} catch (InvalidUserException e) {
+            	alerts[0] = new BSalert(BSalert.Type.danger, "<strong>Error!</strong> " + e.getMessage());
+			}
+		} else {
+//			TODO: Proper error handling
 		}
+		model.addObject("invitationForm", invitationForm);
+		model.addObject("alerts", alerts);
 		return model;
 		
 	}

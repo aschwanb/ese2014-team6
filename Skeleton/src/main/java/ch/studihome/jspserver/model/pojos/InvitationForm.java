@@ -4,7 +4,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class InvitationForm extends MessageForm {
-	
+
+	private Long id;
 	@NotNull
 	@Size(min=2, message="Please enter a date.")
 	private String invDate;

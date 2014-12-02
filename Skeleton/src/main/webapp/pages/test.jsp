@@ -121,10 +121,7 @@
 					<a class="btn btn-default" href="index">Cancel</a>
 				</div>
 			</div>
-</form:form>
-	<div>
-		<c:out value="${message}"></c:out>
-	</div>
+		</form:form>
 	</jsp:body>
 </base:page>
 

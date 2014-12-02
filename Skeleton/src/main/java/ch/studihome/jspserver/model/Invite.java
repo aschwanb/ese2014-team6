@@ -29,16 +29,14 @@ public class Invite extends Message {
 
 	private String invDate;
 	private String invTime;
-	private Boolean accept; // In context with this.hasRead
-	private Boolean reject; // In context with this.hasRead
+	private Boolean reacted;
+//	Accept and Reject are handled through the Invitation Controller
 	
 	public Invite() {}
 	public Invite(User fromUser, User toUser, String title, String message, String invDate, String invTime) {
 		super(fromUser, toUser, title, message);
 		this.setInvDate(invDate);
 		this.setInvTime(invTime);
-		this.setAccept(false);
-		this.setReject(false);
 	}
 	public String getInvDate() {
 		return invDate;
@@ -52,18 +50,10 @@ public class Invite extends Message {
 	public void setInvTime(String invTime) {
 		this.invTime = invTime;
 	}
-	public Boolean getAccept() {
-		return accept;
+	public Boolean getReacted() {
+		return reacted;
 	}
-	public void setAccept(Boolean accept) {
-		this.accept = accept;
-		this.reject = !accept;
-	}
-	public Boolean getReject() {
-		return reject;
-	}
-	public void setReject(Boolean reject) {
-		this.reject = reject;
-		this.accept = !reject;
+	public void setReacted(Boolean reacted) {
+		this.reacted = reacted;
 	}
 }
