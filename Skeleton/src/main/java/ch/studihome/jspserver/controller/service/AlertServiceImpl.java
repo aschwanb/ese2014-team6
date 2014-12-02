@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.Alert;
@@ -13,6 +14,7 @@ import ch.studihome.jspserver.model.dao.AdvertDao;
 import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.SearchForm;
 
+@Service
 public class AlertServiceImpl implements AlertService
 {
 	@Autowired

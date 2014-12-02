@@ -20,7 +20,7 @@
 				<tbody>
 					<c:forEach var="alert" varStatus="status" items="${alerts}">
 						<c:if test="${not empty alert.adverts}">
-							<c:forEach var "ad" items="${alert.adverts}">
+							<c:forEach var="ad" items="${alert.adverts}">
 								<tr onclick="document.location='advert?id=${ad.advId}';">
 									<td><a href="advert?id=${ad.advId}"><c:out value="${status.index}"/></a></td>
 									<td>
@@ -45,7 +45,7 @@
 				</tbody>
 			</table>
 		</c:if>
-		<c:if test="${empty ads}">
+		<c:if test="${empty alerts}">
 			No Alerts set
 		</c:if>
 	</jsp:body>

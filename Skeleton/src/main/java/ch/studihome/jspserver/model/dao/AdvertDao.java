@@ -13,12 +13,12 @@ public interface AdvertDao extends CrudRepository<Advert,Long>
 	Advert findByAdvId(Long id);
 	
 	@Query("SELECT a FROM Advert a JOIN a.address adr WHERE "
-			+ "a.price BETWEEN :min_price and :max_price AND"
-			+ "a.roomSize BETWEEN :min_room_size and :max_room_size AND"
-			+ "a.appartementSize BETWEEN :min_appartment_size and :max_appartment_size AND"
-			+ "a.numberOfInhabitants BETWEEN : min_number_of_inhabitants and :max_number_of_inhabitants AND"
-			+ "(adr.city like :area OR adr.plz like :area OR adr.street like :area) AND"
-			+ "a.isWG is :type_of_appartment"
+			+ "a.price BETWEEN :min_price and :max_price AND "
+			+ "a.roomSize BETWEEN :min_room_size and :max_room_size AND "
+			+ "a.appartementSize BETWEEN :min_appartment_size and :max_appartment_size AND "
+			+ "a.numberOfInhabitants BETWEEN :min_number_of_inhabitants and :max_number_of_inhabitants AND "
+			+ "(adr.city like :area OR adr.plz like :area OR adr.street like :area) AND "
+			+ "a.isWG is :type_of_appartment AND "
 			+ "a.timeAndDate >= :timeAndDate")
 	List<Advert> findFiltered(@Param("min_price") int min_price,
 								@Param("max_price") int max_price,
