@@ -2,7 +2,22 @@ package ch.studihome.jspserver.model;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Calendar {
+	
+	@Id
+	@GeneratedValue
+	private Long calId;
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="user")
+	private User user;
 	
 	private String name;
 	private ArrayList<Event> events;
@@ -10,9 +25,21 @@ public class Calendar {
 	public Calendar() {
 		this.name = "calendari_literal1";
 	}
+	public Calendar(User user) {
+		this.user = user;
+		this.name = "calendari_literal1";
+	}
 	public Calendar(ArrayList<Event> events) {
 		this.name = "calendari_literal1";
 		this.events = events;
+	}
+	
+	public User getUser() {
+		return this.user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	public String getName() {

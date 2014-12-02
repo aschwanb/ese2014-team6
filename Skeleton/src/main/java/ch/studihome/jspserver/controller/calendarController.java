@@ -28,8 +28,6 @@ public class calendarController {
         User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	model.addObject("user", user);
     	
-    	//TODO
-
     	return model;
     }
 

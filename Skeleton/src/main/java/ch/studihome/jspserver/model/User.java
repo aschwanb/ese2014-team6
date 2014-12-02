@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
@@ -67,6 +68,9 @@ public class User implements UserDetails {
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="interestees")	//TODO LAZY vs EAGER problem
 	private Set<Advert> interests = new HashSet<Advert>(0);
 	
+	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
+	private Calendar calendar;
+	
 	public User(){}
 	public User(String firstName, String lastName, String email, String password) {
 		this.firstName = firstName;
@@ -103,6 +107,13 @@ public class User implements UserDetails {
     			"GrantedAuthority: " + this.getAuthorities().iterator().next().toString();
     	return out;
     }
+	
+	public Calendar getCalendar() {
+		return this.calendar;
+	}
+	public void setCalendar(Calendar calendar) {
+		this.calendar = calendar;
+	}
     public Long getusrId() {
         return usrId;
     }

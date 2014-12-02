@@ -5,13 +5,13 @@
 <%@taglib prefix="base" tagdir="/WEB-INF/tags" %>
 
 
-<base:page title="Calendar">
-	<jsp:attribute name="page_header">
-		<h1>${user.userName}'s calendar</h1>
+<base:page title="Test">
+	<jsp:attribute name="customHead">
+		<link rel="stylesheet" type="text/css" href="css/bic_calendar.css">
+		<script type="text/javascript" src="js/bic_calendar.min.js"></script>
 	</jsp:attribute>
 
 	<jsp:body>
-		<!-- TODO -->
-		TODO
+		<c:out value="${user.calendar.string}" escapeXml="false"></c:out>
 	</jsp:body>
 </base:page>
