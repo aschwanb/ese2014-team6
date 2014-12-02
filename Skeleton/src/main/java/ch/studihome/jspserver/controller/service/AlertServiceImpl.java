@@ -2,11 +2,14 @@ package ch.studihome.jspserver.controller.service;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.Alert;
 import ch.studihome.jspserver.model.User;
+import ch.studihome.jspserver.model.dao.AdvertDao;
 import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.SearchForm;
 
@@ -14,7 +17,9 @@ public class AlertServiceImpl implements AlertService
 {
 	@Autowired
 	UserDao userDao;
-
+	@Autowired
+	AdvertDao advertDao;
+	
 	public void addAlert(SearchForm searchForm, User user)
 	{
 		HashSet<Alert> alerts = (HashSet<Alert>) user.getAlerts();
@@ -38,7 +43,21 @@ public class AlertServiceImpl implements AlertService
 
 	public void updateAlert(Alert alert)
 	{
-		// TODO Auto-generated method stub
+		String area = "%" + alert.getArea() + "%";
+		area.replace(' ', '%');
+		List<Advert> newAds = advertDao.findFiltered(alert.getMin_price(), 
+													 alert.getMax_price(),
+													 alert.getMin_room_size(),
+													 alert.getMax_room_size(),
+													 alert.getMin_appartment_size(),
+													 alert.getMax_appartment_size(),
+													 alert.getMin_number_of_inhabitants(),
+													 alert.getMax_number_of_inhabitants(),
+													 area,
+													 alert.getType_of_appartment(),
+													 alert.getTimeAndDate());
+		alert.getAdverts().addAll(newAds);
+		alert.setTimeAndDate(new Date().getTime());
 
 	}
 

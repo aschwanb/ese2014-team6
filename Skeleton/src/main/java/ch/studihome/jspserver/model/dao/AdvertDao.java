@@ -20,7 +20,7 @@ public interface AdvertDao extends CrudRepository<Advert,Long>
 			+ "(adr.city like :area OR adr.plz like :area OR adr.street like :area) AND"
 			+ "a.isWG is :type_of_appartment"
 			+ "a.timeAndDate >= :timeAndDate")
-	List<Advert> retrieveByName(@Param("min_price") int min_price,
+	List<Advert> findFiltered(@Param("min_price") int min_price,
 								@Param("max_price") int max_price,
 								@Param("min_room_size") int min_room_size,
 								@Param("max_room_size") int max_roo_size,
