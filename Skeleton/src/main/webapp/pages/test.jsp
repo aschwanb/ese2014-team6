@@ -122,77 +122,10 @@
 				</div>
 			</div>
 </form:form>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-
-<!-- Calendar test -->
-<div class="container">
-	<div class="row">
-		<div class="col-sm-4">
-			<script>
-				$(document)
-					.ready(
-						function() {
-							var monthNames = [ "January", "February", "March", "April", "May",
-							                   "June", "July", "August", "September", "October", 
-							                   "November", "December"
-							                 ];
-							var dayNames = [ "M", "T", "W", "T", "F", "S", "S"];
-							var events = [
-								{
-								date : "28/12/2014",
-								title : 'SPORT & WELLNESS',
-								link : 'http://bic.cat',
-								linkTarget : '_blank',
-								color : '',
-								content : '<img src="http://gettingcontacts.com/upload/jornadas/sport-wellness_portada.png" ><br>06-11-2013 - 09:00 <br> Tecnocampus Mataró Auditori',
-								class : '',
-								displayMonthController : true,
-								displayYearController : true,
-								nMonths : 6
-							} ];
-							$('#calendari_lateral1').bic_calendar({
-								//list of events in array
-								events : events,
-								//enable select
-								enableSelect : false,
-								//enable multi-select
-								multiSelect : false,
-								//set day names
-								dayNames : dayNames,
-								//set month names
-								monthNames : monthNames,
-								//show dayNames
-								showDays : true,
-								//show month controller
-								displayMonthController : true,
-								//show year controller
-								displayYearController : true,
-								//set ajax call
-								reqAjax : {
-									type : 'get',
-									url : 'http://bic.cat/bic_calendar/index.php'
-								}
-							});
-						});
-			</script>
-			<div id="calendari_lateral1"></div>
+		<!-- Calendar test -->
+		<div>
+			<c:out value="${calendar.string}" escapeXml="false" />	
 		</div>
 
 	</jsp:body>

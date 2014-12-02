@@ -1,6 +1,7 @@
 package ch.studihome.jspserver.controller;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
 
 import javax.validation.Valid;
 
@@ -22,6 +23,8 @@ import ch.studihome.jspserver.controller.service.AdService;
 import ch.studihome.jspserver.controller.service.MessageService;
 import ch.studihome.jspserver.controller.service.SignupService;
 import ch.studihome.jspserver.model.Advert;
+import ch.studihome.jspserver.model.Calendar;
+import ch.studihome.jspserver.model.Event;
 import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AdvertDao;
@@ -57,6 +60,15 @@ public class InviteController {
 //		User toUser = userDao.findByUsrId(usrId);
 		
         model.addObject("invitationForm", new InvitationForm());
+        Event event1 = new Event("2/12/2014", "SPORT and WELLNESS", "http://bic.cat", 
+        		"<img src=\"http://gettingcontacts.com/upload/jornadas/sport-wellness_portada.png\" ><br>06-11-2013 - 09:00 <br> Tecnocampus Mataró Auditori");
+        Event event2 = new Event("20/11/2014", "SPORT and WELLNESS", "http://bic.cat", 
+        		"<img src=\"http://gettingcontacts.com/upload/jornadas/sport-wellness_portada.png\" ><br>06-11-2013 - 09:00 <br> Tecnocampus Mataró Auditori");
+        ArrayList<Event> events = new ArrayList<Event>();
+        events.add(event1);
+        events.add(event2);
+        Calendar calendar = new Calendar(events);
+        model.addObject("calendar", calendar);
 //      model.addObject("fromUser", fromUser);
 //		model.addObject("toUser", toUser);
 		        
