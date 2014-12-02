@@ -1,5 +1,6 @@
 package ch.studihome.jspserver.controller.service;
 
+import java.util.Date;
 import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,8 @@ public class AlertServiceImpl implements AlertService
     	alert.setMin_number_of_inhabitants(searchForm.getMin_number_of_inhabitants());
     	alert.setMax_number_of_inhabitants(searchForm.getMax_number_of_inhabitants());
     	alert.setArea(searchForm.getArea());
-    	alert.setType_of_apartment(searchForm.getType_of_apartment());
+    	alert.setType_of_appartment(searchForm.getType_of_apartment());
+    	alert.setTimeAndDate(new Date().getTime());
     	
     	alerts.add(alert);
     	userDao.save(user);

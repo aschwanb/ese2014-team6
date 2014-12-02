@@ -1,9 +1,15 @@
 package ch.studihome.jspserver.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 
@@ -27,8 +33,14 @@ public class Alert
 	private int min_number_of_inhabitants;
 	private int max_number_of_inhabitants;
 	private String area;
-	private boolean type_of_apartment;
+	private boolean type_of_appartment;
 	private long timeAndDate;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
+	@JoinTable(name = "alertstlist",
+			   joinColumns = { @JoinColumn(name = "alertId", nullable = false, updatable = false) }, 
+			   inverseJoinColumns = { @JoinColumn(name = "advId", nullable = false, updatable = false) })
+	private Set<Advert> adverts;
 	
 	public Long getAlertId(){
 		return alertId;
@@ -118,12 +130,12 @@ public class Alert
 		this.area = area;
 	}
 
-	public boolean getType_of_apartment() {
-		return type_of_apartment;
+	public boolean getType_of_appartment() {
+		return type_of_appartment;
 	}
 
-	public void setType_of_apartment(boolean type_of_apartment) {
-		this.type_of_apartment = type_of_apartment;
+	public void setType_of_appartment(boolean type_of_apartment) {
+		this.type_of_appartment = type_of_apartment;
 	}
 
 	public long getTimeAndDate() {
@@ -132,6 +144,14 @@ public class Alert
 
 	public void setTimeAndDate(long timeAndDate) {
 		this.timeAndDate = timeAndDate;
+	}
+
+	public Set<Advert> getAdverts() {
+		return adverts;
+	}
+
+	public void setAdverts(Set<Advert> adverts) {
+		this.adverts = adverts;
 	}
 	
 	
