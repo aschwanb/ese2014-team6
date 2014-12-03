@@ -2,7 +2,6 @@ var geocoder;
 var map;
 var marker;
 
-
 function initialize()
 {
 	geocoder = new google.maps.Geocoder();
@@ -59,7 +58,6 @@ function initialize()
 	controlDiv.index = 1;
 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(controlDiv);
 	
-	
 }
 
 function lockMarker()
@@ -68,13 +66,11 @@ function lockMarker()
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-google.maps.event.addDomListener(document.getElementById("map_canvas"), "resize",
-									function() {
-										var center = map.getCenter();
-										google.maps.event.trigger(map, "resize");
-										map.setCenter(center); 
-									});
-
+google.maps.event.addDomListener(window, "resize", function() {
+    var center = map.getCenter();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center); 
+});
 
 function decodeAddress(results)
 {

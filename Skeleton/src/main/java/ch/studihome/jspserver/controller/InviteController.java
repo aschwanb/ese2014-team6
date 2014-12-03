@@ -82,7 +82,7 @@ public class InviteController {
 	        	calendarDao.save(calendar);
 	        	eventDao.save(event);
 	        	userDao.save(fromUser);
-	        	// Inform other party
+	        	// Todo: Inform other party
 			} else {
 	        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation rejected.");
 	        	// Inform other party

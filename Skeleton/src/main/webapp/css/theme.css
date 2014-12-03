@@ -107,6 +107,11 @@ table a, table a:hover, table a:link, table a:visited, table a:active, table a:f
 	display: block;
 	margin: -8px;
 	padding: 8px;
+}
+
+table a:not(.btn), table a:not(.btn):hover, table a:not(.btn):link, 
+	table a:not(.btn):visited, table a:not(.btn):active, 
+	table a:not(.btn):focus{
 	color: inherit;
 	text-decoration: inherit;
 }
