@@ -75,11 +75,11 @@ public class InviteController {
 			if (confirm) {
 	        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation confirmed.");
 	        	// Add event to calendar
-	        	Event event = new Event(invite.getInvDate(), invite.getInvTime(), invite.getLink(), invite.getContent());
-	        	Calendar calendar = fromUser.getCalendar();
-	        	calendar.addEvent(event);
-	        	calendarDao.save(calendar);
-	        	eventDao.save(event);
+//	        	Event event = new Event(invite.getInvDate(), invite.getInvTime(), invite.getLink(), invite.getContent());
+//	        	Calendar calendar = fromUser.getCalendar();
+//	        	calendar.addEvent(event);
+//	        	calendarDao.save(calendar);
+//	        	eventDao.save(event);
 //	        	userDao.save(fromUser);
 	        	// Inform other party
 			} else {
