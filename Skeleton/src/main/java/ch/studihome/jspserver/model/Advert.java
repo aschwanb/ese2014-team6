@@ -45,6 +45,9 @@ public class Advert {
 	@ManyToOne @JoinColumn(name="usrId", nullable=false)
 	private User user;
 	
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
+    private Set<Event> events = new HashSet<Event>(0);
+	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy="advert")
 	private Address address;
 	
@@ -133,6 +136,13 @@ public class Advert {
 
 	public void setImgs(Set<RoomImg> imgs) {
 		this.imgs = imgs;
+	}
+	
+	public Set<Event> getEvents() {
+		return this.events;
+	}
+	public void setEvents(Set<Event> events) {
+		this.events = events;
 	}
 
 	public User getUser() {
