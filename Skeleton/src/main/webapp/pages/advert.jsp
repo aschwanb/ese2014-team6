@@ -115,11 +115,12 @@
 						<div class="col-md-12">
 							<c:if test="${not empty interestees}">
 								<table class="table table-striped table-hover">
-									<tr><th>User name</th><th>E-Mail</th></tr>
+									<tr><th>User name</th><th>E-Mail</th><th></th></tr>
 									<c:forEach var="user" items="${interestees}">
 										<tr> <!-- TODO onclick="document.location='advert?id=${ad.advId}';" -->
 											<td><a href="#TODO"><c:out value="${user.userName}"/></a></td>
 											<td><a href="#TODO"><c:out value="${user.email}"/></a></td>
+											<td><a class="btn btn-dafault" href="test?usrId=${user.usrId}&adId=${adForm.id}">Invite to event</a><a class="btn btn-dafault" href="contact?usrId=${user.usrId}">Contact</a></td>
 										</tr>
 									</c:forEach>
 								</table>
