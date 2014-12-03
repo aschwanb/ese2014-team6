@@ -66,7 +66,9 @@ function typeOfApartmentMatch(type_of_apartment_wanted, type_of_apartment)
 }
  
 $(document).ready(function() {
-    var table = $('#allAds').DataTable();
+    var table = $('#allAds').DataTable({
+    	"dom":'<"table"<"middle"rt><"bottom"lip>>'
+    });
      
     // Event listener to the filtering inputs to redraw on input
     $('#min_price, #max_price, #min_room_size, #max_room_size, #min_apartment_size, #max_apartment_size, #min_number_of_inhabitants, #max_number_of_inhabitants').keyup( function() {

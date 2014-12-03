@@ -12,15 +12,15 @@
 	</jsp:attribute>
 
 	<jsp:body>
-		<c:if test="${not empty alerts}">
+		<c:if test="${not empty aalerts}">
 			<table class="table table-striped table-hover">
 				<thead>	
 					<tr><th>Number Of Alert</th><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th><th>Apartment Size</th><th>Number Of Inhabitants</th><th>Type Of Apartment</th></tr>
 				</thead>
 				<tbody>
-					<c:forEach var="alert" varStatus="status" items="${alerts}">
-						<c:if test="${not empty alert.adverts}">
-							<c:forEach var="ad" items="${alert.adverts}">
+					<c:forEach var="aalert" varStatus="status" items="${aalerts}">
+						<c:if test="${not empty aalert.adverts}">
+							<c:forEach var="ad" items="${aalert.adverts}">
 								<tr onclick="document.location='advert?id=${ad.advId}';">
 									<td><a href="advert?id=${ad.advId}"><c:out value="${status.index}"/></a></td>
 									<td>
@@ -45,7 +45,7 @@
 				</tbody>
 			</table>
 		</c:if>
-		<c:if test="${empty alerts}">
+		<c:if test="${empty aalerts}">
 			No Alerts set
 		</c:if>
 	</jsp:body>

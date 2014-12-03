@@ -3,17 +3,29 @@ package ch.studihome.jspserver.model.pojos;
 public class SearchForm
 {
 	private long id;
-	private int min_price;
-	private int max_price;
-	private int min_room_size;
-	private int max_room_size;
-	private int min_appartment_size;
-	private int max_appartment_size;
-	private int min_number_of_inhabitants;
-	private int max_number_of_inhabitants;
+	private int minprice;
+	private int maxprice;
+	private int minroomsize;
+	private int maxroomsize;
+	private int minappartmentsize;
+	private int maxappartmentsize;
+	private int minnumberofinhabitants;
+	private int maxnumberofinhabitants;
 	private String area;
-	private boolean type_of_apartment;
+	private String typeofapartment;
 	
+	public SearchForm()
+	{
+		this.minprice = 0;
+		this.maxprice = Integer.MAX_VALUE;
+		this.minroomsize = 0;
+		this.maxroomsize = Integer.MAX_VALUE;
+		this.minappartmentsize = 0;
+		this.maxappartmentsize = Integer.MAX_VALUE;
+		this.minnumberofinhabitants = 0;
+		this.maxnumberofinhabitants = Integer.MAX_VALUE;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -22,68 +34,68 @@ public class SearchForm
 		this.id = id;
 	}
 	
-	public int getMin_price() {
-		return min_price;
+	public int getMinprice() {
+		return minprice;
 	}
 	
-	public void setMin_price(int min_price) {
-		this.min_price = min_price;
+	public void setMinprice(int minprice) {
+		this.minprice = minprice;
 	}
 	
-	public int getMax_price() {
-		return max_price;
+	public int getMaxprice() {
+		return maxprice;
 	}
 	
-	public void setMax_price(int max_price) {
-		this.max_price = max_price;
+	public void setMaxprice(int maxprice) {
+		this.maxprice = maxprice;
 	}
 	
-	public int getMin_room_size() {
-		return min_room_size;
+	public int getMinroomsize() {
+		return minroomsize;
 	}
 	
-	public void setMin_room_size(int min_room_size) {
-		this.min_room_size = min_room_size;
+	public void setMinroomsize(int minroomsize) {
+		this.minroomsize = minroomsize;
 	}
 	
-	public int getMax_room_size() {
-		return max_room_size;
+	public int getMaxroomsize() {
+		return maxroomsize;
 	}
 	
-	public void setMax_room_size(int max_room_size) {
-		this.max_room_size = max_room_size;
+	public void setMaxroomsize(int maxroomsize) {
+		this.maxroomsize = maxroomsize;
 	}
 	
-	public int getMin_appartment_size() {
-		return min_appartment_size;
+	public int getMinappartmentsize() {
+		return minappartmentsize;
 	}
 	
-	public void setMin_appartment_size(int min_appartment_size) {
-		this.min_appartment_size = min_appartment_size;
+	public void setMinappartmentsize(int minappartmentsize) {
+		this.minappartmentsize = minappartmentsize;
 	}
 	
-	public int getMax_appartment_size() {
-		return max_appartment_size;
+	public int getMaxappartmentsize() {
+		return maxappartmentsize;
 	}
 	
-	public void setMax_appartment_size(int max_appartment_size) {
-		this.max_appartment_size = max_appartment_size;
+	public void setMaxappartmentsize(int maxappartmentsize) {
+		this.maxappartmentsize = maxappartmentsize;
 	}
 	
-	public int getMin_number_of_inhabitants() {
-		return min_number_of_inhabitants;
+	public int getMinnumberofinhabitants() {
+		return minnumberofinhabitants;
 	}
 	
-	public void setMin_number_of_inhabitants(int min_number_of_inhabitants) {
-		this.min_number_of_inhabitants = min_number_of_inhabitants;
+	public void setMinnumberofinhabitants(int minnumberofinhabitants) {
+		this.minnumberofinhabitants = minnumberofinhabitants;
 	}
 	
-	public int getMax_number_of_inhabitants() {
-		return max_number_of_inhabitants;
+	public int getMaxnumberofinhabitants() {
+		return maxnumberofinhabitants;
 	}
 	
-	public void setMax_number_of_inhabitants(int max_number_of_inhabitants) {
-		this.max_number_of_inhabitants = max_number_of_inhabitants;
+	public void setMaxnumberofinhabitants(int maxnumberofinhabitants) {
+		this.maxnumberofinhabitants = maxnumberofinhabitants;
 	}
 	
 	public String getArea() {
@@ -94,12 +106,12 @@ public class SearchForm
 		this.area = area;
 	}
 	
-	public boolean getType_of_apartment() {
-		return type_of_apartment;
+	public String getTypeofapartment() {
+		return typeofapartment;
 	}
 	
-	public void setType_of_apartment(boolean type_of_apartment) {
-		this.type_of_apartment = type_of_apartment;
+	public void setTypeofapartment(String typeofapartment) {
+		this.typeofapartment = typeofapartment;
 	}
 	
 	

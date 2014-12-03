@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ch.studihome.jspserver.controller.service.AdService;
 import ch.studihome.jspserver.controller.service.SignupService;
 import ch.studihome.jspserver.model.Advert;
+import ch.studihome.jspserver.model.pojos.SearchForm;
 
 /**
  * Load and return index view 
@@ -44,6 +45,7 @@ public class IndexController {
     	ModelAndView model = new ModelAndView("index");
     	model.addObject("ads", ads);
     	model.addObject("imgPath", imgPath);
+    	model.addObject("searchForm", new SearchForm());
     	return model;
     	
     }

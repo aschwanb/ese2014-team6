@@ -43,7 +43,7 @@ public class AlertController {
     	// Alerts		
     	Alert[] alerts = new Alert[0];
     	alerts = user.getAlerts().toArray(alerts);
-    	model.addObject("alerts", alerts);
+    	model.addObject("aalerts", alerts);
 
     	return model;
     }

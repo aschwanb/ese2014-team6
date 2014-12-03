@@ -60,6 +60,9 @@ public class Advert {
 			   inverseJoinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) })
 	private Set<User> interestees = new HashSet<User>(0);
 	
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adverts")	//TODO LAZY vs EAGER problem
+	private Set<Alert> alerts = new HashSet<Alert>(0);
+	
 	private long timeAndDate;
 
 	public Advert() {}
