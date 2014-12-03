@@ -49,8 +49,32 @@ public class InviteController {
     @Autowired InviteService inviteService;
     @Autowired AdvertDao advertDao;
     @Autowired UserDao userDao;
+    @Autowired MessageDao messageDao;
     
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
+	
+	@RequestMapping(value = "/invite", method = RequestMethod.GET)
+	public ModelAndView inviteReact(
+			@RequestParam(value = "msgId", required = true)Long msgId,
+			@RequestParam(value = "confirm", required = true)Boolean confirm
+			){
+		ModelAndView model = new ModelAndView("message");
+		User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User toUser = messageDao.findById(msgId).getFromUser();
+		BSalert[] alerts = new BSalert[1];
+		
+		if (confirm) {
+        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation confirmed.");
+		} else {
+        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation rejected.");
+		}
+		
+		model.addObject("msg", messageDao.findById(msgId));  	
+		model.addObject("alerts", alerts);
+        model.addObject("fromUser", fromUser);
+		model.addObject("toUser", toUser);
+		return model;
+	}
 	
 	@RequestMapping(value = { "/test" }, method = RequestMethod.GET)
     public ModelAndView invite(
