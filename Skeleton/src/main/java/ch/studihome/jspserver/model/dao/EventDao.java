@@ -3,10 +3,9 @@ package ch.studihome.jspserver.model.dao;
 import org.springframework.data.repository.CrudRepository;
 
 import ch.studihome.jspserver.model.Advert;
-import ch.studihome.jspserver.model.Calendar;
+import ch.studihome.jspserver.model.Event;
 
-public interface CalendarDao extends CrudRepository<Calendar,Long> {
+public interface EventDao extends CrudRepository<Event,Long> {
 
-	Calendar findByCalId(Long id);
-	
+	Event findByEventId(Long id);
 }

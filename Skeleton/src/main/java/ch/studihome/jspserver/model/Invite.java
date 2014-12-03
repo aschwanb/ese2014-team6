@@ -37,6 +37,16 @@ public class Invite extends Message {
 		super(fromUser, toUser, title, message);
 		this.setInvDate(invDate);
 		this.setInvTime(invTime);
+		this.reacted = false;
+	}
+	
+	// TODO: Generate Link to related advert
+	public String getLink() {
+		String id = "1";
+		return "advert?id=$id";
+	}
+	public String getContent() {
+		return "Some temporary text";
 	}
 	public String getInvDate() {
 		return invDate;

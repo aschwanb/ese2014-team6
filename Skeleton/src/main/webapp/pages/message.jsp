@@ -13,6 +13,16 @@
 			<c:if test="${not empty msg}">
 				<div><h4><c:out value="${msg.title}"/></h4></div>
 				<div><p><c:out value="${msg.message}"/></p></div>
+				<c:if test="${not empty msg.invDate}">
+					<div>
+						Add invitation for the <c:out value="${msg.invDate}"/> at
+						<c:out value="${msg.invTime}"/> to your calendar?
+					</div>
+					<div class="form-group">
+						<a class="btn btn-default" href="invite?msgId=${msg.id}&confirm=true">Confirm</a>
+		        		<a class="btn btn-default" href="invite?msgId=${msg.id}&confirm=false">Reject</a>            
+					</div>
+				</c:if>
 				<div class="form-group">
     				<div>
     		    		<a class="btn btn-primary" href="contact?msgId=${msg.id}">Respond</a>
