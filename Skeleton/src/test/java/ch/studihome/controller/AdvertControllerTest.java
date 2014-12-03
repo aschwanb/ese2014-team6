@@ -66,7 +66,7 @@ public class AdvertControllerTest
 	{
 		ModelAndView model = advertController.show(null, null);
 		String title = (String) model.getModel().get("title");
-		assertEquals("Advert - Error 404", title);
+		assertEquals("Advert - Error 403", title);
 		
 		when(adService.loadById(any(String.class))).thenAnswer(new Answer<AdForm>() {
 
