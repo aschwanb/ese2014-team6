@@ -55,7 +55,7 @@ public class Advert {
 	private Set<User> bookmarkees = new HashSet<User>(0);
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
-	@JoinTable(name = "interestlist",
+	@JoinTable(name = "InterestList",
 			   joinColumns = { @JoinColumn(name = "advId", nullable = false, updatable = false) }, 
 			   inverseJoinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) })
 	private Set<User> interestees = new HashSet<User>(0);

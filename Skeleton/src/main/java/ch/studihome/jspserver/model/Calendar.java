@@ -27,7 +27,7 @@ public class Calendar {
 	
 	private String name;
     @ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-    @JoinTable(name="event",
+    @JoinTable(name="EventToCal",
     		   joinColumns = { @JoinColumn(name = "id", nullable = false, updatable = false) },
     		   inverseJoinColumns = { @JoinColumn(name = "eventId", nullable = false, updatable = false) })
     private Set<Event> events = new HashSet<Event>(0);

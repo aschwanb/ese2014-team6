@@ -57,7 +57,7 @@ public class User implements UserDetails {
     private Set<Message> toMsgs = new HashSet<Message>(0);
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
-	@JoinTable(name = "bookmarklist",
+	@JoinTable(name = "BookmarkList",
 			   joinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) }, 
 			   inverseJoinColumns = { @JoinColumn(name = "advId", nullable = false, updatable = false) })
 	private Set<Advert> bookmarks = new HashSet<Advert>(0);
