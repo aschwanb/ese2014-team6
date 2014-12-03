@@ -14,6 +14,7 @@
 	<jsp:body>
 		<c:if test="${not empty aalerts}">
 			<table class="table table-striped table-hover">
+
 				<thead>	
 					<tr><th>Number Of Alert</th><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th><th>Apartment Size</th><th>Number Of Inhabitants</th><th>Type Of Apartment</th></tr>
 				</thead>

@@ -19,7 +19,7 @@
 					<label for="field-toUserEmail" class="col-sm-2 control-label">To User Email</label>
 					<div class="col-sm-10 form-inline" >
 						<form:input type="text" class="form-control" path="toUserEmail"
-						id="field-toUserEmail" placeholder="Their Email" value="${toUser.email}" />
+						id="field-toUserEmail" placeholder="Their Email" value="${toUser.userName}" />
 						<form:errors class="alert alert-danger" role="alert" path="toUserEmail"/>
 					</div>
 				</div>
@@ -31,7 +31,7 @@
 		    	  	<label for="field-fromUserEmail" class="col-sm-2 control-label">Your Email</label>
 					<div class="col-sm-10 form-inline" >
 						<form:input type="text" class="form-control" path="fromUserEmail" 
-						id="field-fromUserEmail" placeholder="Your Email" value="${fromUser.email}"/>
+						id="field-fromUserEmail" placeholder="Your Email" value="${fromUser.userName}"/>
 						<form:errors class="alert alert-danger" role="alert" path="fromUserEmail"/>
 					</div>
 				</div>

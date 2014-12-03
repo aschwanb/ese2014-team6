@@ -35,7 +35,7 @@
 			login-page="/login"
 			login-processing-url="/dologin"
 			authentication-failure-url="/login?error"
-			default-target-url="/index"
+			default-target-url="/haslogin"
 			always-use-default-target="true"
 			username-parameter="userName"
 			password-parameter="password"/>

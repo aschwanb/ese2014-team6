@@ -1,6 +1,7 @@
 package ch.studihome.jspserver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.studihome.jspserver.controller.service.SignupService;
+import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.pojos.BSalert;
 
 /**
@@ -40,6 +42,16 @@ public class LoginController {
 		  }
 	 
 		  return model;
+    }
+    
+    @RequestMapping(value = "/haslogin", method = RequestMethod.GET)
+	public String haslogin() {
+	 
+    	User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	
+    	//TODO
+	 
+    	return "redirect:/index";
     }
     
     /**

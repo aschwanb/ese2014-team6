@@ -26,7 +26,7 @@
 					<form:errors path="toUserEmail" />
 				</c:set>
 				<div class="control-group<c:if test="${not empty toUserEmailErrors}"> has-error</c:if>">
-					<label for="field-toUserEmail" class="col-sm-2 control-label">To User Email</label>
+					<label for="field-toUserEmail" class="col-sm-2 control-label">To user name</label>
 					<div class="col-sm-10 form-inline">
 						<form:input type="text" class="form-control" path="toUserEmail" id="field-toUserEmail" placeholder="Their Email" />
 						<form:errors class="alert alert-danger" role="alert" path="toUserEmail" />
@@ -39,7 +39,7 @@
 					<form:errors path="fromUserEmail" />
 				</c:set>
 				<div class="control-group<c:if test="${not empty fromUserEmailErrors}"> has-error</c:if>">
-					<label for="field-fromUserEmail" class="col-sm-2 control-label">Your Email</label>
+					<label for="field-fromUserEmail" class="col-sm-2 control-label">Your user name</label>
 					<div class="col-sm-10 form-inline">
 						<form:input type="text" class="form-control" path="fromUserEmail" id="field-fromUserEmail" placeholder="Your Email" />
 						<form:errors class="alert alert-danger" role="alert" path="fromUserEmail" />
