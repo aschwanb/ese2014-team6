@@ -96,5 +96,80 @@ public class AdvertSeeder
 		
 		user1.setAds(adverts1);
 		userDao.save(user1);
+		
+		HashSet<Advert> adverts2 = new HashSet<Advert>();
+		User user2 = userDao.findByUserName("Morpheus");
+		
+		Advert advert21 = new Advert();
+		advert21.setAppartementSize(110);
+		advert21.setDescription("It looks nice and is clean");
+		advert21.setIsWG(true);
+		advert21.setNumberOfInhabitants(4);
+		advert21.setNumberOfRooms(5);
+		advert21.setPrice(400);
+		advert21.setRoomSize(20);
+		advert21.setTimeAndDate(new Date().getTime());
+		advert21.setTitle("5 room apartment");
+		advert21.setAddress(new Address("Bachstrasse 254", "3078", "Richigen", "46.9156506, 7.58312699999999"));
+		advert21.setUser(user2);
+		RoomImg roomImg21 = new RoomImg();
+		roomImg21.setAdvert(advert21);
+		roomImg21.setImgDescription("Nice Image");
+		roomImg21.setImgName("niceImage.jpg");
+		roomImg21.setImgNum(1);
+		HashSet<RoomImg> roomImgs21 = new HashSet<RoomImg>();
+		roomImgs21.add(roomImg21);
+		advert21.setImgs(roomImgs21);
+		advertDao.save(advert21);
+		adverts2.add(advert21);
+
+		Advert advert22 = new Advert();
+		advert22.setAppartementSize(100);
+		advert22.setDescription("It looks nice and is clean");
+		advert22.setIsWG(true);
+		advert22.setNumberOfInhabitants(3);
+		advert22.setNumberOfRooms(4);
+		advert22.setPrice(350);
+		advert22.setRoomSize(20);
+		advert22.setTimeAndDate(new Date().getTime());
+		advert22.setTitle("4 room apartment");
+		advert22.setAddress(new Address("Bachstrasse 253", "3078", "Richigen", "46.9159383, 7.583219699999972"));
+		advert22.setUser(user2);
+		RoomImg roomImg22 = new RoomImg();
+		roomImg22.setAdvert(advert22);
+		roomImg22.setImgDescription("Nice Image");
+		roomImg22.setImgName("niceImage.jpg");
+		roomImg22.setImgNum(1);
+		HashSet<RoomImg> roomImgs22 = new HashSet<RoomImg>();
+		roomImgs22.add(roomImg22);
+		advert22.setImgs(roomImgs22);
+		advertDao.save(advert22);
+		adverts2.add(advert22);
+		
+		Advert advert23 = new Advert();
+		advert23.setAppartementSize(90);
+		advert23.setDescription("It looks nice and is clean");
+		advert23.setIsWG(false);
+		advert23.setNumberOfInhabitants(1);
+		advert23.setNumberOfRooms(4);
+		advert23.setPrice(1200);
+		advert23.setRoomSize(0);
+		advert23.setTimeAndDate(new Date().getTime());
+		advert23.setTitle("Single apartment");
+		advert23.setAddress(new Address("Bachstrasse 252", "3078", "Richigen", "46.9164693, 7.582984799999963"));
+		advert23.setUser(user2);
+		RoomImg roomImg23 = new RoomImg();
+		roomImg23.setAdvert(advert23);
+		roomImg23.setImgDescription("Nice Image");
+		roomImg23.setImgName("niceImage.jpg");
+		roomImg23.setImgNum(1);
+		HashSet<RoomImg> roomImgs23 = new HashSet<RoomImg>();
+		roomImgs23.add(roomImg23);
+		advert23.setImgs(roomImgs23);
+		advertDao.save(advert23);
+		adverts2.add(advert23);
+		
+		user2.setAds(adverts2);
+		userDao.save(user2);
 	}
 }
