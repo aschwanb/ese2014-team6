@@ -14,7 +14,7 @@
 	                                </div>
                             	</c:forEach>
                     			<c:if test="${adForm.imgsCount lt 10 and editable}">
-	                                <div class="active item addFuncElements" data-slide-number="${adForm.imgsCount}">
+	                                <div class="active item addFuncElements" id="newslide" data-slide-number="${adForm.imgsCount}">
 	                                	<img class="center-block" src="http://placehold.it/300x300&text=Add%20image">
 	                                </div>
 	                            </c:if>
@@ -34,7 +34,9 @@
                     	<c:forEach var="desc" varStatus="status" items="${adForm.imgDescription}">
                         	<div id="slide-content-${status.index}">
                             	<p class="sub-text">${desc}</p>
+                            	<%--
 	                            <p class="sub-text"><a class="btn btn-lg btn-default" onclick="replaceImage(${status.index})">Change Picture</a></p>
+	                            --%>
                             	<p class="picnumholder" hidden="hidden">${adForm.imgNumber[status.index]}</p>
                         	</div>
                         </c:forEach>
@@ -57,7 +59,7 @@
                      	</li>
                     </c:forEach>
                     <c:if test="${adForm.imgsCount lt 10 and editable}">
-	                    <li class="col-sm-2 addFuncElements">
+	                    <li class="col-sm-2 addFuncElements" id="newthumb">
 	                        <a class="thumbnail" id="carousel-selector-${adForm.imgsCount}"><img src="http://placehold.it/300x300&text=Add%20image"></a>
 	                    </li>
                     </c:if>

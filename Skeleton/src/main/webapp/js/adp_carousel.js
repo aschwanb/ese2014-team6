@@ -75,7 +75,7 @@ function makeInfo(num)
 {
 	var div = document.createElement("div");
 	div.setAttribute("id", "slide-content-" + num);
-	div.innerHTML = '<p class="sub-text"></p><p class="sub-text"><a class="btn btn-lg btn-default" onclick="replaceImage(' + num + ')">Change Picture</a></p><p class="picnumholder" hidden="hidden">0</p>';
+	div.innerHTML = '<p class="sub-text"></p><p class="sub-text">' + /*'<a class="btn btn-lg btn-default" onclick="replaceImage(' + num + ')">Change Picture</a></p>' +*/ '<p class="picnumholder" hidden="hidden">0</p>';
 	
 	document.getElementById('slide-content').appendChild(div);
 }
@@ -109,6 +109,8 @@ function addImage()
 	container.appendChild(child);
 	
 	document.getElementById('uploadContainer').appendChild(container);
+	
+	container.getElementsByTagName('input')[0].click();
 }
 
 function replaceImage(carousselindex)
@@ -143,6 +145,14 @@ function setImage(actionid, imgid)
     // update carousel
     var id = $('.item.active').data('slide-number');
     $('#carousel-text').html($('#slide-content-'+id).html());
+    
+  //Handles the carousel thumbnails
+	$('[id^=carousel-selector-]').click( function(){
+		var id_selector = $(this).attr("id");
+		var id = id_selector.substr(id_selector.length -1);
+		var id = parseInt(id);
+		$('#myCarousel').carousel(id);
+	});
     
     // hide uploadbatch
     ubatch.setAttribute("hidden", "hidden");
