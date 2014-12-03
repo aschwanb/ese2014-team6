@@ -75,12 +75,13 @@ public class InviteController {
 			if (confirm) {
 	        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation confirmed.");
 	        	// Add event to calendar
-	        	Event event = new Event(invite.getInvDate(), invite.getInvTime(), invite.getLink(), invite.getContent());
+	        	Event event = new Event(invite.getInvDate(), invite.getInvTime(), 
+	        			invite.getLink(), advertDao.findByAdvId(invite.getAdId()));
 	        	Calendar calendar = fromUser.getCalendar();
 	        	calendar.addEvent(event);
 	        	calendarDao.save(calendar);
 	        	eventDao.save(event);
-//	        	userDao.save(fromUser);
+	        	userDao.save(fromUser);
 	        	// Inform other party
 			} else {
 	        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation rejected.");
@@ -99,17 +100,19 @@ public class InviteController {
 	
 	@RequestMapping(value = { "/test" }, method = RequestMethod.GET)
     public ModelAndView invite(
-    		@RequestParam(value = "usrId", required = false)Long usrId
+    		@RequestParam(value = "usrId", required = true)Long usrId,
+    		@RequestParam(value = "adId", required = true)Long adId
     		) {
 				
 		ModelAndView model = new ModelAndView("test");
-//		User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		User toUser = userDao.findByUsrId(usrId);
+		User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User toUser = userDao.findByUsrId(usrId);
 		
         model.addObject("invitationForm", new InvitationForm());
-//      model.addObject("fromUser", fromUser);
-//		model.addObject("toUser", toUser);
-		        
+      model.addObject("fromUser", fromUser);
+		model.addObject("toUser", toUser);
+		model.addObject("usrId", usrId);
+		model.addObject("adId", adId);
 		return model;
     }
 	

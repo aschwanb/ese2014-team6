@@ -29,25 +29,32 @@ public class Invite extends Message {
 
 	private String invDate;
 	private String invTime;
+	private Long adId;
 	private Boolean reacted;
 //	Accept and Reject are handled through the Invitation Controller
 	
 	public Invite() {}
-	public Invite(User fromUser, User toUser, String title, String message, String invDate, String invTime) {
+	public Invite(User fromUser, User toUser, String title, String message, String invDate, String invTime, Long adId) {
 		super(fromUser, toUser, title, message);
 		this.setInvDate(invDate);
 		this.setInvTime(invTime);
+		this.adId = adId;
 		this.reacted = false;
 	}
 	
 	// TODO: Generate Link to related advert
 	public String getLink() {
 		String id = "1";
-		return "advert?id=$id";
+		return "advert?id="+this.getAdId().toString();
 	}
-	public String getContent() {
-		return "Some temporary text";
+	
+	public Long getAdId() {
+		return this.adId;
 	}
+	public void setAdId(Long adId) {
+		this.adId = adId;
+	}
+	
 	public String getInvDate() {
 		return invDate;
 	}

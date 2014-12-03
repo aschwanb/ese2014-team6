@@ -28,12 +28,6 @@ public class InviteServiceImpl implements InviteService {
 	public Iterable<Invite> findAll() {
 		return inviteDao.findAll();
 	}
-//	public Iterable<Invite> findByFromUser(User user) {
-//		return user.getFromMsgs();
-//	}
-//	public Iterable<Invite> findByToUser(User user) {
-//		return user.getToMsgs();
-//	}
 	
 	public InvitationForm saveInvite(InvitationForm invitationForm) throws InvalidUserException {
 //		Check if both Users exist
@@ -46,7 +40,9 @@ public class InviteServiceImpl implements InviteService {
 		}
 //		Create and save form
 		try {
-			Invite  invite = new Invite(fromUser, toUser, invitationForm.getTitle(), invitationForm.getMessage(), invitationForm.getInvDate(), invitationForm.getInvTime());
+			Invite  invite = new Invite(fromUser, toUser, invitationForm.getTitle(),
+					invitationForm.getMessage(), invitationForm.getInvDate(), 
+					invitationForm.getInvTime(), invitationForm.getAdId());
 			inviteDao.save(invite);		
 			// TODO: Update existing user object with the new information.
 		} catch (Exception e) {

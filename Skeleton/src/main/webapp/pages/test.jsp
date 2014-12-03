@@ -12,37 +12,56 @@
 	    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
 		<script type="text/javascript" src="js/moment-2.8.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
-		
-	<!-- For Calendar -->
-		<link rel="stylesheet" type="text/css" href="css/bic_calendar.css">
-		<script type="text/javascript" src="js/bic_calendar.min.js"></script>
 	</jsp:attribute>
 
 	<jsp:body>
 	
 		<form:form method="post" modelAttribute="invitationForm" action="test" id="invitationForm" class="form-horizontal" role="form">
-			<div class="form-group">
-				<c:set var="toUserEmailErrors">
-					<form:errors path="toUserEmail" />
-				</c:set>
-				<div class="control-group<c:if test="${not empty toUserEmailErrors}"> has-error</c:if>">
-					<label for="field-toUserEmail" class="col-sm-2 control-label">To user name</label>
-					<div class="col-sm-10 form-inline">
-						<form:input type="text" class="form-control" path="toUserEmail" id="field-toUserEmail" placeholder="Their Email" />
-						<form:errors class="alert alert-danger" role="alert" path="toUserEmail" />
+
+			<div class="form-group" style="display: none;">
+		        <c:set var="usrIdErrors"><form:errors path="usrId"/></c:set>
+		      		<div class="control-group<c:if test="${not empty usrIdErrors}"> has-error</c:if>">			
+					<label for="field-usrId" class="col-sm-2 control-label">usrId</label>
+					<div class="col-sm-10 form-inline" >
+						<form:input type="text" class="form-control" path="usrId"
+						id="field-usrId" placeholder="usrId" value="${usrId}" />
+						<form:errors class="alert alert-danger" role="alert" path="usrId"/>
 					</div>
 				</div>
 			</div>
-			
-			<div class="form-group">
-				<c:set var="fromUserEmailErrors">
-					<form:errors path="fromUserEmail" />
-				</c:set>
-				<div class="control-group<c:if test="${not empty fromUserEmailErrors}"> has-error</c:if>">
-					<label for="field-fromUserEmail" class="col-sm-2 control-label">Your user name</label>
-					<div class="col-sm-10 form-inline">
-						<form:input type="text" class="form-control" path="fromUserEmail" id="field-fromUserEmail" placeholder="Your Email" />
-						<form:errors class="alert alert-danger" role="alert" path="fromUserEmail" />
+
+			<div class="form-group" style="display: none;">
+		        <c:set var="adIdErrors"><form:errors path="adId"/></c:set>
+		      		<div class="control-group<c:if test="${not empty adIdErrors}"> has-error</c:if>">			
+					<label for="field-adId" class="col-sm-2 control-label">adId</label>
+					<div class="col-sm-10 form-inline" >
+						<form:input type="text" class="form-control" path="adId"
+						id="field-adId" placeholder="adId" value="${adId}" />
+						<form:errors class="alert alert-danger" role="alert" path="adId"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" style="display: none;">
+		        <c:set var="toUserEmailErrors"><form:errors path="toUserEmail"/></c:set>
+		      		<div class="control-group<c:if test="${not empty toUserEmailErrors}"> has-error</c:if>">			
+					<label for="field-toUserEmail" class="col-sm-2 control-label">To User Email</label>
+					<div class="col-sm-10 form-inline" >
+						<form:input type="text" class="form-control" path="toUserEmail"
+						id="field-toUserEmail" placeholder="Their Email" value="${toUser.userName}" />
+						<form:errors class="alert alert-danger" role="alert" path="toUserEmail"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" style="display: none;">
+			    <c:set var="fromUserEmailErrors"><form:errors path="fromUserEmail"/></c:set>
+		      	<div class="control-group<c:if test="${not empty fromUserEmailErrors}"> has-error</c:if>">	
+		    	  	<label for="field-fromUserEmail" class="col-sm-2 control-label">Your Email</label>
+					<div class="col-sm-10 form-inline" >
+						<form:input type="text" class="form-control" path="fromUserEmail" 
+						id="field-fromUserEmail" placeholder="Your Email" value="${fromUser.userName}"/>
+						<form:errors class="alert alert-danger" role="alert" path="fromUserEmail"/>
 					</div>
 				</div>
 			</div>

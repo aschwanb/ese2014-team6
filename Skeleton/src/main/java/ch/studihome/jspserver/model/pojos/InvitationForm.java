@@ -5,14 +5,28 @@ import javax.validation.constraints.Size;
 
 public class InvitationForm extends MessageForm {
 
-	private Long id;
-	@NotNull
-	@Size(min=2, message="Please enter a date.")
+//	private Long id;
+	@NotNull @Size(min=2, message="Please enter a date.")
 	private String invDate;
-	
-	@NotNull
+	@NotNull 
 	@Size(min=2, message="Please enter a time.")
 	private String invTime;
+	@NotNull private Long usrId;
+	@NotNull private Long adId;
+	
+	public Long getUsrId() {
+		return this.usrId;
+	}
+	public void setUsrId(Long usrId) {
+		this.usrId = usrId;
+	}
+	
+	public Long getAdId() {
+		return this.adId;
+	}
+	public void setAdId( Long adId) {
+		this.adId = adId;
+	}
 	
 	public String getInvTime() {
 		return this.invTime;

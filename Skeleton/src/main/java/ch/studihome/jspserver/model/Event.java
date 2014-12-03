@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.beans.factory.annotation.Value;
+
 /**
  * 
  * Events are displayed in a calendar
@@ -15,7 +17,7 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Event {
-	
+
 	@Id
 	@GeneratedValue
 	private Long eventId;
@@ -30,7 +32,7 @@ public class Event {
 	private String linkTarget;
 	private String color;
 	private String content;
-	
+
 	
 	public Event() {}
 	/**
@@ -38,13 +40,13 @@ public class Event {
 	 *         Event event1 = new Event("2/12/2014", "SPORT and WELLNESS", "http://bic.cat", 
         		"<img src=\"http://gettingcontacts.com/upload/jornadas/sport-wellness_portada.png\" ><br>06-11-2013 - 09:00 <br> Tecnocampus Mataró Auditori");
 	 */
-	public Event(String date, String title, String link, String content, Advert advert) {
+	public Event(String date, String title, String link, Advert advert) {
 		this.date = date;
 		this.title = title;
 		this.link = link;
-		this.content = content;
 		this.linkTarget = "_blank";
 		this.advert = advert;
+		this.content = this.advert.getTitle();
 	}
 
 	
