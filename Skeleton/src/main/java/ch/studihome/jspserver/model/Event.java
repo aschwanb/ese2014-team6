@@ -1,5 +1,9 @@
 package ch.studihome.jspserver.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * 
  * Events are displayed in a calendar
@@ -7,8 +11,12 @@ package ch.studihome.jspserver.model;
  * @author teamsix
  *
  */
+@Entity
 public class Event {
 	
+	@Id
+	@GeneratedValue
+	private Long eventId;
 	private String date;
 	private String title;
 	private String link;

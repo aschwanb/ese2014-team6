@@ -26,9 +26,12 @@ import ch.studihome.jspserver.controller.service.SignupService;
 import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.Calendar;
 import ch.studihome.jspserver.model.Event;
+import ch.studihome.jspserver.model.Invite;
 import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AdvertDao;
+import ch.studihome.jspserver.model.dao.CalendarDao;
+import ch.studihome.jspserver.model.dao.EventDao;
 import ch.studihome.jspserver.model.dao.InviteDao;
 import ch.studihome.jspserver.model.dao.MessageDao;
 import ch.studihome.jspserver.model.dao.UserDao;
@@ -50,6 +53,8 @@ public class InviteController {
     @Autowired AdvertDao advertDao;
     @Autowired UserDao userDao;
     @Autowired MessageDao messageDao;
+    @Autowired CalendarDao calendarDao;
+    @Autowired EventDao eventDao;
     
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
@@ -63,12 +68,28 @@ public class InviteController {
 		User toUser = messageDao.findById(msgId).getFromUser();
 		BSalert[] alerts = new BSalert[1];
 		
-		if (confirm) {
-        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation confirmed.");
+		Invite invite = inviteDao.findById(msgId);
+		if (invite.getReacted()) {
+			alerts[0] = new BSalert(BSalert.Type.success, "<strong>Error!</strong> You allready reacted to this invitation.");			
 		} else {
-        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation rejected.");
+			if (confirm) {
+	        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation confirmed.");
+	        	// Add event to calendar
+	        	Event event = new Event(invite.getInvDate(), invite.getInvTime(), invite.getLink(), invite.getContent());
+	        	Calendar calendar = fromUser.getCalendar();
+	        	calendar.addEvent(event);
+	        	calendarDao.save(calendar);
+	        	eventDao.save(event);
+//	        	userDao.save(fromUser);
+	        	// Inform other party
+			} else {
+	        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation rejected.");
+	        	// Inform other party
+			}
+			invite.setReacted(true);
 		}
-		
+
+		inviteDao.save(invite);
 		model.addObject("msg", messageDao.findById(msgId));  	
 		model.addObject("alerts", alerts);
         model.addObject("fromUser", fromUser);

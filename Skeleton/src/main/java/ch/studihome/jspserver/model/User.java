@@ -59,12 +59,6 @@ public class User implements UserDetails {
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="toUser")
     private Set<Message> toMsgs = new HashSet<Message>(0);
 
-//	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="fromUser")
-//    private Set<Invite> fromInvite= new HashSet<Invite>(0);
-//
-//	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="toUser")
-//    private Set<Invite> toInvite = new HashSet<Invite>(0);
-	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
 	@JoinTable(name = "bookmarklist",
 			   joinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) }, 
