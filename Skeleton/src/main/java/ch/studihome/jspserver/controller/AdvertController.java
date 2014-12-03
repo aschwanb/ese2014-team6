@@ -79,7 +79,7 @@ public class AdvertController {
     		}else
     		{
     			model = new ModelAndView("infoPage");
-    			model.addObject("title", "Advert - Error 404");
+    			model.addObject("title", "Advert - Error 403");
     			BSalert[] alerts = new BSalert[1];
             	alerts[0] = new BSalert(BSalert.Type.warning, "You don't have the permission to access 'Advert - edit'");
             	model.addObject("alerts", alerts);

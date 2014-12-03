@@ -17,9 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -34,8 +32,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 public class User implements UserDetails {
+	
+	private static final long serialVersionUID = -1792555618774482653L;
 
-    @Id
+	@Id
     @GeneratedValue
     private Long usrId;
 
@@ -74,6 +74,9 @@ public class User implements UserDetails {
 	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
 	private Calendar calendar;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
+    private Set<Alert> alerts = new HashSet<Alert>(0);
+    
 	public User(){}
 	public User(String firstName, String lastName, String email, String password) {
 		this.firstName = firstName;
@@ -200,6 +203,13 @@ public class User implements UserDetails {
 
 	public void setAds(Set<Advert> ads) {
 		this.ads = ads;
+	}
+	
+	public Set<Alert> getAlerts() {
+		return alerts;
+	}
+	public void setAlerts(Set<Alert> alerts) {
+		this.alerts = alerts;
 	}
 	
 	// Methods needed by spring security

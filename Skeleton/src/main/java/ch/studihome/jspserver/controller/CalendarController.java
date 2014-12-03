@@ -14,7 +14,7 @@ import ch.studihome.jspserver.model.User;
  * @author TeamSix
  */
 @Controller
-public class calendarController {
+public class CalendarController {
 
 	/**
 	 * 

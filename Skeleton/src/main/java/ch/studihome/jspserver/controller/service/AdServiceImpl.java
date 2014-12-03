@@ -1,6 +1,7 @@
 package ch.studihome.jspserver.controller.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -139,6 +140,7 @@ public class AdServiceImpl implements AdService {
         ad.setNumberOfInhabitants(adForm.getNumberOfInhabitants());
         ad.setDescription(adForm.getDescription());
         ad.setUser(user);
+        ad.setTimeAndDate(new Date().getTime());
         
 		ad = advertDao.save(ad);	// save ad to DB (has to be done, to easily get the adId
         

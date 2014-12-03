@@ -16,9 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.annotation.Transient;
-
 /**
  * Generic advert object. Can be for shared flats or apartments.
  *  
@@ -62,6 +59,11 @@ public class Advert {
 			   joinColumns = { @JoinColumn(name = "advId", nullable = false, updatable = false) }, 
 			   inverseJoinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) })
 	private Set<User> interestees = new HashSet<User>(0);
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adverts")	//TODO LAZY vs EAGER problem
+	private Set<Alert> alerts = new HashSet<Alert>(0);
+	
+	private long timeAndDate;
 
 	public Advert() {}
 	// TODO: Add images in constructor
@@ -192,6 +194,12 @@ public class Advert {
 	}
 	public void setInterestees(Set<User> interestees) {
 		this.interestees = interestees;
+	}
+	public long getTimeAndDate() {
+		return timeAndDate;
+	}
+	public void setTimeAndDate(long timeAndDate) {
+		this.timeAndDate = timeAndDate;
 	}
 	@Override
 	public int hashCode()
