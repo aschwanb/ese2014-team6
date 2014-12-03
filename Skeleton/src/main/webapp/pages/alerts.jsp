@@ -16,6 +16,24 @@
 			<table class="table table-striped table-hover">
 
 				<thead>	
+					<tr><th>Number Of Alert</th><th>Price</th><th>Room Size</th><th>Apartment Size</th><th>Number of Inhabitants</th><th>Area</th><th>Type Of Apartment</th></tr>
+				</thead>
+				<tbody>
+					<c:forEach var="aalert" varStatus="status" items="${aalerts}">
+						<tr>
+							<td><a><c:out value="${status.index}"/></a></td>
+							<td><a><c:out value="${aalert.minprice} - ${aalert.maxprice}"/></a></td>
+							<td><a><c:out value="${aalert.minroomsize} - ${aalert.maxroomsize}"/></a></td>
+							<td><a><c:out value="${aalert.minappartmentsize} - ${aalert.maxappartmentsize}"/></a></td>
+							<td><a><c:out value="${aalert.minnumberofinhabitants} - ${aalert.maxnumberofinhabitants}"/></a></td>
+							<td><a><c:out value="${aalert.area}"/></a></td>
+							<td><a><c:out value="${aalert.typeofappartment}"/></a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<table class="table table-striped table-hover">
+				<thead>	
 					<tr><th>Number Of Alert</th><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th><th>Apartment Size</th><th>Number Of Inhabitants</th><th>Type Of Apartment</th></tr>
 				</thead>
 				<tbody>
