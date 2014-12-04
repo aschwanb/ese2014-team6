@@ -52,6 +52,9 @@ public class ResetDBController
 	InviteDao inviteDao;
 	
 	@Autowired
+	InviteDao alertDao;
+	
+	@Autowired
 	MessageDao messageDao;
 	
 	@Autowired
@@ -62,7 +65,7 @@ public class ResetDBController
      * @return Index view
      */
 	@RequestMapping(value = { "/resetDatabase" })
-    public ModelAndView index(@RequestParam(value = "o", required = false)String password)
+    public ModelAndView index(@RequestParam(value = "o", required = false)String password, @RequestParam(value = "p", required = false)String repopulate)
 	{
     	ModelAndView model;
     	
@@ -72,7 +75,10 @@ public class ResetDBController
 	
 			clearDatabase();
 			
-	    	loadInitialData();
+			if(repopulate != null)
+			{
+				loadInitialData();
+			}
 	    	
 	    	BSalert[] alerts = new BSalert[1];
 			alerts[0] = new BSalert(BSalert.Type.success, "Database reset.");
@@ -95,18 +101,17 @@ public class ResetDBController
 	
 	private void clearDatabase()
 	{
+		//TODO following code may break if now broken code is running. In that case reordering may solve the issue
+		
 		advertDao.deleteAll();
 		addressDao.deleteAll();
 		userDao.deleteAll();
 		
-		/*
-		alertDao;
-		calendarDao;
-		eventDao;
-		inviteDao;
-		messageDao;
-		roomImgDao;
-		*/
+		alertDao.deleteAll();
+		calendarDao.deleteAll();
+		eventDao.deleteAll();
+		inviteDao.deleteAll();
+		messageDao.deleteAll();
 	}
 	
 	private void loadInitialData()

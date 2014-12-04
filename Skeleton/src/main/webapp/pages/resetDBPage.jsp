@@ -13,6 +13,7 @@
 	<jsp:body>
 		<form method="post" action="resetDatabase" class="form-horizontal">
 			<input type="password" name="o" class="form-control"/>
+			<input type="checkbox" name="p" checked="checked"/> Populate with standard Data<br/>
 			<button type="submit" class="btn btn-primary">Reset</button>
 			<a class="btn btn-default" href="index">Cancel</a>
 		</form>
