@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.studihome.jspserver.model.Address;
@@ -15,7 +16,14 @@ import ch.studihome.jspserver.model.RoomImg;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AddressDao;
 import ch.studihome.jspserver.model.dao.AdvertDao;
+import ch.studihome.jspserver.model.dao.AlertDao;
+import ch.studihome.jspserver.model.dao.CalendarDao;
+import ch.studihome.jspserver.model.dao.EventDao;
+import ch.studihome.jspserver.model.dao.InviteDao;
+import ch.studihome.jspserver.model.dao.MessageDao;
+import ch.studihome.jspserver.model.dao.RoomImgDao;
 import ch.studihome.jspserver.model.dao.UserDao;
+import ch.studihome.jspserver.model.pojos.BSalert;
 
 /**
  * Load and return index view 
@@ -34,27 +42,80 @@ public class ResetDBController
 	@Autowired
 	AddressDao addressDao;
 	
+	@Autowired
+	CalendarDao calendarDao;
+	
+	@Autowired
+	EventDao eventDao;
+	
+	@Autowired
+	InviteDao inviteDao;
+	
+	@Autowired
+	MessageDao messageDao;
+	
+	@Autowired
+	RoomImgDao roomImgDao;
+	
 	/**
      * 
      * @return Index view
      */
-	@RequestMapping(value = { "/resetDatabase" }, method = RequestMethod.GET)
-    public ModelAndView index()
+	@RequestMapping(value = { "/resetDatabase" })
+    public ModelAndView index(@RequestParam(value = "o", required = false)String password)
 	{
-    	ModelAndView model = new ModelAndView("index");
-
-		userDao.deleteAll();
-		advertDao.deleteAll();
-		addressDao.deleteAll();
-		
-    	createUsers();
-    	createAdverts();
+    	ModelAndView model;
+    	
+    	if(password != null && password.equals("fuckthisshit"))
+    	{
+	    	model = new ModelAndView("resetDBPage");
+	
+			clearDatabase();
+			
+	    	loadInitialData();
+	    	
+	    	BSalert[] alerts = new BSalert[1];
+			alerts[0] = new BSalert(BSalert.Type.success, "Database reset.");
+			model.addObject("alerts", alerts);
+    	}else
+    	{
+    		model = new ModelAndView("resetDBPage");
+    		
+    		if(password != null)
+    		{
+    			BSalert[] alerts = new BSalert[1];
+    			alerts[0] = new BSalert(BSalert.Type.danger, "Wrong password.");
+    			model.addObject("alerts", alerts);
+    		}
+    	}
     	
     	return model;
     	
     }
 	
-	public void createAdverts()
+	private void clearDatabase()
+	{
+		advertDao.deleteAll();
+		addressDao.deleteAll();
+		userDao.deleteAll();
+		
+		/*
+		alertDao;
+		calendarDao;
+		eventDao;
+		inviteDao;
+		messageDao;
+		roomImgDao;
+		*/
+	}
+	
+	private void loadInitialData()
+	{
+		createUsers();
+    	createAdverts();
+	}
+	
+	private void createAdverts()
 	{
 		
 		HashSet<Advert> adverts1 = new HashSet<Advert>();
@@ -358,7 +419,7 @@ public class ResetDBController
 		userDao.save(user4);
 	}
 	
-	public void createUsers()
+	private void createUsers()
 	{
 		
 		User user1 = new User();

@@ -58,19 +58,20 @@ public class BookmarkController {
 	 * @return ajax response page
 	 */
     @RequestMapping(value = "bookmark", method = RequestMethod.GET)
-    public ModelAndView setBookmark(@RequestParam(value = "id", required=false)Long advId, Principal principal) {
+    public ModelAndView setBookmark(@RequestParam(value = "id", required=false)Long advId) {
     	ModelAndView model = new ModelAndView("ajaxAnswer");
+    	
+    	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	
     	if(advId == null)
     	{
         	model.addObject("content", "invalid request");
-    	}else if(principal == null)
+    	}else if(user == null)
     	{
     		model.addObject("content", "you must be signed in to bookmark adverts");
     	}else
     	{
     		Advert adv = advDao.findOne(advId);
-    		User user = usrDao.findByUserName(principal.getName());
     		
     		if(!user.getBookmarks().contains(adv))
     		{
@@ -92,19 +93,20 @@ public class BookmarkController {
 	 * @return ajax response page
 	 */
     @RequestMapping(value = "showinterest", method = RequestMethod.GET)
-    public ModelAndView setInterest(@RequestParam(value = "id", required=false)Long advId, Principal principal) {
+    public ModelAndView setInterest(@RequestParam(value = "id", required=false)Long advId) {
     	ModelAndView model = new ModelAndView("ajaxAnswer");
+    	
+    	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	
     	if(advId == null)
     	{
         	model.addObject("content", "invalid request");
-    	}else if(principal == null)
+    	}else if(user == null)
     	{
     		model.addObject("content", "you must be signed in to show interest in an advert");
     	}else
     	{
     		Advert adv = advDao.findOne(advId);
-    		User user = usrDao.findByUserName(principal.getName());
     		
     		if(!adv.getInterestees().contains(user))
     		{
