@@ -124,5 +124,8 @@ public class Message {
 	public void setHasResponded(Boolean hasResponded) {
 		this.hasResponded = hasResponded;
 	}
+	public Boolean getInvite(){
+		return false;
+	}
     	
 }

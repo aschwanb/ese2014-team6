@@ -73,4 +73,7 @@ public class Invite extends Message {
 	public void setReacted(Boolean reacted) {
 		this.reacted = reacted;
 	}
+	public Boolean getInvite(){
+		return true;
+	}
 }
