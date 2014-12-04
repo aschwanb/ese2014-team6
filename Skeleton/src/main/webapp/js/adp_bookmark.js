@@ -13,7 +13,7 @@ function setBookmark(id)
 				addAlert("danger", "Bookmarking failed: " + data);
 			}
 		})
-		.failed(function(){
+		.fail(function(){
 			addAlert("danger", "Bookmarking failed. XMLHTTPRequest not successful.");
 		});
 }
@@ -33,7 +33,7 @@ function showInterest(id)
 				addAlert("danger", "Showing interest failed: " + data);
 			}
 		})
-		.failed(function(){
+		.fail(function(){
 			addAlert("danger", "Showing interest failed. XMLHTTPRequest not successful.");
 		});
 }

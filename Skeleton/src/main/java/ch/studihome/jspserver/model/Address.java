@@ -28,11 +28,12 @@ public class Address {
 	private Advert advert;
 	
 	public Address() {}
-	public Address(String street, String plz, String city, String coordinate) {
+	public Address(String street, String plz, String city, String coordinate, Advert advert) {
 		this.street = street;
 		this.plz = plz;
 		this.city = city;
 		this.coordinate = coordinate;
+		this.advert = advert;
 	}
 	
 	public Long getAdr_id() {

@@ -1,6 +1,5 @@
 function setAlert()
 {
-	alert("1");
 	$.post("setalert", $('form#searchForm').serialize())
 		.done(function(data){
 			if(data.trim() == "success")
@@ -11,8 +10,7 @@ function setAlert()
 				addAlert("danger", "Setting alert failed.");
 			}
 		})
-		.failed(function(){
+		.fail(function(){
 			addAlert("danger", "Setting alert failed. XMLHTTPRequest not successful.");
 		});
-	alert("2");
 }
