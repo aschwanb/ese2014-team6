@@ -89,6 +89,7 @@ public class AdServiceImpl implements AdService {
 		adForm.setNumberOfInhabitants(ad.getNumberOfInhabitants());
 		adForm.setDescription(ad.getDescription());
 		adForm.setOwnerId(ad.getUser().getusrId());
+		adForm.setOwner(ad.getUser().getUserName());
 		
 		RoomImg[] imgs = new RoomImg[0];
 		imgs = ad.getImgs().toArray(imgs);
