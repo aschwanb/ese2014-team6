@@ -13,11 +13,12 @@
 	<jsp:body>
 		<c:if test="${not empty msgs}">
 			<table class="table table-striped table-hover">
-				<tr><th>Title</th><th>Message</th></tr>
+				<tr><th>Title</th><th>Message</th><th></th></tr>
 				<c:forEach var="msg" items="${msgs}">
 					<tr onclick="document.location='message?id=${msg.id}';">
 						<td><a href="message?id=${msg.id}"><c:out value="${msg.title}"/></a></td>
 						<td><a href="message?id=${msg.id}"><c:out value="${msg.message}"/></a></td>
+						<td><a href="message?id=${msg.id}"><c:if test="${msg.hasResponded == true}"><span class="label label-default">Responded</span></c:if><c:if test="${msg.hasRead == false}"><span class="label label-info">NEW</span></c:if></a></td>
 					</tr>
 				</c:forEach>
 			</table>
