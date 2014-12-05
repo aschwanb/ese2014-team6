@@ -19,7 +19,7 @@
 			<h1>Advert <small>edit mode</small></h1>
 		</c:if>
 		<c:if test="${editable == false}">
-			<h1>${adForm.title}</h1>
+			<h1>${adForm.title} <small>by ${adForm.owner}</small></h1>
 		</c:if>
 	</jsp:attribute>
 		

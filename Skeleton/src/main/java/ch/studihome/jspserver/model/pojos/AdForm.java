@@ -64,6 +64,8 @@ public class AdForm {
     private List<String> imgNumber = new ArrayList<String>();
     private List<String> imgUrl = new ArrayList<String>();
     
+    private String owner;
+    
 	public long getId() {
 		return id;
 	}
@@ -221,6 +223,14 @@ public class AdForm {
 
 	public void setImgUrl(List<String> imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
     
 }
