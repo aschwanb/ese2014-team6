@@ -20,13 +20,13 @@ public class Bookmark {
 	@ManyToOne @JoinColumn(name="advId", nullable=false)
 	private Advert advert;
 	
-	private int type;
+	private boolean interested;
 	
 	public Bookmark() {}
-	public Bookmark(User user, Advert advert, int type) {
+	public Bookmark(User user, Advert advert, boolean show) {
 		this.user = user;
 		this.advert = advert;
-		this.type = type;
+		this.interested = show;
 	}
 	
 	public Long getBmId() {
@@ -48,11 +48,11 @@ public class Bookmark {
 	public void setAdvert(Advert advert) {
 		this.advert = advert;
 	}
-	public int getType() {
-		return type;
+	public boolean getInterested() {
+		return interested;
 	}
-	public void setType(int type) {
-		this.type = type;
+	public void setInterested(boolean show) {
+		this.interested = show;
 	}
 	
 }
