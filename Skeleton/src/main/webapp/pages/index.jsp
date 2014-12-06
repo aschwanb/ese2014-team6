@@ -23,13 +23,13 @@
 		<h2>Start looking for your home today</h2>
 		
 		<ul class="nav nav-tabs" role="tablist">
-			<li class="active"><a href="#index-map" role="tab" data-toggle="tab">Map</a></li>
-			<li><a href="#index-list" role="tab" data-toggle="tab">List</a></li>
+			<li class="active"><a href="#index-list" role="tab" data-toggle="tab">List</a></li>
+			<li><a href="#index-map" role="tab" data-toggle="tab">Map</a></li>
 		</ul>
 		
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<div class="tab-pane fade in active" id="index-map">
+			<div class="tab-pane fade" id="index-map">
 				<script type="text/javascript">
 					function initialize()
 					{
@@ -87,7 +87,7 @@
 				</script>
 				<div id="map_canvas"></div>
 			</div>
-			<div class="tab-pane fade" id="index-list">
+			<div class="tab-pane fade in active" id="index-list">
 				<c:if test="${not empty ads}">
 					<form:form method="post" modelAttribute="searchForm" action="setalert" id="searchForm"  autocomplete="off">
 						<table>
