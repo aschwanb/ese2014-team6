@@ -1,5 +1,6 @@
 package ch.studihome.jspserver.model;
 
+import java.awt.List;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -201,6 +202,9 @@ public class Advert {
 	}
 	public Set<User> getInterestees() {
 		return interestees;
+	}
+	public User[] getInteresteesList() {
+		return interestees.toArray(new User[0]);
 	}
 	public void setInterestees(Set<User> interestees) {
 		this.interestees = interestees;
