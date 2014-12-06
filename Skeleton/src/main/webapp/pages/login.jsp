@@ -12,25 +12,40 @@
 	
 	<jsp:body>
 		<div id="login-box">
-		 	<form name='loginForm' action="<c:url value='/dologin' />" method='POST'>
-		 		<table>
-					<tr>
-						<td>User name:</td>
-						<td><input type='text' name='userName'></td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><input type='password' name='password' /></td>
-					</tr>
-	<!-- 			<tr> -->
-	<!-- 				<td colspan='2'><input name="submit" type="submit" -->
-	<!-- 				  value="submit" /></td> -->
-	<!-- 			</tr> -->
-				  </table>
-		      <div class="form-actions">
-		      		<button name="submit" type="submit" value="submit" class="btn btn-primary">login</button>
-		            <a class="btn btn-default" href="index">Cancel</a>
-		        </div>
+	 		<form class="form-horizontal" name='loginForm' action="<c:url value='/dologin' />" method='POST'>
+				<fieldset>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label class="control-label" for="field-userName">User Name</label>
+									<div class="form-group">
+										<div class="col-md-4">
+											<input type="text" class="form-control" name="userName" id="userName" tabindex="1" placeholder="Your User Name">
+										</div>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="control-label" for="field-password">Password</label>
+									<div class="form-group">
+										<div class="col-md-4">
+											<input type="password" class="form-control" name="password" id="password" tabindex="2" placeholder="Your Password">
+										</div>
+									</div>
+								</div>		
+								
+								<div class="form-group">
+							    	<div class="form-actions">
+							      		<button name="submit" type="submit" value="submit" class="btn btn-primary">login</button>
+							           	<a class="btn btn-default" href="index">Cancel</a>
+							        </div>
+							    </div>
+						        
+							</div>
+						</div>
+					</div>
+		        </fieldset>
 			</form>
 		</div>
 	</jsp:body>
