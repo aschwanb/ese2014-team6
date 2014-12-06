@@ -16,11 +16,10 @@
 	</jsp:attribute>
 	
 	<jsp:attribute name="page_header">
-		<h1>Welcome to StudiHome</h1>
+		<h2>Start looking for your home today</h2>
 	</jsp:attribute>
 	
 	<jsp:body>
-		<h2>Start looking for your home today</h2>
 		
 		<ul class="nav nav-tabs" role="tablist">
 			<li class="active"><a href="#index-map" role="tab" data-toggle="tab">Map</a></li>
