@@ -267,6 +267,16 @@ public class AdFormTest
 			assertEquals(expected, actual);
 		}
 	}
+	
+	@Test
+	public void testSetOwnerGetOwner()
+	{
+		AdForm adForm = new AdForm();
+		String expected = "Hans Muster";
+		adForm.setOwner(expected);
+		String actual = adForm.getOwner();
+		assertEquals(expected, actual);
+	}
 
 
 }
