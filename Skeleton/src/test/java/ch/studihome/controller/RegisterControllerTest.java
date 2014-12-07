@@ -3,7 +3,6 @@ package ch.studihome.controller;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.studihome.jspserver.controller.RegisterController;
@@ -34,6 +33,5 @@ public class RegisterControllerTest {
 		BSalert alert = alerts[0];
 		assertEquals("Passwords not matching", alert.getMessage());
 	}
-
 
 }
