@@ -23,21 +23,23 @@
 					</tr>
 					<tr></tr>
 					<tr id="collapse${ad.advId}" class="collapse"><td colspan="5">
-						<c:if test="${not empty ad.interesteesList}">
+						<c:if test="${not empty ad.bookmarks}">
 							<span class="glyphicon glyphicon-chevron-right"></span> Interestees:
 							<table class="table table-striped table-hover">
-								<c:forEach var="user" items="${ad.interestees}">
-									<tr> <!-- TODO onclick="document.location='advert?id=${ad.advId}';" -->
-										<td><a href="#TODO"><c:out value="${user.userName}"/></a></td>
-										<td><a href="#TODO"><c:out value="${user.email}"/></a></td>
-										<td><a class="btn btn-dafault" href="test?usrId=${user.usrId}&adId=${adForm.id}">Invite to event</a></td>
-										<td><a class="btn btn-dafault" href="contact?usrId=${user.usrId}">Contact</a></td>
-									</tr>
+								<c:forEach var="bm" items="${ad.bookmarks}">
+									<c:if test="${bm.interested == true}">
+										<tr> <!-- TODO onclick="document.location='advert?id=${ad.advId}';" -->
+											<td><a href="#TODO"><c:out value="${bm.user.userName}"/></a></td>
+											<td><a href="#TODO"><c:out value="${bm.user.email}"/></a></td>
+											<td><a class="btn btn-dafault" href="test?usrId=${bm.user.usrId}&adId=${adForm.id}">Invite to event</a></td>
+											<td><a class="btn btn-dafault" href="contact?usrId=${bm.user.usrId}">Contact</a></td>
+										</tr>
+									</c:if>
 								</c:forEach>
 							</table>
 						</c:if>
-						<c:if test="${empty ad.interestees}">
-							<span class="plyphicon glyphicon-chevron-right"></span> No Interestees.
+						<c:if test="${empty ad.bookmarks}">
+							<span class="glyphicon glyphicon-chevron-right"></span> No Interestees.
 						</c:if>
 					</td></tr>
 				</c:forEach>

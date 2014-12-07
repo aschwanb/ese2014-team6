@@ -1,6 +1,7 @@
 var geocoder;
 var map;
 var marker;
+var lockmarker = false;
 
 function initialize()
 {
@@ -18,7 +19,7 @@ function initialize()
 		position : latlng,
 		map : map,
 		title : "Bern!",
-		draggable : true
+		draggable : !lockmarker
 	});
 	
 	google.maps.event.addListener(marker, 'drag', function(event) {
@@ -62,7 +63,7 @@ function initialize()
 
 function lockMarker()
 {
-	marker.setDraggable(false);
+	lockmarker = true;
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

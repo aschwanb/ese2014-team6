@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="js/map.js"></script>
 		<script type="text/javascript"  src="js/adp_carousel.js"></script>
 		<script type="text/javascript"  src="js/adp_bookmark.js"></script>
+		<script type="text/javascript"  src="js/adp_advertform.js"></script>
 	</jsp:attribute>
 
 	<jsp:attribute name="page_header">
@@ -59,9 +60,16 @@
 				</div>
 				<c:if test="${editable == true}">
 					<div class="col-xs-12">
-						<div class="col-md-12 advert-buttongroup pull-right">
-							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
-							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="discard" ${adForm.id == 0 ? 'disabled="disabled"':''}>Discard</a>
+						<div class="col-md-12 advert-buttongroup">
+							<div class="pull-right">
+								<a class="btn btn-primary btn-lg advert-buttongroupbutton" onclick="sendAdvertForm()" href="#" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</a>
+								<c:if test="${adForm.id != 0}">
+								<a class="btn btn-default btn-lg advert-buttongroupbutton" href="advert?id=${adForm.id}">Discard</a>
+								</c:if>
+								<c:if test="${adForm.id == 0}">
+								<a class="btn btn-default btn-lg advert-buttongroupbutton" href="advert">Discard</a>
+								</c:if>
+							</div>
 						</div>
 					</div>
 				</c:if>
@@ -79,9 +87,16 @@
 				</div>
 				<c:if test="${editable == true}">
 					<div class="col-xs-12">
-						<div class="col-md-12 advert-buttongroup pull-right">
-							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
-							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="discard" ${adForm.id == 0 ? 'disabled="disabled"':''}>Discard</a>
+						<div class="col-md-12 advert-buttongroup">
+							<div class="pull-right">
+								<a class="btn btn-primary btn-lg advert-buttongroupbutton" onclick="sendAdvertForm()" href="#" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</a>
+								<c:if test="${adForm.id != 0}">
+								<a class="btn btn-default btn-lg advert-buttongroupbutton" href="advert?id=${adForm.id}">Discard</a>
+								</c:if>
+								<c:if test="${adForm.id == 0}">
+								<a class="btn btn-default btn-lg advert-buttongroupbutton" href="advert">Discard</a>
+								</c:if>
+							</div>
 						</div>
 					</div>
 				</c:if>
@@ -98,9 +113,16 @@
 				</div>
 				<c:if test="${editable == true}">
 					<div class="col-xs-12">
-						<div class="col-md-12 advert-buttongroup pull-right">
-							<button type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</button>
-							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="discard" ${adForm.id == 0 ? 'disabled="disabled"':''}>Discard</a>
+						<div class="col-md-12 advert-buttongroup">
+							<div class="pull-right">
+								<a class="btn btn-primary btn-lg advert-buttongroupbutton" onclick="sendAdvertForm()" href="#" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</a>
+								<c:if test="${adForm.id != 0}">
+								<a class="btn btn-default btn-lg advert-buttongroupbutton" href="advert?id=${adForm.id}">Discard</a>
+								</c:if>
+								<c:if test="${adForm.id == 0}">
+								<a class="btn btn-default btn-lg advert-buttongroupbutton" href="advert">Discard</a>
+								</c:if>
+							</div>
 						</div>
 					</div>
 				</c:if>
@@ -113,8 +135,8 @@
 			
 			<c:if test="${editable == false}">
 				<div class="col-xs-12 advert-buttongroup">
-					<div class="col-md-12 pull-right">
-						<div class="form-group">
+					<div class="col-md-12">
+						<div class="form-group pull-right">
 							<a class="btn btn-primary btn-lg advert-buttongroupbutton" href="#" onclick="setBookmark(${adForm.id})">Bookmark</a>
 							<a class="btn btn-primary btn-lg advert-buttongroupbutton" href="#" onclick="showInterest(${adForm.id})">Show Interest</a>
 							<a class="btn btn-default btn-lg advert-buttongroupbutton" href="contact?advId=${adForm.id}">Contact</a>

@@ -24,7 +24,7 @@
 		
 		<ul class="nav nav-tabs" role="tablist">
 			<li class="active"><a href="#index-list" role="tab" data-toggle="tab">List</a></li>
-			<li><a href="#index-map" role="tab" data-toggle="tab">Map</a></li>
+			<li><a href="#index-map" role="tab" id="showmap" data-toggle="tab">Map</a></li>
 		</ul>
 		
 		<!-- Tab panes -->
@@ -77,13 +77,18 @@
 							});
 						</c:forEach>
 					}
+					var centerresizefunc = function() {
+						var center = map.getCenter();
+						google.maps.event.trigger(map, "resize");
+						map.setCenter(center);
+					};
+					
 					google.maps.event.addDomListener(window, 'load', initialize);
-					google.maps.event.addDomListener(document.getElementById("map_canvas"), "resize",
-														function() {
-															var center = map.getCenter();
-															google.maps.event.trigger(map, "resize");
-															map.setCenter(center); 
-														});
+					google.maps.event.addDomListener(window, "resize", centerresizefunc);
+					google.maps.event.addDomListener(document.getElementById("showmap"), "click",
+							function() {
+								setTimeout(centerresizefunc, 200);
+							});
 				</script>
 				<div id="map_canvas"></div>
 			</div>
@@ -146,7 +151,7 @@
 					</form:form>
 					<table id="allAds" class="display">
 						<thead>
-							<tr><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th><th>Apartment Size</th><th>Number Of Inhabitants</th><th>Type Of Apartment</th></tr>
+							<tr><th>Image</th><th>Title</th><th>Location</th><th>Price</th><th>Room Size</th><th>Apartment Size</th><th>Number Of Inhabitants</th><th>Type Of Apartment</th><th>Advertiser</th></tr>
 						</thead>
 						<tbody>
 							<c:forEach var="ad" items="${ads}">
@@ -166,6 +171,7 @@
 									<td><a href="advert?id=${ad.advId}"><c:out value="${ad.appartementSize}"/></a></td>
 									<td><a href="advert?id=${ad.advId}"><c:out value="${ad.numberOfInhabitants}"/></a></td>
 									<td><a href="advert?id=${ad.advId}"><c:out value="${ad.isWG?'Shared Flat':'Single Apartment'}"/></a></td>
+									<td><a href="advert?id=${ad.advId}"><c:out value="${ad.user.userName}"/></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
