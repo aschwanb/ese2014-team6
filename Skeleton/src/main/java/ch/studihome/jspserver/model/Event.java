@@ -105,12 +105,11 @@ public class Event {
 		int result = 1;
 		result = prime * result + ((advert == null) ? 0 : advert.hashCode());
 		result = prime * result + ((color == null) ? 0 : color.hashCode());
-		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((eventId == null) ? 0 : eventId.hashCode());
-		result = prime * result + ((link == null) ? 0 : link.hashCode());
 		result = prime * result
 				+ ((linkTarget == null) ? 0 : linkTarget.hashCode());
+		result = prime * result + ((time == null) ? 0 : time.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -133,11 +132,6 @@ public class Event {
 				return false;
 		} else if (!color.equals(other.color))
 			return false;
-		if (content == null) {
-			if (other.content != null)
-				return false;
-		} else if (!content.equals(other.content))
-			return false;
 		if (date == null) {
 			if (other.date != null)
 				return false;
@@ -148,15 +142,15 @@ public class Event {
 				return false;
 		} else if (!eventId.equals(other.eventId))
 			return false;
-		if (link == null) {
-			if (other.link != null)
-				return false;
-		} else if (!link.equals(other.link))
-			return false;
 		if (linkTarget == null) {
 			if (other.linkTarget != null)
 				return false;
 		} else if (!linkTarget.equals(other.linkTarget))
+			return false;
+		if (time == null) {
+			if (other.time != null)
+				return false;
+		} else if (!time.equals(other.time))
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -165,6 +159,7 @@ public class Event {
 			return false;
 		return true;
 	}
+	
 
 	
 }

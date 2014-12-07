@@ -17,10 +17,17 @@ public class EventTest {
 	{
 		String date = "2/12/2014";
 		String title = "SPORT and WELLNESS";
-		String link = "http://bic.cat";
+		Advert advert = new Advert();
+		advert.setadvId(1l);
+		advert.setTitle("Blabla");
 		String linkTarget = "_blank";
 		String color = "blue";
-		String content = "BlaBla";
+		Event event = new Event();
+		event.setDate(date);
+		event.setTitle(title);
+		event.setLinkTarget(linkTarget);
+		event.setColor(color);
+		event .setAdvert(advert);
 		String expected = String.format(
 				"{\n" +
 				"date : \'%s\',\n" +
@@ -34,14 +41,7 @@ public class EventTest {
 				"displayYearController : \'true\',\n" +
 				"nMonths : \'6',\n" +
 				"},",
-				date, title, link, linkTarget, color, content);
-		Event event = new Event();
-		event.setDate(date);
-		event.setTitle(title);
-		event.setLink(link);
-		event.setLinkTarget(linkTarget);
-		event.setColor(color);
-		event.setContent(content);
+				event.getDate(), event.getTitle(), event.getLink(), event.getLinkTarget(), event.getColor(), event.getAdvert().getTitle());
 		String actual = event.toString();
 		assertEquals(expected, actual);
 	}
@@ -78,13 +78,14 @@ public class EventTest {
 	}
 
 	@Test
-	public void testSetLinkGetLink()
+	public void testGetLink()
 	{
 		Event event = new Event();
-		String expected = "http://bic.cat";
-		event.setLink(expected);
+		Advert advert = new Advert();
+		advert.setadvId(1l);
+		event.setAdvert(advert);
 		String actual = event.getLink();
-		assertEquals(expected, actual);
+		assertEquals("advert?id="+advert.getadvId().toString(), actual);
 	}
 
 	@Test
@@ -105,16 +106,6 @@ public class EventTest {
 		String expected = "red";
 		event.setColor(expected);
 		String actual = event.getColor();
-		assertEquals(expected, actual);
-	}
-
-	@Test
-	public void testSetContentGetContent()
-	{
-		Event event = new Event();
-		String expected = "Content";
-		event.setContent(expected);
-		String actual = event.getContent();
 		assertEquals(expected, actual);
 	}
 }
