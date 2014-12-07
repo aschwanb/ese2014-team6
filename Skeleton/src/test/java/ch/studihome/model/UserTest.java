@@ -9,6 +9,8 @@ import java.util.Set;
 import org.junit.Test;
 
 import ch.studihome.jspserver.model.Advert;
+import ch.studihome.jspserver.model.Alert;
+import ch.studihome.jspserver.model.Calendar;
 import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.User;
 
@@ -161,9 +163,9 @@ public class UserTest
 		Message msg1 = new Message();
 		msg1.setId(1l);
 		Message msg2 = new Message();
-		msg1.setId(2l);
+		msg2.setId(2l);
 		Message msg3 = new Message();
-		msg1.setId(3l);
+		msg3.setId(3l);
 		fromMsgs.add(msg1);
 		fromMsgs.add(msg2);
 		fromMsgs.add(msg3);
@@ -188,9 +190,9 @@ public class UserTest
 		Message msg1 = new Message();
 		msg1.setId(1l);
 		Message msg2 = new Message();
-		msg1.setId(2l);
+		msg2.setId(2l);
 		Message msg3 = new Message();
-		msg1.setId(3l);
+		msg3.setId(3l);
 		toMsgs.add(msg1);
 		toMsgs.add(msg2);
 		toMsgs.add(msg3);
@@ -203,6 +205,44 @@ public class UserTest
 		{
 			Message expected = itr.next();
 			Message actual = itr2.next();
+			assertEquals(expected, actual);
+		}
+	}
+	
+	@Test
+	public void testSetCalendarGetCalendar()
+	{
+		User user = new User();
+		Calendar expected = new Calendar();
+		expected.setName("Testcalendar");
+		user.setCalendar(expected);
+		Calendar actual = user.getCalendar();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testSetAlertsGetAlerts()
+	{
+		User user = new User();
+		Set<Alert> alerts = new HashSet<Alert>();
+		Alert alert1 = new Alert();
+		alert1.setAlertId(1l);
+		Alert alert2 = new Alert();
+		alert2.setAlertId(2l);
+		Alert alert3 = new Alert();
+		alert3.setAlertId(3l);
+		alerts.add(alert1);
+		alerts.add(alert2);
+		alerts.add(alert3);
+		user.setAlerts(alerts);
+		Iterator<Alert> itr = alerts.iterator();
+		Set<Alert> result = user.getAlerts();
+		Iterator<Alert> itr2 = result.iterator();
+		assertEquals(alerts.size(), result.size());
+		while(itr.hasNext())
+		{
+			Alert expected = itr.next();
+			Alert actual = itr2.next();
 			assertEquals(expected, actual);
 		}
 	}

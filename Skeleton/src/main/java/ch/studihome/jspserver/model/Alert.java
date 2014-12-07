@@ -153,6 +153,84 @@ public class Alert
 	public void setAdverts(Set<Advert> adverts) {
 		this.adverts = adverts;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((adverts == null) ? 0 : adverts.hashCode());
+		result = prime * result + ((alertId == null) ? 0 : alertId.hashCode());
+		result = prime * result + ((area == null) ? 0 : area.hashCode());
+		result = prime * result + maxappartmentsize;
+		result = prime * result + maxnumberofinhabitants;
+		result = prime * result + maxprice;
+		result = prime * result + maxroomsize;
+		result = prime * result + minappartmentsize;
+		result = prime * result + minnumberofinhabitants;
+		result = prime * result + minprice;
+		result = prime * result + minroomsize;
+		result = prime * result + (int) (timeAndDate ^ (timeAndDate >>> 32));
+		result = prime
+				* result
+				+ ((typeofappartment == null) ? 0 : typeofappartment.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Alert other = (Alert) obj;
+		if (adverts == null) {
+			if (other.adverts != null)
+				return false;
+		} else if (!adverts.equals(other.adverts))
+			return false;
+		if (alertId == null) {
+			if (other.alertId != null)
+				return false;
+		} else if (!alertId.equals(other.alertId))
+			return false;
+		if (area == null) {
+			if (other.area != null)
+				return false;
+		} else if (!area.equals(other.area))
+			return false;
+		if (maxappartmentsize != other.maxappartmentsize)
+			return false;
+		if (maxnumberofinhabitants != other.maxnumberofinhabitants)
+			return false;
+		if (maxprice != other.maxprice)
+			return false;
+		if (maxroomsize != other.maxroomsize)
+			return false;
+		if (minappartmentsize != other.minappartmentsize)
+			return false;
+		if (minnumberofinhabitants != other.minnumberofinhabitants)
+			return false;
+		if (minprice != other.minprice)
+			return false;
+		if (minroomsize != other.minroomsize)
+			return false;
+		if (timeAndDate != other.timeAndDate)
+			return false;
+		if (typeofappartment == null) {
+			if (other.typeofappartment != null)
+				return false;
+		} else if (!typeofappartment.equals(other.typeofappartment))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
 	
 	
 }
