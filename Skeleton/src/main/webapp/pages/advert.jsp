@@ -32,7 +32,7 @@
 						<p>Info</p>
 					</div>
 					<div class="stepwizard-step three}">
-						<a href="#map" type="button" class="btn btn-default btn-circle"> </a>
+						<a href="#map" type="button" class="btn btn-default btn-circle" ${adForm.id == 0 ? 'disabled="disabled"':''}> </a>
 						<p>Map</p>
 					</div>
 					<div class="stepwizard-step three">
@@ -69,7 +69,9 @@
 			<div class="row ${(editable)?('setup-content'):('') }" id="main">
 				<div class="col-xs-12">
 					<div class="col-md-12">
-						<%@include file="/WEB-INF/jspf/adpage_parts/adp_info.jspf"%>
+						<div id="infodiv">
+							<%@include file="/WEB-INF/jspf/adpage_parts/adp_info.jspf"%>
+						</div>
 						<c:if test="${editable == true}">
 							<button class="btn btn-primary nextBtn btn-lg pull-right"  type="button" >Next</button>
 						</c:if>

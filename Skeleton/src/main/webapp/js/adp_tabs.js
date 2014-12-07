@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
 	    var curStep = $(this).closest(".setup-content"),
 	    	curStepBtn = curStep.attr("id"),
 	    	nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-	    	afternextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().next().children("a"),
+	    	//afternextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().next().children("a"),
 	    	curInputs = curStep.find("input[type='text'],input[type='url']"),
 	    	isValid = true;
 	    
@@ -41,11 +41,9 @@ jQuery(document).ready(function($) {
 	
 	    if (isValid)
 	    {
+	    	nextStepWizard.removeAttr('disabled');
 	    	nextStepWizard.trigger('click');
-	    	if(nextStepWizard.attr("href") != "#pics")
-	    	{
-	    		afternextStepWizard.removeAttr('disabled');
-	    	}else
+	    	if(nextStepWizard.attr("href") == "#pics")
 	    	{
 	    		$('.advert-buttongroupbutton').removeAttr('disabled');
 	    	}

@@ -125,10 +125,8 @@ public class AdvertController {
     @RequestMapping(value = "/advert", method = RequestMethod.POST)
     public ModelAndView save(@Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal)
     {
-    	boolean noAccess = false;
-    	
     	log.info("Receiving form. Checking ...");
-    	ModelAndView model = new ModelAndView("advert");
+    	ModelAndView model;
     	
     	if (principal != null)
 		{
@@ -142,35 +140,31 @@ public class AdvertController {
 		    		try {
 		        		adForm.setOwnerId(user.getusrId());
 		            	adForm = adService.saveFrom(adForm);
-		            	BSalert[] alerts = new BSalert[1];
-		            	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Ad saved.");
-		            	model.addObject("alerts", alerts);
+
+		            	model = new ModelAndView("ajaxAnswer");
+		            	model.addObject("content", "success");
 		            	
 		        		log.info("Saved object in db");
 		    		} catch (ImageSaveException e) {
 		    			log.info("Error while saving ad to db");
 		
-		            	BSalert[] alerts = new BSalert[1];
-		            	alerts[0] = new BSalert(BSalert.Type.danger, "<strong>Error!</strong> " + e.getMessage());
-		            	model.addObject("alerts", alerts);
+		    			model = new ModelAndView("ajaxAnswer");
+		            	model.addObject("content", "error");
 		    		}
 		    		
 		        }else {
 		        	log.info("Error in form: " + result.getAllErrors().toString() + "/nReturning new one.");
+		        	
+		        	model = new ModelAndView("advertAjaxAnswer");
+			    	model.addObject("editable", "true");
+			    	model.addObject("adForm", adForm);
 		        }
-		    	
-		    	model.addObject("editable", "true");
-		    	model.addObject("adForm", adForm);
 			}else
 			{
-				noAccess = true;
+				model = new ModelAndView("ajaxAnswer");
+		    	model.addObject("content", "denied");
 			}
 		}else
-		{
-			noAccess = true;
-		}
-		
-    	if(noAccess)
 		{
 			model = new ModelAndView("infoPage");
 	    	model.addObject("title", "Access denied!");
