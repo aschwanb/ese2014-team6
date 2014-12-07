@@ -55,15 +55,9 @@ public class User implements UserDetails {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="toUser")
     private Set<Message> toMsgs = new HashSet<Message>(0);
-
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
-	@JoinTable(name = "BookmarkList",
-			   joinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) }, 
-			   inverseJoinColumns = { @JoinColumn(name = "advId", nullable = false, updatable = false) })
-	private Set<Advert> bookmarks = new HashSet<Advert>(0);
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="interestees")	//TODO LAZY vs EAGER problem
-	private Set<Advert> interests = new HashSet<Advert>(0);
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")	//TODO LAZY vs EAGER problem
+	private Set<Bookmark> bookmarks = new HashSet<Bookmark>(0);
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
 	private Calendar calendar;
@@ -300,18 +294,11 @@ public class User implements UserDetails {
         return colAuth;
     }
     
-	public Set<Advert> getBookmarks() {
+	public Set<Bookmark> getBookmarks() {
 		return bookmarks;
 	}
-	public void setBookmarks(Set<Advert> bookmarks) {
+	public void setBookmarks(Set<Bookmark> bookmarks) {
 		this.bookmarks = bookmarks;
 	}
-	public Set<Advert> getInterests() {
-		return interests;
-	}
-	public void setInterests(Set<Advert> interests) {
-		this.interests = interests;
-	} 
-
-	
+    
 }

@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -57,14 +56,8 @@ public class Advert {
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
 	private Set<RoomImg> imgs = new HashSet<RoomImg>(0);
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="bookmarks")	//TODO LAZY vs EAGER problem
-	private Set<User> bookmarkees = new HashSet<User>(0);
-	
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
-	@JoinTable(name = "InterestList",
-			   joinColumns = { @JoinColumn(name = "advId", nullable = false, updatable = false) }, 
-			   inverseJoinColumns = { @JoinColumn(name = "usrId", nullable = false, updatable = false) })
-	private Set<User> interestees = new HashSet<User>(0);
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")	//TODO LAZY vs EAGER problem
+	private Set<Bookmark> bookmarks = new HashSet<Bookmark>(0);
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adverts")	//TODO LAZY vs EAGER problem
 	private Set<Alert> alerts = new HashSet<Alert>(0);
@@ -203,17 +196,11 @@ public class Advert {
 		this.numberOfInhabitants = numberOfInhabitants;
 	}
 
-	public Set<User> getBookmarkees() {
-		return bookmarkees;
+	public Set<Bookmark> getBookmarks() {
+		return bookmarks;
 	}
-	public void setBookmarkees(Set<User> bookmarkees) {
-		this.bookmarkees = bookmarkees;
-	}
-	public Set<User> getInterestees() {
-		return interestees;
-	}
-	public void setInterestees(Set<User> interestees) {
-		this.interestees = interestees;
+	public void setBookmarks(Set<Bookmark> bookmarks) {
+		this.bookmarks = bookmarks;
 	}
 	public long getTimeAndDate() {
 		return timeAndDate;
