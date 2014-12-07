@@ -4,7 +4,7 @@
 			<div class="form-group row <c:if test="${not empty titleErrors}"> has-error</c:if>">
 				<label class="control-label" for="field-title">Title</label>
 				<form:input path="title" id="field-title" type="text" class="form-control" placeholder="e.g. WG-Room 2 Min. from UniBern HG" />
-				<form:errors path="title" cssClass="help-inline" element="span"/>
+				<form:errors path="title" cssClass="help-inline control-label" element="span"/>
 			</div>
 		</c:if>
 		
@@ -16,7 +16,7 @@
 					<form:input path="price" id="field-price" type="text" class="form-control" placeholder="e.g. 500" />
 					<span class="input-group-addon">SFr.</span>
 				</div>
-				<form:errors path="price" cssClass="help-inline" element="span"/>
+				<form:errors path="price" cssClass="help-inline control-label" element="span"/>
 			</c:if>
 			<c:if test="${editable == false}">
 				<div class="input-group">
@@ -32,7 +32,7 @@
 			<label class="control-label" for="field-numberOfRooms">Number Of Rooms In Appartement</label>
 			<c:if test="${editable == true}">
 				<form:input path="numberOfRooms" id="field-numberOfRooms" type="text" class="form-control" placeholder="e.g. 2.5" />
-				<form:errors path="numberOfRooms" cssClass="help-inline" element="span"/>
+				<form:errors path="numberOfRooms" cssClass="help-inline control-label" element="span"/>
 			</c:if>
 			<c:if test="${editable == false}">
 				<form:input path="numberOfRooms" id="field-numberOfRooms" type="text" class="form-control adform-output" readonly="true" />
@@ -47,7 +47,7 @@
 					<form:input path="appartementSize" id="field-appartementSize" type="text" class="form-control" placeholder="e.g. 20" />
 					<span class="input-group-addon">&#13217;</span>
 				</div>
-				<form:errors path="appartementSize" cssClass="help-inline" element="span"/>
+				<form:errors path="appartementSize" cssClass="help-inline control-label" element="span"/>
 			</c:if>
 			<c:if test="${editable == false}">
 				<div class="input-group">
@@ -63,7 +63,7 @@
 		<label class="control-label" for="field-description">Description</label>
 		<c:if test="${editable == true}">
 			<form:textarea path="description" id="field-description" class="form-control" rows="5" ></form:textarea>
-			<form:errors path="description" cssClass="help-inline" element="span"/>
+			<form:errors path="description" cssClass="help-inline control-label" element="span"/>
 		</c:if>
 		<c:if test="${editable == false}">
 			<form:textarea path="description" id="field-description" rows="5" class="form-control adform-output" readonly="true"></form:textarea>
@@ -82,7 +82,7 @@
 					Shared flat
 				</label>
 			</div>
-			<form:errors path="isWG" cssClass="help-inline" element="span"/>
+			<form:errors path="isWG" cssClass="help-inline control-label" element="span"/>
 		</c:if>
 		<c:if test="${editable == false}">
 			<div class="checkbox">
@@ -102,7 +102,7 @@
 				<form:input path="roomSize" id="field-roomSize" type="text" class="form-control" placeholder="e.g. 12" />
 				<span class="input-group-addon">&#13217;</span>
 			</div>
-			<form:errors path="roomSize" cssClass="help-inline" element="span"/>
+			<form:errors path="roomSize" cssClass="help-inline control-label" element="span"/>
 		</c:if>
 		<c:if test="${editable == false}">
 			<div class="input-group">
@@ -117,7 +117,7 @@
 		<label class="control-label" for="field-numberOfInhabitants">Total Number Of Inhabitants</label>
 		<c:if test="${editable == true}">
 			<form:input path="numberOfInhabitants" id="field-numberOfInhabitants" type="text" class="form-control" placeholder="e.g. 3" />
-			<form:errors path="numberOfInhabitants" cssClass="help-inline" element="span"/>
+			<form:errors path="numberOfInhabitants" cssClass="help-inline control-label" element="span"/>
 		</c:if>
 		<c:if test="${editable == false}">
 			<form:input path="numberOfInhabitants" id="field-numberOfInhabitants" type="text" class="form-control adform-output" readonly="true" />

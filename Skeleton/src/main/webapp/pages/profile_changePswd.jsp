@@ -20,14 +20,14 @@
 					        <div class="form-group<c:if test="${not empty passwordErrors}"> has-error</c:if>">
 					            <label class="control-label" for="field-password">Password</label>
 				                <form:input type="password" path="password" class="form-control"  id="field-password" tabindex="2" maxlength="35" placeholder="e.g. ****"/>
-				                <form:errors path="password" cssClass="help-inline" element="span"/>
+				                <form:errors path="password" cssClass="help-inline control-label" element="span"/>
 					        </div>
 					
 					        <c:set var="confirmPasswordErrors"><form:errors path="confirmPassword"/></c:set>
 					        <div class="form-group<c:if test="${not empty confirmPasswordErrors}"> has-error</c:if>">
 					            <label class="control-label" for="field-confirmPassword">Confirm Password</label>
 				                <form:input type="password" path="confirmPassword" class="form-control"  id="field-confirmPassword" tabindex="2" maxlength="35" placeholder="e.g. ****"/>
-				                <form:errors path="confirmPassword" cssClass="help-inline" element="span"/>
+				                <form:errors path="confirmPassword" cssClass="help-inline control-label" element="span"/>
 					        </div>
 					             
 					        <div class="form-actions pull-right">
