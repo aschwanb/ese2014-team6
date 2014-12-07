@@ -1,6 +1,5 @@
 package ch.studihome.jspserver.controller;
 
-import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -10,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.studihome.jspserver.model.Advert;
+import ch.studihome.jspserver.model.Bookmark;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AdvertDao;
+import ch.studihome.jspserver.model.dao.BookmarkDao;
 import ch.studihome.jspserver.model.dao.UserDao;
 
 /**
@@ -27,6 +28,9 @@ public class BookmarkController {
     
     @Autowired
     AdvertDao advDao;
+    
+    @Autowired
+    BookmarkDao bmDao;
 
     /**
      * Shows the Bookmarks page
@@ -41,14 +45,9 @@ public class BookmarkController {
     	model.addObject("user", user);
     	
     	// Bookmarks
-    	Advert[] bms = new Advert[0];
+    	Bookmark[] bms = new Bookmark[0];
     	bms = user.getBookmarks().toArray(bms);
     	model.addObject("bookmarks", bms);
-    	
-    	// Interests
-    	Advert[] intr = new Advert[0];
-    	intr = user.getInterests().toArray(intr);
-    	model.addObject("interests", intr);
     	
     	return model;
     }
@@ -73,10 +72,13 @@ public class BookmarkController {
     	{
     		Advert adv = advDao.findOne(advId);
     		
-    		if(!user.getBookmarks().contains(adv))
+    		Bookmark bm = bmDao.findByAdvertAndUser(adv, user);
+    		
+    		if(bm == null)
     		{
-    			user.getBookmarks().add(adv);
-    			usrDao.save(user);
+    			bm = new Bookmark(user, adv, false);
+    			bmDao.save(bm);
+    			
         		model.addObject("content", "success");
     		}else
     		{
@@ -108,10 +110,19 @@ public class BookmarkController {
     	{
     		Advert adv = advDao.findOne(advId);
     		
-    		if(!adv.getInterestees().contains(user))
+    		Bookmark bm = bmDao.findByAdvertAndUser(adv, user);
+    		
+    		if(bm == null)
     		{
-    			adv.getInterestees().add(user);
-    			advDao.save(adv);
+    			bm = new Bookmark(user, adv, true);
+    			bmDao.save(bm);
+    			
+        		model.addObject("content", "success");
+    		}else if(!bm.getInterested())
+    		{
+    			bm.setInterested(true);
+    			bmDao.save(bm);
+    			
         		model.addObject("content", "success");
     		}else
     		{

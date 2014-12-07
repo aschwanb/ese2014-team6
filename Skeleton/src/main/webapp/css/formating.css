@@ -147,3 +147,8 @@ margin-top:20px;
 .row>.advert-buttongroup{
 	width:100%;
 }
+
+.form-col .form-group, .form-col .form-actions{
+	margin-left: 0;
+	margin-right:0;
+}
