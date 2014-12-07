@@ -7,11 +7,13 @@
 
 <base:page title="Message">
 	<jsp:attribute name="page_header">
-		<h1>Message Detail view</h1>
-	</jsp:attribute>
+			<c:if test="${not empty msg}">
+				<div><h1><c:out value="${msg.title}"/></h1></div>
+				</c:if>
+			</jsp:attribute>
 		<jsp:body>
 			<c:if test="${not empty msg}">
-				<div><h4><c:out value="${msg.title}"/></h4></div>
+				<div><h4>Message from user: <b><c:out value="${msg.fromUser.userName}"/></b></h4></div>
 				<div><p><c:out value="${msg.message}"/></p></div>
 				<c:choose>
 					<c:when test="${msg.invite}">
