@@ -247,4 +247,57 @@ public class UserTest
 		}
 	}
 
+	@Test
+	public void testSetBookmarksGetBookmarks()
+	{
+		User user = new User();
+		Set<Advert> bookmarks = new HashSet<Advert>(0);
+		Advert ad1 = new Advert();
+		ad1.setadvId(1l);
+		Advert ad2 = new Advert();
+		ad2.setadvId(2l);
+		Advert ad3 = new Advert();
+		ad3.setadvId(3l);
+		bookmarks.add(ad1);
+		bookmarks.add(ad2);
+		bookmarks.add(ad3);
+		user.setBookmarks(bookmarks);
+		Iterator<Advert> itr = bookmarks.iterator();
+		Set<Advert> result = user.getBookmarks();
+		Iterator<Advert> itr2 = result.iterator();
+		assertEquals(bookmarks.size(), result.size());
+		while(itr.hasNext())
+		{
+			Advert expected = itr.next();
+			Advert actual = itr2.next();
+			assertEquals(expected, actual);
+		}
+	}
+	
+	@Test
+	public void testSetInterestsGetInterests()
+	{
+		User user = new User();
+		Set<Advert> interests = new HashSet<Advert>(0);
+		Advert ad1 = new Advert();
+		ad1.setadvId(1l);
+		Advert ad2 = new Advert();
+		ad2.setadvId(2l);
+		Advert ad3 = new Advert();
+		ad3.setadvId(3l);
+		interests.add(ad1);
+		interests.add(ad2);
+		interests.add(ad3);
+		user.setInterests(interests);
+		Iterator<Advert> itr = interests.iterator();
+		Set<Advert> result = user.getInterests();
+		Iterator<Advert> itr2 = result.iterator();
+		assertEquals(interests.size(), result.size());
+		while(itr.hasNext())
+		{
+			Advert expected = itr.next();
+			Advert actual = itr2.next();
+			assertEquals(expected, actual);
+		}
+	}
 }
