@@ -27,11 +27,10 @@ public class Event {
 	private Advert advert;
 	
 	private String date;
+	private String time;
 	private String title;
-	private String link;
 	private String linkTarget;
 	private String color;
-	private String content;
 
 	
 	public Event() {}
@@ -40,17 +39,18 @@ public class Event {
 	 *         Event event1 = new Event("2/12/2014", "SPORT and WELLNESS", "http://bic.cat", 
         		"<img src=\"http://gettingcontacts.com/upload/jornadas/sport-wellness_portada.png\" ><br>06-11-2013 - 09:00 <br> Tecnocampus Mataró Auditori");
 	 */
-	public Event(String date, String title, String link, Advert advert) {
-		this.date = date;
-		this.title = title;
-		this.link = link;
+	public Event(Invite invite) {
+		this.date = invite.getInvDate();
+		this.time = invite.getInvTime();
+		this.title = invite.getTitle();
 		this.linkTarget = "_blank";
-		this.advert = advert;
-		this.content = this.advert.getTitle();
+		this.advert = invite.getAdvert();
 	}
 
 	
-	
+	public String getLink() {
+		return "advert?id="+this.advert.getadvId().toString();
+	}
 	public String toString(){
 		String out = String.format(
 				"{\n" +
@@ -65,7 +65,7 @@ public class Event {
 				"displayYearController : \'true\',\n" +
 				"nMonths : \'6',\n" +
 				"},",
-				this.date, this.title, this.link, this.linkTarget, this.color, this.content);
+				this.getDate(), this.getTitle(), this.getLink(), this.getLinkTarget(), this.getColor(), this.getAdvert().getTitle());
 		return out;
 	}
 	
@@ -87,12 +87,6 @@ public class Event {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getLink() {
-		return link;
-	}
-	public void setLink(String link) {
-		this.link = link;
-	}
 	public String getLinkTarget() {
 		return linkTarget;
 	}
@@ -104,12 +98,6 @@ public class Event {
 	}
 	public void setColor(String color) {
 		this.color = color;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
 	}
 	@Override
 	public int hashCode() {

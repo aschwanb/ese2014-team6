@@ -2,6 +2,7 @@ package ch.studihome.jspserver.controller.service;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,8 +29,10 @@ public class MyUserDetailsService implements UserDetailsService {
 			log.info("User " + userName + " not found");
 			throw new UsernameNotFoundException("User " + userName + " not found.");
 		}
-
-
 	}
 
+	public User getUser() {
+		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+		return this.loadUserByUsername(userName);
+	}
 }

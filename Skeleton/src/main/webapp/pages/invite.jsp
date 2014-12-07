@@ -5,7 +5,7 @@
 <%@taglib prefix="base" tagdir="/WEB-INF/tags"%>
 
 
-<base:page title="Test">
+<base:page title="Invite">
 	<jsp:attribute name="customHead">
 	
 	<!-- For DateTimePicker -->
@@ -16,7 +16,7 @@
 
 	<jsp:body>
 	
-		<form:form method="post" modelAttribute="invitationForm" action="test" id="invitationForm" class="form-horizontal" role="form">
+		<form:form method="post" modelAttribute="invitationForm" action="invite" id="invitationForm" class="form-horizontal" role="form">
 
 			<div class="form-group" style="display: none;">
 		        <c:set var="usrIdErrors"><form:errors path="usrId"/></c:set>
@@ -86,7 +86,7 @@
 				</div>
 			</div>
 
-		<!-- Pick Date test -->
+		<!-- Pick Date -->
 	       	<div class="form-group">
 	       	    <c:set var="invDateErrors">
 					<form:errors path="" />
@@ -110,7 +110,7 @@
 	    		</div>
 			</div>
 
-		<!-- Pick Date test -->
+		<!-- Pick Time  -->
 	       	<div class="form-group">
 	       	    <c:set var="invFindErrors">
 					<form:errors path="" />

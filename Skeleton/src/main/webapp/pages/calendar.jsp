@@ -5,7 +5,7 @@
 <%@taglib prefix="base" tagdir="/WEB-INF/tags" %>
 
 
-<base:page title="Test">
+<base:page title="Calendar">
 	<jsp:attribute name="customHead">
 		<link rel="stylesheet" type="text/css" href="css/bic_calendar.css">
 		<script type="text/javascript" src="js/bic_calendar.min.js"></script>

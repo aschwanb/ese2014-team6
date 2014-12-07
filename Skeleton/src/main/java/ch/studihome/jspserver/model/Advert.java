@@ -46,7 +46,10 @@ public class Advert {
 	
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
     private Set<Event> events = new HashSet<Event>(0);
-	
+
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
+    private Set<Invite> invites = new HashSet<Invite>(0);
+    
 	@OneToOne(cascade = CascadeType.ALL, mappedBy="advert")
 	private Address address;
 	
@@ -138,6 +141,13 @@ public class Advert {
 		this.events = events;
 	}
 
+	public Set<Invite> getInvites() {
+		return this.invites;
+	}
+	public void setInvites(Set<Invite> invites) {
+		this.invites = invites;
+	}
+	
 	public User getUser() {
 		return user;
 	}

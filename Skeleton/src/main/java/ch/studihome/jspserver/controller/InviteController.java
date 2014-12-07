@@ -58,7 +58,7 @@ public class InviteController {
     
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
-	@RequestMapping(value = "/invite", method = RequestMethod.GET)
+	@RequestMapping(value = "/invited", method = RequestMethod.GET)
 	public ModelAndView inviteReact(
 			@RequestParam(value = "msgId", required = true)Long msgId,
 			@RequestParam(value = "confirm", required = true)Boolean confirm
@@ -74,18 +74,19 @@ public class InviteController {
 		} else {
 			if (confirm) {
 	        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation confirmed.");
-	        	// Add event to calendar
-	        	Event event = new Event(invite.getInvDate(), invite.getInvTime(), 
-	        			invite.getLink(), advertDao.findByAdvId(invite.getAdId()));
-	        	Calendar calendar = fromUser.getCalendar();
-	        	calendar.addEvent(event);
-	        	calendarDao.save(calendar);
-	        	eventDao.save(event);
-	        	userDao.save(fromUser);
-	        	// Todo: Inform other party
+	        	// Add event to calendar for both users
+	        	User[] users = new User[] {fromUser, toUser};
+	        	for (User user: users) {
+	        		Event event = new Event(invite);
+	        		Calendar calendar = user.getCalendar();
+	        		calendar.addEvent(event);
+	        		calendarDao.save(calendar);
+	        		eventDao.save(event);
+	        		userDao.save(user);
+	        	}
 			} else {
 	        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation rejected.");
-	        	// Inform other party
+	        	// TODO: Inform other party
 			}
 			invite.setReacted(true);
 		}
@@ -98,31 +99,36 @@ public class InviteController {
 		return model;
 	}
 	
-	@RequestMapping(value = { "/test" }, method = RequestMethod.GET)
+	private Object user(User fromUser, User toUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@RequestMapping(value = { "/invite" }, method = RequestMethod.GET)
     public ModelAndView invite(
     		@RequestParam(value = "usrId", required = true)Long usrId,
     		@RequestParam(value = "adId", required = true)Long adId
     		) {
 				
-		ModelAndView model = new ModelAndView("test");
+		ModelAndView model = new ModelAndView("invite");
 		User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User toUser = userDao.findByUsrId(usrId);
 		
         model.addObject("invitationForm", new InvitationForm());
-      model.addObject("fromUser", fromUser);
+        model.addObject("fromUser", fromUser);
 		model.addObject("toUser", toUser);
 		model.addObject("usrId", usrId);
 		model.addObject("adId", adId);
 		return model;
     }
 	
-	@RequestMapping(value = "/test", method = RequestMethod.POST)
+	@RequestMapping(value = "/invite", method = RequestMethod.POST)
 	public ModelAndView getInvite(
 			@Valid InvitationForm invitationForm,
 			BindingResult result,
 			RedirectAttributes redirectAttributes
 			) {
-		ModelAndView model = new ModelAndView("test");
+		ModelAndView model = new ModelAndView("invite");
 		BSalert[] alerts = new BSalert[1];
 		
 		if (!result.hasErrors()) {

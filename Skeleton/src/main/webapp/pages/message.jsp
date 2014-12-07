@@ -7,11 +7,13 @@
 
 <base:page title="Message">
 	<jsp:attribute name="page_header">
-		<h1>Message Detail view</h1>
-	</jsp:attribute>
+			<c:if test="${not empty msg}">
+				<div><h1><c:out value="${msg.title}"/></h1></div>
+				</c:if>
+			</jsp:attribute>
 		<jsp:body>
 			<c:if test="${not empty msg}">
-				<div><h4><c:out value="${msg.title}"/></h4></div>
+				<div><h4>Message from user: <b><c:out value="${msg.fromUser.userName}"/></b></h4></div>
 				<div><p><c:out value="${msg.message}"/></p></div>
 				<c:choose>
 					<c:when test="${msg.invite}">
@@ -21,8 +23,8 @@
 						</div>
 						<div class="form-group">
 							<c:if test="${!msg.reacted}">
-								<a class="btn btn-primary" href="invite?msgId=${msg.id}&confirm=true">Confirm</a>
-			        			<a class="btn btn-warning" href="invite?msgId=${msg.id}&confirm=false">Reject</a>
+								<a class="btn btn-primary" href="invited?msgId=${msg.id}&confirm=true">Confirm</a>
+			        			<a class="btn btn-warning" href="invited?msgId=${msg.id}&confirm=false">Reject</a>
 			        		</c:if>
 			        		<a class="btn btn-default" href="messages">Cancel</a>                        
 						</div>

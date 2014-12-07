@@ -1,11 +1,13 @@
 package ch.studihome.jspserver.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.studihome.jspserver.controller.service.MyUserDetailsService;
 import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.User;
 
@@ -17,6 +19,8 @@ import ch.studihome.jspserver.model.User;
 @Controller
 public class MyAdvertsController {
 
+	@Autowired MyUserDetailsService userService;
+	
 	/**
 	 * 
 	 * @return myAdverts view 
@@ -25,8 +29,7 @@ public class MyAdvertsController {
     public ModelAndView index()
     {
     	ModelAndView model = new ModelAndView("myAdverts");
-    	
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	User user = userService.getUser();
     	model.addObject("user", user);
     	
     	// Ads		
