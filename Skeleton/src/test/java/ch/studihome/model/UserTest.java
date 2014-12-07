@@ -9,6 +9,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import ch.studihome.jspserver.model.Advert;
+import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.User;
 
 public class UserTest
@@ -28,7 +29,7 @@ public class UserTest
 		user.setEmail(email);
 		String password = "NotMyBirthDate";
 		user.setPassword(password);
-		String user_role = "advertiser";
+		String user_role = "ROLE_USER";
 		user.setUser_role(user_role);
 		String enabled = "12/12/2012";
 		user.setEnabled(enabled);
@@ -152,5 +153,58 @@ public class UserTest
 		}
 	}
 	
+	@Test
+	public void testSetFromMsgsGetFromMsgs()
+	{
+		User user = new User();
+		Set<Message> fromMsgs = new HashSet<Message>();
+		Message msg1 = new Message();
+		msg1.setId(1l);
+		Message msg2 = new Message();
+		msg1.setId(2l);
+		Message msg3 = new Message();
+		msg1.setId(3l);
+		fromMsgs.add(msg1);
+		fromMsgs.add(msg2);
+		fromMsgs.add(msg3);
+		user.setFromMsgs(fromMsgs);
+		Iterator<Message> itr = fromMsgs.iterator();
+		Set<Message> result = user.getFromMsgs();
+		Iterator<Message> itr2 = result.iterator();
+		assertEquals(fromMsgs.size(), result.size());
+		while(itr.hasNext())
+		{
+			Message expected = itr.next();
+			Message actual = itr2.next();
+			assertEquals(expected, actual);
+		}
+	}
+	
+	@Test
+	public void testSetToMsgsGetToMsgs()
+	{
+		User user = new User();
+		Set<Message> toMsgs = new HashSet<Message>();
+		Message msg1 = new Message();
+		msg1.setId(1l);
+		Message msg2 = new Message();
+		msg1.setId(2l);
+		Message msg3 = new Message();
+		msg1.setId(3l);
+		toMsgs.add(msg1);
+		toMsgs.add(msg2);
+		toMsgs.add(msg3);
+		user.setFromMsgs(toMsgs);
+		Iterator<Message> itr = toMsgs.iterator();
+		Set<Message> result = user.getFromMsgs();
+		Iterator<Message> itr2 = result.iterator();
+		assertEquals(toMsgs.size(), result.size());
+		while(itr.hasNext())
+		{
+			Message expected = itr.next();
+			Message actual = itr2.next();
+			assertEquals(expected, actual);
+		}
+	}
 
 }
