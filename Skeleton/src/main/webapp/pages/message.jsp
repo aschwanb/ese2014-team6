@@ -23,8 +23,8 @@
 						</div>
 						<div class="form-group">
 							<c:if test="${!msg.reacted}">
-								<a class="btn btn-primary" href="invite?msgId=${msg.id}&confirm=true">Confirm</a>
-			        			<a class="btn btn-warning" href="invite?msgId=${msg.id}&confirm=false">Reject</a>
+								<a class="btn btn-primary" href="invited?msgId=${msg.id}&confirm=true">Confirm</a>
+			        			<a class="btn btn-warning" href="invited?msgId=${msg.id}&confirm=false">Reject</a>
 			        		</c:if>
 			        		<a class="btn btn-default" href="messages">Cancel</a>                        
 						</div>

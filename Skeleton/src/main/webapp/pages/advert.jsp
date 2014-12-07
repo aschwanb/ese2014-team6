@@ -120,7 +120,7 @@
 										<tr> <!-- TODO onclick="document.location='advert?id=${ad.advId}';" -->
 											<td><a href="#TODO"><c:out value="${user.userName}"/></a></td>
 											<td><a href="#TODO"><c:out value="${user.email}"/></a></td>
-											<td><a class="btn btn-dafault" href="test?usrId=${user.usrId}&adId=${adForm.id}">Invite to event</a></td>
+											<td><a class="btn btn-dafault" href="invite?usrId=${user.usrId}&adId=${adForm.id}">Invite to event</a></td>
 											<td><a class="btn btn-dafault" href="contact?usrId=${user.usrId}">Contact</a></td>
 										</tr>
 									</c:forEach>

@@ -96,7 +96,6 @@ public class MessageController {
         model.addObject("messageForm", new MessageForm());
         model.addObject("fromUser", fromUser);
 		model.addObject("toUser", toUser);
-		
         
 		return model;
     }

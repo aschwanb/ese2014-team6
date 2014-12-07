@@ -23,36 +23,38 @@ import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
 @Entity
 public class Invite extends Message {
 
 	private String invDate;
 	private String invTime;
-	private Long adId;
 	private Boolean reacted;
+	
+	@ManyToOne
+	@JoinColumn(name="advert", nullable=true)
+	private Advert advert;
 //	Accept and Reject are handled through the Invitation Controller
 	
 	public Invite() {}
-	public Invite(User fromUser, User toUser, String title, String message, String invDate, String invTime, Long adId) {
+	public Invite(User fromUser, User toUser, String title, String message, String invDate, String invTime, Advert advert) {
 		super(fromUser, toUser, title, message);
 		this.setInvDate(invDate);
 		this.setInvTime(invTime);
-		this.adId = adId;
+		this.advert=advert;
 		this.reacted = false;
 	}
 	
 	// TODO: Generate Link to related advert
 	public String getLink() {
-		String id = "1";
-		return "advert?id="+this.getAdId().toString();
+		return "advert?id="+this.advert.getadvId().toString();
 	}
 	
-	public Long getAdId() {
-		return this.adId;
+	public Advert getAdvert() {
+		return this.advert;
 	}
-	public void setAdId(Long adId) {
-		this.adId = adId;
+	
+	public void setAdvert(Advert advert) {
+		this.advert=advert;
 	}
 	
 	public String getInvDate() {
