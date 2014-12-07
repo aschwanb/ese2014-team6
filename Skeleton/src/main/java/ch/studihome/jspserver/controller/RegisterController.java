@@ -3,6 +3,7 @@ package ch.studihome.jspserver.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -13,10 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.studihome.jspserver.controller.exceptions.InvalidUserException;
+import ch.studihome.jspserver.controller.service.AdService;
 import ch.studihome.jspserver.controller.service.MyUserDetailsService;
 import ch.studihome.jspserver.controller.service.SignupService;
+import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.pojos.BSalert;
+import ch.studihome.jspserver.model.pojos.SearchForm;
 import ch.studihome.jspserver.model.pojos.SignupForm;
 /**
  * Load and return register view 
@@ -28,6 +32,9 @@ public class RegisterController {
 
     @Autowired SignupService signupService;
     @Autowired MyUserDetailsService userDetailsService;
+    @Autowired AdService adService;
+	@Value("${path.adimg}") private String imgPath;	
+
     
 /**
  * 
@@ -55,7 +62,7 @@ public class RegisterController {
     		RedirectAttributes redirectAttributes
     		) {
     	
-    	ModelAndView model; 
+    	ModelAndView model = new ModelAndView(); 
     	
     	if (!signupForm.getPassword().equals(signupForm.getConfirmPassword())) {
         	model = new ModelAndView("register");
@@ -70,7 +77,6 @@ public class RegisterController {
             try {
             	
             	signupService.saveFrom(signupForm);
-            	model = new ModelAndView("index");
     	    	BSalert[] alerts = new BSalert[1];
     	    	alerts[0] = new BSalert(BSalert.Type.success, "Sign Up Complete! Welcome to StudiHome, " 
     	    			+ signupForm.getFirstName() + " " + signupForm.getLastName());
@@ -80,6 +86,14 @@ public class RegisterController {
     	    	User user = userDetailsService.loadUserByUsername(signupForm.getUserName());
     	    	UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, signupForm.getPassword(), user.getAuthorities());
     	    	SecurityContextHolder.getContext().setAuthentication(auth);
+    	    	
+//    	    	TODO: This should be a proper redirect
+    	    	Iterable<Advert> ads = adService.findAll();
+    	    	model = new ModelAndView("index");
+    	    	model.addObject("alerts", alerts);
+    	    	model.addObject("ads", ads);
+    	    	model.addObject("imgPath", imgPath);
+    	    	model.addObject("searchForm", new SearchForm());
     	    	
     	    	
             } catch (InvalidUserException e) {
