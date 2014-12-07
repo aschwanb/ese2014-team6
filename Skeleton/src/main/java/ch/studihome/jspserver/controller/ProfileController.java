@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import ch.studihome.jspserver.controller.service.MyUserDetailsService;
 import ch.studihome.jspserver.controller.service.SignupService;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.UserDao;
@@ -25,11 +27,9 @@ import ch.studihome.jspserver.model.pojos.ProfileForm;
 @Controller
 public class ProfileController {
 	
-	@Autowired
-    UserDao usrDao;
-	
-	@Autowired
-    SignupService signupService;
+	@Autowired UserDao usrDao;
+	@Autowired SignupService signupService;
+	@Autowired MyUserDetailsService userService;
 	
 	public ProfileController() {}
 		
@@ -57,7 +57,7 @@ public class ProfileController {
 	    	model = new ModelAndView("profile");
 		}
     	
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	User user = userService.getUser();
     	model.addObject("user", user);
     	
     	if(changePassword == null)
@@ -85,7 +85,7 @@ public class ProfileController {
     {
 		ModelAndView model;
 
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userService.getUser();
 		
 		if (result.hasErrors())
 		{
@@ -116,7 +116,7 @@ public class ProfileController {
     {
 		ModelAndView model;
 		
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userService.getUser();
 		
 		if (!changePasswordForm.getPassword().equals(changePasswordForm.getConfirmPassword()))
 		{

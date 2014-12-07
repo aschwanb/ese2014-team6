@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.studihome.jspserver.controller.service.AlertService;
+import ch.studihome.jspserver.controller.service.MyUserDetailsService;
 import ch.studihome.jspserver.model.Alert;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.UserDao;
@@ -25,8 +26,8 @@ import ch.studihome.jspserver.model.pojos.SearchForm;
 @Controller
 public class AlertController {
 	
-	@Autowired
-	AlertService alertService;
+	@Autowired AlertService alertService;
+	@Autowired MyUserDetailsService userService;
 	
 	/**
 	 * 
@@ -37,7 +38,7 @@ public class AlertController {
     {
     	ModelAndView model = new ModelAndView("alerts");
     	
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	User user = userService.getUser();
     	model.addObject("user", user);
     	
     	// Alerts		
@@ -53,7 +54,7 @@ public class AlertController {
     {
     	ModelAndView model = new ModelAndView("ajaxAnswer");
     	
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.getUser();
     	
         alertService.addAlert(searchForm, user);
         

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.studihome.jspserver.controller.exceptions.InvalidUserException;
 import ch.studihome.jspserver.controller.service.MessageService;
+import ch.studihome.jspserver.controller.service.MyUserDetailsService;
 import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AdvertDao;
@@ -39,6 +40,7 @@ public class MessageController {
     @Autowired MessageService messageService;
     @Autowired AdvertDao advertDao;
     @Autowired UserDao userDao;
+    @Autowired MyUserDetailsService userService;
     
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
@@ -50,8 +52,7 @@ public class MessageController {
     public ModelAndView index()
     {
     	ModelAndView model = new ModelAndView("messages");
-    	
-    	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	User user = userService.getUser();    	
     	model.addObject("user", user);
     	
     	// Messages

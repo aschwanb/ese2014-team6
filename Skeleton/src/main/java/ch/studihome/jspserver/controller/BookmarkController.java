@@ -1,6 +1,7 @@
 package ch.studihome.jspserver.controller;
 
 import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.studihome.jspserver.controller.service.MyUserDetailsService;
 import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AdvertDao;
@@ -22,12 +24,10 @@ import ch.studihome.jspserver.model.dao.UserDao;
 @Controller
 public class BookmarkController {
 	
-	@Autowired
-    UserDao usrDao;
+	@Autowired UserDao usrDao;
+    @Autowired AdvertDao advDao;
+    @Autowired MyUserDetailsService userService;
     
-    @Autowired
-    AdvertDao advDao;
-
     /**
      * Shows the Bookmarks page
      * @return bookmarks page model
@@ -37,7 +37,7 @@ public class BookmarkController {
     {
     	ModelAndView model = new ModelAndView("bookmarks");
     	
-    	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	User user = userService.getUser();
     	model.addObject("user", user);
     	
     	// Bookmarks
@@ -61,7 +61,7 @@ public class BookmarkController {
     public ModelAndView setBookmark(@RequestParam(value = "id", required=false)Long advId) {
     	ModelAndView model = new ModelAndView("ajaxAnswer");
     	
-    	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	User user = userService.getUser();
     	
     	if(advId == null)
     	{
@@ -96,7 +96,7 @@ public class BookmarkController {
     public ModelAndView setInterest(@RequestParam(value = "id", required=false)Long advId) {
     	ModelAndView model = new ModelAndView("ajaxAnswer");
     	
-    	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	User user = userService.getUser();
     	
     	if(advId == null)
     	{
