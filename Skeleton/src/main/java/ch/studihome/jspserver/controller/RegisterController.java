@@ -3,6 +3,8 @@ package ch.studihome.jspserver.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.studihome.jspserver.controller.exceptions.InvalidUserException;
+import ch.studihome.jspserver.controller.service.MyUserDetailsService;
 import ch.studihome.jspserver.controller.service.SignupService;
+import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.pojos.BSalert;
 import ch.studihome.jspserver.model.pojos.SignupForm;
 /**
@@ -22,9 +26,9 @@ import ch.studihome.jspserver.model.pojos.SignupForm;
 @Controller
 public class RegisterController {
 
-    @Autowired
-    SignupService signupService;
-
+    @Autowired SignupService signupService;
+    @Autowired MyUserDetailsService userDetailsService;
+    
 /**
  * 
  * @return register view
@@ -45,7 +49,11 @@ public class RegisterController {
      */
     
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView create(@Valid SignupForm signupForm, BindingResult result, RedirectAttributes redirectAttributes) {
+    public ModelAndView create(
+    		@Valid SignupForm signupForm,
+    		BindingResult result,
+    		RedirectAttributes redirectAttributes
+    		) {
     	
     	ModelAndView model; 
     	
@@ -60,12 +68,20 @@ public class RegisterController {
 	    	model.addObject("alerts", alerts);
     	} else if (!result.hasErrors()) {
             try {
+            	
             	signupService.saveFrom(signupForm);
             	model = new ModelAndView("index");
-            	
     	    	BSalert[] alerts = new BSalert[1];
-    	    	alerts[0] = new BSalert(BSalert.Type.success, "Sign Up Complete!");
+    	    	alerts[0] = new BSalert(BSalert.Type.success, "Sign Up Complete! Welcome to StudiHome, " 
+    	    			+ signupForm.getFirstName() + " " + signupForm.getLastName());
     	    	model.addObject("alerts", alerts);
+    	    	
+//            	Login user
+    	    	User user = userDetailsService.loadUserByUsername(signupForm.getUserName());
+    	    	UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, signupForm.getPassword(), user.getAuthorities());
+    	    	SecurityContextHolder.getContext().setAuthentication(auth);
+    	    	
+    	    	
             } catch (InvalidUserException e) {
             	model = new ModelAndView("register");
             	signupForm.setPassword("");
