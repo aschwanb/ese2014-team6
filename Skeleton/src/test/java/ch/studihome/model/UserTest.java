@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.Alert;
+import ch.studihome.jspserver.model.Bookmark;
 import ch.studihome.jspserver.model.Calendar;
 import ch.studihome.jspserver.model.Message;
 import ch.studihome.jspserver.model.User;
@@ -251,53 +252,28 @@ public class UserTest
 	public void testSetBookmarksGetBookmarks()
 	{
 		User user = new User();
-		Set<Advert> bookmarks = new HashSet<Advert>(0);
-		Advert ad1 = new Advert();
-		ad1.setadvId(1l);
-		Advert ad2 = new Advert();
-		ad2.setadvId(2l);
-		Advert ad3 = new Advert();
-		ad3.setadvId(3l);
-		bookmarks.add(ad1);
-		bookmarks.add(ad2);
-		bookmarks.add(ad3);
+		Set<Bookmark> bookmarks = new HashSet<Bookmark>(0);
+		Bookmark bm1 = new Bookmark();
+		bm1.setBmId(1l);
+		Bookmark bm2 = new Bookmark();
+		bm2.setBmId(2l);
+		Bookmark bm3 = new Bookmark();
+		bm3.setBmId(3l);
+		bookmarks.add(bm1);
+		bookmarks.add(bm2);
+		bookmarks.add(bm3);
 		user.setBookmarks(bookmarks);
-		Iterator<Advert> itr = bookmarks.iterator();
-		Set<Advert> result = user.getBookmarks();
-		Iterator<Advert> itr2 = result.iterator();
+		Iterator<Bookmark> itr = bookmarks.iterator();
+		Set<Bookmark> result = user.getBookmarks();
+		Iterator<Bookmark> itr2 = result.iterator();
 		assertEquals(bookmarks.size(), result.size());
 		while(itr.hasNext())
 		{
-			Advert expected = itr.next();
-			Advert actual = itr2.next();
+			Bookmark expected = itr.next();
+			Bookmark actual = itr2.next();
 			assertEquals(expected, actual);
 		}
 	}
 	
-	@Test
-	public void testSetInterestsGetInterests()
-	{
-		User user = new User();
-		Set<Advert> interests = new HashSet<Advert>(0);
-		Advert ad1 = new Advert();
-		ad1.setadvId(1l);
-		Advert ad2 = new Advert();
-		ad2.setadvId(2l);
-		Advert ad3 = new Advert();
-		ad3.setadvId(3l);
-		interests.add(ad1);
-		interests.add(ad2);
-		interests.add(ad3);
-		user.setInterests(interests);
-		Iterator<Advert> itr = interests.iterator();
-		Set<Advert> result = user.getInterests();
-		Iterator<Advert> itr2 = result.iterator();
-		assertEquals(interests.size(), result.size());
-		while(itr.hasNext())
-		{
-			Advert expected = itr.next();
-			Advert actual = itr2.next();
-			assertEquals(expected, actual);
-		}
-	}
+	
 }
