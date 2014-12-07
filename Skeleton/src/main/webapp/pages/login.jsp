@@ -11,42 +11,25 @@
 	</jsp:attribute>
 	
 	<jsp:body>
-		<div id="login-box">
-	 		<form class="form-horizontal" name='loginForm' action="<c:url value='/dologin' />" method='POST'>
-				<fieldset>
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="col-md-12">
-								<div class="form-group">
-									<label class="control-label" for="field-userName">User Name</label>
-									<div class="form-group">
-										<div class="col-md-4">
-											<input type="text" class="form-control" name="userName" id="userName" tabindex="1" placeholder="Your User Name">
-										</div>
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="control-label" for="field-password">Password</label>
-									<div class="form-group">
-										<div class="col-md-4">
-											<input type="password" class="form-control" name="password" id="password" tabindex="2" placeholder="Your Password">
-										</div>
-									</div>
-								</div>		
-								
-								<div class="form-group">
-							    	<div class="form-actions">
-							      		<button name="submit" type="submit" value="submit" class="btn btn-primary">login</button>
-							           	<a class="btn btn-default" href="index">Cancel</a>
-							        </div>
-							    </div>
-						        
-							</div>
+		<div id="login-box" class="row">
+			<div class="col-xs-12">
+				<div class="col-md-4 col-md-offset-4 form-col">
+				 	<form name='loginForm' action="<c:url value='/dologin' />" method='POST' class="form-horizontal">
+				 		<div class="form-group">
+							<label class="control-label" for="field-userName">User name</label>
+							<input type='text' id="field-userName" class="form-control" name='userName'>
 						</div>
-					</div>
-		        </fieldset>
-			</form>
+						<div class="form-group">
+							<label class="control-label" for="field-password">Password</label>
+							<input type='password' id="field-password" class="form-control" name='password' />
+						</div>
+						<div class="form-actions pull-right">
+							<a class="btn btn-default" href="index">Cancel</a>
+							<button name="submit" type="submit" value="submit" class="btn btn-primary">Login</button>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
 	</jsp:body>
 </base:page>
