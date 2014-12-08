@@ -28,21 +28,14 @@ public class Event {
 	
 	private String date;
 	private String time;
-	private String title;
 	private String linkTarget;
 	private String color;
 
 	
 	public Event() {}
-	/**
-	 * Example:
-	 *         Event event1 = new Event("2/12/2014", "SPORT and WELLNESS", "http://bic.cat", 
-        		"<img src=\"http://gettingcontacts.com/upload/jornadas/sport-wellness_portada.png\" ><br>06-11-2013 - 09:00 <br> Tecnocampus Mataró Auditori");
-	 */
 	public Event(Invite invite) {
 		this.date = invite.getInvDate();
 		this.time = invite.getInvTime();
-		this.title = invite.getTitle();
 		this.linkTarget = "_blank";
 		this.advert = invite.getAdvert();
 	}
@@ -65,10 +58,17 @@ public class Event {
 				"displayYearController : \'true\',\n" +
 				"nMonths : \'6',\n" +
 				"},",
-				this.getDate(), this.getTitle(), this.getLink(), this.getLinkTarget(), this.getColor(), this.getAdvert().getTitle());
+//				this.getDate(), this.getTitle(), this.getLink(), this.getLinkTarget(), this.getColor(), this.getAdvert().getTitle());
+				this.getDate(), this.getAdvert().getTitle(), this.getLink(), this.getLinkTarget(), this.getColor(),
+					"<img src=\"usrimg/" + this.getAdvert().getFirstImage() + "\" height=\"200\" width=\"200\">");
 		return out;
 	}
 	
+	/**
+	 * Example:
+	 *         Event event1 = new Event("2/12/2014", "SPORT and WELLNESS", "http://bic.cat", 
+        		"<img src=\"http://gettingcontacts.com/upload/jornadas/sport-wellness_portada.png\" ><br>06-11-2013 - 09:00 <br> Tecnocampus Mataró Auditori");
+	 */
 	public Advert getAdvert() {
 		return this.advert;
 	}
@@ -80,12 +80,6 @@ public class Event {
 	}
 	public void setDate(String date) {
 		this.date = date;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
 	}
 	public String getLinkTarget() {
 		return linkTarget;

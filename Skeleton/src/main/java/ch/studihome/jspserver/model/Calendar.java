@@ -91,17 +91,14 @@ public class Calendar {
 					"showDays : true,\n"+
 					"displayMonthController : true,\n"+
 					"displayYearController : true,\n"+
-					"reqAjax : {\n"+
-					"type : \'get\',\n"+
-					"url : \'http://bic.cat/bic_calendar/index.php\'\n"+
-					"}\n"+
 					"});\n"+
 					"});\n"+
 					"</script>\n"+
 					"<div id=\"%s\"></div>\n"+
 					"</div>\n",
 					this.name, this.name);
-				return out;
+				
+		return out;
 		
 	}
 	
