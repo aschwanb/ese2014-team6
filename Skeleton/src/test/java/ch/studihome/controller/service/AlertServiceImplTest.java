@@ -81,7 +81,39 @@ public class AlertServiceImplTest
 	@Test
 	public void testUpdateAlert()
 	{
-		fail("Not yet implemented");
+		when(advertDao.findFiltered(any(int.class), 
+									any(int.class), 
+									any(int.class), 
+									any(int.class), 
+									any(int.class), 
+									any(int.class), 
+									any(int.class), 
+									any(int.class), 
+									any(String.class), 
+									any(Long.class))).thenAnswer(new Answer<ArrayList<Advert>>() {
+
+			public ArrayList<Advert> answer(InvocationOnMock invocation)
+					throws Throwable
+			{
+				ArrayList<Advert> all = new ArrayList<Advert>();
+				all.add(new Advert());
+				all.add(new Advert());
+				all.add(new Advert());
+				all.get(0).setadvId(1l);
+				all.get(1).setadvId(2l);
+				all.get(2).setadvId(3l);
+				return all;
+			}
+		});
+		Alert alert = new Alert();
+		alert.setAdverts(new HashSet<Advert>());
+		Advert[] adverts = new Advert[0];
+		adverts = alert.getAdverts().toArray(adverts);
+		assertEquals(0, adverts.length);
+		alert.setTypeofappartment("All");
+		alertServiceImpl.updateAlert(alert);
+		adverts = alert.getAdverts().toArray(adverts);
+		assertEquals(3, adverts.length);
 	}
 
 }
