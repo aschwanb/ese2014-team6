@@ -30,8 +30,22 @@ public class BookmarkController {
     
     @Autowired
     BookmarkDao bmDao;
+    
+    public BookmarkController(){}
+    
+    public BookmarkController(UserDao usrDao, AdvertDao advDao,
+			MyUserDetailsService userService, BookmarkDao bmDao)
+    {
+		super();
+		this.usrDao = usrDao;
+		this.advDao = advDao;
+		this.userService = userService;
+		this.bmDao = bmDao;
+	}
 
-    /**
+
+
+	/**
      * Shows the Bookmarks page
      * @return bookmarks page model
      */

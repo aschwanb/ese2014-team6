@@ -41,6 +41,7 @@ public class AlertControllerTest
 		alertcontroller = new AlertController(alertService, userService);
 	}
 	
+	
 	@Test
 	public void testIndex()
 	{
@@ -68,6 +69,8 @@ public class AlertControllerTest
 		ModelAndView model = alertcontroller.index();
 		User actual = (User) model.getModel().get("user");
 		assertEquals(expected, actual);
+		Alert[] alertsActual = (Alert[]) model.getModel().get("aalerts");
+		assertEquals(alerts.toArray()[0], alertsActual[0]);
 	}
 
 	@Test
