@@ -33,9 +33,11 @@ public class ProfileController {
 	
 	public ProfileController() {}
 		
-    public ProfileController(UserDao usrDao)
+    public ProfileController(UserDao usrDao, SignupService signupService, MyUserDetailsService userService)
     {
 		this.usrDao = usrDao;
+		this.signupService = signupService;
+		this.userService = userService;
 	}
 
 	/**
