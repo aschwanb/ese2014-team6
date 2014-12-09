@@ -15,6 +15,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+/**
+ * Calendar object used in user objects
+ * Contains methodes to display it correctly
+ * in a jsp page
+ * 
+ * @author aschwanb
+ *
+ */
 @Entity
 public class Calendar {
 	

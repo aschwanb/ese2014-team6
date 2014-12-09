@@ -25,6 +25,8 @@ import org.springframework.security.core.userdetails.UserDetails;
  * Object representing a user of our web service
  * 
  * user_role and enabled are not set by the user
+ * but are needed in order to authenticate them
+ * throug spring security
  * 
  * @author TeamSix
  *
@@ -90,19 +92,6 @@ public class User implements UserDetails {
 		this.toMsgs = toMsgs;
 	}
 
-//	public Set<Invite> getFromInvite() {
-//		return fromInvite;
-//	}
-//	public void setFromInvite(Set<Invite> fromInvite) {
-//		this.fromInvite = fromInvite;
-//	}
-//	public Set<Invite> getToInvite() {
-//		return toInvite;
-//	}
-//	public void setToInvite(Set<Invite> toInvite) {
-//		this.toInvite = toInvite;
-//	}
-	
 	public String toString() {
     	String out = "FirstName: " + firstName + "\n"+
     			"LastName: " + lastName + "\n"+
@@ -281,7 +270,15 @@ public class User implements UserDetails {
 			return false;
 		return true;
 	}
-	// We don't have these attributes
+
+	public Set<Bookmark> getBookmarks() {
+		return bookmarks;
+	}
+	public void setBookmarks(Set<Bookmark> bookmarks) {
+		this.bookmarks = bookmarks;
+	}
+	
+	// Spring needs these attributes
 	public String getUsername() {return userName;}
 	public boolean isAccountNonExpired() {return true;}
 	public boolean isAccountNonLocked() {return true;}
@@ -294,11 +291,5 @@ public class User implements UserDetails {
         return colAuth;
     }
     
-	public Set<Bookmark> getBookmarks() {
-		return bookmarks;
-	}
-	public void setBookmarks(Set<Bookmark> bookmarks) {
-		this.bookmarks = bookmarks;
-	}
     
 }

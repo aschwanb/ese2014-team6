@@ -23,7 +23,14 @@ import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
+/**
+ * 
+ * Messages are used to communicate
+ * between users.
+ * 
+ * @author TeamSix
+ *
+ */
 @Entity
 public class Message {
 

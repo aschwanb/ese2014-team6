@@ -6,7 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 /**
- * Address object for adverts
+ * Basic Address object
+ * Used in advertisements
  * 
  * @author TeamSix
  *

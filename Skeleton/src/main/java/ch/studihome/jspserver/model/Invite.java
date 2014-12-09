@@ -23,6 +23,14 @@ import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+/**
+ * Invite class.
+ * If an event is confirmed, it is 
+ * used to generate an event object
+ * 
+ * @author TeamSix
+ *
+ */
 @Entity
 public class Invite extends Message {
 
@@ -44,7 +52,7 @@ public class Invite extends Message {
 		this.reacted = false;
 	}
 	
-	// TODO: Generate Link to related advert
+	// Generate Link to related advertisement
 	public String getLink() {
 		return "advert?id="+this.advert.getadvId().toString();
 	}
