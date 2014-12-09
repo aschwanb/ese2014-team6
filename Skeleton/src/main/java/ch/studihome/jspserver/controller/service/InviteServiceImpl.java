@@ -18,6 +18,12 @@ import ch.studihome.jspserver.model.pojos.AdForm;
 import ch.studihome.jspserver.model.pojos.InvitationForm;
 import ch.studihome.jspserver.model.pojos.MessageForm;
 
+/**
+ * Implementation of Invite Service using daos.
+ * 
+ * @author TeamSix
+ *
+ */
 @Service
 public class InviteServiceImpl implements InviteService {
 	

@@ -11,7 +11,7 @@ import ch.studihome.jspserver.model.pojos.InvitationForm;
 import ch.studihome.jspserver.model.pojos.MessageForm;
 
 /**
- * Responsible to save and load AdForms to/from the data base
+ * Responsible to save and load invitations objects to/from the data base
  * 
  * @author TeamSiX
  */
@@ -19,8 +19,6 @@ public interface InviteService {
 	
 //	Load
 	public Iterable<Invite> findAll();
-//	public Iterable<Invite> findByFromUser(User user);
-//	public Iterable<Invite> findByToUser(User user);
 //	Save
 	public InvitationForm saveInvite(InvitationForm invitationForm) throws InvalidUserException;
 

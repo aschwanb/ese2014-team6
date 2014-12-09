@@ -6,7 +6,7 @@ import ch.studihome.jspserver.model.Calendar;
 import ch.studihome.jspserver.model.pojos.AdForm;
 
 /**
- * Responsible to save and load AdForms to/from the data base
+ * Responsible to save and load Calendar objects to/from the data base
  * 
  * @author TeamSiX
  */

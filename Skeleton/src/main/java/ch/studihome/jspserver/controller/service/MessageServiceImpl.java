@@ -34,7 +34,6 @@ public class MessageServiceImpl implements MessageService {
 	
 	public MessageForm saveMessage(MessageForm messageForm) throws InvalidUserException {
 //		Check if both Users exist
-//		Todo: Why is userDao.findByEmail returning a list of users?
 		User toUser = userDao.findByUserName(messageForm.getToUserEmail());		
 		User fromUser = userDao.findByUserName(messageForm.getFromUserEmail());
 		if (toUser == null || fromUser == null) {
@@ -45,7 +44,6 @@ public class MessageServiceImpl implements MessageService {
 		try {
 			Message message = new Message(fromUser, toUser, messageForm.getTitle(), messageForm.getMessage());
 			messageDao.save(message);		
-			// TODO: Update existing user object with the new information.
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

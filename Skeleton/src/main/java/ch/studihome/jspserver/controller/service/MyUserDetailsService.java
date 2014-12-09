@@ -11,13 +11,22 @@ import org.springframework.stereotype.Service;
 import ch.studihome.jspserver.controller.AdvertController;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.UserDao;
-
+/**
+ * 
+ * Costume user details service.
+ * 
+ * This is necessary because we want to use
+ * our own user objects in spring security.
+ * 
+ * @author TeamSix
+ *
+ */
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
 	@Autowired UserDao userDao;
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
-
+	
 	public User loadUserByUsername(String userName) throws UsernameNotFoundException {
 	
 		log.info("User Details Service for username " + userName + "!");

@@ -9,7 +9,7 @@ import ch.studihome.jspserver.model.pojos.AdForm;
 import ch.studihome.jspserver.model.pojos.MessageForm;
 
 /**
- * Responsible to save and load AdForms to/from the data base
+ * Responsible to save and load message objects to/from the data base
  * 
  * @author TeamSiX
  */
