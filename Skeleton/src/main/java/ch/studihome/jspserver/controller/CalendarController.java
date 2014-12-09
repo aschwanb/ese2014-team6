@@ -20,6 +20,16 @@ public class CalendarController {
 	
 	@Autowired MyUserDetailsService userService;
 
+	public CalendarController(){}
+	
+	public CalendarController(MyUserDetailsService userService)
+	{
+		this.userService = userService;
+	}
+
+
+
+
 	/**
 	 * 
 	 * @return calendar view
