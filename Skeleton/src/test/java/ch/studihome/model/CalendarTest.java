@@ -11,6 +11,7 @@ import org.junit.Test;
 import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.Calendar;
 import ch.studihome.jspserver.model.Event;
+import ch.studihome.jspserver.model.RoomImg;
 import ch.studihome.jspserver.model.User;
 
 public class CalendarTest
@@ -43,11 +44,11 @@ public class CalendarTest
 		Calendar calendar = new Calendar();
 		Set<Event> events = new HashSet<Event>(0);
 		Event event1 = new Event();
-		event1.setTitle("Event1");
+		event1.setLinkTarget("Link1");
 		Event event2 = new Event();
-		event2.setTitle("Event2");
+		event2.setLinkTarget("Link2");
 		Event event3 = new Event();
-		event3.setTitle("Event3");
+		event3.setLinkTarget("Link3");
 		events.add(event1);
 		events.add(event2);
 		events.add(event3);
@@ -70,17 +71,17 @@ public class CalendarTest
 		Calendar calendar = new Calendar();
 		Set<Event> events = new HashSet<Event>(0);
 		Event event1 = new Event();
-		event1.setTitle("Event1");
+		event1.setLinkTarget("Link1");
 		Event event2 = new Event();
-		event2.setTitle("Event2");
+		event2.setLinkTarget("Link2");
 		Event event3 = new Event();
-		event3.setTitle("Event3");
+		event3.setLinkTarget("Link3");
 		events.add(event1);
 		events.add(event2);
 		events.add(event3);
 		calendar.setEvents(events);
 		Event event4 = new Event();
-		event4.setTitle("Event4");
+		event4.setLinkTarget("Link4");
 		events.add(event4);
 		calendar.addEvent(event4);
 		Set<Event> result = calendar.getEvents();
@@ -101,19 +102,34 @@ public class CalendarTest
 		Calendar calendar = new Calendar();
 		Set<Event> events = new HashSet<Event>(0);
 		Event event1 = new Event();
-		event1.setTitle("Event1");
+		event1.setLinkTarget("Link1");
 		Advert advert1 = new Advert();
 		advert1.setadvId(1l);
+		HashSet<RoomImg> imgs1 = new HashSet<RoomImg>();
+		RoomImg img1 = new RoomImg();
+		img1.setImgName("image");
+		imgs1.add(img1);
+		advert1.setImgs(imgs1);
 		event1.setAdvert(advert1);
 		Event event2 = new Event();
-		event2.setTitle("Event2");
+		event2.setLinkTarget("Link2");
 		Advert advert2 = new Advert();
 		advert2.setadvId(2l);
+		HashSet<RoomImg> imgs2 = new HashSet<RoomImg>();
+		RoomImg img2 = new RoomImg();
+		img2.setImgName("image");
+		imgs2.add(img2);
+		advert2.setImgs(imgs2);
 		event2.setAdvert(advert2);
 		Event event3 = new Event();
-		event3.setTitle("Event3");
+		event3.setLinkTarget("Link3");
 		Advert advert3 = new Advert();
 		advert3.setadvId(3l);
+		HashSet<RoomImg> imgs3 = new HashSet<RoomImg>();
+		RoomImg img3 = new RoomImg();
+		img3.setImgName("image");
+		imgs3.add(img3);
+		advert3.setImgs(imgs3);
 		event3.setAdvert(advert3);
 		events.add(event1);
 		events.add(event2);
@@ -133,24 +149,20 @@ public class CalendarTest
 		for (Event e : events) { expected = expected + e.toString(); }
 	}
 	expected = expected + "];\n" +
-			String.format("$(\'#%s\').bic_calendar({\n" +
-				"events : events,\n"+
-				"enableSelect : false,\n"+
-				"multiSelect : false,\n"+
-				"dayNames : dayNames,\n"+
-				"monthNames : monthNames,\n"+
-				"showDays : true,\n"+
-				"displayMonthController : true,\n"+
-				"displayYearController : true,\n"+
-				"reqAjax : {\n"+
-				"type : \'get\',\n"+
-				"url : \'http://bic.cat/bic_calendar/index.php\'\n"+
-				"}\n"+
-				"});\n"+
-				"});\n"+
-				"</script>\n"+
-				"<div id=\"%s\"></div>\n"+
-				"</div>\n",
+				String.format("$(\'#%s\').bic_calendar({\n" +
+					"events : events,\n"+
+					"enableSelect : false,\n"+
+					"multiSelect : false,\n"+
+					"dayNames : dayNames,\n"+
+					"monthNames : monthNames,\n"+
+					"showDays : true,\n"+
+					"displayMonthController : true,\n"+
+					"displayYearController : true,\n"+
+					"});\n"+
+					"});\n"+
+					"</script>\n"+
+					"<div id=\"%s\"></div>\n"+
+					"</div>\n",
 				name, name);
 	String actual = calendar.getString();
 	assertEquals(expected, actual);

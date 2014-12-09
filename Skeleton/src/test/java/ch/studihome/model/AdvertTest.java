@@ -170,11 +170,11 @@ public class AdvertTest
 		Advert advert = new Advert();
 		Set<Event> events = new HashSet<Event>(0);
 		Event event1 = new Event();
-		event1.setTitle("Event1");
+		event1.setLinkTarget("Link1");
 		Event event2 = new Event();
-		event2.setTitle("Event2");
+		event2.setLinkTarget("Link2");
 		Event event3 = new Event();
-		event3.setTitle("Event3");
+		event3.setLinkTarget("Link3");
 		events.add(event1);
 		events.add(event2);
 		events.add(event3);
