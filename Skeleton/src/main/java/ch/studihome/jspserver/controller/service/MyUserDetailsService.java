@@ -18,6 +18,13 @@ public class MyUserDetailsService implements UserDetailsService {
 	@Autowired UserDao userDao;
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 
+	public MyUserDetailsService(){}
+	
+	public MyUserDetailsService(UserDao userDao)
+	{
+		this.userDao = userDao;
+	}
+	
 	public User loadUserByUsername(String userName) throws UsernameNotFoundException {
 	
 		log.info("User Details Service for username " + userName + "!");
