@@ -52,9 +52,11 @@ public class BookmarkController {
     }
     
     /**
-	 * Bookmarks a given ad
+     * Bookmarks the given advert
+     * 
+     * @param advId id of the advert to be bookmarked
 	 * @return ajax response page
-	 */
+     */
     @RequestMapping(value = "bookmark", method = RequestMethod.GET)
     public ModelAndView setBookmark(@RequestParam(value = "id", required=false)Long advId) {
     	ModelAndView model = new ModelAndView("ajaxAnswer");
@@ -90,9 +92,11 @@ public class BookmarkController {
     }
     
     /**
-	 * Marks a given ad as "interested in"
+     * Marks the given advert as "interested in"
+     * 
+     * @param advId id of the advert to be marked
 	 * @return ajax response page
-	 */
+     */
     @RequestMapping(value = "showinterest", method = RequestMethod.GET)
     public ModelAndView setInterest(@RequestParam(value = "id", required=false)Long advId) {
     	ModelAndView model = new ModelAndView("ajaxAnswer");

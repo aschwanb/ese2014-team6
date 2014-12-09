@@ -26,7 +26,8 @@ import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.BSalert;
 
 /**
- * Load and return index view 
+ * Load and return resetDatabase view
+ * Reset database (and if requested load initial data)
  * 
  * @author TeamSix
  */
@@ -61,15 +62,16 @@ public class ResetDBController
 	RoomImgDao roomImgDao;
 	
 	/**
+	 * Displays the reset view and resets the database if the right password is transmitted
      * 
-     * @return Index view
+     * @return resetDatabase view
      */
 	@RequestMapping(value = { "/resetDatabase" })
     public ModelAndView index(@RequestParam(value = "o", required = false)String password, @RequestParam(value = "p", required = false)String repopulate)
 	{
     	ModelAndView model;
     	
-    	if(password != null && password.equals("fuckthisshit"))
+    	if(password != null && password.equals("usethefork"))
     	{
 	    	model = new ModelAndView("resetDBPage");
 	
@@ -101,7 +103,7 @@ public class ResetDBController
 	
 	private void clearDatabase()
 	{
-		//TODO following code may break if now broken code is running. In that case reordering may solve the issue
+		//TODO following code might break if now new code is running. In that case reordering may solve the issue
 		
 		advertDao.deleteAll();
 		addressDao.deleteAll();

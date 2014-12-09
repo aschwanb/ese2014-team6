@@ -20,7 +20,8 @@ import ch.studihome.jspserver.model.pojos.ChangePasswordForm;
 import ch.studihome.jspserver.model.pojos.ProfileForm;
 
 /**
- * Load and return user profile view 
+ * Load and return profile view
+ * Handle profile modification and password changes 
  * 
  * @author TeamSix
  */
@@ -39,7 +40,12 @@ public class ProfileController {
 	}
 
 	/**
-	 * @return Profile view
+	 * Returns the requested profile view
+	 * profile, profile_edit or profile_changePswd
+	 * 
+	 * @param editProfile	set if profile_edit is requested
+	 * @param changePassword set if profile_changePswd is requested
+	 * @return the profile page model
 	 */
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView index(@RequestParam(value = "edit", required=false)String editProfile, @RequestParam(value = "changePswd", required=false)String changePassword)
@@ -78,7 +84,11 @@ public class ProfileController {
     }
 	
 	/**
-	 * @return Profile view
+	 * Changes the profile info according to the data in profileForm
+	 * 
+	 * @param profileForm
+	 * @param result	object passed by Spring to detect faulty input
+	 * @return	profile model
 	 */
 	@RequestMapping(value = "/updateprofile")
     public ModelAndView update(@Valid ProfileForm profileForm, BindingResult result)
@@ -109,7 +119,11 @@ public class ProfileController {
     }
 	
 	/**
-	 * @return Profile view
+	 * Update password according to data in changePasswordForm
+	 * 
+	 * @param changePasswordForm	password data
+	 * @param result	object passed by Spring to detect faulty input
+	 * @return	profile model
 	 */
 	@RequestMapping(value = "/changepassword")
     public ModelAndView changePswd(@Valid ChangePasswordForm changePasswordForm, BindingResult result)

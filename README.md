@@ -8,4 +8,4 @@ Build instructions
 4. Build the project with "mvn jetty:run". If you wandt to be extra carefull, you can use the following command: "mvn clean jetty:stop jetty:run"
 5. Find the project at localhost:8080 and start by creating your one user and ad.
 
-Thanks to team 1 for reminding us to write these first steps.
+To reinitialize the database browse to localhost:8080/resetDatabase and enter the Password "usethefork"
