@@ -12,6 +12,21 @@ public interface AdvertDao extends CrudRepository<Advert,Long>
 {
 	Advert findByAdvId(Long id);
 
+	/**
+	 * Returns the entries matching following constraints from the Advert table
+	 * 
+	 * @param min_price
+	 * @param max_price
+	 * @param min_room_size
+	 * @param max_roo_size
+	 * @param min_appartment_size
+	 * @param max_appartment_size
+	 * @param min_number_of_inhabitants
+	 * @param max_number_of_inhabitants
+	 * @param area
+	 * @param timeAndDate
+	 * @return List of matching Adverts
+	 */
 	@Query("SELECT a FROM Advert a JOIN a.address adr WHERE "
 			+ "a.price BETWEEN :min_price and :max_price AND "
 			+ "a.roomSize BETWEEN :min_room_size and :max_room_size AND "
@@ -30,6 +45,21 @@ public interface AdvertDao extends CrudRepository<Advert,Long>
 								@Param("area") String area,
 								@Param("timeAndDate") long timeAndDate);
 	
+	/**
+	 * Returns the entries that match following constraints and are shared flats from the Advert table
+	 * 
+	 * @param min_price
+	 * @param max_price
+	 * @param min_room_size
+	 * @param max_roo_size
+	 * @param min_appartment_size
+	 * @param max_appartment_size
+	 * @param min_number_of_inhabitants
+	 * @param max_number_of_inhabitants
+	 * @param area
+	 * @param timeAndDate
+	 * @return List matching Adverts
+	 */
 	@Query("SELECT a FROM Advert a JOIN a.address adr WHERE "
 			+ "a.price BETWEEN :min_price and :max_price AND "
 			+ "a.roomSize BETWEEN :min_room_size and :max_room_size AND "
@@ -49,6 +79,21 @@ public interface AdvertDao extends CrudRepository<Advert,Long>
 								@Param("area") String area,
 								@Param("timeAndDate") long timeAndDate);
 	
+	/**
+	 * Returns the entries that match following constraints and are single appartements from the Advert table
+	 * 
+	 * @param min_price
+	 * @param max_price
+	 * @param min_room_size
+	 * @param max_roo_size
+	 * @param min_appartment_size
+	 * @param max_appartment_size
+	 * @param min_number_of_inhabitants
+	 * @param max_number_of_inhabitants
+	 * @param area
+	 * @param timeAndDate
+	 * @return List of matching Adverts
+	 */
 	@Query("SELECT a FROM Advert a JOIN a.address adr WHERE "
 			+ "a.price BETWEEN :min_price and :max_price AND "
 			+ "a.roomSize BETWEEN :min_room_size and :max_room_size AND "
