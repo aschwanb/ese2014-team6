@@ -3,11 +3,13 @@ package ch.studihome.model;
 import static org.junit.Assert.*;
 
 import java.util.Date;
+import java.util.HashSet;
 
 import org.junit.Test;
 
 import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.Event;
+import ch.studihome.jspserver.model.RoomImg;
 
 
 public class EventTest {
@@ -16,15 +18,18 @@ public class EventTest {
 	public void testToString()
 	{
 		String date = "2/12/2014";
-		String title = "SPORT and WELLNESS";
 		Advert advert = new Advert();
 		advert.setadvId(1l);
 		advert.setTitle("Blabla");
+		HashSet<RoomImg> imgs = new HashSet<RoomImg>();
+		RoomImg img = new RoomImg();
+		img.setImgName("image");
+		imgs.add(img);
+		advert.setImgs(imgs);
 		String linkTarget = "_blank";
 		String color = "blue";
 		Event event = new Event();
 		event.setDate(date);
-		event.setTitle(title);
 		event.setLinkTarget(linkTarget);
 		event.setColor(color);
 		event .setAdvert(advert);
@@ -41,7 +46,8 @@ public class EventTest {
 				"displayYearController : \'true\',\n" +
 				"nMonths : \'6',\n" +
 				"},",
-				event.getDate(), event.getTitle(), event.getLink(), event.getLinkTarget(), event.getColor(), event.getAdvert().getTitle());
+				event.getDate(), event.getAdvert().getTitle(), event.getLink(), event.getLinkTarget(), event.getColor(),
+				"<img src=\"usrimg/" + event.getAdvert().getFirstImage() + "\" height=\"200\" width=\"200\">");
 		String actual = event.toString();
 		assertEquals(expected, actual);
 	}
@@ -67,15 +73,6 @@ public class EventTest {
 		assertEquals(expected, actual);
 	}
 
-	@Test
-	public void testSetTitleGetTitle()
-	{
-		Event event = new Event();
-		String expected = "Title";
-		event.setTitle(expected);
-		String actual = event.getTitle();
-		assertEquals(expected, actual);
-	}
 
 	@Test
 	public void testGetLink()
