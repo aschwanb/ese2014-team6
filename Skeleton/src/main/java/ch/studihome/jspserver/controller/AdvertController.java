@@ -115,6 +115,7 @@ public class AdvertController {
     }
     
     /**
+     * Handles Advert upload via Ajax (illigal access loads the infoPage)
      * 
      * @param adForm Form to validate data integrity with advert object
      * @param result Return of the form validation.

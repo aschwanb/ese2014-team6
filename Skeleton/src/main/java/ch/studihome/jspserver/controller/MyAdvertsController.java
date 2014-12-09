@@ -12,7 +12,7 @@ import ch.studihome.jspserver.model.Advert;
 import ch.studihome.jspserver.model.User;
 
 /**
- * Load and return user profile view 
+ * Load and return myAdverts view 
  * 
  * @author TeamSix
  */
