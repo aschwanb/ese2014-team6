@@ -89,7 +89,7 @@
 								setTimeout(centerresizefunc, 200);
 							});
 				</script>
-				<div id="map_canvas"></div>
+				<div id="map_canvas" class="map_canvas"></div>
 			</div>
 			<div class="tab-pane fade in active" id="index-list">
 				<c:if test="${not empty ads}">

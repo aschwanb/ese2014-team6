@@ -34,10 +34,10 @@
 		<c:if test="${editable == true}">
 			<p>Drag the marker to select an Address</p>
 		</c:if>
-		<div id="map_canvas"></div>
+		<div id="map_canvas" class="map_canvas map_canvas_small"></div>
 		
 		<c:if test="${editable == false}">
-			<script type="text/javascript"> codeAddress(); lockMarker(); </script>
+			<script type="text/javascript"> setTimeout(function(){ codeAddress(); lockMarker() }, 200); </script>
 		</c:if>
 	</div>
 </div>
