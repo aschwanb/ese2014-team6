@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Email;
 
 /**
  * Used to get the data from a Profile Form
+ * Only contains custom user data
  * 
  * @author TeamSiX
  */

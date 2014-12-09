@@ -14,6 +14,11 @@ import ch.studihome.jspserver.model.dao.AdvertDao;
 import ch.studihome.jspserver.model.dao.UserDao;
 import ch.studihome.jspserver.model.pojos.SearchForm;
 
+/**
+ * Implements AlertService using the Hibernate Daos
+ * 
+ * @author TeamSiX
+ */
 @Service
 public class AlertServiceImpl implements AlertService
 {

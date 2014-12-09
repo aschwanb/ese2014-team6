@@ -44,9 +44,17 @@ public class BSalert
 				break;
 		}
 	}
+	/**
+	 * Get bootstrap type of the alert
+	 * @return 
+	 */
 	public String getType() {
 		return type;
 	}
+	/**
+	 * Set bootstrap type of the alert
+	 * @return 
+	 */
 	public void setType(String type) {
 		this.type = type;
 	}

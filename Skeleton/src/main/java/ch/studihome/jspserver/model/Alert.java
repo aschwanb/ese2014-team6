@@ -12,7 +12,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-
+/**
+ * Stores a filter and a list of Adverts that fit the filter
+ * 
+ * @author TeamSix
+ */
 @Entity
 public class Alert
 {
@@ -20,6 +24,9 @@ public class Alert
 	@GeneratedValue
 	private Long alertId;
 	
+	/**
+	 * Owner of the alert
+	 */
 	@ManyToOne @JoinColumn(name="usrId", nullable=false)
 	private User user;
 	
@@ -50,10 +57,17 @@ public class Alert
 		this.alertId = alertId;
 	}
 
+	/**
+	 * @return owner of alert
+	 */
 	public User getUser() {
 		return user;
 	}
 
+	/**
+	 * Set owner of alert
+	 * @param user owner of alert
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}

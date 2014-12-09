@@ -1,5 +1,10 @@
 package ch.studihome.jspserver.model.pojos;
 
+/**
+ * Used to get the data from a Search Form
+ * 
+ * @author TeamSiX
+ */
 public class SearchForm
 {
 	private long id;
