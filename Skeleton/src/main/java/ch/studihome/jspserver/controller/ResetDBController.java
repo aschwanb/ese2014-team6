@@ -69,7 +69,7 @@ public class ResetDBController
 	{
     	ModelAndView model;
     	
-    	if(password != null && password.equals("fuckthisshit"))
+    	if(password != null && password.equals("usethefork"))
     	{
 	    	model = new ModelAndView("resetDBPage");
 	
