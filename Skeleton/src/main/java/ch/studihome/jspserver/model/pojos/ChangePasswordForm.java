@@ -5,6 +5,7 @@ import javax.validation.constraints.Size;
 
 /**
  * Used to get the data from a ChangePassword Form
+ * Only contains the password
  * 
  * @author TeamSiX
  */
