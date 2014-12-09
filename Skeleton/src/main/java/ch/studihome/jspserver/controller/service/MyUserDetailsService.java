@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import ch.studihome.jspserver.controller.AdvertController;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.UserDao;
+
 /**
  * 
  * Costume user details service.
@@ -26,6 +27,13 @@ public class MyUserDetailsService implements UserDetailsService {
 
 	@Autowired UserDao userDao;
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
+
+	public MyUserDetailsService(){}
+	
+	public MyUserDetailsService(UserDao userDao)
+	{
+		this.userDao = userDao;
+	}
 	
 	public User loadUserByUsername(String userName) throws UsernameNotFoundException {
 	

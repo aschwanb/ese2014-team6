@@ -134,5 +134,74 @@ public class Message {
 	public Boolean getInvite(){
 		return false;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result
+				+ ((fromUser == null) ? 0 : fromUser.hashCode());
+		result = prime * result + ((hasRead == null) ? 0 : hasRead.hashCode());
+		result = prime * result
+				+ ((hasResponded == null) ? 0 : hasResponded.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((message == null) ? 0 : message.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((toUser == null) ? 0 : toUser.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Message other = (Message) obj;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (fromUser == null) {
+			if (other.fromUser != null)
+				return false;
+		} else if (!fromUser.equals(other.fromUser))
+			return false;
+		if (hasRead == null) {
+			if (other.hasRead != null)
+				return false;
+		} else if (!hasRead.equals(other.hasRead))
+			return false;
+		if (hasResponded == null) {
+			if (other.hasResponded != null)
+				return false;
+		} else if (!hasResponded.equals(other.hasResponded))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (message == null) {
+			if (other.message != null)
+				return false;
+		} else if (!message.equals(other.message))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (toUser == null) {
+			if (other.toUser != null)
+				return false;
+		} else if (!toUser.equals(other.toUser))
+			return false;
+		return true;
+	}
     	
 }

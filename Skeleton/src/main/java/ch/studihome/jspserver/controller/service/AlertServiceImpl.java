@@ -27,6 +27,14 @@ public class AlertServiceImpl implements AlertService
 	@Autowired
 	AdvertDao advertDao;
 	
+	public AlertServiceImpl(){}
+	
+	public AlertServiceImpl(UserDao userDao, AdvertDao adverDao)
+	{
+		this.userDao = userDao;
+		this.advertDao = adverDao;
+	}
+	
 	public void addAlert(SearchForm searchForm, User user)
 	{
 		Set<Alert> alerts = user.getAlerts();

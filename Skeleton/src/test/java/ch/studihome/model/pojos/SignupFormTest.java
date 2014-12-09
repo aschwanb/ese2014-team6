@@ -4,20 +4,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-
 import ch.studihome.jspserver.model.pojos.SignupForm;
 
 
@@ -63,4 +49,33 @@ public class SignupFormTest {
 		assertEquals(confirmPassword, actual);
 	}
 
+	@Test
+	public void testSetFirstNameGetFirstName()
+	{
+		SignupForm signupForm = new SignupForm();
+		String expected = "Hans";
+		signupForm.setFirstName(expected);
+		String actual = signupForm.getFirstName();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testSetLastNameGetLastName()
+	{
+		SignupForm signupForm = new SignupForm();
+		String expected = "Muster";
+		signupForm.setLastName(expected);
+		String actual = signupForm.getLastName();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testSetUserNameGetUserName()
+	{
+		SignupForm signupForm = new SignupForm();
+		String expected = "Batman";
+		signupForm.setUserName(expected);
+		String actual = signupForm.getUserName();
+		assertEquals(expected, actual);
+	}
 }

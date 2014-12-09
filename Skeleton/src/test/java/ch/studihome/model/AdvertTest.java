@@ -2,29 +2,17 @@ package ch.studihome.model;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-
 import ch.studihome.jspserver.model.Address;
 import ch.studihome.jspserver.model.Advert;
+import ch.studihome.jspserver.model.Bookmark;
+import ch.studihome.jspserver.model.Event;
 import ch.studihome.jspserver.model.RoomImg;
 import ch.studihome.jspserver.model.User;
 
@@ -82,7 +70,7 @@ public class AdvertTest
 	}
 
 	@Test
-	public void testGetImgs()
+	public void testSetImgsGetImgs()
 	{
 		Advert advert = new Advert();
 		Set<RoomImg> imgs = new HashSet<RoomImg>(0);
@@ -113,7 +101,7 @@ public class AdvertTest
 	}
 
 	@Test
-	public void testIsWG()
+	public void testSetIsWGGetIsWG()
 	{
 		Advert advert = new Advert();
 		boolean isWG = true;
@@ -162,4 +150,81 @@ public class AdvertTest
 		assertEquals(numberOfInhabitants, actual);
 	}
 
+	@Test
+	public void testGetFirstImage()
+	{
+		Advert advert = new Advert();
+		Set<RoomImg> imgs = new HashSet<RoomImg>(0);
+		RoomImg img = new RoomImg();
+		String expected = "TestImage";
+		img.setImgName(expected);
+		imgs.add(img);
+		advert.setImgs(imgs);
+		String actual = advert.getFirstImage();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testSetEventsGetEvents()
+	{
+		Advert advert = new Advert();
+		Set<Event> events = new HashSet<Event>(0);
+		Event event1 = new Event();
+		event1.setTitle("Event1");
+		Event event2 = new Event();
+		event2.setTitle("Event2");
+		Event event3 = new Event();
+		event3.setTitle("Event3");
+		events.add(event1);
+		events.add(event2);
+		events.add(event3);
+		advert.setEvents(events);
+		Set<Event> result = advert.getEvents();
+		Iterator<Event> itr = events.iterator();
+		Iterator<Event> itr2 = result.iterator();
+		assertEquals(events.size(), result.size());
+		while(itr.hasNext())
+		{
+			Event expected = itr.next();
+			Event actual = itr2.next();
+			assertEquals(expected, actual);
+		}
+	}
+	
+	@Test
+	public void testSetBookmarksGetBookmarks()
+	{
+		Advert advert = new Advert();
+		Set<Bookmark> bookmarks = new HashSet<Bookmark>(0);
+		Bookmark bm1 = new Bookmark();
+		bm1.setBmId(1l);
+		Bookmark bm2 = new Bookmark();
+		bm2.setBmId(2l);
+		Bookmark bm3 = new Bookmark();
+		bm3.setBmId(3l);
+		bookmarks.add(bm1);
+		bookmarks.add(bm2);
+		bookmarks.add(bm3);
+		advert.setBookmarks(bookmarks);
+		Iterator<Bookmark> itr = bookmarks.iterator();
+		Set<Bookmark> result = advert.getBookmarks();
+		Iterator<Bookmark> itr2 = result.iterator();
+		assertEquals(bookmarks.size(), result.size());
+		while(itr.hasNext())
+		{
+			Bookmark expected = itr.next();
+			Bookmark actual = itr2.next();
+			assertEquals(expected, actual);
+		}
+	}
+	
+	@Test
+	public void testSetTimeAndDateGetTimeAndDate()
+	{
+		Advert advert = new Advert();
+		Long expected = new Date().getTime();
+		advert.setTimeAndDate(expected);
+		Long actual = advert.getTimeAndDate();
+		assertEquals(expected, actual);
+	}
 }

@@ -21,6 +21,13 @@ public class MyAdvertsController {
 
 	@Autowired MyUserDetailsService userService;
 	
+	public MyAdvertsController(){}
+	
+	public MyAdvertsController(MyUserDetailsService userService)
+	{
+		this.userService = userService;
+	}
+
 	/**
 	 * 
 	 * @return myAdverts view 
