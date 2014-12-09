@@ -7,7 +7,7 @@ function sendAdvertForm()
 				addAlert("success", "Ad saved.");
 			}else if(data.trim() == "error")
 			{
-				addAlert("danger", "Advert upload failed. Error while saving ad to db.");
+				addAlert("danger", "Advert upload failed. Error while saving advert to data base.");
 			}else if(data.trim() == "denied")
 			{
 				addAlert("danger", "You don't have the permission to change this advert.");
