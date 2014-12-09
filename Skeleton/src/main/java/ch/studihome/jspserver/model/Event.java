@@ -99,7 +99,6 @@ public class Event {
 		result = prime * result
 				+ ((linkTarget == null) ? 0 : linkTarget.hashCode());
 		result = prime * result + ((time == null) ? 0 : time.hashCode());
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
 	@Override
@@ -141,13 +140,9 @@ public class Event {
 				return false;
 		} else if (!time.equals(other.time))
 			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
-			return false;
 		return true;
 	}
+	
 	
 
 	
