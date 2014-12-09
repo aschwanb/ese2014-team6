@@ -11,7 +11,7 @@ import ch.studihome.jspserver.controller.service.MyUserDetailsService;
 import ch.studihome.jspserver.model.User;
 
 /**
- * Load and return calendar view 
+ * Load and return calendar view
  * 
  * @author TeamSix
  */

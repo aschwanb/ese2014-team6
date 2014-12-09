@@ -41,7 +41,7 @@ import ch.studihome.jspserver.model.pojos.InvitationForm;
 import ch.studihome.jspserver.model.pojos.MessageForm;
 
 /**
- * Handle message editing and sending
+ * The invite controller is handling invites 
  * 
  * @author TeamSix
  */
@@ -58,6 +58,23 @@ public class InviteController {
     
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
+	/**
+	 * 
+	 * This method is called if a user reacts to an invitation
+	 * by clicking on the hyperlink.
+	 * Two optiona are possible:
+	 * The user rejects the invitation. Noting happens.
+	 * The user accepts the invitation. An event is added to his
+	 * calendar and to the calendar of the user, who invited him.
+	 * 
+	 *  In both cases, the invitation is marked as reacted to in 
+	 *  order to make it impossible for the user to ad the same event
+	 *  to his calendar several times.
+	 *
+	 * @param msgId: Message ID to find information in database
+	 * @param confirm: Type of reaction (Deny or accept)
+	 * @return
+	 */
 	@RequestMapping(value = "/invited", method = RequestMethod.GET)
 	public ModelAndView inviteReact(
 			@RequestParam(value = "msgId", required = true)Long msgId,
@@ -98,12 +115,16 @@ public class InviteController {
 		model.addObject("toUser", toUser);
 		return model;
 	}
-	
-	private Object user(User fromUser, User toUser) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+
+	/**
+	 * 
+	 * Return view and form to generate an invitation to
+	 * a specific user.
+	 * @param usrId: Which user shall be invited?
+	 * @param adId: Which invitation is this invite about.
+	 * @return
+	 */
 	@RequestMapping(value = { "/invite" }, method = RequestMethod.GET)
     public ModelAndView invite(
     		@RequestParam(value = "usrId", required = true)Long usrId,
@@ -122,6 +143,15 @@ public class InviteController {
 		return model;
     }
 	
+	/**
+	 * If the form is valid, an invitation is generated.
+	 * Otherwise, an error is returned.
+	 * 
+	 * @param invitationForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @return
+	 */
 	@RequestMapping(value = "/invite", method = RequestMethod.POST)
 	public ModelAndView getInvite(
 			@Valid InvitationForm invitationForm,

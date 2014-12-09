@@ -26,7 +26,8 @@ public class LoginController {
     SignupService sampleService;
 
 	/**
-	 * Show error message after failes login attempt
+	 * Return login form view.
+	 * Show error message after failed login attempt
 	 * 
 	 * @param error Error message
 	 * @return Login view
@@ -44,13 +45,14 @@ public class LoginController {
 		  return model;
     }
     
+    /**
+     * After login, redirect the user to the index page
+     * @return redirect to index view
+     */
     @RequestMapping(value = "/haslogin", method = RequestMethod.GET)
 	public String haslogin() {
 	 
-    	User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	
-    	//TODO
-	 
+    	User fromUser = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();	 
     	return "redirect:/index";
     }
     

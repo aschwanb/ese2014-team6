@@ -21,7 +21,9 @@ import ch.studihome.jspserver.model.pojos.ProfileForm;
 
 /**
  * Load and return profile view
- * Handle profile modification and password changes 
+ * Handle profile modification and password changes
+ * Detailed views for calendar, adverts et al are handled
+ * in detaild controllers 
  * 
  * @author TeamSix
  */

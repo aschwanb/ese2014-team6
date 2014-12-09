@@ -27,15 +27,14 @@ public class IndexController {
 
     public IndexController() {}
     
-    
-    
     public IndexController(AdService adService)
     {
 		this.adService = adService;
 	}
 	
 	/**
-     * 
+     * Add all advertisements and their images to the page,
+     * then return it
      * @return Index view
      */
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
@@ -46,8 +45,8 @@ public class IndexController {
     	model.addObject("ads", ads);
     	model.addObject("imgPath", imgPath);
     	model.addObject("searchForm", new SearchForm());
+
     	return model;
-    	
     }
 
 }

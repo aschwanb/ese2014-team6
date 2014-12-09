@@ -45,7 +45,8 @@ public class MessageController {
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
 	/**
-     * Shows the Messages page
+     * Shows the messages page which holds
+     * a list of all the messages send to the user
      * @return messages page model
      */
     @RequestMapping(value = "/messages", method = RequestMethod.GET)
@@ -71,6 +72,17 @@ public class MessageController {
     	return model;
     }
 	
+    /**
+     * This controler return a form to create a message to 
+     * an user. Depending on where the controller was
+     * called from, it has different parameters to determin,
+     * who the message is send to.
+     * 
+     * @param advId: Message is send to the owner of the advert.
+     * @param usrId: Message is send to the user with this id.
+     * @param msgId: Message is send to the owner of the message.
+     * @return Message edit view
+     */
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
     public ModelAndView messageToAdvertiser(
     		@RequestParam(value = "advId", required = false)Long advId,
@@ -99,7 +111,18 @@ public class MessageController {
         
 		return model;
     }
-		
+	
+	/**
+	 * 
+	 * Validate the message and create a message object.
+	 * If an error occurs, the user is informed.
+	 * 
+	 * @param messageForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @param msgId
+	 * @return
+	 */
 	@RequestMapping(value = { "/contact" }, method = RequestMethod.POST)
 	public ModelAndView messagePost(
 			@Valid MessageForm messageForm,
@@ -139,7 +162,15 @@ public class MessageController {
 		model.addObject("alerts", alerts);
 		return model;
 	}
-		
+	
+	/**
+	 * Return detail view for a message.
+	 * If the message is looked at for the first time,
+	 * it is marked as read in the database.
+	 * 
+	 * @param id: Message id.
+	 * @return Message detail view
+	 */
 	@RequestMapping(value = "/message", method = RequestMethod.GET)
 	public ModelAndView messageShow(
 			@RequestParam(value = "id", required = true)Long id

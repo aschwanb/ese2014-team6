@@ -36,10 +36,11 @@ public class RegisterController {
 	@Value("${path.adimg}") private String imgPath;	
 
     
-/**
- * 
- * @return register view
- */
+	/**
+	 * This method return a form in which a new user can
+	 * be created
+	 * @return register view
+	 */
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register() {
     	ModelAndView model = new ModelAndView("register");
@@ -48,13 +49,15 @@ public class RegisterController {
     }
 
     /**
-     * Most method 
+     * Validate user input. If a valid user object could be
+     * created, the user in logged with these credentials and
+     * redirected to the main page.
+     * 
      * @param signupForm Form to validate integrity with user object
      * @param result Return of form validation
      * @param redirectAttributes to inform user
      * @return
      */
-    
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView create(
     		@Valid SignupForm signupForm,
@@ -112,6 +115,9 @@ public class RegisterController {
     	return model;
     }
     
+    /**
+     * Generic security error handler
+     */
     @RequestMapping(value = "/security-error", method = RequestMethod.GET)
     public String securityError(RedirectAttributes redirectAttributes) {
     	BSalert[] alerts = new BSalert[1];
