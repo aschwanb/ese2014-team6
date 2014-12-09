@@ -44,6 +44,20 @@ public class MessageController {
     
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
+	public MessageController(){}
+	
+	public MessageController(MessageDao messageDao,
+			MessageService messageService, AdvertDao advertDao,
+			UserDao userDao, MyUserDetailsService userService)
+	{
+		this.messageDao = messageDao;
+		this.messageService = messageService;
+		this.advertDao = advertDao;
+		this.userDao = userDao;
+		this.userService = userService;
+	}
+
+
 	/**
      * Shows the Messages page
      * @return messages page model
