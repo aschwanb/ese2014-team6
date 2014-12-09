@@ -21,8 +21,6 @@ import javax.persistence.OneToOne;
  * @author TeamSix
  *
  */
-
-
 @Entity
 public class Advert {
 	
@@ -81,7 +79,11 @@ public class Advert {
 		this.address = address;
 	}
 	
-	// To get image name from jsp-file
+	/**
+	 * To get the first image from jsp-file
+	 * 
+	 * @return name of the first image
+	 */
 	public String getFirstImage() {
 		return this.getImgs().iterator().next().getImgName();
 
