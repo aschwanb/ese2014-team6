@@ -36,11 +36,12 @@ public class MyUserDetailsServiceTest
 
         SecurityContextHolder.getContext().setAuthentication(auth);
 	}
-	@Test
-	public void testLoadUserByUsername()
-	{
-		assertTrue(true);
-	}
+//	@Test
+//	public void testLoadUserByUsername()
+//	{
+//		//add future Test
+////		fail("Test not yet implemented");
+//	}
 
 	@Test
 	public void testGetUser()
