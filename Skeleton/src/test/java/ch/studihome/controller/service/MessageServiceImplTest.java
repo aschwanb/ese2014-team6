@@ -38,11 +38,12 @@ public class MessageServiceImplTest
 		messageServiceImpl = new MessageServiceImpl(messageDao, userDao);
 	}
 	
-	@Test
-	public void testFindAll()
-	{
-		assertTrue(true);
-	}
+//	@Test
+//	public void testFindAll()
+//	{
+//		//add future Test
+//		fail("Test not yet implemented");
+//	}
 
 	@Test
 	public void testFindByFromUser()
