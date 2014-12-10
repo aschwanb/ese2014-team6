@@ -213,23 +213,7 @@ public class Advert {
 	public void setTimeAndDate(long timeAndDate) {
 		this.timeAndDate = timeAndDate;
 	}
-	@Override
-	public int hashCode()
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((advId == null) ? 0 : advId.hashCode());
-		result = prime * result + appartementSize;
-		result = prime * result
-				+ ((description == null) ? 0 : description.hashCode());
-		result = prime * result + (isWG ? 1231 : 1237);
-		result = prime * result + numberOfInhabitants;
-		result = prime * result + numberOfRooms;
-		result = prime * result + price;
-		result = prime * result + roomSize;
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		return result;
-	}
+	
 
 	@Override
 	public boolean equals(Object obj)

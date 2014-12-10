@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.studihome.jspserver.model.Address;
 import ch.studihome.jspserver.model.Advert;
+import ch.studihome.jspserver.model.Calendar;
 import ch.studihome.jspserver.model.RoomImg;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AddressDao;
@@ -438,6 +439,7 @@ public class ResetDBController
 		user1.setFirstName("Keanu");
 		user1.setEmail("keanu.reeves@neo.com");
 		user1.setEnabled("true");
+		user1.setCalendar(new Calendar(user1));
 		userDao.save(user1);
 		
 		User user2 = new User();
@@ -448,6 +450,7 @@ public class ResetDBController
 		user2.setFirstName("Laurence");
 		user2.setEmail("laurence.fishburne@morpheus.com");
 		user2.setEnabled("true");
+		user2.setCalendar(new Calendar(user2));
 		userDao.save(user2);
 		
 		User user3 = new User();
@@ -458,6 +461,7 @@ public class ResetDBController
 		user3.setFirstName("Carrie-Anne");
 		user3.setEmail("carrie-anne.moss@trinity.com");
 		user3.setEnabled("true");
+		user3.setCalendar(new Calendar(user3));
 		userDao.save(user3);
 		
 		User user4 = new User();
@@ -468,6 +472,7 @@ public class ResetDBController
 		user4.setFirstName("Hugo");
 		user4.setEmail("hugo.weaving@agentsmith.com");
 		user4.setEnabled("true");
+		user4.setCalendar(new Calendar(user4));
 		userDao.save(user4);
 	}
 

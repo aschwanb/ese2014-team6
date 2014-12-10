@@ -135,22 +135,7 @@ public class Message {
 		return false;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((date == null) ? 0 : date.hashCode());
-		result = prime * result
-				+ ((fromUser == null) ? 0 : fromUser.hashCode());
-		result = prime * result + ((hasRead == null) ? 0 : hasRead.hashCode());
-		result = prime * result
-				+ ((hasResponded == null) ? 0 : hasResponded.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((message == null) ? 0 : message.hashCode());
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + ((toUser == null) ? 0 : toUser.hashCode());
-		return result;
-	}
+	
 
 	@Override
 	public boolean equals(Object obj) {

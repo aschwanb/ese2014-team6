@@ -54,16 +54,7 @@ public class Bookmark {
 	public void setInterested(boolean show) {
 		this.interested = show;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((advert == null) ? 0 : advert.hashCode());
-		result = prime * result + ((bmId == null) ? 0 : bmId.hashCode());
-		result = prime * result + (interested ? 1231 : 1237);
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		return result;
-	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -68,19 +68,7 @@ public class RoomImg{
 		this.imgNum = imgNum;
 	}
 
-	@Override
-	public int hashCode()
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((imgDescription == null) ? 0 : imgDescription.hashCode());
-		result = prime * result + ((imgName == null) ? 0 : imgName.hashCode());
-		result = prime * result + imgNum;
-		result = prime * result + ((rimgId == null) ? 0 : rimgId.hashCode());
-		return result;
-	}
-
+	
 	@Override
 	public boolean equals(Object obj)
 	{

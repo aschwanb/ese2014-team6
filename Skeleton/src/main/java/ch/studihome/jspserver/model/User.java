@@ -190,26 +190,7 @@ public class User implements UserDetails {
 	}
 	
 	// Methods needed by spring security
-	@Override
-	public int hashCode()
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((enabled == null) ? 0 : enabled.hashCode());
-		result = prime * result
-				+ ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result
-				+ ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result
-				+ ((password == null) ? 0 : password.hashCode());
-		result = prime * result
-				+ ((userName == null) ? 0 : userName.hashCode());
-		result = prime * result
-				+ ((userRole == null) ? 0 : userRole.hashCode());
-		result = prime * result + ((usrId == null) ? 0 : usrId.hashCode());
-		return result;
-	}
+	
 	@Override
 	public boolean equals(Object obj)
 	{

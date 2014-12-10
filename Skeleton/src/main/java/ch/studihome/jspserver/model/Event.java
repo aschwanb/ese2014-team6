@@ -88,19 +88,7 @@ public class Event {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((advert == null) ? 0 : advert.hashCode());
-		result = prime * result + ((color == null) ? 0 : color.hashCode());
-		result = prime * result + ((date == null) ? 0 : date.hashCode());
-		result = prime * result + ((eventId == null) ? 0 : eventId.hashCode());
-		result = prime * result
-				+ ((linkTarget == null) ? 0 : linkTarget.hashCode());
-		result = prime * result + ((time == null) ? 0 : time.hashCode());
-		return result;
-	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

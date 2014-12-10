@@ -109,16 +109,7 @@ public class Calendar {
 		return out;
 		
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((calId == null) ? 0 : calId.hashCode());
-		result = prime * result + ((events == null) ? 0 : events.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		return result;
-	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
