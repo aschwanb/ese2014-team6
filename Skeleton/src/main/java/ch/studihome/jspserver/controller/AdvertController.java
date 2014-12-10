@@ -68,7 +68,7 @@ public class AdvertController {
     @RequestMapping(value = "/advert", method = RequestMethod.GET)
     public ModelAndView show(@RequestParam(value = "id", required=false)String advId, Principal principal)
     {
-    	ModelAndView model = new ModelAndView("advert");
+ModelAndView model = new ModelAndView("advert");
     	
     	if(advId == null) // new ad
     	{
@@ -127,7 +127,10 @@ public class AdvertController {
     public ModelAndView save(@Valid AdForm adForm, BindingResult result, RedirectAttributes redirectAttributes, Principal principal)
     {
     	log.info("Receiving form. Checking ...");
-    	ModelAndView model;
+boolean noAccess = false;
+    	
+    	log.info("Receiving form. Checking ...");
+    	ModelAndView model = new ModelAndView("advert");
     	
     	if (principal != null)
 		{
@@ -141,31 +144,35 @@ public class AdvertController {
 		    		try {
 		        		adForm.setOwnerId(user.getusrId());
 		            	adForm = adService.saveFrom(adForm);
-
-		            	model = new ModelAndView("ajaxAnswer");
-		            	model.addObject("content", "success");
+		            	BSalert[] alerts = new BSalert[1];
+		            	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Ad saved.");
+		            	model.addObject("alerts", alerts);
 		            	
 		        		log.info("Saved object in db");
 		    		} catch (ImageSaveException e) {
 		    			log.info("Error while saving ad to db");
 		
-		    			model = new ModelAndView("ajaxAnswer");
-		            	model.addObject("content", "error");
+		            	BSalert[] alerts = new BSalert[1];
+		            	alerts[0] = new BSalert(BSalert.Type.danger, "<strong>Error!</strong> " + e.getMessage());
+		            	model.addObject("alerts", alerts);
 		    		}
 		    		
 		        }else {
 		        	log.info("Error in form: " + result.getAllErrors().toString() + "/nReturning new one.");
-		        	
-		        	model = new ModelAndView("advertAjaxAnswer");
-			    	model.addObject("editable", "true");
-			    	model.addObject("adForm", adForm);
 		        }
+		    	
+		    	model.addObject("editable", "true");
+		    	model.addObject("adForm", adForm);
 			}else
 			{
-				model = new ModelAndView("ajaxAnswer");
-		    	model.addObject("content", "denied");
+				noAccess = true;
 			}
 		}else
+		{
+			noAccess = true;
+		}
+		
+    	if(noAccess)
 		{
 			model = new ModelAndView("infoPage");
 	    	model.addObject("title", "Access denied!");

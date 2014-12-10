@@ -12,7 +12,6 @@
 		<script type="text/javascript" src="js/map.js"></script>
 		<script type="text/javascript"  src="js/adp_carousel.js"></script>
 		<script type="text/javascript"  src="js/adp_bookmark.js"></script>
-		<script type="text/javascript"  src="js/adp_advertform.js"></script>
 	</jsp:attribute>
 
 	<jsp:attribute name="page_header">
@@ -62,7 +61,7 @@
 					<div class="col-xs-12">
 						<div class="col-md-12 advert-buttongroup">
 							<div class="pull-right">
-								<a class="btn btn-primary btn-lg advert-buttongroupbutton" onclick="sendAdvertForm()" href="#" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</a>
+								<input type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''} value="Save"/>
 								<c:if test="${adForm.id != 0}">
 								<a class="btn btn-default btn-lg advert-buttongroupbutton" href="advert?id=${adForm.id}">Discard</a>
 								</c:if>
@@ -89,7 +88,7 @@
 					<div class="col-xs-12">
 						<div class="col-md-12 advert-buttongroup">
 							<div class="pull-right">
-								<a class="btn btn-primary btn-lg advert-buttongroupbutton" onclick="sendAdvertForm()" href="#" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</a>
+								<input type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''} value="Save"/>
 								<c:if test="${adForm.id != 0}">
 								<a class="btn btn-default btn-lg advert-buttongroupbutton" href="advert?id=${adForm.id}">Discard</a>
 								</c:if>
@@ -115,7 +114,7 @@
 					<div class="col-xs-12">
 						<div class="col-md-12 advert-buttongroup">
 							<div class="pull-right">
-								<a class="btn btn-primary btn-lg advert-buttongroupbutton" onclick="sendAdvertForm()" href="#" ${adForm.id == 0 ? 'disabled="disabled"':''}>Save</a>
+								<input type="submit" class="btn btn-primary btn-lg advert-buttongroupbutton" ${adForm.id == 0 ? 'disabled="disabled"':''} value="Save"/>
 								<c:if test="${adForm.id != 0}">
 								<a class="btn btn-default btn-lg advert-buttongroupbutton" href="advert?id=${adForm.id}">Discard</a>
 								</c:if>
