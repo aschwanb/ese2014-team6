@@ -168,7 +168,6 @@ public class MessageController {
 			}
 
 		} else {
-			//TODO: Display error message
 			log.info("Form invalide. Error handling started");
 		}
 
@@ -193,7 +192,6 @@ public class MessageController {
 		
 		Message msg = messageDao.findById(id);
 		if (msg == null) {
-			//TODO: Propper error handling
 			return model;
 		}
 		

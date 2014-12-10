@@ -47,7 +47,6 @@ public class InviteServiceImpl implements InviteService {
 	
 	public InvitationForm saveInvite(InvitationForm invitationForm) throws InvalidUserException {
 //		Check if both Users exist
-//		Todo: Why is userDao.findByEmail returning a list of users?
 		User toUser = userDao.findByUserName(invitationForm.getToUserEmail());		
 		User fromUser = userDao.findByUserName(invitationForm.getFromUserEmail());
 		if (toUser == null || fromUser == null) {
@@ -60,7 +59,6 @@ public class InviteServiceImpl implements InviteService {
 					invitationForm.getMessage(), invitationForm.getInvDate(), 
 					invitationForm.getInvTime(), advertDao.findByAdvId(invitationForm.getAdId()));
 			inviteDao.save(invite);		
-			// TODO: Update existing user object with the new information.
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -43,7 +43,7 @@ public class Alert
 	private String typeofappartment;
 	private long timeAndDate;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)	//TODO LAZY vs EAGER problem
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "alertstlist",
 			   joinColumns = { @JoinColumn(name = "alertId", nullable = false, updatable = false) }, 
 			   inverseJoinColumns = { @JoinColumn(name = "advId", nullable = false, updatable = false) })

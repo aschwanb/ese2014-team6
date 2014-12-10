@@ -54,16 +54,15 @@ public class Advert {
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
 	private Set<RoomImg> imgs = new HashSet<RoomImg>(0);
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")	//TODO LAZY vs EAGER problem
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="advert")
 	private Set<Bookmark> bookmarks = new HashSet<Bookmark>(0);
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adverts")	//TODO LAZY vs EAGER problem
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="adverts")
 	private Set<Alert> alerts = new HashSet<Alert>(0);
 	
 	private long timeAndDate;
 
 	public Advert() {}
-	// TODO: Add images in constructor
 	public Advert(
 			String title, int price, boolean isWG, int appartementSize, int numberOfRooms, 
 			int roomSize, int numberOfInhabitants, String description, User user, Address address
@@ -88,7 +87,6 @@ public class Advert {
 		try {
 			return this.getImgs().iterator().next().getImgName();			
 		} catch (Exception e) {
-			// TODO: handle exception
 			return "Image not found";
 		}
 

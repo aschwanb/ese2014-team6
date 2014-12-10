@@ -90,7 +90,6 @@ public class RegisterController {
     	    	UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, signupForm.getPassword(), user.getAuthorities());
     	    	SecurityContextHolder.getContext().setAuthentication(auth);
     	    	
-//    	    	TODO: This should be a proper redirect
     	    	Iterable<Advert> ads = adService.findAll();
     	    	model = new ModelAndView("index");
     	    	model.addObject("alerts", alerts);

@@ -58,7 +58,7 @@ public class User implements UserDetails {
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="toUser")
     private Set<Message> toMsgs = new HashSet<Message>(0);
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")	//TODO LAZY vs EAGER problem
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
 	private Set<Bookmark> bookmarks = new HashSet<Bookmark>(0);
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")

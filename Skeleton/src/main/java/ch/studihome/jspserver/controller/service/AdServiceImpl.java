@@ -147,7 +147,6 @@ public class AdServiceImpl implements AdService {
         
         adForm.setId(ad.getadvId());
         
-        // Todo: Check if upload is an image. (eg "image" = image.getContentType().split("/")[0])
         int limit = adForm.getImgFile().size();
         
         for(int i = 0; i < limit; i++)
