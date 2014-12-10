@@ -59,8 +59,10 @@ public class Event {
 				"displayYearController : \'true\',\n" +
 				"nMonths : \'6',\n" +
 				"},",
-				this.getDate(), this.getAdvert().getTitle(), this.getLink(), this.getLinkTarget(), this.getColor(),
-					"<img src=\"usrimg/" + this.getAdvert().getFirstImage() + "\" height=\"200\" width=\"200\">");
+				this.getDate(), this.getAdvert().getTitle() + ": Start at " + this.getTime(),
+					this.getLink(), this.getLinkTarget(), this.getColor(),
+					"<img src=\"usrimg/" + this.getAdvert().getFirstImage() + 
+					"\" height=\"200\" width=\"200\">");
 		return out;
 	}
 	
@@ -87,6 +89,12 @@ public class Event {
 	}
 	public void setColor(String color) {
 		this.color = color;
+	}
+	public String getTime() {
+		return this.time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
 	@Override
