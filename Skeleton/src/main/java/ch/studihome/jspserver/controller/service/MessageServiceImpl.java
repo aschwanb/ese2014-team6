@@ -22,6 +22,16 @@ public class MessageServiceImpl implements MessageService {
 	
 	static Logger log = Logger.getLogger(MessageServiceImpl.class.getName());
 	
+	public MessageServiceImpl(){}
+	
+	public MessageServiceImpl(MessageDao messageDao, UserDao userDao)
+	{
+		this.messageDao = messageDao;
+		this.userDao = userDao;
+	}
+
+
+
 	public Iterable<Message> findAll() {
 		return messageDao.findAll();
 	}

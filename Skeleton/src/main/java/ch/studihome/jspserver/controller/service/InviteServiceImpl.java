@@ -33,6 +33,14 @@ public class InviteServiceImpl implements InviteService {
 	
 	static Logger log = Logger.getLogger(InviteServiceImpl.class.getName());
 	
+	public InviteServiceImpl(){}
+	public InviteServiceImpl(InviteDao inviteDao, UserDao userDao, AdvertDao advertDao)
+	{
+		this.inviteDao = inviteDao;
+		this.userDao = userDao;
+		this.advertDao = advertDao;
+	}
+	
 	public Iterable<Invite> findAll() {
 		return inviteDao.findAll();
 	}

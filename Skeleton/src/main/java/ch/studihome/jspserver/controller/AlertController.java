@@ -26,6 +26,17 @@ public class AlertController {
 	@Autowired AlertService alertService;
 	@Autowired MyUserDetailsService userService;
 	
+	public AlertController(){}
+	
+	public AlertController(AlertService alertService,
+			MyUserDetailsService userService)
+	{
+		this.alertService = alertService;
+		this.userService = userService;
+	}
+
+
+
 	/**
 	 * 
 	 * @return alerts view 

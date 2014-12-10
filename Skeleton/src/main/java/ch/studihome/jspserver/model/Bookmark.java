@@ -54,5 +54,44 @@ public class Bookmark {
 	public void setInterested(boolean show) {
 		this.interested = show;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((advert == null) ? 0 : advert.hashCode());
+		result = prime * result + ((bmId == null) ? 0 : bmId.hashCode());
+		result = prime * result + (interested ? 1231 : 1237);
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bookmark other = (Bookmark) obj;
+		if (advert == null) {
+			if (other.advert != null)
+				return false;
+		} else if (!advert.equals(other.advert))
+			return false;
+		if (bmId == null) {
+			if (other.bmId != null)
+				return false;
+		} else if (!bmId.equals(other.bmId))
+			return false;
+		if (interested != other.interested)
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
+	
 	
 }

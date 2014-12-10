@@ -3,27 +3,9 @@ package ch.studihome.model.pojos;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import ch.studihome.jspserver.model.pojos.AdForm;
@@ -266,6 +248,16 @@ public class AdFormTest
 			String actual = result.get(i);
 			assertEquals(expected, actual);
 		}
+	}
+	
+	@Test
+	public void testSetOwnerGetOwner()
+	{
+		AdForm adForm = new AdForm();
+		String expected = "Hans Muster";
+		adForm.setOwner(expected);
+		String actual = adForm.getOwner();
+		assertEquals(expected, actual);
 	}
 
 

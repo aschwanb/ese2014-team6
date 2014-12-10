@@ -56,6 +56,23 @@ public class InviteController {
     @Autowired CalendarDao calendarDao;
     @Autowired EventDao eventDao;
     
+    public InviteController(){}
+    
+	public InviteController(InviteDao inviteDao, InviteService inviteService,
+			AdvertDao advertDao, UserDao userDao, MessageDao messageDao,
+			CalendarDao calendarDao, EventDao eventDao)
+	{
+		this.inviteDao = inviteDao;
+		this.inviteService = inviteService;
+		this.advertDao = advertDao;
+		this.userDao = userDao;
+		this.messageDao = messageDao;
+		this.calendarDao = calendarDao;
+		this.eventDao = eventDao;
+	}
+
+
+
 	static Logger log = Logger.getLogger(AdvertController.class.getName());
 	
 	/**

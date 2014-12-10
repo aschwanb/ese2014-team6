@@ -115,3 +115,31 @@ table a:not(.btn), table a:not(.btn):hover, table a:not(.btn):link,
 	color: inherit;
 	text-decoration: inherit;
 }
+
+.address-input-group input:not(:first-child),
+.address-input-group button:not(:first-child)
+{
+	-webkit-border-top-left-radius:0;
+    -webkit-border-top-right-radius:0;
+       -moz-border-radius-topleft:0;
+       -moz-border-radius-topright:0;
+            border-top-left-radius:0;
+            border-top-right-radius:0;
+}
+
+.address-input-group input,
+.address-input-group button
+{
+	width: 100%;
+}
+
+.address-input-group input:not(:last-child),
+.address-input-group button:not(:last-child)
+{
+    -webkit-border-bottom-right-radius:0;
+    -webkit-border-bottom-left-radius:0;
+       -moz-border-radius-bottomright:0;
+       -moz-border-radius-bottomleft:0;
+            border-bottom-right-radius:0;
+            border-bottom-left-radius:0px;
+}

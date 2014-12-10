@@ -1,38 +1,13 @@
 package ch.studihome.controller.service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-
-import ch.studihome.jspserver.controller.service.AdServiceImpl;
 import ch.studihome.jspserver.controller.service.SignupServiceImpl;
-import ch.studihome.jspserver.model.Address;
-import ch.studihome.jspserver.model.Advert;
-import ch.studihome.jspserver.model.RoomImg;
 import ch.studihome.jspserver.model.User;
 import ch.studihome.jspserver.model.dao.AddressDao;
-import ch.studihome.jspserver.model.dao.AdvertDao;
-import ch.studihome.jspserver.model.dao.RoomImgDao;
 import ch.studihome.jspserver.model.dao.UserDao;
-import ch.studihome.jspserver.model.pojos.AdForm;
+import ch.studihome.jspserver.model.pojos.ProfileForm;
 import ch.studihome.jspserver.model.pojos.SignupForm;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -74,6 +49,54 @@ public class SignupServiceImplTest
 		signupForm = signupServiceImpl.saveFrom(signupForm);
 		assertNotNull(signupForm.getId());
 		assertTrue(signupForm.getId() > 0);
+	}
+	
+	@Test
+	public void testUpdateFrom()
+	{
+		ProfileForm profileForm = new ProfileForm();
+		profileForm.setEmail("email");
+		profileForm.setFirstName("firstName");
+		profileForm.setLastName("lastName");
+		
+		User user = new User();
+		
+		signupServiceImpl.updateFrom(profileForm, user);
+		
+		when(userDao.save(any(User.class))).thenAnswer(new Answer<User> () {
+
+			public User answer(InvocationOnMock invocation) throws Throwable
+			{
+				User user = (User) invocation.getArguments()[0];
+				assertEquals("email", user.getEmail());
+				assertEquals("firstName", user.getFirstName());
+				assertEquals("lastName", user.getLastName());
+				return user;
+			}
+			
+		});
+	}
+	
+	@Test
+	public void testChangePasswordFrom()
+	{
+		String password = "password1";
+		User user = new User();
+		user.setPassword(password);
+		assertEquals(password, user.getPassword());
+		password = "password2";
+		signupServiceImpl.changePasswordFrom(password, user);
+		
+		when(userDao.save(any(User.class))).thenAnswer(new Answer<User> () {
+
+			public User answer(InvocationOnMock invocation) throws Throwable
+			{
+				User user = (User) invocation.getArguments()[0];
+				assertEquals("password2", user.getPassword());
+				return user;
+			}
+			
+		});
 	}
 
 }

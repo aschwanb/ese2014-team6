@@ -6,37 +6,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.studihome.jspserver.controller.IndexController;
 import ch.studihome.jspserver.controller.service.AdService;
 import ch.studihome.jspserver.controller.service.AdServiceImpl;
-import ch.studihome.jspserver.controller.service.SignupService;
-import ch.studihome.jspserver.controller.service.SignupServiceImpl;
-import ch.studihome.jspserver.model.Address;
 import ch.studihome.jspserver.model.Advert;
-import ch.studihome.jspserver.model.RoomImg;
-import ch.studihome.jspserver.model.User;
-import ch.studihome.jspserver.model.dao.AddressDao;
-import ch.studihome.jspserver.model.dao.AdvertDao;
-import ch.studihome.jspserver.model.dao.RoomImgDao;
-import ch.studihome.jspserver.model.dao.UserDao;
-import ch.studihome.jspserver.model.pojos.AdForm;
-import ch.studihome.jspserver.model.pojos.SignupForm;
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
