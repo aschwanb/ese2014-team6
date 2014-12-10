@@ -85,7 +85,12 @@ public class Advert {
 	 * @return name of the first image
 	 */
 	public String getFirstImage() {
-		return this.getImgs().iterator().next().getImgName();
+		try {
+			return this.getImgs().iterator().next().getImgName();			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "Image not found";
+		}
 
 	}
 	public Long getadvId() {
