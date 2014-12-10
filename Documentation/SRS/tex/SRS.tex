@@ -36,6 +36,7 @@
   1.0 & December 10. 2014 & 
   \begin{itemize}
     \item Updated information needed for a valide advertisement: Expiration date removed
+    \item Added use cases \textit{Edit profile} and \textit{Change password}
     \item Some of the vocabulary has been adjusted to match the descritpions used in the web service
     \item Changed subsection \textit{Change Advertisement}: Adverts do not need a edit mode. This is taken into account.
     \item Due to time constraints, the use cases \textit{Rank promising tenants (Advertiser)}, \textit{Rank interesting advertisements (Tenant)} and \textit{Tenant is no longer interested in ad} have been deleted.
@@ -468,6 +469,71 @@ There is only one user class. But this class can have two different roles depend
       \item Email is send to tenant 
       \item Message is marked as “responded to”
     \end{itemize}
+\end{itemize}
+
+\subsection*{Edit profile}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item User
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item The user wants to edit his profil data
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item Navigate to edit view
+			\item Click on button "Edit"
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item User has an account
+			\item User is logged in
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item The changes are saved in the database
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item The user wants to ad or remove information from his profil
+			\item He logs into StuidHome 
+			\item He navigates to his profile and clicks the "edit" button
+			\item In the following view, he performs the desired changes and submits the form
+		\end{itemize}
+\end{itemize}
+
+\subsection*{Edit password}
+\begin{itemize}
+	\item Actors
+		\begin{itemize}
+			\item User
+		\end{itemize}
+	\item Description
+		\begin{itemize}
+			\item The user wants to edit his password
+		\end{itemize}
+	\item Trigger
+		\begin{itemize}
+			\item Navigate to edit view
+			\item Click on button "Change Password"
+		\end{itemize}
+	\item Pre-Condition
+		\begin{itemize}
+			\item User has an account
+			\item User is logged in
+		\end{itemize}
+	\item Post-Condition
+		\begin{itemize}
+			\item The changes are saved in the database
+		\end{itemize}
+	\item Main Scenario
+		\begin{itemize}
+			\item The user logs into StuidHome 
+			\item He navigates to his profile and clicks the appropriate button
+			\item In the following view, he performs the desired changes and submits the form
+		\end{itemize}
 \end{itemize}
 
 %\subsection*{Tenant is no longer interested in ad}
