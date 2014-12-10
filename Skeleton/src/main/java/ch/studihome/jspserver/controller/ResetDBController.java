@@ -103,7 +103,8 @@ public class ResetDBController
 	
 	private void clearDatabase()
 	{
-		//TODO following code might break if now new code is running. In that case reordering may solve the issue
+		// Following code might break if changed code is running.
+		// In that case reordering may solve the issue
 		
 		advertDao.deleteAll();
 		addressDao.deleteAll();

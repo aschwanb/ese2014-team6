@@ -28,9 +28,9 @@
 							<table class="table table-striped table-hover">
 								<c:forEach var="bm" items="${ad.bookmarks}">
 									<c:if test="${bm.interested == true}">
-										<tr> <!-- TODO onclick="document.location='advert?id=${ad.advId}';" -->
-											<td><a href="#TODO"><c:out value="${bm.user.userName}"/></a></td>
-											<td><a href="#TODO"><c:out value="${bm.user.email}"/></a></td>
+										<tr>
+											<td><a><c:out value="${bm.user.userName}"/></a></td>
+											<td><a><c:out value="${bm.user.email}"/></a></td>
 											<td><a class="btn btn-dafault" href="invite?usrId=${bm.user.usrId}&adId=${ad.advId}">Invite to event</a></td>
 											<td><a class="btn btn-dafault" href="contact?usrId=${bm.user.usrId}">Contact</a></td>
 										</tr>

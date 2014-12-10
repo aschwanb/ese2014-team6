@@ -120,7 +120,6 @@ public class InviteController {
 	        	}
 			} else {
 	        	alerts[0] = new BSalert(BSalert.Type.success, "<strong>Success!</strong> Invitation rejected.");
-	        	// TODO: Inform other party
 			}
 			invite.setReacted(true);
 		}
@@ -186,8 +185,6 @@ public class InviteController {
 			} catch (InvalidUserException e) {
             	alerts[0] = new BSalert(BSalert.Type.danger, "<strong>Error!</strong> " + e.getMessage());
 			}
-		} else {
-//			TODO: Proper error handling
 		}
 		model.addObject("invitationForm", invitationForm);
 		model.addObject("alerts", alerts);
