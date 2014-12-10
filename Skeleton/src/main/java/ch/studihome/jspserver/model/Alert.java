@@ -169,29 +169,6 @@ public class Alert
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((adverts == null) ? 0 : adverts.hashCode());
-		result = prime * result + ((alertId == null) ? 0 : alertId.hashCode());
-		result = prime * result + ((area == null) ? 0 : area.hashCode());
-		result = prime * result + maxappartmentsize;
-		result = prime * result + maxnumberofinhabitants;
-		result = prime * result + maxprice;
-		result = prime * result + maxroomsize;
-		result = prime * result + minappartmentsize;
-		result = prime * result + minnumberofinhabitants;
-		result = prime * result + minprice;
-		result = prime * result + minroomsize;
-		result = prime * result + (int) (timeAndDate ^ (timeAndDate >>> 32));
-		result = prime
-				* result
-				+ ((typeofappartment == null) ? 0 : typeofappartment.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		return result;
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
